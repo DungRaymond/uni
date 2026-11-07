@@ -1,0 +1,114 @@
+<h4>1. Bản chất vật lý và các đặc trưng của sóng siêu âm</h4>
+            <ul>
+              <li><strong>Bản chất:</strong> Siêu âm (Ultrasound) là sóng cơ học (sóng âm) có tần số dao động cao hơn ngưỡng nghe của tai người ($f > 20\text{ kHz} = 20.000\text{ Hz}$). Trong chẩn đoán y tế, dải tần số thường dùng từ $2\text{ MHz}$ đến $15\text{ MHz}$; trong ứng dụng bào chế và phá vỡ cấu trúc vi mô, tần số thường từ $20\text{ kHz}$ đến $100\text{ kHz}$.</li>
+              <li><strong>Dạng sóng lan truyền:</strong> Trong môi trường sinh học (chất lỏng và mô mềm), sóng siêu âm lan truyền chủ yếu dưới dạng <em>sóng dọc</em> (longitudinal wave) – phương dao động của các phần tử môi trường trùng với phương truyền sóng, tạo ra các chu kỳ nén (compression) và dãn (rarefaction) xen kẽ. Trong chất rắn (như xương), sóng còn có thể lan truyền dưới dạng <em>sóng ngang</em> (transverse wave).</li>
+              <li><strong>Vận tốc truyền sóng âm ($v$):</strong> Phụ thuộc vào tính đàn hồi (độ cứng/suất nén $K$) và khối lượng riêng ($\rho$) của môi trường:
+                <div class="formula-box">$$v = \sqrt{\frac{K}{\rho}} \quad \text{và} \quad v = \lambda \cdot f$$</div>
+                Trong đó $\lambda$ là bước sóng, $f$ là tần số sóng âm.
+                <ul>
+                  <li>Vận tốc truyền âm trung bình trong mô mềm quy ước là: $v_{m\hat{o}} \approx 1540\text{ m/s}$.</li>
+                  <li>Trong nước: $v \approx 1480\text{ m/s}$; trong xương: $v \approx 3500 - 4080\text{ m/s}$; trong không khí: $v \approx 330 - 340\text{ m/s}$.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Vì vận tốc truyền âm trong mô mềm khá đồng nhất ($\approx 1540\text{ m/s}$), máy siêu âm đo thời gian khứ hồi ($t$) của chùm xung âm dội lại để xác định chính xác độ sâu cấu trúc giải phẫu: $d = \frac{v \cdot t}{2}$.</p>
+
+            <h4>2. Tương tác của sóng siêu âm với mô sinh học</h4>
+            <ul>
+              <li><strong>Trở kháng âm (Acoustic Impedance - $Z$):</strong> Đại lượng đặc trưng cho mức độ cản trở sự lan truyền sóng âm của môi trường:
+                <div class="formula-box">$$Z = \rho \cdot v \quad \left[\text{Rayl hay } \text{kg}/(\text{m}^2\cdot\text{s})\right]$$</div>
+                Trong đó $\rho$ là khối lượng riêng ($\text{kg}/\text{m}^3$), $v$ là vận tốc truyền âm ($\text{m}/\text{s}$).
+              </li>
+              <li><strong>Sự phản xạ và khúc xạ tại mặt phân cách (Reflection & Transmission):</strong> Khi chùm sóng siêu âm chiếu vuông góc tới ranh giới giữa hai môi trường có trở kháng âm $Z_1$ và $Z_2$:
+                <div class="formula-box">$$R = \left( \frac{Z_2 - Z_1}{Z_2 + Z_1} \right)^2 \quad \text{và} \quad T = 1 - R = \frac{4 Z_1 Z_2}{(Z_1 + Z_2)^2}$$</div>
+                <ul>
+                  <li>$R$: Hệ số phản xạ cường độ (tỉ số cường độ chùm phản xạ trên chùm tới).</li>
+                  <li>$T$: Hệ số truyền qua cường độ (tỉ số cường độ chùm đi tiếp vào môi trường 2).</li>
+                  <li><em>Vai trò của Gel tiếp âm:</em> Giữa đầu dò và bề mặt da luôn tồn tại lớp không khí vi mô. Vì $Z_{kk} \approx 400\text{ Rayl}$ cực nhỏ so với $Z_{da} \approx 1,5 \times 10^6\text{ Rayl}$, hệ số phản xạ tại mặt phân cách không khí - da lên tới $R \approx 99,9\%$, sóng âm hầu như bị dội ngược hoàn toàn. Bôi <strong>Gel siêu âm</strong> (có trở kháng âm tương đương mô mềm $Z \approx 1,5 \times 10^6\text{ Rayl}$) giúp triệt tiêu hoàn toàn khe không khí, đảm bảo trên $99\%$ năng lượng âm truyền sâu vào cơ thể.</li>
+                  <li><em>Hiện tượng bóng lưng (Acoustic Shadow):</em> Tại mặt phân cách giữa mô mềm và xương hoặc sỏi ($Z_{xương} \approx 6 - 8 \times 10^6\text{ Rayl}$), chênh lệch $Z$ rất lớn dẫn đến phản xạ và hấp thụ cực mạnh, làm cho vùng phía sau cấu trúc bị mất tín hiệu âm, tạo vệt bóng đen đặc trưng trên màn hình (dấu hiệu nhận diện sỏi mật, sỏi thận).</li>
+                </ul>
+              </li>
+              <li><strong>Sự suy giảm (Attenuation) và hấp thụ năng lượng âm:</strong> Cường độ sóng âm giảm dần theo hàm mũ khi đi sâu vào môi trường:
+                <div class="formula-box">$$I(x) = I_0 \, e^{-\mu x}$$</div>
+                với $\mu$ là hệ số suy giảm âm tổng cộng (bao gồm hấp thụ sinh nhiệt và tán xạ). Hệ số $\mu$ tỉ lệ thuận với tần số sóng âm ($f$).
+                <br><em>Quy tắc đánh đổi (Trade-off):</em>
+                <ul>
+                  <li><strong>Tần số cao ($7,5 - 15\text{ MHz}$):</strong> Bước sóng $\lambda$ ngắn $\rightarrow$ Độ phân giải không gian cao, nhưng suy giảm rất nhanh $\rightarrow$ Độ xuyên sâu kém (thích hợp thăm khám cơ quan nông: tuyến giáp, mắt, mạch máu ngoại vi, mô dưới da).</li>
+                  <li><strong>Tần số thấp ($2 - 5\text{ MHz}$):</strong> Bước sóng $\lambda$ dài $\rightarrow$ Độ phân giải giảm nhẹ, nhưng suy giảm ít $\rightarrow$ Xuyên sâu tốt ($15 - 25\text{ cm}$) (thích hợp thăm khám tạng sâu: gan, thận, tim, sản khoa).</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nắm vững trở kháng âm và quy luật suy giảm giúp người thầy thuốc và dược sĩ lựa chọn tần số đầu dò tối ưu và hiểu rõ bản chất hình thành ảnh tương phản siêu âm trên các mô khác nhau.</p>
+
+            <h4>3. Cơ chế phát - thu sóng siêu âm: Hiệu ứng áp điện (Piezoelectric Effect)</h4>
+            <p>Bộ chuyển đổi (đầu dò - Transducer) hoạt động dựa trên vật liệu gốm áp điện (phổ biến nhất là Titanat Zirconat Chì - PZT):</p>
+            <ul>
+              <li><strong>Hiệu ứng áp điện nghịch (Converse Piezoelectric Effect) – Quá trình PHÁT:</strong> Khi đặt một hiệu điện thế xoay chiều tần số cao vào hai mặt của bản tinh thể áp điện, bản tinh thể bị co giãn cơ học theo chu kỳ với cùng tần số, phát ra chùm sóng siêu âm lan truyền vào mô.</li>
+              <li><strong>Hiệu ứng áp điện thuận (Direct Piezoelectric Effect) – Quá trình THU:</strong> Sóng siêu âm sau khi phản xạ từ các mặt phân cách trong mô quay trở lại tác dụng áp lực cơ học lên tinh thể áp điện, làm biến dạng tinh thể và sinh ra các tín hiệu điện xoay chiều cực nhỏ. Tín hiệu này được khuếch đại, xử lý số hóa và tái tạo thành hình ảnh chẩn đoán.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Đầu dò vừa đóng vai trò là "loa phát" vừa là "micro thu" tín hiệu, hoạt động luân phiên theo cơ chế xung - dội âm (Pulse-Echo principle).</p>
+
+            <h4>4. Các phương thức chẩn đoán hình ảnh siêu âm (Ultrasound Imaging Modes)</h4>
+            <ul>
+              <li><strong>A-mode (Amplitude Mode):</strong> Hiển thị biên độ sóng phản hồi dưới dạng các đỉnh xung trên trục khoảng cách/chiều sâu. Thường dùng trong nhãn khoa đo chiều dài trục nhãn cầu, đo bề dày giác mạc.</li>
+              <li><strong>B-mode (Brightness Mode):</strong> Hiển thị biên độ phản xạ dưới dạng các điểm sáng có độ chói (thang độ xám 2D) tỷ lệ với cường độ tín hiệu dội về. Đầu dò quét nhiều chùm tia liên tiếp ghép lại tạo thành hình ảnh cắt lớp giải phẫu thời gian thực (Real-time). Đây là phương thức cơ bản và phổ biến nhất trong chẩn đoán lâm sàng.</li>
+              <li><strong>M-mode (Motion Mode):</strong> Ghi lại sự dịch chuyển của các bề mặt phản xạ theo thời gian (trục tung: khoảng cách, trục hoành: thời gian). Ứng dụng chuyên biệt trong siêu âm tim để khảo sát vận động lá van, độ dày thành tâm thất và tính toán phân suất tống máu ($EF$).</li>
+              <li><strong>Siêu âm Doppler (Doppler Ultrasound):</strong> Dựa trên hiệu ứng Doppler – khi sóng âm phản xạ từ các phần tử chuyển động (tế bào hồng cầu), tần số sóng phản xạ bị dịch chuyển một lượng $\Delta f$ so với tần số phát $f_0$:
+                <div class="formula-box">$$\Delta f = \frac{2 f_0 v \cos\theta}{c} \quad \implies \quad v = \frac{c \cdot \Delta f}{2 f_0 \cos\theta}$$</div>
+                Trong đó $v$ là vận tốc dòng máu, $\theta$ là góc giữa chùm siêu âm và hướng dòng chảy (góc Doppler), $c$ là vận tốc âm trong môi trường.
+                <ul>
+                  <li><em>Ứng dụng:</em> Khảo sát vận tốc và hướng dòng máu trong tim mạch, phát hiện hẹp tắc mạch, xơ vữa, huyết khối tĩnh mạch và tưới máu khối u.</li>
+                  <li><em>Các dạng Doppler:</em> Doppler xung (PW), Doppler liên tục (CW), Doppler màu (Color Doppler - dòng chảy hướng về đầu dò mã hóa màu đỏ, dòng chảy ra xa mã hóa màu xanh) và Doppler năng lượng (Power Doppler).</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Phối hợp linh hoạt giữa B-mode và Doppler (siêu âm Duplex) cung cấp đồng thời cả thông tin hình thái cấu trúc mô và chức năng huyết động học trong chẩn đoán y khoa.</p>
+
+            <h4>5. Ứng dụng của sóng siêu âm trong Dược học và Điều trị y sinh</h4>
+            <ul>
+              <li><strong>Hiện tượng xâm thực sóng âm (Acoustic Cavitation):</strong>
+                <p>Khi sóng siêu âm năng lượng cao (thường ở dải tần $20 - 40\text{ kHz}$) truyền qua môi trường chất lỏng, các pha dãn tạo ra vô số vi bọt khí chân không. Các bọt khí này lớn dần đến kích thước tới hạn rồi sụp đổ mãnh liệt trong vài micro giây, giải phóng nhiệt độ cực cao (hàng ngàn Kelvin) và áp suất cục bộ cực lớn (hàng trăm megapascal) kèm theo các vi dòng xoáy (microjets) xé rách cấu trúc xung quanh.</p>
+              </li>
+              <li><strong>Ứng dụng nổi bật trong Dược học & Bào chế:</strong>
+                <ul>
+                  <li><em>Chiết xuất hoạt chất hỗ trợ bằng siêu âm (Ultrasound-Assisted Extraction - UAE):</em> Xâm thực siêu âm làm vỡ vách tế bào thực vật dược liệu, tạo điều kiện cho dung môi thẩm thấu nhanh, nâng cao hiệu suất thu hồi polyphenol, flavonoid, alkaloid, tinh dầu và rút ngắn thời gian chiết từ hàng giờ xuống vài phút mà không làm biến tính các hợp chất kém bền nhiệt.</li>
+                  <li><em>Đồng hóa và phân tán hệ nano thuốc:</em> Làm nhỏ kích thước giọt trong nhũ tương, hỗn dịch thuốc xuống thang nanomet ($50 - 200\text{ nm}$), giúp hệ phân tán đồng nhất, tăng độ ổn định hóa lý, hạn chế hiện tượng sa lắng hay tách lớp.</li>
+                  <li><em>Điều chế Liposome và hệ dẫn thuốc (Drug Delivery Systems):</em> Sóng siêu âm phân cắt các màng lipid kép đa tầng (MLVs) thành các túi liposome đơn tầng kích thước nhỏ (SUVs) dùng để bao gói dược chất hướng đích.</li>
+                  <li><em>Tẩy rửa, súc rửa và tiệt khuẩn dụng cụ:</em> Bể rửa siêu âm (Ultrasonic bath) làm sạch triệt để các vết bẩn vi mô trong ống mao quản, rãnh hẹp của thiết bị y tế và khuôn dập viên thuốc.</li>
+                </ul>
+              </li>
+              <li><strong>Ứng dụng trong Điều trị y học (Therapeutic Applications):</strong>
+                <ul>
+                  <li><em>Tán sỏi ngoài cơ thể (ESWL):</em> Sử dụng chùm sóng xung kích siêu âm hội tụ năng lượng vào sỏi thận, sỏi mật để làm vỡ vụn sỏi thành kích thước hạt cát có thể tự đào thải qua đường tiết niệu.</li>
+                  <li><em>Siêu âm hội tụ cường độ cao (HIFU):</em> Hội tụ chùm sóng siêu âm năng lượng lớn vào khối u sâu bên trong cơ thể (u xơ tử cung, ung thư biểu mô tuyến tiền liệt) làm tăng nhiệt độ cục bộ lên trên $60 - 80^\circ\text{C}$, gây hoại tử đông tế bào u một cách chuẩn xác mà không cần phẫu thuật mở.</li>
+                  <li><em>Liệu pháp siêu âm dẫn thuốc qua da (Phonophoresis / Sonophoresis):</em> Sóng siêu âm làm giãn nở tạm thời các khoảng gian bào lipid của lớp sừng (stratum corneum), thúc đẩy sự thẩm thấu của các phân tử thuốc lớn (kháng viêm không steroid, corticosteroid, thuốc giảm đau tại chỗ) qua da.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Siêu âm không chỉ là phương tiện chẩn đoán hình ảnh hàng đầu mà còn là công nghệ then chốt trong bào chế dược phẩm hiện đại và các liệu pháp điều trị trúng đích không xâm lấn.</p>
+
+            <h4>6. An toàn sinh học và các chỉ số an toàn của sóng siêu âm</h4>
+            <ul>
+              <li><strong>Ưu điểm an toàn vượt trội:</strong> Sóng siêu âm là sóng cơ học nên <em>hoàn toàn không mang bức xạ ion hóa</em>. Do đó siêu âm rất an toàn khi thăm khám lặp lại nhiều lần, đặc biệt an toàn cho phụ nữ mang thai, thai nhi và trẻ sơ sinh.</li>
+              <li><strong>Hai tác động sinh học cần kiểm soát:</strong>
+                <ul>
+                  <li><em>Tác động nhiệt:</em> Sự hấp thụ năng lượng âm chuyển thành nhiệt làm tăng nhiệt độ mô. Được theo dõi thông qua <strong>Chỉ số nhiệt (Thermal Index - TI)</strong>. Giá trị $TI < 1,0$ được xem là an toàn cho mô sống thông thường.</li>
+                  <li><em>Tác động cơ học và xâm thực:</em> Khả năng tạo vi bọt khí và sóng áp lực làm tổn thương mô chứa khí (phổi, ruột). Được theo dõi qua <strong>Chỉ số cơ học (Mechanical Index - MI)</strong>. Theo chuẩn quốc tế FDA/IEC, $MI$ không được vượt quá $1,9$.</li>
+                </ul>
+              </li>
+              <li><strong>Nguyên lý ALARA (As Low As Reasonably Achievable):</strong> Luôn vận hành máy siêu âm ở mức công suất phát tối thiểu và thời gian quét ngắn nhất đủ để thu nhận hình ảnh chẩn đoán tin cậy.</li>
+            </ul>
+            <h4>Ý nghĩa và tác dụng tổng kết</h4>
+            <p>Chương Siêu âm trong Y Dược học cung cấp nền tảng vật lý toàn diện từ bản chất sóng cơ học, trở kháng âm, định luật phản xạ khúc xạ, đến nguyên lý áp điện và hiệu ứng Doppler. Trong thực hành Dược học, hiểu rõ cơ chế xâm thực sóng âm giúp làm chủ các kỹ thuật chiết xuất siêu âm (UAE), điều chế hệ nano, liposome và tối ưu hóa hệ phân phối thuốc qua da.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Từ thời gian dội âm suy ra độ sâu</div>
+              Đầu dò phát xung vào mô mềm ($v \approx 1540\text{ m/s}$) và nhận echo sau $t = 26\ \mu\text{s}$.<br>
+              Sóng phải đi rồi về nên quãng đường gấp đôi: $d = \dfrac{v \cdot t}{2} = \dfrac{1540 \times 26 \times 10^{-6}}{2} \approx 0,020\text{ m} = 2,0\text{ cm}$.<br>
+              <strong>Kiểm tra nhanh:</strong> cứ $13\ \mu\text{s}$ ứng với $1\text{ cm}$, vậy $26\ \mu\text{s}$ cho $2\text{ cm}$ — hợp lý.<br>
+              <strong>Kết luận:</strong> máy không đo trực tiếp độ sâu mà chỉ đo thời gian khứ hồi; giả định $v$ gần như không đổi trong mô mềm là cơ sở của phép đo.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Chọn tần số:</strong> "Cao — Nông — Nét, Thấp — Sâu — Mờ" (7,5–15 MHz cho giáp/mắt/mạch ngoại vi; 2–5 MHz cho gan/thận/tim/sản khoa).<br>
+              <strong>Công thức echo:</strong> luôn chia 2 vì sóng khứ hồi, $d = v \cdot t/2$.<br>
+              <strong>Trở kháng:</strong> chênh $Z$ càng lớn → phản xạ càng mạnh (xương/sỏi sáng, phía sau tối = bóng lưng); gel để xóa chênh lệch không khí – da.<br>
+              <strong>An toàn:</strong> $TI < 1,0$; $MI \le 1,9$; luôn theo nguyên lý ALARA.
+            </div>
