@@ -146,3 +146,6 @@ if (kind === 'doc') {
 }
 
 db.close();
+
+const { writeContentJson } = await import('./export-data.mjs');
+writeContentJson();

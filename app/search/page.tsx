@@ -27,7 +27,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Searc
   const params = await searchParams;
   const q = (params.q ?? '').trim();
   const kind = (['all', 'doc', 'question'] as const).find((value) => value === params.kind) ?? 'all';
-  const results = q ? search(q, kind, 60) : [];
+  const results = q ? await search(q, kind, 60) : [];
 
   return (
     <>

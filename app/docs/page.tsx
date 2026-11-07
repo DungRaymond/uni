@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: 'Kho tài liệu',
 };
 
-export default function DocsHubPage() {
-  const subjects = getSubjects();
+export default async function DocsHubPage() {
+  const subjects = await getSubjects();
 
   return (
     <>

@@ -10,7 +10,7 @@ export async function GET(request: Request) {
   const limitParam = Number(searchParams.get('limit') ?? '20');
   const limit = Number.isFinite(limitParam) ? Math.min(Math.max(limitParam, 1), 100) : 20;
 
-  const results = search(q, kind, limit);
+  const results = await search(q, kind, limit);
 
   return Response.json({
     query: q,

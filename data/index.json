@@ -1,0 +1,254 @@
+{
+ "generated_at": "2026-11-07T07:48:04.115Z",
+ "subjects": [
+  {
+   "slug": "ly-duoc",
+   "name": "Lý - Dược",
+   "emoji": "🩺",
+   "accent": "#0369a1",
+   "accent_soft": "#bae6fd",
+   "description": "Nội dung bao quát nhiệt động sinh học, động học chất lưu hệ tuần hoàn, điện thế màng tế bào, quang phổ học, siêu âm trong y dược học, điện - từ học ứng dụng và giáo trình đại cương.",
+   "doc_count": 7,
+   "question_count": 3,
+   "docs": [
+    {
+     "slug": "doc-ld-1",
+     "num": "1",
+     "title": "Chuyên đề 1: Nhiệt động học sinh học & Động học chất lưu trong hệ tuần hoàn",
+     "tag": "Lý thuyết cốt lõi"
+    },
+    {
+     "slug": "doc-ld-2",
+     "num": "2",
+     "title": "Chuyên đề 2: Điện thế sinh học & Tín hiệu điện từ của màng tế bào",
+     "tag": "Cơ chế & Điện thế"
+    },
+    {
+     "slug": "doc-ld-3",
+     "num": "3",
+     "title": "Chuyên đề 3: Bức xạ & Quang phổ học ứng dụng trong kiểm nghiệm thuốc",
+     "tag": "Quang học & Bức xạ"
+    },
+    {
+     "slug": "doc-ld-c3",
+     "num": "4",
+     "title": "Chương 3: Nhiệt động lực học sinh học (Bioenergetics & Thermodynamics)",
+     "tag": "Giáo trình Lý - Dược"
+    },
+    {
+     "slug": "doc-ld-c4",
+     "num": "5",
+     "title": "Chương 4: Siêu âm trong Y Dược học (Ultrasound in Medicine & Pharmacy)",
+     "tag": "Giáo trình Lý - Dược"
+    },
+    {
+     "slug": "doc-ld-c5",
+     "num": "6",
+     "title": "Chương 5: Điện và Từ trong Y Dược học (Electricity & Magnetism in Medicine & Pharmacy)",
+     "tag": "Giáo trình Lý - Dược"
+    },
+    {
+     "slug": "doc-ld-6",
+     "num": "7",
+     "title": "Từ khóa thường gặp môn Lý - Dược",
+     "tag": "Bảng tra nhanh"
+    }
+   ],
+   "questions": [
+    {
+     "slug": "q1",
+     "num": "1",
+     "title": "Liệt kê các đại lượng đặc trưng cho chức năng hô hấp của cơ thể",
+     "status": "✅ Hoàn thành",
+     "note": "Thể tích, dung tích, động học & cơ học hô hấp"
+    },
+    {
+     "slug": "q2",
+     "num": "2",
+     "title": "Ôn kiến thức hệ hô hấp",
+     "status": "✅ Hoàn thành",
+     "note": "Cơ học, khuếch tán khí Fick, vận chuyển khí & ứng dụng"
+    },
+    {
+     "slug": "q4",
+     "num": "4",
+     "title": "Vai trò của độ nhớt đối với hệ thuốc dạng lỏng & Vận chuyển vật chất qua màng tế bào",
+     "status": "✅ Hoàn thành",
+     "note": "Định luật Stokes, Poiseuille, Fick, cơ chế màng & câu hỏi kiểm tra"
+    }
+   ]
+  },
+  {
+   "slug": "y-duoc",
+   "name": "Modul Y - Dược",
+   "emoji": "💊",
+   "accent": "#6d28d9",
+   "accent_soft": "#ddd6fe",
+   "description": "Bao quát toàn diện sinh lý tim mạch, dược động học ADME, hô hấp tế bào, huyết học, chuyển hóa, sinh lý màng & điện thế hoạt động, bệnh nguyên - bệnh sinh (viêm, sốt), cân bằng dịch thể, đại cương miễn dịch và bảng thuật ngữ tra cứu.",
+   "doc_count": 14,
+   "question_count": 1,
+   "docs": [
+    {
+     "slug": "doc-myd-1",
+     "num": "1",
+     "title": "Chuyên đề 1: Sinh lý tim mạch & Hệ thống điều hòa huyết áp thể dịch - thần kinh",
+     "tag": "Sinh lý học"
+    },
+    {
+     "slug": "doc-myd-2",
+     "num": "2",
+     "title": "Chuyên đề 2: Các thông số Dược động học cơ bản (Hệ ADME)",
+     "tag": "Dược lý đại cương"
+    },
+    {
+     "slug": "doc-myd-3",
+     "num": "3",
+     "title": "Chuyển hóa năng lượng và hô hấp tế bào",
+     "tag": "Hóa sinh"
+    },
+    {
+     "slug": "doc-myd-4",
+     "num": "4",
+     "title": "Máu, tạo máu và rối loạn huyết học cơ bản",
+     "tag": "Huyết học"
+    },
+    {
+     "slug": "doc-myd-5",
+     "num": "5",
+     "title": "Chuyển hóa và rối loạn chuyển hóa thường gặp",
+     "tag": "Hóa sinh lâm sàng"
+    },
+    {
+     "slug": "doc-myd-6",
+     "num": "6",
+     "title": "Thực hành đo huyết áp và diễn giải kết quả",
+     "tag": "Kỹ năng lâm sàng"
+    },
+    {
+     "slug": "doc-myd-7",
+     "num": "7",
+     "title": "Trao đổi chất qua màng tế bào",
+     "tag": "Sinh lý tế bào"
+    },
+    {
+     "slug": "doc-myd-8",
+     "num": "8",
+     "title": "Điện thế màng và điện thế hoạt động",
+     "tag": "Điện sinh lý"
+    },
+    {
+     "slug": "doc-myd-9",
+     "num": "9",
+     "title": "Bệnh nguyên và bệnh sinh",
+     "tag": "Bệnh học đại cương"
+    },
+    {
+     "slug": "doc-myd-10",
+     "num": "10",
+     "title": "Dịch cơ thể, cân bằng nước và rối loạn thường gặp",
+     "tag": "Sinh lý dịch thể"
+    },
+    {
+     "slug": "doc-myd-11",
+     "num": "11",
+     "title": "Chuyên đề 11: Đại cương về miễn dịch (Hệ thống miễn dịch, cơ chế phòng vệ & ứng dụng y dược)",
+     "tag": "Miễn dịch học"
+    },
+    {
+     "slug": "doc-myd-12",
+     "num": "12",
+     "title": "Nguồn học tập và tài liệu tham khảo",
+     "tag": "Tham khảo"
+    },
+    {
+     "slug": "doc-myd-14",
+     "num": "14",
+     "title": "Chuyên đề 14: Dị ứng và các phản ứng quá mẫn",
+     "tag": "Miễn dịch học"
+    },
+    {
+     "slug": "doc-myd-13",
+     "num": "13",
+     "title": "Từ khóa thường gặp trong môn Modul Y - Dược",
+     "tag": "Bảng tra nhanh"
+    }
+   ],
+   "questions": [
+    {
+     "slug": "q3",
+     "num": "3",
+     "title": "Huyết áp tâm thu và huyết áp tâm trương? Vai trò?",
+     "status": "✅ Hoàn thành",
+     "note": "Phân tích SBP, DBP, yếu tố quyết định và vai trò sinh lý"
+    }
+   ]
+  },
+  {
+   "slug": "hoa-duoc",
+   "name": "Hóa Vô cơ - Dược",
+   "emoji": "⚗️",
+   "accent": "#047857",
+   "accent_soft": "#a7f3d0",
+   "description": "Hệ thống lý thuyết phối trí, thuyết Lewis, VSEPR, VB, MO, tương tác liên phân tử, phức chất vô cơ dược phẩm, phân loại đồng phân phức chất và nhiệt hóa học - năng lượng phản ứng ứng dụng trong bảo quản thuốc.",
+   "doc_count": 9,
+   "question_count": 0,
+   "docs": [
+    {
+     "slug": "doc-hvc-1",
+     "num": "1",
+     "title": "Chuyên đề 1: Đại cương Liên kết Hóa học & Thuyết Lewis - Quy tắc Bát tử (Octet)",
+     "tag": "Cơ sở cấu tạo chất"
+    },
+    {
+     "slug": "doc-hvc-2",
+     "num": "2",
+     "title": "Chuyên đề 2: Thuyết Đẩy Cặp Electron Vỏ Hóa Trị (VSEPR) & Cấu trúc Không gian Phân tử",
+     "tag": "Hình học phân tử"
+    },
+    {
+     "slug": "doc-hvc-3",
+     "num": "3",
+     "title": "Chuyên đề 3: Thuyết Liên kết Hóa trị (Valence Bond - VB) & Cơ chế Lai hóa Orbital",
+     "tag": "Thuyết lượng tử phân tử"
+    },
+    {
+     "slug": "doc-hvc-4",
+     "num": "4",
+     "title": "Chuyên đề 4: Thuyết Orbital Phân tử (Molecular Orbital - MO) & Phân tích Năng lượng LCAO",
+     "tag": "Thuyết MO hiện đại"
+    },
+    {
+     "slug": "doc-hvc-5",
+     "num": "5",
+     "title": "Chuyên đề 5: Tương tác Liên phân tử & Liên kết Hydro trong Dược học",
+     "tag": "Lực liên phân tử"
+    },
+    {
+     "slug": "doc-hvc-6",
+     "num": "6",
+     "title": "Chuyên đề 6: Hóa học Phối trí, Phối tử & Phức chất Vô cơ Dược phẩm (Coordination Chemistry & Ligands)",
+     "tag": "Phối tử & Phối trí"
+    },
+    {
+     "slug": "doc-hvc-7",
+     "num": "7",
+     "title": "Chuyên đề 7: Đồng phân Phức chất — Phân loại Hệ thống & Ứng dụng Dược học (Isomerism in Coordination Compounds)",
+     "tag": ""
+    },
+    {
+     "slug": "doc-hvc-8",
+     "num": "8",
+     "title": "Chuyên đề 8: Nhiệt hóa học & Năng lượng phản ứng trong Dược học (Thermochemistry)",
+     "tag": "Năng lượng & Độ bền thuốc"
+    },
+    {
+     "slug": "doc-hvc-9",
+     "num": "9",
+     "title": "Từ khóa thường gặp môn Hóa Vô cơ - Dược",
+     "tag": "Bảng tra nhanh"
+    }
+   ],
+   "questions": []
+  }
+ ]
+}

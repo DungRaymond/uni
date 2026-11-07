@@ -12,16 +12,16 @@ type Params = { params: Promise<{ subject: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { subject: slug } = await params;
-  const subject = getSubject(slug);
+  const subject = await getSubject(slug);
   return { title: subject ? `${subject.name} — Bài tập` : 'Không tìm thấy môn học' };
 }
 
 export default async function SubjectHomeworkPage({ params }: Params) {
   const { subject: slug } = await params;
-  const subject = getSubject(slug);
+  const subject = await getSubject(slug);
   if (!subject) notFound();
 
-  const questions = getQuestions(subject.id);
+  const questions = await getQuestions(subject.slug);
   const style = {
     '--accent': subject.accent,
     '--accent-soft': subject.accent_soft,

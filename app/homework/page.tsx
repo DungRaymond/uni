@@ -11,8 +11,8 @@ export const metadata: Metadata = {
   title: 'Bài tập về nhà',
 };
 
-export default function HomeworkHubPage() {
-  const subjects = getSubjects();
+export default async function HomeworkHubPage() {
+  const subjects = await getSubjects();
   const style = { '--accent': '#6d28d9', '--accent-soft': '#ddd6fe', '--primary': '#6d28d9' } as CSSProperties;
   const total = subjects.reduce((sum, subject) => sum + subject.question_count, 0);
 

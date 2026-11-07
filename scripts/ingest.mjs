@@ -440,7 +440,11 @@ setMeta.run('source_subjects', JSON.stringify(SUBJECTS.map((s) => s.slug)));
 
 db.close();
 
+const { writeContentJson } = await import('./export-data.mjs');
+writeContentJson(DB_PATH);
+
 console.log('✅ Đã tạo data/uni.db');
+console.log('✅ Đã xuất data/content.json');
 console.log(`   • ${stats.subjects} môn học`);
 console.log(`   • ${stats.docs} chuyên đề / tài liệu`);
 console.log(`   • ${stats.questions} bài tập`);

@@ -1,7 +1,9 @@
 # QUY TẮC QUẢN LÝ & GIẢI BÀI TẬP (NEXT.JS + SQLITE)
 
 Dự án đã chuyển từ các file HTML tĩnh sang **Next.js (App Router) + SQLite**.
-Nội dung không còn nằm trong `.html` nữa mà nằm trong `data/uni.db`.
+Nội dung không còn nằm trong `.html` nữa mà nằm trong `data/uni.db`
+(app đọc snapshot JSON chia theo môn: `data/index.json` + `data/content/<môn>.json`
+— tự sinh sau mỗi lần đổi dữ liệu).
 
 ---
 
@@ -10,9 +12,11 @@ Nội dung không còn nằm trong `.html` nữa mà nằm trong `data/uni.db`.
 | Thành phần | Vị trí | Vai trò |
 |---|---|---|
 | Database | `data/uni.db` | Nguồn nội dung chính (subjects, docs, questions, meta, FTS5) |
-| Nhập liệu | `scripts/ingest.mjs` | Trích xuất `legacy/*.html` → DB |
-| Thêm thủ công | `scripts/add-doc.mjs` | Thêm 1 chuyên đề / bài tập |
-| Truy vấn | `lib/db.ts` | Hàm đọc + tìm kiếm toàn văn |
+| Snapshot | `data/index.json` + `data/content/` | JSON app đọc khi build/chạy (1 file/môn) |
+| Nhập liệu | `scripts/ingest.mjs` | Trích xuất `legacy/*.html` → DB (tự export) |
+| Thêm thủ công | `scripts/add-doc.mjs` | Thêm 1 chuyên đề / bài tập (tự export) |
+| Xuất JSON | `scripts/export-data.mjs` | uni.db → index.json + content/<môn>.json |
+| Truy vấn | `lib/db.ts` | Đọc snapshot môn qua dynamic import; tìm kiếm không dấu |
 | Giao diện | `app/`, `components/` | Trang chủ, tài liệu, bài tập, tìm kiếm |
 | HTML gốc | `legacy/` | Chỉ để tham chiếu hoặc nhập lại |
 
@@ -47,6 +51,19 @@ Nội dung không còn nằm trong `.html` nữa mà nằm trong `data/uni.db`.
    ```bash
    node -e "const{DatabaseSync}=require('node:sqlite');const d=new DatabaseSync('data/uni.db');console.table(d.prepare('SELECT slug,num,title FROM questions ORDER BY subject_id,sort').all())"
    ```
+   `add-doc` tự chạy export, nên chỉ cần `npm run build` lại để thay đổi xuất hiện.
+   Nếu đổi DB bằng tay: chạy `npm run export` trước khi build.
+
+### Deploy Vercel
+
+```bash
+npx vercel --prod   # hoặc git push nếu kết nối GitHub
+```
+
+`data/index.json` + `data/content/<môn>.json` được static/dynamic import nên
+deploy không cần file DB trên server. Sau khi đổi nội dung: chạy `npm run export`
+(tự động với `add-doc`) rồi deploy lại.
+
 4. Trả lời ngắn gọn trên chat kèm đường dẫn:
    - Tài liệu: `/docs/<slug>#<doc-slug>`
    - Bài tập: `/homework/<slug>#<q-slug>`

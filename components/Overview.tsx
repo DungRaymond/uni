@@ -35,11 +35,11 @@ export function StatsRow({ subjects }: { subjects: Subject[] }) {
   );
 }
 
-export function DocsOverview({ subjects }: { subjects: Subject[] }) {
+export async function DocsOverview({ subjects }: { subjects: Subject[] }) {
   return (
     <>
-      {subjects.map((subject) => {
-        const docs = getDocs(subject.id);
+      {await Promise.all(subjects.map(async (subject) => {
+        const docs = await getDocs(subject.slug);
         return (
           <article
             key={subject.slug}
@@ -82,12 +82,12 @@ export function DocsOverview({ subjects }: { subjects: Subject[] }) {
             </div>
           </article>
         );
-      })}
+      }))}
     </>
   );
 }
 
-export function HomeworkOverview({ subjects }: { subjects: Subject[] }) {
+export async function HomeworkOverview({ subjects }: { subjects: Subject[] }) {
   const withHomework = subjects.filter((subject) => subject.question_count > 0);
   if (withHomework.length === 0) {
     return (
@@ -100,8 +100,8 @@ export function HomeworkOverview({ subjects }: { subjects: Subject[] }) {
 
   return (
     <>
-      {withHomework.map((subject) => {
-        const questions = getQuestions(subject.id);
+      {await Promise.all(withHomework.map(async (subject) => {
+        const questions = await getQuestions(subject.slug);
         return (
           <article
             key={subject.slug}
@@ -142,7 +142,7 @@ export function HomeworkOverview({ subjects }: { subjects: Subject[] }) {
             </div>
           </article>
         );
-      })}
+      }))}
     </>
   );
 }

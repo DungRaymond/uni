@@ -6,8 +6,8 @@ import SiteFooter from '@/components/SiteFooter';
 
 export const dynamic = 'force-dynamic';
 
-export default function HomePage() {
-  const subjects = getSubjects();
+export default async function HomePage() {
+  const subjects = await getSubjects();
 
   return (
     <>

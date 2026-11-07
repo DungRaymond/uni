@@ -12,16 +12,16 @@ type Params = { params: Promise<{ subject: string }> };
 
 export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { subject: slug } = await params;
-  const subject = getSubject(slug);
+  const subject = await getSubject(slug);
   return { title: subject ? `${subject.name} — Tài liệu` : 'Không tìm thấy môn học' };
 }
 
 export default async function SubjectDocsPage({ params }: Params) {
   const { subject: slug } = await params;
-  const subject = getSubject(slug);
+  const subject = await getSubject(slug);
   if (!subject) notFound();
 
-  const docs = getDocs(subject.id);
+  const docs = await getDocs(subject.slug);
   const style = {
     '--accent': subject.accent,
     '--accent-soft': subject.accent_soft,
@@ -50,7 +50,7 @@ export default async function SubjectDocsPage({ params }: Params) {
           title: doc.title,
           tag: doc.tag,
           bodyHtml: doc.body_html,
-          isGlossary: doc.is_glossary === 1,
+          isGlossary: doc.is_glossary,
         }))}
         emptyText="Môn này chưa có chuyên đề"
       />
