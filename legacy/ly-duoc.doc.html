@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📑 Lý - Dược | Kho Tài Liệu & Giáo Trình</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- MathJax for rendering math formulas -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="book-view.css">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+      --tag-bg: #f1f5f9;
+      --tag-text: #334155;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 28px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 80vw;
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 92vw;
+        max-width: 92vw;
+      }
+    }
+
+    header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Subject Section Cards */
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .subject-header {
+      padding: 16px 22px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .subject-header:hover {
+      filter: brightness(0.98);
+    }
+
+    .subject-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subject-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .subject-body {
+      padding: 20px 22px;
+      display: block;
+    }
+
+    .subject-body.collapsed {
+      display: none;
+    }
+
+    /* Subject Theme 1: Lý - Dược */
+    #subject-ly-duoc {
+      border-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-header {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-bottom-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-title {
+      color: #0369a1;
+    }
+    #subject-ly-duoc .subject-badge {
+      background: #bae6fd;
+      color: #0369a1;
+    }
+    #subject-ly-duoc .doc-card.active {
+      border-left: 4px solid #0284c7;
+    }
+    #subject-ly-duoc .doc-num {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    }
+    #subject-ly-duoc .doc-body h4 {
+      border-left-color: #0284c7;
+    }
+
+    /* Subject Theme 2: Modul Y - Dược */
+    #subject-modul-y-duoc {
+      border-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-header {
+      background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+      border-bottom-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-title {
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .subject-badge {
+      background: #ddd6fe;
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .doc-card.active {
+      border-left: 4px solid #8b5cf6;
+    }
+    #subject-modul-y-duoc .doc-num {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    }
+    #subject-modul-y-duoc .doc-body h4 {
+      border-left-color: #8b5cf6;
+    }
+
+    /* Subject Theme 3: Hóa Vô cơ - Dược */
+    #subject-hoa-vo-co-duoc {
+      border-color: #a7f3d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-header {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-bottom-color: #a7f3d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-title {
+      color: #047857;
+    }
+    #subject-hoa-vo-co-duoc .subject-badge {
+      background: #a7f3d0;
+      color: #047857;
+    }
+    #subject-hoa-vo-co-duoc .doc-card.active {
+      border-left: 4px solid #059669;
+    }
+    #subject-hoa-vo-co-duoc .doc-num {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    #subject-hoa-vo-co-duoc .doc-body h4 {
+      border-left-color: #059669;
+    }
+
+    /* Document Item (Accordion Card) */
+    .doc-card {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+
+    .doc-card:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .doc-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .doc-header {
+      padding: 14px 20px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s ease;
+    }
+
+    .doc-card.active .doc-header {
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .doc-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .doc-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    }
+
+    .doc-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #0f172a;
+    }
+
+    .doc-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 600;
+      margin-left: 8px;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .icon-chevron {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .doc-card.active .icon-chevron {
+      transform: rotate(180deg);
+    }
+
+    .doc-body {
+      display: none;
+      padding: 22px 24px;
+      background: #ffffff;
+      font-size: 0.96rem;
+    }
+
+    .doc-card.active .doc-body {
+      display: block;
+    }
+
+    /* Content Typography */
+    .doc-body h4 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin: 22px 0 12px 0;
+      color: #0f172a;
+      border-left: 4px solid var(--primary);
+      padding: 6px 12px;
+      background: #f8fafc;
+      border-radius: 0 6px 6px 0;
+      display: block;
+    }
+
+    .doc-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .doc-body p {
+      margin-bottom: 12px;
+    }
+
+    .doc-body ul, .doc-body ol {
+      margin-left: 22px;
+      margin-bottom: 16px;
+    }
+
+    .doc-body li {
+      margin-bottom: 7px;
+    }
+
+    /* Figures & image gallery */
+    .figure-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 18px 0;
+    }
+
+    @media (max-width: 900px) {
+      .figure-row { grid-template-columns: 1fr; }
+    }
+
+    figure.doc-fig {
+      margin: 18px 0;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+      text-align: center;
+    }
+
+    .figure-row figure.doc-fig { margin: 0; }
+
+    figure.doc-fig a { display: block; }
+
+    figure.doc-fig img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+      cursor: zoom-in;
+    }
+
+    figure.doc-fig figcaption {
+      font-size: 0.85rem;
+      color: #475569;
+      margin-top: 8px;
+      line-height: 1.5;
+      text-align: left;
+    }
+
+    .fig-tag {
+      display: inline-block;
+      font-weight: 700;
+      color: #0369a1;
+      background: #e0f2fe;
+      border-radius: 9999px;
+      padding: 1px 9px;
+      margin-right: 6px;
+      font-size: 0.76rem;
+    }
+
+    figure.doc-fig .fig-ph {
+      display: none;
+      padding: 34px 16px;
+      border: 2px dashed #cbd5e1;
+      border-radius: 8px;
+      background: #f8fafc;
+      color: #64748b;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    figure.doc-fig.missing a { display: none; }
+    figure.doc-fig.missing .fig-ph { display: block; }
+
+    /* Example / worked-example box */
+    .example-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .example-title {
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Color-coded Callout Boxes */
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #15803d;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Formula Box with Modern Gradient & Mono Accents */
+    .formula-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #0284c7;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 14px 0;
+      font-size: 1.02rem;
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Responsive Data Tables with Clean UI */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+
+    .data-table th, .data-table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+
+    .data-table th {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+
+    .data-table tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .data-table tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Inline code & badges */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🩺 Môn: Lý - Dược (Lý Sinh / Vật Lý Y Dược)</h1>
+      <p>Hệ thống chuyên đề và giáo trình tham khảo chuyên sâu</p>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="toolbar">
+      <a href="documents.html" class="btn">⬅️ Danh Sách Môn Học (Tài Liệu)</a>
+      <a href="homeworked.html" class="btn">📚 Sang Bài Tập Về Nhà</a>
+      <span style="border-right: 1px solid var(--border-color); margin: 0 4px;"></span>
+      <button class="btn btn-primary" onclick="toggleAllDocs(true)">📖 Mở rộng tất cả chuyên đề</button>
+      <button class="btn" onclick="toggleAllDocs(false)">📕 Thu gọn tất cả chuyên đề</button>
+    </div>
+
+    <!-- SUBJECT 1: Lý - Dược -->
+    <div class="subject-card" id="subject-ly-duoc">
+      <div class="subject-header" onclick="toggleSubject('subject-ly-duoc')">
+        <div class="subject-title">
+          <span>🩺 Môn: Lý - Dược (Lý Sinh / Vật Lý Y Dược)</span>
+          <span class="subject-badge">7 Tài liệu & Giáo trình</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); toggleSubject('subject-ly-duoc');">
+            Đóng / Mở môn
+          </button>
+          <span class="icon-chevron" id="icon-subject-ly-duoc">▼</span>
+        </div>
+      </div>
+
+      <div class="subject-body" id="body-subject-ly-duoc">
+        
+        <!-- DOC 1.1 -->
+        <div class="doc-card active" id="doc-ld-1">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-1')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">1</span>
+              <span class="doc-title">Chuyên đề 1: Nhiệt động học sinh học & Động học chất lưu trong hệ tuần hoàn</span>
+              <span class="doc-tag">Lý thuyết cốt lõi</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Các nguyên lý nhiệt động trong hệ thống sống</h4>
+            <ul>
+              <li><strong>Hệ mở (Open system):</strong> Cơ thể sống liên tục trao đổi vật chất và năng lượng với môi trường ngoài. Cơ thể không tồn tại ở trạng thái cân bằng nhiệt động tĩnh mà ở trạng thái <em>cân bằng dừng (steady state)</em>.</li>
+              <li><strong>Nguyên lý I nhiệt động học:</strong> Năng lượng từ thức ăn nạp vào chuyển hóa thành nhiệt năng và công cơ học, công thẩm thấu, công điện toán:
+                <div class="formula-box">$$\Delta E = Q - A$$</div>
+              </li>
+              <li><strong>Nguyên lý II & Entropy:</strong> Cơ thể duy trì trật tự nội tại (giữ entropy thấp) bằng cách thải entropy dư thừa ra môi trường dưới dạng nhiệt và chất thải.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Cơ thể là hệ mở và trạng thái dừng giải thích vì sao các chỉ số có thể ổn định dù chuyển hóa, hô hấp và tuần hoàn vẫn diễn ra liên tục. Nguyên lý bảo toàn năng lượng dùng để cân đối năng lượng từ dinh dưỡng với nhiệt và công sinh học.</p>
+
+            <h4>2. Động học dòng máu và định luật Poiseuille</h4>
+            <p>Dòng chảy tầng của chất lưu qua ống hình trụ bán kính $r$, chiều dài $l$ dưới chênh lệch áp suất $\Delta P$:</p>
+            <div class="formula-box">$$Q = \frac{\pi \Delta P r^4}{8\eta l} \quad \implies \quad R = \frac{8\eta l}{\pi r^4}$$</div>
+            <ul>
+              <li><strong>Sức cản mạch máu ($R$):</strong> Phụ thuộc nghịch biến vào lũy thừa bậc 4 của bán kính $r$. Tiểu động mạch là nơi điều hòa sức cản ngoại vi chủ đạo của hệ tuần hoàn.</li>
+              <li><strong>Số Reynolds ($Re$):</strong> Phân biệt dòng chảy tầng ($Re < 2000$) và dòng chảy xoáy ($Re > 2000$). Khi vận tốc tăng cao (hẹp van tim, xơ vữa thành mạch) tạo dòng xoáy gây tiếng thổi tim nghe được qua ống nghe.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Định luật Poiseuille cho thấy thay đổi nhỏ bán kính mạch có thể làm đổi lớn lưu lượng và sức cản; hữu ích để hiểu co/giãn và hẹp mạch. Dòng rối tạo âm thanh, là cơ sở vật lý của một số tiếng thổi tim.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Nhiệt động học giải thích cân bằng năng lượng và sinh nhiệt của cơ thể; cơ học chất lưu giải thích quan hệ giữa áp lực, lưu lượng, bán kính mạch và sức cản. Các nguyên lý này giúp hiểu huyết động, tiếng thổi khi dòng chảy rối, ảnh hưởng của co/giãn mạch và cơ sở của một số phép đo sinh lý.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Mạch hẹp 20% thì lưu lượng còn bao nhiêu?</div>
+              Một tiểu động mạch có bán kính $r$, sức cản $R \propto 1/r^4$. Khi co mạch làm bán kính giảm 20% (còn $0,8r$) và $\Delta P$ không đổi:<br>
+              <strong>Sức cản:</strong> $R' = R \cdot \dfrac{1}{0,8^4} = R \cdot \dfrac{1}{0,41} \approx 2,4R$ → tăng khoảng <strong>2,4 lần</strong>.<br>
+              <strong>Lưu lượng:</strong> $Q' = Q \cdot 0,8^4 \approx 0,41Q$ → chỉ còn khoảng <strong>41%</strong>.<br>
+              <strong>Kết luận:</strong> mất 1/5 bán kính nhưng mất gần 60% lưu lượng — vì sao hẹp nhẹ động mạch nhỏ đã gây thiếu máu mô rõ rệt.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Poiseuille — "bậc 4 bán kính":</strong> $r^4$ nằm ở tử số của $Q$ và mẫu số của $R$.<br>
+              Quy trình 3 bước khi đề cho %: (1) đổi % thành hệ số (giảm 20% → 0,8); (2) lũy thừa 4 (0,8⁴ ≈ 0,41); (3) $Q$ nhân hệ số, $R$ chia hệ số.<br>
+              Nhớ kèm: $Re > 2000$ → dòng xoáy → tiếng thổi; $Re < 2000$ → dòng tầng.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 1.2 -->
+        <div class="doc-card" id="doc-ld-2">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-2')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">2</span>
+              <span class="doc-title">Chuyên đề 2: Điện thế sinh học & Tín hiệu điện từ của màng tế bào</span>
+              <span class="doc-tag">Cơ chế & Điện thế</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Điện thế nghỉ (Resting Membrane Potential)</h4>
+            <ul>
+              <li><strong>Phương trình Nernst:</strong> Tính thế cân bằng cho một ion đơn lẻ (ví dụ $K^+$):
+                <div class="formula-box">$$E_{ion} = \frac{RT}{zF} \ln \frac{[ion]_{ngoài}}{[ion]_{trong}} \approx \frac{61,5}{z} \log_{10} \frac{[ion]_{ngoài}}{[ion]_{trong}} \quad (\text{ở } 37^\circ\text{C})$$</div>
+              </li>
+              <li><strong>Phương trình Goldman - Hodgkin - Katz (GHK):</strong> Tính điện thế nghỉ tổng thể có tính đến độ thấm ($P$) của nhiều ion ($K^+, Na^+, Cl^-$):
+                <div class="formula-box">$$E_m = \frac{RT}{F} \ln \left( \frac{P_{K}[K^+]_o + P_{Na}[Na^+]_o + P_{Cl}[Cl^-]_i}{P_{K}[K^+]_i + P_{Na}[Na^+]_i + P_{Cl}[Cl^-]_o} \right)$$</div>
+                <em>Ở trạng thái nghỉ, độ thấm của $K^+$ lớn hơn $Na^+$ từ 50 - 100 lần nên $E_m \approx -70 \text{ đến } -90\text{ mV}$ (gần với thế Nernst của $K^+$).</em>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Điện thế nghỉ duy trì khả năng đáp ứng của tế bào; Nernst/GHK liên hệ gradient ion và tính thấm màng với điện thế. Đây là nền tảng để hiểu rối loạn điện giải ảnh hưởng thần kinh, cơ và tim.</p>
+
+            <h4>2. Điện thế hoạt động (Action Potential)</h4>
+            <ul>
+              <li><strong>Khử cực:</strong> Kênh $Na^+$ phụ thuộc điện thế mở ồ ạt, $Na^+$ ùa vào trong tế bào làm điện thế đảo cực đạt tới $+30\text{ mV}$.</li>
+              <li><strong>Tái cực:</strong> Kênh $Na^+$ bất hoạt, kênh $K^+$ mở chậm đưa $K^+$ ra ngoài phục hồi điện thế âm.</li>
+              <li><strong>Giai đoạn trơ:</strong> Trơ tuyệt đối (không kích thích được) và trơ tương đối (cần kích thích rất mạnh).</li>
+              <li><strong>Ứng dụng chẩn đoán:</strong> Ghi đo dòng điện phát sinh từ tim tạo ra <strong>Điện tâm đồ (ECG)</strong>, từ não bộ tạo ra <strong>Điện não đồ (EEG)</strong>.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Điện thế hoạt động lan truyền tín hiệu thần kinh và kích hoạt co cơ. ECG/EEG ghi hoạt động điện tổng hợp để hỗ trợ đánh giá tim và não; thuốc chẹn kênh ion có thể làm đổi dẫn truyền.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Điện sinh học là cơ sở phát sinh và lan truyền xung thần kinh, co cơ và hoạt động điện của tim. Hiểu điện thế màng giúp diễn giải ECG/EEG, tác động của thay đổi điện giải và cơ chế thuốc ảnh hưởng kênh ion; đồng thời giải thích nền tảng của ghi điện sinh lý.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Thế Nernst của $K^+$ ở $37^\circ C$</div>
+              Lấy $[K^+]_{ngoài} = 4\text{ mmol/L}$, $[K^+]_{trong} = 140\text{ mmol/L}$, $z = +1$:<br>
+              $E_K = 61,5 \cdot \log_{10}\dfrac{4}{140} = 61,5 \cdot \log_{10}(0,0286) \approx 61,5 \cdot (-1,54) \approx -95\text{ mV}$.<br>
+              Điện thế nghỉ đo được khoảng $-90\text{ mV}$, rất gần $E_K$ — phù hợp với việc màng nghỉ thấm $K^+$ mạnh nhất.<br>
+              <strong>Liên hệ lâm sàng:</strong> khi $[K^+]_{ngoài}$ tăng (tăng kali máu), tỉ số 4/140 tăng → $E_K$ bớt âm hơn → điện thế nghỉ bớt âm → cơ tim dễ khử cực bất thường, nguy cơ loạn nhịp.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Nernst:</strong> $E = 61,5 \log(\text{ngoài}/\text{trong})$ cho ion hóa trị $+1$ — "ngoài chia trong", kết quả âm khi ion dương tập trung nhiều ở trong.<br>
+              <strong>GHK:</strong> ion nào màng thấm nhiều thì "nói to" hơn trong $E_m$ — lúc nghỉ $K^+$ thắng nên $E_m$ sát $E_K$.<br>
+              <strong>Điện thế hoạt động:</strong> $Na^+$ vào → lên (khử cực); $K^+$ ra → xuống (tái cực); trơ tuyệt đối = kênh $Na^+$ còn bất hoạt.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 1.3 -->
+        <div class="doc-card" id="doc-ld-3">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-3')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">3</span>
+              <span class="doc-title">Chuyên đề 3: Bức xạ & Quang phổ học ứng dụng trong kiểm nghiệm thuốc</span>
+              <span class="doc-tag">Quang học & Bức xạ</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Định luật Lambert - Beer trong phân tích định lượng</h4>
+            <div class="formula-box">$$A = \log_{10}\left(\frac{I_0}{I}\right) = \varepsilon \cdot l \cdot C$$</div>
+            <ul>
+              <li>$A$: Độ hấp thụ quang (Absorbance).</li>
+              <li>$\varepsilon$: Hệ số hấp thụ mol ($L \cdot mol^{-1} \cdot cm^{-1}$).</li>
+              <li>$l$: Chiều dày cuvet chứa mẫu ($cm$).</li>
+              <li>$C$: Nồng độ chất hấp thụ quang trong dung dịch ($mol/L$).</li>
+              <li><em>Ý nghĩa:</em> Phương pháp quang phổ UV-Vis cho phép xác định độ tinh khiết và nồng độ hoạt chất chính xác không phá hủy mẫu.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Beer–Lambert chuyển tín hiệu hấp thụ thành phép định lượng nồng độ, thường dùng phân tích dược chất và kiểm nghiệm. Độ tin cậy cần kiểm soát bước sóng, mẫu trắng, cuvet, khoảng tuyến tính và nền mẫu.</p>
+
+            <h4>2. Ứng dụng bức xạ ion hóa và siêu âm trong Dược phẩm</h4>
+            <ul>
+              <li><strong>Tiệt trùng dược phẩm bằng tia gamma ($\gamma$):</strong> Sử dụng nguồn Coban-60 ($^{60}Co$) tiệt trùng các dụng cụ y tế, chỉ phẫu thuật, thuốc không chịu được nhiệt độ cao.</li>
+              <li><strong>Sóng siêu âm (Ultrasound):</strong> Siêu âm tần số cao dùng để đồng hóa phân tán nhũ tương kích thước nano, chiết xuất hoạt chất dược liệu và phá vỡ tế bào.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Gamma có thể tiệt khuẩn vật liệu phù hợp nhưng cần thẩm định liều và độ bền sản phẩm; siêu âm hỗ trợ chẩn đoán, xử lý mẫu hoặc bào chế. Chọn kỹ thuật cần cân nhắc hiệu quả, an toàn và biến đổi hoạt chất.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Quang phổ UV-Vis giúp định lượng hoạt chất và kiểm tra chất lượng mẫu khi phương pháp được thẩm định phù hợp. Hiểu bức xạ ion hóa hỗ trợ lựa chọn phương pháp tiệt khuẩn và bảo vệ an toàn; siêu âm có ứng dụng trong chẩn đoán hình ảnh, xử lý mẫu và bào chế.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Định lượng hoạt chất bằng UV-Vis</div>
+              Dung dịch đo tại $\lambda_{max}$ cho $A = 0,600$ với cuvet $l = 1\text{ cm}$, biết $\varepsilon = 1,2 \times 10^4\text{ L}\cdot\text{mol}^{-1}\cdot\text{cm}^{-1}$.<br>
+              Từ $A = \varepsilon l C$ suy ra $C = \dfrac{A}{\varepsilon l} = \dfrac{0,600}{1,2 \times 10^4 \times 1} = 5,0 \times 10^{-5}\text{ mol/L}$.<br>
+              Đổi đơn vị: $5,0 \times 10^{-5}\text{ mol/L} = 50\ \mu\text{mol/L}$.<br>
+              <strong>Lưu ý thực hành:</strong> nếu $A > 1,5$ thì nên pha loãng mẫu rồi nhân lại hệ số pha loãng, vì ngoài khoảng tuyến tính định luật Beer không còn nghiệm đúng.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Beer:</strong> $A = \varepsilon l C$ — đọc là "Ép Lên Cân" (Epsilon × l × C).<br>
+              $A$ không có đơn vị; $A = 1$ nghĩa là 90% ánh sáng bị hấp thụ, chỉ 10% truyền qua ($I/I_0 = 10^{-1}$); $A = 2$ → 99% bị hấp thụ.<br>
+              Vì vậy để tuyến tính tốt, giữ $A$ trong khoảng $0,2 - 0,8$; đo mẫu trắng để trừ nền dung môi và cuvet.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 1.4: Chương 3 -->
+        <div class="doc-card active" id="doc-ld-c3">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-c3')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">4</span>
+              <span class="doc-title">Chương 3: Nhiệt động lực học sinh học (Bioenergetics & Thermodynamics)</span>
+              <span class="doc-tag">Giáo trình Lý - Dược</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Các khái niệm cơ bản về hệ nhiệt động</h4>
+            <ul>
+              <li><strong>Hệ cô lập (Isolated system):</strong> Không trao đổi vật chất và năng lượng với môi trường ngoài.</li>
+              <li><strong>Hệ kín (Closed system):</strong> Chỉ trao đổi năng lượng, không trao đổi vật chất.</li>
+              <li><strong>Hệ mở (Open system):</strong> Trao đổi cả vật chất và năng lượng với môi trường ngoài $\rightarrow$ <em>Cơ thể sinh vật là một hệ nhiệt động mở.</em></li>
+              <li><strong>Trạng thái dừng (Steady State):</strong> Hệ mở ở trạng thái có các thông số trạng thái không đổi theo thời gian nhưng dòng vật chất và năng lượng liên tục lưu chuyển qua hệ. Sinh vật duy trì sự sống ở trạng thái dừng chứ không phải trạng thái cân bằng nhiệt động (cân bằng nhiệt động đồng nghĩa với trạng thái chết).</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Phân biệt trạng thái dừng với cân bằng giúp hiểu cơ thể cần liên tục trao đổi vật chất/năng lượng để duy trì chức năng; cũng giúp phân tích phản ứng sinh học ở điều kiện ổn định.</p>
+
+            <h4>2. Nguyên lý I Nhiệt động học áp dụng trong cơ thể sống</h4>
+            <p>Phương trình tổng quát: $\Delta U = Q - A$ (hay $Q = \Delta U + A$). Đối với cơ thể sống:</p>
+            <div class="formula-box">$$\Delta E_{hóa\ học} = Q_{tỏa} + A_{sinh}$$</div>
+            <ul>
+              <li><strong>Nhiệt lượng tỏa ra ($Q$):</strong>
+                <ul>
+                  <li><em>Nhiệt sơ cấp:</em> Nhiệt lượng sinh ra do tính bất thuận nghịch của các phản ứng hóa sinh nội bào (duy trì thân nhiệt ổn định).</li>
+                  <li><em>Nhiệt thứ cấp:</em> Nhiệt sinh ra do ma sát cơ học (tim đập, mạch máu, trương lực cơ, ma sát hô hấp).</li>
+                </ul>
+              </li>
+              <li><strong>Các dạng công cơ thể sinh ra ($A$):</strong>
+                <ul>
+                  <li><em>Công hóa học ($A_{hh}$):</em> Tổng hợp các đại phân tử sinh học (protein, acid nucleic, glycogen).</li>
+                  <li><em>Công cơ học ($A_{ch}$):</em> Co cơ, nhu động ruột, hô hấp, tuần hoàn tim.</li>
+                  <li><em>Công thẩm thấu ($A_{tt}$):</em> Vận chuyển các chất ngược gradient nồng độ qua màng tế bào.</li>
+                  <li><em>Công điện ($A_{đ}$):</em> Tạo và duy trì điện thế màng, truyền xung động thần kinh.</li>
+                </ul>
+              </li>
+              <li><strong>Định luật Hess & Phương pháp đo nhiệt:</strong> Nhiệt lượng của phản ứng chỉ phụ thuộc trạng thái đầu và cuối, không phụ thuộc đường đi. Ứng dụng: Xác định mức tiêu hao năng lượng và chuyển hóa cơ sở ($BMR$) của cơ thể.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nguyên lý I giúp cân đối năng lượng thức ăn chuyển thành nhiệt và công hóa học, cơ học, thẩm thấu hoặc điện. Đo sinh nhiệt và tiêu hao năng lượng là cơ sở nghiên cứu chuyển hóa cơ sở, dinh dưỡng và hoạt động cơ thể.</p>
+
+            <h4>3. Nguyên lý II Nhiệt động học & Phương trình Prigogine trong hệ sinh vật</h4>
+            <p>Entropy ($S$) là đại lượng đo mức độ hỗn loạn của hệ. Trong một hệ mở như cơ thể sống, sự biến thiên entropy tuân theo phương trình Prigogine:</p>
+            <div class="formula-box">$$dS = d_iS + d_eS$$</div>
+            <ul>
+              <li>$d_iS > 0$: Lượng entropy luôn tăng sinh ra do các quá trình bất thuận nghịch nội tại (trao đổi chất, ma sát, phân hủy).</li>
+              <li>$d_eS$: Lượng entropy trao đổi với môi trường ngoài qua hấp thu thức ăn, oxy và đào thải nhiệt, phân, nước tiểu, $CO_2$.</li>
+              <li><strong>Điều kiện duy trì sự sống (Trạng thái dừng):</strong> Cơ thể phải liên tục thải entropy dư thừa ra môi trường ngoài sao cho $d_eS < 0$ và $|d_eS| = d_iS \implies dS = 0$. E. Schrödinger đã phát biểu: <em>"Sinh vật sống nhờ liên tục hút entropy âm từ môi trường".</em></li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nguyên lý II nhấn mạnh chuyển đổi năng lượng thực tế có thất thoát và cơ thể phải trao đổi với môi trường để duy trì tổ chức. Đây là khung hiểu hiệu suất chuyển hóa, sinh nhiệt và tính bất thuận nghịch của quá trình sinh học.</p>
+
+            <h4>4. Năng lượng tự do Gibbs ($\Delta G$) và chiều hướng các phản ứng sinh hóa</h4>
+            <div class="formula-box">$$\Delta G = \Delta H - T \cdot \Delta S$$</div>
+            <ul>
+              <li>$\Delta G < 0$: Quá trình tỏa năng lượng tự do (exergonic), xảy ra tự phát.</li>
+              <li>$\Delta G > 0$: Quá trình thu năng lượng tự do (endergonic), không thể tự phát nếu đứng độc lập.</li>
+              <li>$\Delta G = 0$: Hệ đạt trạng thái cân bằng hóa học.</li>
+              <li><strong>Cơ chế liên hợp năng lượng (Energy Coupling):</strong> Tế bào thực hiện các phản ứng đồng hóa ($\Delta G > 0$) bằng cách liên hợp (ghép đôi) với sự thủy phân các hợp chất giàu năng lượng như <strong>ATP</strong> ($\Delta G^{\circ\prime} \approx -30,5\text{ kJ/mol}$):
+                <div class="formula-box">$$A + B \rightarrow C \ (\Delta G_1 > 0) \quad \text{ghép với} \quad \text{ATP} \rightarrow \text{ADP} + P_i \ (\Delta G_2 < 0)$$</div>
+                Sao cho tổng $\Delta G_{tổng} = \Delta G_1 + \Delta G_2 < 0 \rightarrow$ phản ứng diễn ra thuận lợi.
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Dấu của $\Delta G$ cho biết phản ứng thuận lợi hay cần ghép cặp năng lượng trong điều kiện xác định. Ghép với thủy phân ATP giải thích cách tế bào thúc đẩy tổng hợp chất và vận chuyển chủ động; enzyme đổi tốc độ, không đổi vị trí cân bằng.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Nhiệt động học sinh học giúp định lượng chuyển hóa năng lượng, sinh nhiệt và công cơ thể thực hiện. Khái niệm năng lượng tự do Gibbs giải thích chiều phản ứng và sự ghép cặp với ATP; trạng thái dừng giúp phân biệt cơ thể sống với hệ cân bằng tĩnh. Các ý này là nền tảng để hiểu chuyển hóa cơ sở và hiệu suất sinh lý.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Ghép cặp năng lượng ở hexokinase</div>
+              Phản ứng riêng lẻ: $\text{glucose} + P_i \rightarrow \text{glucose-6-phosphate}$ có $\Delta G_1 \approx +16,7\text{ kJ/mol}$ → không tự xảy ra.<br>
+              Ghép với thủy phân ATP: $\text{ATP} \rightarrow \text{ADP} + P_i$ có $\Delta G_2 \approx -30,5\text{ kJ/mol}$.<br>
+              Tổng: $\Delta G_{tổng} = 16,7 + (-30,5) = -13,8\text{ kJ/mol} < 0$ → phản ứng <strong>tự phát</strong>.<br>
+              <strong>Kết luận:</strong> tế bào không "phá luật" nhiệt động mà dùng ATP để "trả tiền" cho phản ứng thu năng lượng — đây chính là cơ chế liên hợp năng lượng.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Dấu của $\Delta G$:</strong> âm = tự phát ("xuôi dốc"); dương = phải ghép ATP ("đẩy xe lên dốc"); bằng 0 = cân bằng.<br>
+              <strong>Prigogine — 3 bước:</strong> (1) trong tế bào luôn sinh entropy $d_iS > 0$; (2) thải entropy ra ngoài $d_eS < 0$; (3) cân bằng $|d_eS| = d_iS$ → $dS = 0$ → trạng thái dừng, không phải trạng thái chết.<br>
+              <strong>Nhớ nhanh:</strong> "sống = liên tục thải entropy ra ngoài".
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 1.5: Chương 4 -->
+        <div class="doc-card active" id="doc-ld-c4">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-c4')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">5</span>
+              <span class="doc-title">Chương 4: Siêu âm trong Y Dược học (Ultrasound in Medicine & Pharmacy)</span>
+              <span class="doc-tag">Giáo trình Lý - Dược</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Bản chất vật lý và các đặc trưng của sóng siêu âm</h4>
+            <ul>
+              <li><strong>Bản chất:</strong> Siêu âm (Ultrasound) là sóng cơ học (sóng âm) có tần số dao động cao hơn ngưỡng nghe của tai người ($f > 20\text{ kHz} = 20.000\text{ Hz}$). Trong chẩn đoán y tế, dải tần số thường dùng từ $2\text{ MHz}$ đến $15\text{ MHz}$; trong ứng dụng bào chế và phá vỡ cấu trúc vi mô, tần số thường từ $20\text{ kHz}$ đến $100\text{ kHz}$.</li>
+              <li><strong>Dạng sóng lan truyền:</strong> Trong môi trường sinh học (chất lỏng và mô mềm), sóng siêu âm lan truyền chủ yếu dưới dạng <em>sóng dọc</em> (longitudinal wave) – phương dao động của các phần tử môi trường trùng với phương truyền sóng, tạo ra các chu kỳ nén (compression) và dãn (rarefaction) xen kẽ. Trong chất rắn (như xương), sóng còn có thể lan truyền dưới dạng <em>sóng ngang</em> (transverse wave).</li>
+              <li><strong>Vận tốc truyền sóng âm ($v$):</strong> Phụ thuộc vào tính đàn hồi (độ cứng/suất nén $K$) và khối lượng riêng ($\rho$) của môi trường:
+                <div class="formula-box">$$v = \sqrt{\frac{K}{\rho}} \quad \text{và} \quad v = \lambda \cdot f$$</div>
+                Trong đó $\lambda$ là bước sóng, $f$ là tần số sóng âm.
+                <ul>
+                  <li>Vận tốc truyền âm trung bình trong mô mềm quy ước là: $v_{m\hat{o}} \approx 1540\text{ m/s}$.</li>
+                  <li>Trong nước: $v \approx 1480\text{ m/s}$; trong xương: $v \approx 3500 - 4080\text{ m/s}$; trong không khí: $v \approx 330 - 340\text{ m/s}$.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Vì vận tốc truyền âm trong mô mềm khá đồng nhất ($\approx 1540\text{ m/s}$), máy siêu âm đo thời gian khứ hồi ($t$) của chùm xung âm dội lại để xác định chính xác độ sâu cấu trúc giải phẫu: $d = \frac{v \cdot t}{2}$.</p>
+
+            <h4>2. Tương tác của sóng siêu âm với mô sinh học</h4>
+            <ul>
+              <li><strong>Trở kháng âm (Acoustic Impedance - $Z$):</strong> Đại lượng đặc trưng cho mức độ cản trở sự lan truyền sóng âm của môi trường:
+                <div class="formula-box">$$Z = \rho \cdot v \quad \left[\text{Rayl hay } \text{kg}/(\text{m}^2\cdot\text{s})\right]$$</div>
+                Trong đó $\rho$ là khối lượng riêng ($\text{kg}/\text{m}^3$), $v$ là vận tốc truyền âm ($\text{m}/\text{s}$).
+              </li>
+              <li><strong>Sự phản xạ và khúc xạ tại mặt phân cách (Reflection & Transmission):</strong> Khi chùm sóng siêu âm chiếu vuông góc tới ranh giới giữa hai môi trường có trở kháng âm $Z_1$ và $Z_2$:
+                <div class="formula-box">$$R = \left( \frac{Z_2 - Z_1}{Z_2 + Z_1} \right)^2 \quad \text{và} \quad T = 1 - R = \frac{4 Z_1 Z_2}{(Z_1 + Z_2)^2}$$</div>
+                <ul>
+                  <li>$R$: Hệ số phản xạ cường độ (tỉ số cường độ chùm phản xạ trên chùm tới).</li>
+                  <li>$T$: Hệ số truyền qua cường độ (tỉ số cường độ chùm đi tiếp vào môi trường 2).</li>
+                  <li><em>Vai trò của Gel tiếp âm:</em> Giữa đầu dò và bề mặt da luôn tồn tại lớp không khí vi mô. Vì $Z_{kk} \approx 400\text{ Rayl}$ cực nhỏ so với $Z_{da} \approx 1,5 \times 10^6\text{ Rayl}$, hệ số phản xạ tại mặt phân cách không khí - da lên tới $R \approx 99,9\%$, sóng âm hầu như bị dội ngược hoàn toàn. Bôi <strong>Gel siêu âm</strong> (có trở kháng âm tương đương mô mềm $Z \approx 1,5 \times 10^6\text{ Rayl}$) giúp triệt tiêu hoàn toàn khe không khí, đảm bảo trên $99\%$ năng lượng âm truyền sâu vào cơ thể.</li>
+                  <li><em>Hiện tượng bóng lưng (Acoustic Shadow):</em> Tại mặt phân cách giữa mô mềm và xương hoặc sỏi ($Z_{xương} \approx 6 - 8 \times 10^6\text{ Rayl}$), chênh lệch $Z$ rất lớn dẫn đến phản xạ và hấp thụ cực mạnh, làm cho vùng phía sau cấu trúc bị mất tín hiệu âm, tạo vệt bóng đen đặc trưng trên màn hình (dấu hiệu nhận diện sỏi mật, sỏi thận).</li>
+                </ul>
+              </li>
+              <li><strong>Sự suy giảm (Attenuation) và hấp thụ năng lượng âm:</strong> Cường độ sóng âm giảm dần theo hàm mũ khi đi sâu vào môi trường:
+                <div class="formula-box">$$I(x) = I_0 \, e^{-\mu x}$$</div>
+                với $\mu$ là hệ số suy giảm âm tổng cộng (bao gồm hấp thụ sinh nhiệt và tán xạ). Hệ số $\mu$ tỉ lệ thuận với tần số sóng âm ($f$).
+                <br><em>Quy tắc đánh đổi (Trade-off):</em>
+                <ul>
+                  <li><strong>Tần số cao ($7,5 - 15\text{ MHz}$):</strong> Bước sóng $\lambda$ ngắn $\rightarrow$ Độ phân giải không gian cao, nhưng suy giảm rất nhanh $\rightarrow$ Độ xuyên sâu kém (thích hợp thăm khám cơ quan nông: tuyến giáp, mắt, mạch máu ngoại vi, mô dưới da).</li>
+                  <li><strong>Tần số thấp ($2 - 5\text{ MHz}$):</strong> Bước sóng $\lambda$ dài $\rightarrow$ Độ phân giải giảm nhẹ, nhưng suy giảm ít $\rightarrow$ Xuyên sâu tốt ($15 - 25\text{ cm}$) (thích hợp thăm khám tạng sâu: gan, thận, tim, sản khoa).</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nắm vững trở kháng âm và quy luật suy giảm giúp người thầy thuốc và dược sĩ lựa chọn tần số đầu dò tối ưu và hiểu rõ bản chất hình thành ảnh tương phản siêu âm trên các mô khác nhau.</p>
+
+            <h4>3. Cơ chế phát - thu sóng siêu âm: Hiệu ứng áp điện (Piezoelectric Effect)</h4>
+            <p>Bộ chuyển đổi (đầu dò - Transducer) hoạt động dựa trên vật liệu gốm áp điện (phổ biến nhất là Titanat Zirconat Chì - PZT):</p>
+            <ul>
+              <li><strong>Hiệu ứng áp điện nghịch (Converse Piezoelectric Effect) – Quá trình PHÁT:</strong> Khi đặt một hiệu điện thế xoay chiều tần số cao vào hai mặt của bản tinh thể áp điện, bản tinh thể bị co giãn cơ học theo chu kỳ với cùng tần số, phát ra chùm sóng siêu âm lan truyền vào mô.</li>
+              <li><strong>Hiệu ứng áp điện thuận (Direct Piezoelectric Effect) – Quá trình THU:</strong> Sóng siêu âm sau khi phản xạ từ các mặt phân cách trong mô quay trở lại tác dụng áp lực cơ học lên tinh thể áp điện, làm biến dạng tinh thể và sinh ra các tín hiệu điện xoay chiều cực nhỏ. Tín hiệu này được khuếch đại, xử lý số hóa và tái tạo thành hình ảnh chẩn đoán.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Đầu dò vừa đóng vai trò là "loa phát" vừa là "micro thu" tín hiệu, hoạt động luân phiên theo cơ chế xung - dội âm (Pulse-Echo principle).</p>
+
+            <h4>4. Các phương thức chẩn đoán hình ảnh siêu âm (Ultrasound Imaging Modes)</h4>
+            <ul>
+              <li><strong>A-mode (Amplitude Mode):</strong> Hiển thị biên độ sóng phản hồi dưới dạng các đỉnh xung trên trục khoảng cách/chiều sâu. Thường dùng trong nhãn khoa đo chiều dài trục nhãn cầu, đo bề dày giác mạc.</li>
+              <li><strong>B-mode (Brightness Mode):</strong> Hiển thị biên độ phản xạ dưới dạng các điểm sáng có độ chói (thang độ xám 2D) tỷ lệ với cường độ tín hiệu dội về. Đầu dò quét nhiều chùm tia liên tiếp ghép lại tạo thành hình ảnh cắt lớp giải phẫu thời gian thực (Real-time). Đây là phương thức cơ bản và phổ biến nhất trong chẩn đoán lâm sàng.</li>
+              <li><strong>M-mode (Motion Mode):</strong> Ghi lại sự dịch chuyển của các bề mặt phản xạ theo thời gian (trục tung: khoảng cách, trục hoành: thời gian). Ứng dụng chuyên biệt trong siêu âm tim để khảo sát vận động lá van, độ dày thành tâm thất và tính toán phân suất tống máu ($EF$).</li>
+              <li><strong>Siêu âm Doppler (Doppler Ultrasound):</strong> Dựa trên hiệu ứng Doppler – khi sóng âm phản xạ từ các phần tử chuyển động (tế bào hồng cầu), tần số sóng phản xạ bị dịch chuyển một lượng $\Delta f$ so với tần số phát $f_0$:
+                <div class="formula-box">$$\Delta f = \frac{2 f_0 v \cos\theta}{c} \quad \implies \quad v = \frac{c \cdot \Delta f}{2 f_0 \cos\theta}$$</div>
+                Trong đó $v$ là vận tốc dòng máu, $\theta$ là góc giữa chùm siêu âm và hướng dòng chảy (góc Doppler), $c$ là vận tốc âm trong môi trường.
+                <ul>
+                  <li><em>Ứng dụng:</em> Khảo sát vận tốc và hướng dòng máu trong tim mạch, phát hiện hẹp tắc mạch, xơ vữa, huyết khối tĩnh mạch và tưới máu khối u.</li>
+                  <li><em>Các dạng Doppler:</em> Doppler xung (PW), Doppler liên tục (CW), Doppler màu (Color Doppler - dòng chảy hướng về đầu dò mã hóa màu đỏ, dòng chảy ra xa mã hóa màu xanh) và Doppler năng lượng (Power Doppler).</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Phối hợp linh hoạt giữa B-mode và Doppler (siêu âm Duplex) cung cấp đồng thời cả thông tin hình thái cấu trúc mô và chức năng huyết động học trong chẩn đoán y khoa.</p>
+
+            <h4>5. Ứng dụng của sóng siêu âm trong Dược học và Điều trị y sinh</h4>
+            <ul>
+              <li><strong>Hiện tượng xâm thực sóng âm (Acoustic Cavitation):</strong>
+                <p>Khi sóng siêu âm năng lượng cao (thường ở dải tần $20 - 40\text{ kHz}$) truyền qua môi trường chất lỏng, các pha dãn tạo ra vô số vi bọt khí chân không. Các bọt khí này lớn dần đến kích thước tới hạn rồi sụp đổ mãnh liệt trong vài micro giây, giải phóng nhiệt độ cực cao (hàng ngàn Kelvin) và áp suất cục bộ cực lớn (hàng trăm megapascal) kèm theo các vi dòng xoáy (microjets) xé rách cấu trúc xung quanh.</p>
+              </li>
+              <li><strong>Ứng dụng nổi bật trong Dược học & Bào chế:</strong>
+                <ul>
+                  <li><em>Chiết xuất hoạt chất hỗ trợ bằng siêu âm (Ultrasound-Assisted Extraction - UAE):</em> Xâm thực siêu âm làm vỡ vách tế bào thực vật dược liệu, tạo điều kiện cho dung môi thẩm thấu nhanh, nâng cao hiệu suất thu hồi polyphenol, flavonoid, alkaloid, tinh dầu và rút ngắn thời gian chiết từ hàng giờ xuống vài phút mà không làm biến tính các hợp chất kém bền nhiệt.</li>
+                  <li><em>Đồng hóa và phân tán hệ nano thuốc:</em> Làm nhỏ kích thước giọt trong nhũ tương, hỗn dịch thuốc xuống thang nanomet ($50 - 200\text{ nm}$), giúp hệ phân tán đồng nhất, tăng độ ổn định hóa lý, hạn chế hiện tượng sa lắng hay tách lớp.</li>
+                  <li><em>Điều chế Liposome và hệ dẫn thuốc (Drug Delivery Systems):</em> Sóng siêu âm phân cắt các màng lipid kép đa tầng (MLVs) thành các túi liposome đơn tầng kích thước nhỏ (SUVs) dùng để bao gói dược chất hướng đích.</li>
+                  <li><em>Tẩy rửa, súc rửa và tiệt khuẩn dụng cụ:</em> Bể rửa siêu âm (Ultrasonic bath) làm sạch triệt để các vết bẩn vi mô trong ống mao quản, rãnh hẹp của thiết bị y tế và khuôn dập viên thuốc.</li>
+                </ul>
+              </li>
+              <li><strong>Ứng dụng trong Điều trị y học (Therapeutic Applications):</strong>
+                <ul>
+                  <li><em>Tán sỏi ngoài cơ thể (ESWL):</em> Sử dụng chùm sóng xung kích siêu âm hội tụ năng lượng vào sỏi thận, sỏi mật để làm vỡ vụn sỏi thành kích thước hạt cát có thể tự đào thải qua đường tiết niệu.</li>
+                  <li><em>Siêu âm hội tụ cường độ cao (HIFU):</em> Hội tụ chùm sóng siêu âm năng lượng lớn vào khối u sâu bên trong cơ thể (u xơ tử cung, ung thư biểu mô tuyến tiền liệt) làm tăng nhiệt độ cục bộ lên trên $60 - 80^\circ\text{C}$, gây hoại tử đông tế bào u một cách chuẩn xác mà không cần phẫu thuật mở.</li>
+                  <li><em>Liệu pháp siêu âm dẫn thuốc qua da (Phonophoresis / Sonophoresis):</em> Sóng siêu âm làm giãn nở tạm thời các khoảng gian bào lipid của lớp sừng (stratum corneum), thúc đẩy sự thẩm thấu của các phân tử thuốc lớn (kháng viêm không steroid, corticosteroid, thuốc giảm đau tại chỗ) qua da.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Siêu âm không chỉ là phương tiện chẩn đoán hình ảnh hàng đầu mà còn là công nghệ then chốt trong bào chế dược phẩm hiện đại và các liệu pháp điều trị trúng đích không xâm lấn.</p>
+
+            <h4>6. An toàn sinh học và các chỉ số an toàn của sóng siêu âm</h4>
+            <ul>
+              <li><strong>Ưu điểm an toàn vượt trội:</strong> Sóng siêu âm là sóng cơ học nên <em>hoàn toàn không mang bức xạ ion hóa</em>. Do đó siêu âm rất an toàn khi thăm khám lặp lại nhiều lần, đặc biệt an toàn cho phụ nữ mang thai, thai nhi và trẻ sơ sinh.</li>
+              <li><strong>Hai tác động sinh học cần kiểm soát:</strong>
+                <ul>
+                  <li><em>Tác động nhiệt:</em> Sự hấp thụ năng lượng âm chuyển thành nhiệt làm tăng nhiệt độ mô. Được theo dõi thông qua <strong>Chỉ số nhiệt (Thermal Index - TI)</strong>. Giá trị $TI < 1,0$ được xem là an toàn cho mô sống thông thường.</li>
+                  <li><em>Tác động cơ học và xâm thực:</em> Khả năng tạo vi bọt khí và sóng áp lực làm tổn thương mô chứa khí (phổi, ruột). Được theo dõi qua <strong>Chỉ số cơ học (Mechanical Index - MI)</strong>. Theo chuẩn quốc tế FDA/IEC, $MI$ không được vượt quá $1,9$.</li>
+                </ul>
+              </li>
+              <li><strong>Nguyên lý ALARA (As Low As Reasonably Achievable):</strong> Luôn vận hành máy siêu âm ở mức công suất phát tối thiểu và thời gian quét ngắn nhất đủ để thu nhận hình ảnh chẩn đoán tin cậy.</li>
+            </ul>
+            <h4>Ý nghĩa và tác dụng tổng kết</h4>
+            <p>Chương Siêu âm trong Y Dược học cung cấp nền tảng vật lý toàn diện từ bản chất sóng cơ học, trở kháng âm, định luật phản xạ khúc xạ, đến nguyên lý áp điện và hiệu ứng Doppler. Trong thực hành Dược học, hiểu rõ cơ chế xâm thực sóng âm giúp làm chủ các kỹ thuật chiết xuất siêu âm (UAE), điều chế hệ nano, liposome và tối ưu hóa hệ phân phối thuốc qua da.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Từ thời gian dội âm suy ra độ sâu</div>
+              Đầu dò phát xung vào mô mềm ($v \approx 1540\text{ m/s}$) và nhận echo sau $t = 26\ \mu\text{s}$.<br>
+              Sóng phải đi rồi về nên quãng đường gấp đôi: $d = \dfrac{v \cdot t}{2} = \dfrac{1540 \times 26 \times 10^{-6}}{2} \approx 0,020\text{ m} = 2,0\text{ cm}$.<br>
+              <strong>Kiểm tra nhanh:</strong> cứ $13\ \mu\text{s}$ ứng với $1\text{ cm}$, vậy $26\ \mu\text{s}$ cho $2\text{ cm}$ — hợp lý.<br>
+              <strong>Kết luận:</strong> máy không đo trực tiếp độ sâu mà chỉ đo thời gian khứ hồi; giả định $v$ gần như không đổi trong mô mềm là cơ sở của phép đo.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Chọn tần số:</strong> "Cao — Nông — Nét, Thấp — Sâu — Mờ" (7,5–15 MHz cho giáp/mắt/mạch ngoại vi; 2–5 MHz cho gan/thận/tim/sản khoa).<br>
+              <strong>Công thức echo:</strong> luôn chia 2 vì sóng khứ hồi, $d = v \cdot t/2$.<br>
+              <strong>Trở kháng:</strong> chênh $Z$ càng lớn → phản xạ càng mạnh (xương/sỏi sáng, phía sau tối = bóng lưng); gel để xóa chênh lệch không khí – da.<br>
+              <strong>An toàn:</strong> $TI < 1,0$; $MI \le 1,9$; luôn theo nguyên lý ALARA.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 1.6: Chương 5 - Điện và Từ -->
+        <div class="doc-card active" id="doc-ld-c5">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-c5')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">6</span>
+              <span class="doc-title">Chương 5: Điện và Từ trong Y Dược học (Electricity & Magnetism in Medicine & Pharmacy)</span>
+              <span class="doc-tag">Giáo trình Lý - Dược</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Điện trường - điện thế - điện dung: màng tế bào như một tụ điện</h4>
+            <ul>
+              <li><strong>Tương tác điện (định luật Coulomb):</strong> Lực tương tác giữa hai điện tích điểm $q_1, q_2$ cách nhau khoảng $r$ trong môi trường có hằng số điện môi tương đối $\varepsilon$:
+                <div class="formula-box">$$F = k\frac{|q_1 q_2|}{\varepsilon r^2} \quad \text{với} \quad k = \frac{1}{4\pi\varepsilon_0} \approx 9 \times 10^9\ \text{N}\cdot\text{m}^2/\text{C}^2$$</div>
+              </li>
+              <li><strong>Cường độ điện trường ($E$):</strong> Lực tác dụng lên một đơn vị điện tích dương đặt tại điểm khảo sát, $E = F/q$ ($\text{V/m}$). Trong điện trường đều giữa hai bản song song cách nhau $d$: $E = U/d$.</li>
+              <li><strong>Điện thế ($V$) và hiệu điện thế ($U$):</strong> $V = kq/(\varepsilon r)$; công của lực điện khi dịch chuyển điện tích $q$ qua hiệu điện thế $U$: $A = qU$. Điện thế là đại lượng vô hướng, chỉ hiệu điện thế mới đo được trực tiếp bằng vôn kế.</li>
+              <li><strong>Tụ điện phẳng:</strong> Điện dung $C$ là khả năng tích điện trên mỗi đơn vị hiệu điện thế:
+                <div class="formula-box">$$C = \frac{\varepsilon \varepsilon_0 S}{d}\ \ [\text{F}] \qquad Q = CU \qquad W = \frac{1}{2}CU^2 = \frac{Q^2}{2C}$$</div>
+                với $\varepsilon_0 \approx 8,85 \times 10^{-12}\ \text{F/m}$ là hằng số điện môi chân không, $S$ là diện tích bản, $d$ là khoảng cách giữa hai bản, $W$ là năng lượng điện trường dự trữ.
+              </li>
+            </ul>
+            <p><strong>Màng tế bào - một tụ điện sinh học:</strong> Lớp lipid kép dày $d \approx 7 - 10\ \text{nm}$ đóng vai trò chất điện môi, hai phía là dịch nội bào và ngoại bào dẫn điện. Điện dung riêng của màng vào khoảng $C_m \approx 1\ \mu\text{F/cm}^2$. Với điện thế nghỉ $U \approx -70\ \text{mV}$, cường độ điện trường trong màng đạt:</p>
+            <div class="formula-box">$$E_{màng} = \frac{|U|}{d} = \frac{0,07\ \text{V}}{7,5 \times 10^{-9}\ \text{m}} \approx 9,3 \times 10^6\ \text{V/m} \quad \text{và} \quad \sigma = \frac{Q}{S} = C_m U \approx 70\ \text{nC/cm}^2$$</div>
+            <p><strong>Ý nghĩa:</strong> Điện trường trong màng cỡ $10^7\ \text{V/m}$ - rất lớn so với quy mô phòng thí nghiệm - nên chỉ cần thay đổi nhỏ điện thế màng cũng đủ mở kênh ion. Điện dung màng quyết định "quán tính điện" của tế bào: màng càng lớn điện dung thì điện thế càng chậm thay đổi, từ đó ảnh hưởng tốc độ đáp ứng và dẫn truyền xung. Nguyên lý tụ điện cũng chính là cơ sở của máy sốc điện tim và các bộ lọc trong thiết bị y tế.</p>
+
+            <h4>2. Dòng điện một chiều, định luật Ohm và công suất điện</h4>
+            <ul>
+              <li><strong>Cường độ dòng điện:</strong> $I = \Delta q/\Delta t$ (A) - lượng điện tích qua tiết diện dây trong một đơn vị thời gian. Chiều dòng điện quy ước là chiều dịch chuyển của điện tích dương.</li>
+              <li><strong>Định luật Ohm cho đoạn mạch:</strong>
+                <div class="formula-box">$$U = IR \qquad R = \rho\frac{l}{S} \qquad G = \frac{1}{R}$$</div>
+                $R$: điện trở ($\Omega$), $\rho$: điện trở suất của vật liệu ($\Omega\cdot\text{m}$), $G$: điện dẫn (Siemens, S). Dịch sinh lý có $\rho$ thấp (dịch nội bào $\approx 0,5 - 1\ \Omega\cdot\text{m}$), còn lớp sừng da khô có $\rho$ rất lớn nên điện trở da khô có thể tới $10^4 - 10^5\ \Omega$, giảm mạnh khi da ướt.
+              </li>
+              <li><strong>Công và công suất của dòng điện:</strong>
+                <div class="formula-box">$$A = UIt \qquad P = UI = I^2R = \frac{U^2}{R}$$</div>
+              </li>
+              <li><strong>Định luật Joule - Lenz (nhiệt lượng tỏa ra trên điện trở):</strong>
+                <div class="formula-box">$$Q = I^2Rt$$</div>
+                Đây là cơ sở vật lý của hiện tượng tăng nhiệt mô khi dòng điện đi qua (đốt điện, tai biến bỏng điện) và của cầu chì bảo vệ.
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Định luật Ohm và Joule - Lenz giải thích vì sao cùng một hiệu điện thế, dòng qua mô ướt (trở thấp) lớn hơn nhiều so với da khô - yếu tố quyết định mức độ nguy hiểm của điện giật. Công suất tỏa nhiệt $I^2R$ là nền tảng của các thiết bị đốt điện cầm máu, RF ablation và cũng là nguy cơ bỏng nhiệt cần kiểm soát.</p>
+
+            <h4>3. Mạch RC và mô hình tương đương của màng tế bào</h4>
+            <p>Màng tế bào tương đương một tụ điện $C_m$ mắc song song với một điện trở $R_m$ (điện trở rò qua các kênh ion). Khi nạp - xả qua điện trở, điện thế trên màng biến thiên theo hàm mũ với <em>hằng số thời gian</em>:</p>
+            <div class="formula-box">$$\tau = R_m C_m \qquad U_C(t) = U_0\left(1 - e^{-t/\tau}\right)\ \text{(nạp)} \qquad U_C(t) = U_0 e^{-t/\tau}\ \text{(xả)}$$</div>
+            <ul>
+              <li>Với $R_m \approx 10^3\ \Omega\cdot\text{cm}^2$ và $C_m \approx 1\ \mu\text{F/cm}^2$, hằng số thời gian màng vào khoảng $\tau \approx 1\ \text{ms}$ (tuỳ loại tế bào, từ $\sim 0,1$ đến vài chục ms).</li>
+              <li><strong>Hằng số không gian ($\lambda$):</strong> Mức độ lan truyền điện thế dọc theo sợi trục, $\lambda = \sqrt{R_m/R_i}$ với $R_i$ là điện trở nội bào trên một đơn vị dài. Sợi có $\lambda$ lớn dẫn truyền xa hơn; bao myelin làm tăng $R_m$ và giảm $C_m$ hiệu dụng $\rightarrow$ tăng $\lambda$ và giảm $\tau$, nhờ đó dẫn truyền nhanh.</li>
+              <li><strong>Ứng dụng:</strong> Chọn độ dài xung kích thích trong máy tạo nhịp, máy kích thích điện chức năng (FES) và máy sốc điện cần tính đến $\tau$ của mô đích; xung quá ngắn sẽ không đủ nạp màng tới ngưỡng, xung quá dài gây bỏng điện hóa.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Mô hình RC giải thích vì sao tế bào "lọc thông thấp" tín hiệu điện: biến thiên chậm dễ đi qua, biến thiên quá nhanh bị san phẳng. Đây là chìa khoá để hiểu tính trơ tương đối, sự tổng hợp tín hiệu tại synap và cách thiết kế dạng xung trong điều trị.</p>
+
+            <h4>4. Điện sinh học: nguồn gốc và lan truyền tín hiệu điện của cơ thể</h4>
+            <p><strong>Điện sinh học (Bioelectricity)</strong> là lĩnh vực nghiên cứu sự phát sinh, dẫn truyền và ghi nhận các hiện tượng điện diễn ra trong tế bào, mô và cơ quan sống. Khác với dòng điện trong dây dẫn kim loại (do electron), dòng điện sinh học là dòng <em>ion</em> ($Na^+, K^+, Ca^{2+}, Cl^-$) chuyển dịch qua màng tế bào.</p>
+            <div class="callout"><div class="callout-title">Sơ đồ đọc nhanh mục 4 — chỉ cần nhớ 6 mắt xích</div>
+              <strong>Nguồn điện</strong> (bơm $Na^+/K^+$ + gradient ion) $\rightarrow$ <strong>Điện thế nghỉ</strong> (Nernst, GHK) $\rightarrow$ <strong>Điện thế hoạt động</strong> (kênh $Na^+$ mở rồi kênh $K^+$ mở) $\rightarrow$ <strong>Lan truyền</strong> (myelin / synap) $\rightarrow$ <strong>Ghi nhận</strong> (ECG, EEG, EMG) $\rightarrow$ <strong>Can thiệp</strong> (thuốc, kích thích điện).<br>
+              Mẹo nhớ: <em>"Bơm nuôi — Màng giữ — Kênh mở — Xung chạy — Máy ghi — Thuốc sửa"</em>.
+            </div>
+            <figure class="doc-fig">
+              <a href="images/dien-sinh-1.png" target="_blank" rel="noopener"><img src="images/dien-sinh-1.png" alt="Sơ đồ 4 bước hình thành điện thế sinh vật: phân bố ion không đồng đều, màng thấm chọn lọc, chênh lệch điện tích, bơm Na+/K+ duy trì" loading="lazy" onerror="this.style.display='none';this.closest('figure').classList.add('missing')"></a>
+                <div class="fig-ph">🖼️ <strong>Chưa tìm thấy ảnh.</strong> Lưu tệp <code>images/dien-sinh-1.png</code> vào thư mục <code>images/</code> rồi tải lại trang.</div>
+              <figcaption><span class="fig-tag">Hình 4.1</span><strong>Cơ chế hình thành điện thế sinh vật.</strong> Bốn mắt xích: (1) ion phân bố không đồng đều — Na⁺ nhiều ở ngoài, K⁺ nhiều ở trong; (2) màng thấm chọn lọc — K⁺ ra ngoài dễ, Na⁺ vào trong khó; (3) chênh lệch điện tích làm bên trong âm hơn bên ngoài (≈ −70 mV); (4) bơm Na⁺/K⁺ dùng ATP duy trì gradient. <em>Tóm lại: điện thế nghỉ là "pin" nạp sẵn; điện thế hoạt động là "pin phóng" khi kênh ion mở.</em></figcaption>
+            </figure>
+
+            <h5 style="font-weight:700; font-size:1rem; color:#0f172a; margin:18px 0 8px;">4.1. Nguồn gốc của điện thế sinh học</h5>
+            <ul>
+              <li><strong>Bơm $Na^+/K^+$-ATPase:</strong> Mỗi chu kỳ đưa $3\ Na^+$ ra ngoài và $2\ K^+$ vào trong, vừa duy trì gradient nồng độ vừa tạo dòng điện ròng ra ngoài (bơm <em>mang điện</em>, electrogenic) góp khoảng $-4\ \text{mV}$ vào điện thế nghỉ.</li>
+              <li><strong>Tính thấm chọn lọc của màng:</strong> Ở trạng thái nghỉ, kênh rò $K^+$ mở nhiều nên $K^+$ khuếch tán ra ngoài theo gradient, để lại các anion protein âm bên trong $\rightarrow$ mặt trong màng âm so với mặt ngoài.</li>
+              <li><strong>Gradient nồng độ ion (tế bào cơ - thần kinh):</strong></li>
+            </ul>
+            <div class="figure-row">
+              <figure class="doc-fig">
+                <a href="images/dien-sinh-2.png" target="_blank" rel="noopener"><img src="images/dien-sinh-2.png" alt="Chu trình 5 bước của bơm Na+/K+-ATPase" loading="lazy" onerror="this.style.display='none';this.closest('figure').classList.add('missing')"></a>
+                <div class="fig-ph">🖼️ <strong>Chưa tìm thấy ảnh.</strong> Lưu tệp <code>images/dien-sinh-2.png</code> vào thư mục <code>images/</code> rồi tải lại trang.</div>
+                <figcaption><span class="fig-tag">Hình 4.2</span><strong>Bơm Na⁺/K⁺ hoạt động thế nào?</strong> (1) gắn 3 Na⁺ từ trong tế bào → (2) dùng ATP đổi cấu hình → (3) thả 3 Na⁺ ra ngoài → (4) gắn 2 K⁺ từ ngoài → (5) thả 2 K⁺ vào trong. Vì đưa ra 3 Na⁺ mà chỉ thu về 2 K⁺, mỗi chu kỳ để lại bên trong một điện tích âm ròng (bơm mang điện, góp ≈ −4 mV).</figcaption>
+              </figure>
+              <figure class="doc-fig">
+                <a href="images/dien-sinh-3.png" target="_blank" rel="noopener"><img src="images/dien-sinh-3.png" alt="Sơ đồ chi tiết hai cấu hình E1 và E2 của bơm Na+/K+-ATPase" loading="lazy" onerror="this.style.display='none';this.closest('figure').classList.add('missing')"></a>
+                <div class="fig-ph">🖼️ <strong>Chưa tìm thấy ảnh.</strong> Lưu tệp <code>images/dien-sinh-3.png</code> vào thư mục <code>images/</code> rồi tải lại trang.</div>
+                <figcaption><span class="fig-tag">Hình 4.3</span><strong>Sơ đồ chi tiết E1/E2 (nhãn tiếng Anh).</strong> <em>E1</em> mở về phía nội bào, ái lực cao với Na⁺; gắn ATP và phosphoryl hoá aspartate → đổi cấu hình sang <em>E2</em>, mở ra ngoại bào và giảm ái lực với Na⁺ nên thả Na⁺ ra; E2 gắn K⁺, thuỷ phân gốc phosphate rồi trở lại E1 và thả K⁺ vào trong. Đây là "động cơ" phân tử tiêu tốn ~1 ATP cho mỗi chu kỳ.</figcaption>
+              </figure>
+            </div>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Ion</th><th>Nội bào (mM)</th><th>Ngoại bào (mM)</th><th>Xu hướng khuếch tán</th></tr></thead><tbody>
+              <tr><td>$K^+$</td><td>$\approx 140$</td><td>$\approx 4 - 5$</td><td>Ra ngoài</td></tr>
+              <tr><td>$Na^+$</td><td>$\approx 10 - 14$</td><td>$\approx 140$</td><td>Vào trong</td></tr>
+              <tr><td>$Ca^{2+}$</td><td>$\approx 10^{-4}$</td><td>$\approx 1 - 2$</td><td>Vào trong</td></tr>
+              <tr><td>$Cl^-$</td><td>$\approx 4$</td><td>$\approx 100 - 110$</td><td>Vào trong</td></tr>
+            </tbody></table></div>
+            <figure class="doc-fig">
+              <a href="images/dien-sinh-4.png" target="_blank" rel="noopener"><img src="images/dien-sinh-4.png" alt="Sơ đồ 3 bước giải thích vì sao K+ thoát ra ngoài tế bào" loading="lazy" onerror="this.style.display='none';this.closest('figure').classList.add('missing')"></a>
+                <div class="fig-ph">🖼️ <strong>Chưa tìm thấy ảnh.</strong> Lưu tệp <code>images/dien-sinh-4.png</code> vào thư mục <code>images/</code> rồi tải lại trang.</div>
+              <figcaption><span class="fig-tag">Hình 4.4</span><strong>Vì sao K⁺ lại thoát ra ngoài?</strong> Ba yếu tố cộng hưởng: (1) nồng độ K⁺ trong cao hơn ngoài → khuếch tán ra; (2) bên trong âm → đẩy cation ra; (3) kênh K⁺ mở (nhiều hơn khi tế bào bị kích thích). Bơm Na⁺/K⁺ sau đó bơm K⁺ trở vào để duy trì cân bằng — nhờ vậy K⁺ vừa tạo điện thế nghỉ, vừa là dòng tái cực của điện thế hoạt động.</figcaption>
+            </figure>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 1 — Vì sao mặt trong màng âm?</div>
+              <strong>Bước 1:</strong> Bơm $Na^+/K^+$-ATPase đẩy $3\ Na^+$ ra, kéo $2\ K^+$ vào $\Rightarrow$ $[K^+]_{trong} \approx 140\ \text{mM}$ cao gấp $\sim 30$ lần ngoài ($4 - 5\ \text{mM}$).<br>
+              <strong>Bước 2:</strong> Kênh rò $K^+$ mở nhiều $\Rightarrow$ $K^+$ (điện tích $+$) khuếch tán ra ngoài theo gradient.<br>
+              <strong>Bước 3:</strong> Anion protein ($A^-$) to, không qua được màng nên ở lại bên trong $\Rightarrow$ mặt trong dư âm.<br>
+              <strong>Bước 4:</strong> Mặt trong càng âm thì càng hút $K^+$ trở lại. Khi <em>lực khuếch tán (đẩy ra)</em> cân bằng <em>lực điện (kéo vào)</em>, dòng $K^+$ ròng $= 0$ $\Rightarrow$ màng "dừng" ở $E_K \approx -90\ \text{mV}$.<br>
+              <em>Hình ảnh dễ nhớ:</em> tế bào giống một <strong>pin sinh học</strong> — nồng độ ion là "nhiên liệu", màng lipid là "vỏ pin", kênh rò là "dây nối". Bơm $Na^+/K^+$ là "máy sạc" tiêu tốn ATP để nạp lại pin.
+            </div>
+
+            <h5 style="font-weight:700; font-size:1rem; color:#0f172a; margin:18px 0 8px;">4.2. Điện thế nghỉ và điện thế hoạt động</h5>
+            <ul>
+              <li><strong>Phương trình Nernst</strong> - điện thế cân bằng của một ion đơn lẻ:
+                <div class="formula-box">$$E_{ion} = \frac{RT}{zF}\ln\frac{[ion]_o}{[ion]_i} \approx \frac{61,5}{z}\log_{10}\frac{[ion]_o}{[ion]_i}\ \ [\text{mV}]\ \text{(ở } 37^\circ\text{C)}$$</div>
+                $R$: hằng số khí, $T$: nhiệt độ tuyệt đối, $F$: hằng số Faraday, $z$: hoá trị. Với bảng nồng độ trên: $E_K \approx -90\ \text{mV}$, $E_{Na} \approx +60\ \text{mV}$, $E_{Cl} \approx -87\ \text{mV}$, $E_{Ca} \approx +130\ \text{mV}$.
+              </li>
+              <li><strong>Phương trình Goldman - Hodgkin - Katz (GHK)</strong> - điện thế nghỉ tổng hợp có tính độ thấm $P$ của nhiều ion:
+                <div class="formula-box">$$E_m = \frac{RT}{F}\ln\left(\frac{P_K[K^+]_o + P_{Na}[Na^+]_o + P_{Cl}[Cl^-]_i}{P_K[K^+]_i + P_{Na}[Na^+]_i + P_{Cl}[Cl^-]_o}\right) \approx -70\ \text{đến}\ -90\ \text{mV}$$</div>
+                Ở trạng thái nghỉ $P_K$ lớn hơn $P_{Na}$ $50 - 100$ lần nên $E_m$ nằm gần $E_K$; khi kênh $Na^+$ mở, $P_{Na}$ tăng vọt và $E_m$ dịch về phía $E_{Na}$.
+              </li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 2 — Bấm máy tính Nernst trong 10 giây</div>
+              Lấy $[K^+]_o = 4\ \text{mM}$, $[K^+]_i = 140\ \text{mM}$, $z = +1$:<br>
+              $$E_K = 61,5 \times \log_{10}\frac{4}{140} = 61,5 \times \log_{10}(0,0286) = 61,5 \times (-1,54) \approx -95\ \text{mV}$$
+              Tương tự với $Na^+$ ($142/12$): $E_{Na} = 61,5 \times (+1,07) \approx +66\ \text{mV}$.<br>
+              <em>Ba điều cần nhớ:</em> (1) chỉ cần <strong>tỉ số</strong> nồng độ, không cần số ion tuyệt đối; (2) cation ra ngoài $\rightarrow$ $E$ âm, cation vào trong $\rightarrow$ $E$ dương; (3) nhiệt độ tăng thì $|E|$ tăng nhẹ vì $61,5 \propto T$.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 3 — GHK: vì sao $E_m \approx -70\ \text{mV}$ mà không phải $-95\ \text{mV}$?</div>
+              Giả sử $P_K : P_{Na} : P_{Cl} = 1 : 0,05 : 0,45$ và dùng nồng độ ở bảng trên:<br>
+              Tử số $= 1(4) + 0,05(142) + 0,45(4) = 4 + 7,1 + 1,8 = 12,9$<br>
+              Mẫu số $= 1(140) + 0,05(12) + 0,45(105) = 140 + 0,6 + 47,25 = 187,85$<br>
+              $$E_m = 26,7 \times \ln\frac{12,9}{187,85} = 26,7 \times (-2,68) \approx -72\ \text{mV}$$
+              <em>Đọc kết quả:</em> màng "nghiêng" về $K^+$ (chiếm ưu thế) nhưng bị $Na^+$ và $Cl^-$ kéo lệch khỏi $E_K$; nếu tăng $P_{Na}$ (mở kênh $Na^+$) thì $E_m$ nhảy về phía $+60\ \text{mV}$ — đó chính là khử cực.
+            </div>
+            <p>Khi màng bị kích thích đủ mạnh, một loạt kênh ion phụ thuộc điện thế lần lượt mở ra — đó là cơ chế của <strong>điện thế hoạt động</strong>:</p>
+            <ul>
+              <li><strong>Các pha điện thế hoạt động:</strong> ngưỡng $\approx -55\ \text{mV}$ $\rightarrow$ khử cực do $Na^+$ vào ồ ạt (đảo cực tới $+20 \div +30\ \text{mV}$) $\rightarrow$ tái cực do $K^+$ ra ngoài $\rightarrow$ ưu phân cực nhẹ. Điện thế hoạt động tuân theo quy luật <em>"tất cả hoặc không có gì"</em>, mã hoá cường độ kích thích bằng <strong>tần số xung</strong> chứ không bằng biên độ; giai đoạn trơ tuyệt đối giới hạn tần số phát xung tối đa.</li>
+              <li><strong>Ngưỡng kích thích và các tham số:</strong> <em>rheobase</em> (cường độ dòng tối thiểu gây đáp ứng với xung dài) và <em>chronaxie</em> (độ dài xung ứng với dòng gấp đôi rheobase) dùng để đánh giá tính hưng phấn của thần kinh - cơ và hiệu chỉnh máy kích thích.</li>
+            </ul>
+            <div class="figure-row">
+              <figure class="doc-fig">
+                <a href="images/dien-sinh-5.png" target="_blank" rel="noopener"><img src="images/dien-sinh-5.png" alt="Kênh ion phụ thuộc điện thế ở trạng thái đóng tại -70 mV và mở tại -50 mV" loading="lazy" onerror="this.style.display='none';this.closest('figure').classList.add('missing')"></a>
+                <div class="fig-ph">🖼️ <strong>Chưa tìm thấy ảnh.</strong> Lưu tệp <code>images/dien-sinh-5.png</code> vào thư mục <code>images/</code> rồi tải lại trang.</div>
+                <figcaption><span class="fig-tag">Hình 4.5</span><strong>Kênh ion phụ thuộc điện thế: đóng ↔ mở.</strong> Ở −70 mV (nghỉ) cổng kênh đóng; khi màng khử cực tới ≈ −50 mV, vùng cảm biến điện thế dịch chuyển làm cổng mở, Na⁺ ùa vào theo cả gradient nồng độ và gradient điện. Đây là "công tắc" khởi phát điện thế hoạt động.</figcaption>
+              </figure>
+              <figure class="doc-fig">
+                <a href="images/dien-sinh-6.png" target="_blank" rel="noopener"><img src="images/dien-sinh-6.png" alt="Ba trạng thái của kênh Na+ phụ thuộc điện thế: đóng, mở, bất hoạt" loading="lazy" onerror="this.style.display='none';this.closest('figure').classList.add('missing')"></a>
+                <div class="fig-ph">🖼️ <strong>Chưa tìm thấy ảnh.</strong> Lưu tệp <code>images/dien-sinh-6.png</code> vào thư mục <code>images/</code> rồi tải lại trang.</div>
+                <figcaption><span class="fig-tag">Hình 4.6</span><strong>Ba trạng thái của kênh Na⁺ phụ thuộc điện thế.</strong> <em>Đóng</em> (nghỉ, sẵn sàng) → <em>mở</em> (khử cực, Na⁺ vào) → <em>bất hoạt</em> (nút bất hoạt chặn cổng, không mở lại được cho tới khi tái cực). Chính trạng thái bất hoạt tạo nên <strong>giai đoạn trơ</strong> và bảo đảm xung chỉ chạy một chiều.</figcaption>
+              </figure>
+            </div>
+            <div class="callout"><div class="callout-title">Cách đọc một hiện tượng điện sinh học — 4 câu hỏi</div>
+              <strong>① Ion nào?</strong> ($K^+, Na^+, Ca^{2+}, Cl^-$) $\rightarrow$ <strong>② Gradient đẩy nó đi đâu?</strong> (Nernst) $\rightarrow$ <strong>③ Kênh nào đang mở?</strong> (độ thấm $P$) $\rightarrow$ <strong>④ $E_m$ dịch về phía nào?</strong> (GHK).<br>
+              Mẹo nhớ pha điện thế hoạt động: <strong>"Na vào — K ra"</strong> (khử cực — tái cực); mẹo nhớ bơm: <strong>"3 ra — 2 vào"</strong> (3 $Na^+$ ra, 2 $K^+$ vào).
+            </div>
+
+            <h5 style="font-weight:700; font-size:1rem; color:#0f172a; margin:18px 0 8px;">4.3. Lan truyền xung điện trong mô</h5>
+            <ul>
+              <li><strong>Dẫn truyền liên tục:</strong> Ở sợi không có myelin, điện thế hoạt động lan dọc màng theo từng đoạn kế tiếp, tốc độ chậm $v \approx 0,5 - 2\ \text{m/s}$.</li>
+              <li><strong>Dẫn truyền nhảy cóc (saltatory conduction):</strong> Ở sợi có bao myelin, myelin là chất cách điện làm tăng $R_m$ và giảm $C_m$, xung điện "nhảy" từ eo Ranvier này sang eo kế tiếp, tốc độ có thể tới $100 - 120\ \text{m/s}$. Khi myelin bị phá huỷ (xơ cứng rải rác, bệnh thần kinh ngoại biên, ngộ độc), dẫn truyền chậm lại hoặc bị blốc $\rightarrow$ yếu cơ, tê bì, rối loạn cảm giác.</li>
+              <li><strong>Lan truyền tại synap:</strong> Xung điện không truyền trực tiếp mà chuyển thành tín hiệu <em>hoá học</em> (chất dẫn truyền thần kinh), gây điện thế hưng phấn (EPSP) hoặc ức chế (IPSP) ở màng sau synap; các điện thế này tổng hợp theo không gian và thời gian, đạt ngưỡng thì phát sinh điện thế hoạt động mới.</li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 4 — Vì sao sợi có myelin nhanh hơn hàng trăm lần?</div>
+              Quy tắc kinh nghiệm cho sợi có myelin: $v\ (\text{m/s}) \approx 6 \times d\ (\mu\text{m})$ với $d$ là đường kính sợi.<br>
+              • Sợi $20\ \mu\text{m}$ $\rightarrow$ $v \approx 120\ \text{m/s}$: xung đi $1\ \text{m}$ chỉ mất $\approx 8\ \text{ms}$.<br>
+              • Sợi không myelin $1\ \mu\text{m}$ $\rightarrow$ $v \approx 1\ \text{m/s}$: cùng quãng đường mất $\approx 1\ \text{s}$ — chậm hơn 100 lần.<br>
+              <em>Hình ảnh dễ nhớ:</em> myelin giống "đường cao tốc có trạm dừng" (nhảy từ eo này sang eo khác), còn sợi không myelin như "đi từng nhà" dọc đường làng. Khi myelin bị phá huỷ, $R_m$ giảm và $C_m$ tăng $\rightarrow$ $\tau$ tăng, $\lambda$ giảm $\rightarrow$ xung tắt dần trước khi tới eo kế tiếp $\rightarrow$ blốc dẫn truyền.
+            </div>
+
+            <h5 style="font-weight:700; font-size:1rem; color:#0f172a; margin:18px 0 8px;">4.4. Ghi nhận tín hiệu điện sinh học và trở kháng sinh học</h5>
+            <ul>
+              <li><strong>Nguyên lý ghi:</strong> Điện cực bề mặt hoặc điện cực nội mô thu hiệu điện thế cỡ $\mu\text{V} - \text{mV}$, đưa vào bộ khuếch đại vi sai có tỉ số nén đồng pha lớn (CMRR cao $\ge 80\ \text{dB}$), lọc thông dải và khử nhiễu lưới $50\ \text{Hz}$ trước khi số hoá.</li>
+              <li><strong>Các tín hiệu thường dùng:</strong>
+                <ul>
+                  <li><em>Điện tâm đồ (ECG):</em> biên độ $\approx 1\ \text{mV}$, băng tần $0,05 - 150\ \text{Hz}$, gồm sóng $P - QRS - T$ phản ánh khử cực và tái cực nhĩ - thất.</li>
+                  <li><em>Điện não đồ (EEG):</em> biên độ $\mu\text{V}$, băng tần $0,5 - 70\ \text{Hz}$, các dải alpha, beta, theta, delta; dùng chẩn đoán động kinh, rối loạn giấc ngủ, đánh giá chết não.</li>
+                  <li><em>Điện cơ đồ (EMG), điện võng mạc (ERG), điện thế gợi (evoked potentials):</em> đánh giá tổn thương cơ, võng mạc và đường dẫn truyền thần kinh cảm giác.</li>
+                </ul>
+              </li>
+              <li><strong>Trở kháng sinh học (Bioimpedance):</strong> Mô sống vừa dẫn vừa tích điện nên tổng trở gồm phần thuần trở $R$ và phần kháng $X_C$:
+                <div class="formula-box">$$Z = \sqrt{R^2 + X_C^2} \qquad X_C = \frac{1}{2\pi f C}$$</div>
+                Vì mô mỡ dẫn điện kém hơn mô nạc - nước, đo tổng trở ở nhiều tần số (BIA) cho phép ước lượng thành phần cơ thể, phát hiện phù, đánh giá dinh dưỡng; đo trở kháng da (GSR) phản ánh hoạt động giao cảm.
+              </li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 5 — Từ 1 mV trên da đến 1 V trong máy</div>
+              • ECG ở bề mặt da chỉ cỡ $1\ \text{mV}$; khuếch đại $1000$ lần $\rightarrow$ $1\ \text{V}$, đủ cho bộ chuyển đổi ADC 12 bit.<br>
+              • Nhiễu lưới $50\ \text{Hz}$ cảm ứng trên dây dẫn có thể <em>lớn hơn</em> tín hiệu thật. Vì vậy dùng: khuếch đại vi sai (CMRR $\ge 80\ \text{dB}$ tức triệt nhiễu chung $\sim 10^4$ lần) + điện cực $Ag/AgCl$ có gel + lọc thông dải $0,05 - 150\ \text{Hz}$ + dây ngắn, xoắn đôi.<br>
+              • <em>Ví dụ BIA:</em> hai người cùng nặng $70\ \text{kg}$, người tập luyện nhiều cơ - ít mỡ có tổng trở $Z$ <strong>thấp hơn</strong> (mô nạc nhiều nước dẫn điện tốt), nên ước lượng % mỡ thấp hơn. Cần đo lúc đói, bàng quang rỗng, dán điện cực đúng vị trí để tránh sai số.
+            </div>
+
+            <h5 style="font-weight:700; font-size:1rem; color:#0f172a; margin:18px 0 8px;">4.5. Liên hệ dược lý - lâm sàng</h5>
+            <ul>
+              <li><strong>Kênh ion là đích của nhiều nhóm thuốc:</strong> thuốc tê tại chỗ (lidocaine, bupivacaine) chẹn kênh $Na^+$ phụ thuộc điện thế; chẹn kênh $Ca^{2+}$ (verapamil, nifedipine) giảm co cơ trơn mạch và dẫn truyền nhĩ - thất; chống loạn nhịp nhóm III (amiodarone, sotalol) kéo dài tái cực; digitalis ức chế bơm $Na^+/K^+$-ATPase $\rightarrow$ tăng $Ca^{2+}$ nội bào $\rightarrow$ tăng lực co bóp.</li>
+              <li><strong>Rối loạn điện giải và điện thế màng:</strong> hạ $K^+$ gây ưu phân cực, yếu cơ, loạn nhịp; tăng $K^+$ làm giảm biên độ điện thế hoạt động, có thể ngừng tim; hạ $Ca^{2+}$ làm tăng tính hưng phấn (co giật, tetany); hạ $Mg^{2+}$ tạo điều kiện cho xoắn đỉnh.</li>
+              <li><strong>Độc tính tim của thuốc:</strong> nhiều thuốc (kháng histamine thế hệ cũ, kháng sinh nhóm macrolid, quinolon, chống loạn nhịp, chống trầm cảm ba vòng) kéo dài khoảng $QT$ trên ECG $\rightarrow$ nguy cơ xoắn đỉnh (torsades de pointes). Vì vậy cần hiệu chỉnh $QTc$, kiểm tra điện giải và tránh phối hợp thuốc cùng kéo dài $QT$.</li>
+              <li><strong>Ứng dụng kích thích điện:</strong> máy tạo nhịp, khử rung, TENS, kích thích điện chức năng (FES) phục hồi vận động; điện di và điện phân dẫn thuốc dùng chính dòng điện ngoại lai để đưa thuốc qua màng.</li>
+            </ul>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Rối loạn điện giải</th><th>Biểu hiện chính trên ECG</th><th>Giải thích bằng điện sinh học</th></tr></thead><tbody>
+              <tr><td>Hạ $K^+$</td><td>T dẹt, ST hạ, sóng $U$ rõ, $QT$ kéo dài</td><td>Ưu phân cực $\rightarrow$ tái cực chậm, dễ phát sinh loạn nhịp</td></tr>
+              <tr><td>Tăng $K^+$</td><td>T cao nhọn ("lều"), QRS rộng, P dẹt $\rightarrow$ sóng hình sin</td><td>$E_K$ bớt âm $\rightarrow$ giảm biên độ điện thế hoạt động, dẫn truyền chậm</td></tr>
+              <tr><td>Hạ $Ca^{2+}$</td><td>$QT$ kéo dài</td><td>Kéo dài pha bình nguyên (dòng $Ca^{2+}$ vào), tăng tính hưng phấn</td></tr>
+              <tr><td>Hạ $Mg^{2+}$</td><td>$QT$ kéo dài, xoắn đỉnh</td><td>Giảm ổn định màng, tạo điều kiện cho hậu khử cực muộn</td></tr>
+            </tbody></table></div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 6 — Digitalis: "cửa sổ điều trị hẹp" nhìn từ bơm ion</div>
+              <strong>Cơ chế:</strong> digitalis ức chế bơm $Na^+/K^+$-ATPase $\rightarrow$ $[Na^+]_{trong}$ tăng $\rightarrow$ bơm trao đổi $Na^+/Ca^{2+}$ (NCX) đẩy ít $Ca^{2+}$ ra hơn $\rightarrow$ $[Ca^{2+}]_{trong}$ tăng $\rightarrow$ co bóp mạnh hơn (dùng trong suy tim).<br>
+              <strong>Mặt trái:</strong> $Ca^{2+}$ nội bào quá cao gây <em>hậu khử cực muộn</em> $\rightarrow$ loạn nhịp. <strong>Hạ $K^+$ làm digitalis gắn vào bơm mạnh hơn</strong> $\rightarrow$ tăng độc tính, nên phải giữ $K^+$ trong giới hạn bình thường và theo dõi nồng độ thuốc.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 7 — Vì sao lidocaine chỉ chẹn tế bào "đang bận phát xung"?</div>
+              Lidocaine gắn vào kênh $Na^+$ <em>phụ thuộc trạng thái</em>: ái lực cao với kênh đang mở hoặc đang bất hoạt (tức tế bào đang khử cực liên tục), thấp với kênh ở trạng thái nghỉ. Vì vậy thuốc ức chế mạnh tế bào đang phát xung nhanh (ổ loạn nhịp, sợi cảm giác đang dẫn đau) mà ít ảnh hưởng tế bào nghỉ — gọi là <em>phụ thuộc sử dụng</em> (use-dependence). Đây là lý do lidocaine vừa gây tê tại chỗ, vừa dùng chống loạn nhịp thất, với ít tác dụng phụ lên tim bình thường.
+            </div>
+            <div class="callout"><div class="callout-title">Phân biệt nhanh</div>Điện sinh học là hiện tượng điện <em>do cơ thể tự phát sinh</em> (điện thế màng, ECG, EEG); điện trị liệu là dòng điện <em>ngoại lai đưa vào</em> cơ thể (kích thích, đốt điện, sốc điện). Cả hai đều tuân theo cùng các định luật Ohm, Joule - Lenz và nguyên lý màng - tụ điện.</div>
+            <p><strong>Ý nghĩa:</strong> Điện sinh học là cầu nối giữa vật lý điện và sinh lý học: nó giải thích vì sao tế bào có thể "phát" và "truyền" tín hiệu, vì sao ECG/EEG/EMG ghi được hoạt động của cơ quan từ bề mặt cơ thể, và vì sao thay đổi điện giải hay thuốc tác động kênh ion lại biểu hiện thành rối loạn nhịp, yếu cơ hay co giật. Với dược sĩ, hiểu điện sinh học giúp dự đoán - phát hiện sớm độc tính tim của thuốc, tư vấn bổ sung điện giải hợp lý và giải thích cơ chế của các liệu pháp kích thích điện.</p>
+
+            <h4>5. Tác dụng của dòng điện lên cơ thể và ứng dụng điện trị liệu</h4>
+            <ul>
+              <li><strong>Ba tác dụng cơ bản:</strong>
+                <ul>
+                  <li><em>Tác dụng kích thích:</em> Dòng điện làm thay đổi điện thế màng, đạt ngưỡng thì phát sinh điện thế hoạt động $\rightarrow$ co cơ, cảm giác, dẫn truyền thần kinh.</li>
+                  <li><em>Tác dụng điện phân:</em> Ở điện cực xảy ra phản ứng điện hoá, tạo ion $H^+$/$OH^-$ và có thể gây bỏng hoá học, kích ứng da.</li>
+                  <li><em>Tác dụng nhiệt:</em> Theo $Q = I^2Rt$, dòng lớn hoặc tần số cao gây tăng nhiệt mô (đốt, cầm máu, huỷ mô).</li>
+                </ul>
+              </li>
+              <li><strong>Điện phân dẫn thuốc qua da (Iontophoresis):</strong> Dùng dòng một chiều nhỏ ($0,1 - 0,5\ \text{mA/cm}^2$) đẩy các phân tử thuốc đã ion hoá vào da. Cực đặt thuốc phải <em>cùng dấu</em> với điện tích của thuốc (thuốc cation đặt ở cực dương, thuốc anion đặt ở cực âm). Ưu điểm: tránh chuyển hoá qua gan, tác dụng tại chỗ, kiểm soát liều; hạn chế: chỉ dùng cho thuốc ion hoá, có thể kích ứng da.</li>
+              <li><strong>Kích thích điện qua da (TENS):</strong> Dòng xung tần số thấp ($1 - 150\ \text{Hz}$) kích thích sợi thần kinh cảm giác lớn, ức chế dẫn truyền đau theo cơ chế "cổng kiểm soát" ở sừng sau tuỷ sống; dùng giảm đau cấp và mạn tính.</li>
+              <li><strong>Dòng cao tần và đốt điện:</strong> Đốt điện đơn cực/lưỡng cực (electrocautery), cắt đốt nội soi, RF ablation huỷ u hoặc các ổ loạn nhịp tim bằng nhiệt cục bộ; sóng ngắn và vi sóng tạo nhiệt sâu trong mô.</li>
+              <li><strong>Máy khử rung tim (Defibrillator):</strong> Nạp năng lượng vào tụ điện rồi phóng qua tim trong vài mili giây để khử đồng thời toàn bộ cơ tim, cho phép nút xoang giành lại quyền chỉ huy:
+                <div class="formula-box">$$W = \frac{1}{2}CU^2 \quad \Rightarrow \quad W = 150 - 360\ \text{J}\ \text{(người lớn)}$$</div>
+                Ví dụ $C = 32\ \mu\text{F}$ nạp tới $U = 3500\ \text{V}$ cho $W \approx 196\ \text{J}$. Dạng sóng hai pha (biphasic) hiệu quả hơn và ít tổn thương cơ tim hơn sóng một pha. Khử rung <em>không đồng bộ</em> dùng cho rung thất; sốc điện <em>đồng bộ</em> (cardioversion) dùng cho nhịp nhanh có QRS rõ.
+              </li>
+              <li><strong>Máy tạo nhịp tim (Pacemaker):</strong> Phát xung điện ngắn ($0,5 - 2\ \text{ms}$) biên độ $1 - 5\ \text{V}$ qua dây dẫn điện cực để kích thích cơ tim khi nút xoang hoặc đường dẫn truyền suy yếu.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Cùng một dòng điện có thể vừa là công cụ điều trị vừa là tác nhân gây hại, tuỳ cường độ, tần số, thời gian và đường đi của dòng. Hiểu tác dụng kích thích - điện phân - nhiệt giúp dược sĩ tư vấn đúng về iontophoresis, TENS và cảnh báo tương tác với thiết bị cấy ghép (máy tạo nhịp, máy khử rung tự động).</p>
+
+            <h4>6. An toàn điện: dòng macroshock và microshock</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Cường độ dòng (50/60 Hz, tay - tay)</th><th>Tác dụng sinh học</th></tr></thead><tbody>
+              <tr><td>$\approx 0,5 - 1\ \text{mA}$</td><td>Ngưỡng cảm nhận, hơi ngứa ran</td></tr>
+              <tr><td>$10 - 16\ \text{mA}$</td><td>Ngưỡng "buông không được" (let-go), co cơ không tự thoát khỏi nguồn</td></tr>
+              <tr><td>$20 - 50\ \text{mA}$</td><td>Co cơ mạnh, khó thở, có thể ngất</td></tr>
+              <tr><td>$75 - 100\ \text{mA}$</td><td>Rung thất - nguy cơ tử vong cao</td></tr>
+              <tr><td>$> 1\ \text{A}$</td><td>Bỏng nặng, ngừng tim, tổn thương thần kinh</td></tr>
+            </tbody></table></div>
+            <ul>
+              <li><strong>Microshock:</strong> Khi dòng đi trực tiếp vào tim qua catheter/điện cực nội tim, chỉ $50 - 100\ \mu\text{A}$ đã đủ gây rung thất - nguy hiểm hơn $1000$ lần so với dòng qua da. Vì vậy bệnh nhân có catheter tim phải dùng thiết bị loại <strong>CF</strong> (dòng rò cho phép $< 10\ \mu\text{A}$), trong khi thiết bị loại <strong>B/BF</strong> cho phép $< 100\ \mu\text{A}$.</li>
+              <li><strong>Yếu tố quyết định mức nguy hiểm:</strong> đường đi của dòng (tay - tay hoặc tay - chân qua tim nguy hiểm nhất), thời gian tiếp xúc, tần số (50/60 Hz nguy hiểm nhất vì gần tần số tim), điện trở da (da ướt, mồ hôi, vết thương làm trở kháng giảm mạnh), tình trạng bệnh tim và thuốc đang dùng.</li>
+              <li><strong>Nguyên tắc phòng ngừa:</strong> Nối đất bảo vệ vỏ thiết bị, cách ly nguồn - bệnh nhân bằng biến áp cách ly hoặc ghép quang, dùng cầu dao chống dòng rò (RCD), kiểm tra định kỳ dòng rò, không để thiết bị ẩm ướt gần bệnh nhân, tháo vòng trang sức kim loại khi làm việc với điện và từ trường mạnh.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Phân biệt macroshock và microshock là điểm cốt tử trong an toàn thiết bị y tế: một dòng rò "vô hại" với người khoẻ mạnh vẫn có thể gây rung thất ở bệnh nhân đặt catheter tim. Đây là cơ sở để chọn thiết bị loại CF/BF, thiết kế hệ thống nối đất và xây dựng quy trình kiểm tra an toàn điện định kỳ.</p>
+
+            <h4>7. Từ trường, lực từ và từ tính của vật chất</h4>
+            <ul>
+              <li><strong>Cảm ứng từ ($B$) và từ thông ($\Phi$):</strong> $B$ đặc trưng cho từ trường tại một điểm, đơn vị Tesla (T); $1\ \text{T} = 10^4\ \text{Gauss}$. Từ thông qua diện tích $S$:
+                <div class="formula-box">$$\Phi = B S \cos\theta\ \ [\text{Wb}]$$</div>
+                với $\theta$ là góc giữa vector cảm ứng từ và pháp tuyến mặt phẳng.
+              </li>
+              <li><strong>Lực từ tác dụng lên dòng điện và điện tích chuyển động:</strong>
+                <div class="formula-box">$$F = B I l \sin\theta \qquad F = |q| v B \sin\theta \quad \text{(lực Lorentz)}$$</div>
+                Lực Lorentz luôn vuông góc với vận tốc nên không sinh công, chỉ làm đổi hướng chuyển động: hạt mang điện bay vuông góc với từ trường đều sẽ chuyển động tròn với bán kính $r = \frac{mv}{|q|B}$.
+              </li>
+              <li><strong>Từ trường do dòng điện sinh ra:</strong> Dây dẫn thẳng dài $B = \frac{\mu_0 I}{2\pi r}$; ống dây (solenoid) $B = \mu_0 n I$ với $n$ là số vòng trên một đơn vị dài, $\mu_0 = 4\pi \times 10^{-7}\ \text{T}\cdot\text{m/A}$.</li>
+              <li><strong>Mômen từ của vòng dây:</strong> $m = IS$; mômen ngẫu lực từ tác dụng lên vòng dây $M = mB\sin\theta$. Ở cấp phân tử, mômen từ sinh ra từ chuyển động của electron và spin, là gốc của từ tính vật liệu.</li>
+              <li><strong>Phân loại vật liệu từ:</strong> $\mu = \mu_r\mu_0$, với $\mu_r$ là độ thẩm từ tương đối.
+                <ul>
+                  <li><em>Nghịch từ (diamagnetic):</em> $\mu_r < 1$ rất nhẹ ($\chi \sim -10^{-5}$). Nước, protein, mô sống, đồng, bismuth thuộc nhóm này - chúng bị đẩy nhẹ ra khỏi từ trường.</li>
+                  <li><em>Thuận từ (paramagnetic):</em> $\mu_r > 1$ nhẹ ($\chi \sim 10^{-3} - 10^{-5}$), do các ion/electron độc thân: $O_2$, $Fe^{3+}$, $Cu^{2+}$, $Gd^{3+}$. Thuốc cản quang MRI chứa gadolinium hoạt động theo cơ chế này.</li>
+                  <li><em>Sắt từ (ferromagnetic):</em> $\mu_r$ rất lớn ($10^2 - 10^5$), có từ dư và nhiệt độ Curie: sắt, cobalt, nickel, $Fe_3O_4$. Đây là nhóm cần kiểm soát tuyệt đối trong phòng MRI.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Từ trường không tác dụng lực lên mô tĩnh (vì mô gần như nghịch từ) nhưng tác dụng rất mạnh lên vật liệu sắt từ - giải thích vì sao vật kim loại bị hút như "đạn" trong phòng MRI và vì sao cấy ghép kim loại phải được sàng lọc trước chụp. Hiểu mômen từ và phân loại vật liệu là nền tảng của cản quang từ, hạt nano từ và các phương pháp tách từ.</p>
+
+            <h4>8. Cảm ứng điện từ và ứng dụng trong thiết bị y tế</h4>
+            <ul>
+              <li><strong>Định luật Faraday:</strong> Suất điện động cảm ứng tỉ lệ với tốc độ biến thiên từ thông:
+                <div class="formula-box">$$\varepsilon = -N\frac{d\Phi}{dt}$$</div>
+                Dấu trừ thể hiện <strong>định luật Lenz</strong>: dòng cảm ứng sinh từ trường chống lại nguyên nhân sinh ra nó.
+              </li>
+              <li><strong>Hiện tượng tự cảm:</strong> $\varepsilon = -L\frac{dI}{dt}$ với $L$ là độ tự cảm (Henry, H); năng lượng từ trường tích trữ trong cuộn dây $W = \frac{1}{2}LI^2$. Hiện tượng này gây xung điện áp cao khi ngắt mạch cuộn cảm - cần mạch bảo vệ trong thiết bị y tế.</li>
+              <li><strong>Máy biến áp:</strong>
+                <div class="formula-box">$$\frac{U_1}{U_2} = \frac{N_1}{N_2} = \frac{I_2}{I_1}$$</div>
+                Ứng dụng: biến áp <em>cách ly</em> bệnh nhân khỏi lưới điện, ổn áp cho thiết bị chẩn đoán, truyền năng lượng không dây (sạc cảm ứng cho thiết bị cấy ghép).
+              </li>
+              <li><strong>Đo lưu lượng máu bằng cảm ứng điện từ:</strong> Máu (chất dẫn điện) chảy trong mạch đặt trong từ trường $B$ vuông góc sẽ sinh hiệu điện thế giữa hai điện cực:
+                <div class="formula-box">$$U = B \cdot v \cdot d$$</div>
+                với $d$ là đường kính lòng mạch, $v$ là vận tốc dòng máu. Đây là nguyên lý của lưu lượng kế điện từ và đầu dò đo lưu lượng mạch máu trong phẫu thuật.
+              </li>
+              <li><strong>Ứng dụng khác:</strong> Máy phát điện và động cơ trong thiết bị y tế; bếp từ - đốt điện cảm ứng; hệ thống định vị và theo dõi ống thông; chụp cộng hưởng từ (MRI) dùng từ trường siêu dẫn $1,5 - 3\ \text{T}$ và gradient từ trường để mã hoá không gian.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Cảm ứng điện từ là cầu nối giữa điện và từ, cho phép biến đổi - truyền tải năng lượng và đo lường không xâm lấn. Trong y dược, nó giải thích nguyên lý MRI, biến áp cách ly an toàn, đo lưu lượng máu và cả các tai biến do vật liệu kim loại bị nung nóng trong từ trường RF.</p>
+
+            <h4>9. Hạt nano từ tính và dẫn thuốc hướng đích</h4>
+            <ul>
+              <li><strong>Vật liệu:</strong> Hạt nano oxit sắt siêu thuận từ (SPION - Superparamagnetic Iron Oxide Nanoparticles), chủ yếu là $Fe_3O_4$ (magnetite) và $\gamma-Fe_2O_3$ (maghemite), kích thước $10 - 100\ \text{nm}$, bọc polymer (dextran, PEG, chitosan) hoặc silica để tăng tương thích sinh học và gắn ligand hướng đích.</li>
+              <li><strong>Tính siêu thuận từ:</strong> Khi hạt nhỏ hơn kích thước một đômen từ, mômen từ dao động nhiệt và triệt tiêu khi ngắt từ trường $\rightarrow$ <em>không có từ dư</em>, hạt không kết tụ thành cục sau khi rút từ trường ngoài. Đây là ưu điểm quyết định tính an toàn khi tiêm vào cơ thể.</li>
+              <li><strong>Dẫn thuốc hướng đích bằng từ trường (Magnetic Drug Targeting):</strong> Đặt nam châm/từ trường gradient mạnh tại vị trí khối u để giữ hạt mang thuốc tại chỗ. Lực tác dụng lên hạt:
+                <div class="formula-box">$$\vec{F} = (\vec{m}\cdot\nabla)\vec{B}$$</div>
+                Lực này tỉ lệ với mômen từ và <em>gradient</em> từ trường, nên cần gradient lớn (hàng chục đến hàng trăm T/m) chứ không chỉ từ trường mạnh.
+              </li>
+              <li><strong>Cản quang MRI:</strong> SPION làm giảm tín hiệu trên chuỗi xung $T_2/T_2^*$ (hiệu ứng "tối"), dùng phát hiện hạch lympho, khối u gan, viêm và theo dõi tế bào gốc. Gadolinium ($Gd^{3+}$) là tác nhân thuận từ làm tăng tín hiệu $T_1$.</li>
+              <li><strong>Nhiệt trị từ (Magnetic Hyperthermia):</strong> Từ trường xoay chiều tần số cao ($100 - 500\ \text{kHz}$) làm hạt nano hấp thụ năng lượng và toả nhiệt, nâng nhiệt độ khối u lên $42 - 46^\circ\text{C}$ để huỷ tế bào ung thư mà hạn chế tổn thương mô lành. Công suất hấp thụ riêng:
+                <div class="formula-box">$$SAR = C\frac{\Delta T}{\Delta t}\ \ [\text{W/kg}]$$</div>
+                với $C$ là nhiệt dung riêng của mô ($\approx 4186\ \text{J/(kg}\cdot\text{K)}$).
+              </li>
+              <li><strong>Ứng dụng khác:</strong> Tách tế bào từ (MACS), tinh sạch protein và acid nucleic, cảm biến sinh học từ, siêu âm - từ kết hợp, đốt u bằng hạt nano từ.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Hạt nano từ là ví dụ điển hình của "vật lý - dược học" gặp nhau: cùng một vật liệu vừa làm cản quang chẩn đoán, vừa làm phương tiện dẫn thuốc, vừa làm tác nhân điều trị nhiệt. Hiểu tính siêu thuận từ giúp lý giải vì sao hạt không gây tắc mạch do kết tụ và vì sao cần gradient từ trường chứ không chỉ cần từ trường mạnh.</p>
+
+            <h4>10. Trường điện từ, sóng điện từ và phổ điện từ</h4>
+            <ul>
+              <li><strong>Luận điểm Maxwell:</strong> Điện trường biến thiên sinh ra từ trường xoay và ngược lại; hai trường lan truyền trong không gian tạo thành sóng điện từ. Sóng điện từ truyền trong chân không với tốc độ:
+                <div class="formula-box">$$c = \frac{1}{\sqrt{\varepsilon_0\mu_0}} \approx 3 \times 10^8\ \text{m/s} \qquad v = \frac{c}{n} \qquad c = \lambda f$$</div>
+                với $n$ là chiết suất môi trường.
+              </li>
+              <li><strong>Năng lượng photon:</strong> $E = hf$ với $h = 6,626 \times 10^{-34}\ \text{J}\cdot\text{s}$. Tần số càng cao, photon càng giàu năng lượng và càng có khả năng gây ion hoá sinh học.</li>
+              <li><strong>Phổ điện từ và ứng dụng y dược:</strong></li>
+            </ul>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Vùng phổ</th><th>Bước sóng / tần số</th><th>Ứng dụng y dược</th></tr></thead><tbody>
+              <tr><td>Sóng vô tuyến (RF)</td><td>$\text{m} - \text{km}$; $\text{kHz} - \text{GHz}$</td><td>MRI, đốt u RF, sóng ngắn vật lý trị liệu, truyền dữ liệu thiết bị cấy ghép</td></tr>
+              <tr><td>Vi sóng</td><td>$1\ \text{mm} - 1\ \text{m}$; $0,3 - 300\ \text{GHz}$</td><td>Đốt u vi sóng, sấy khô dược liệu, gia nhiệt mô</td></tr>
+              <tr><td>Hồng ngoại</td><td>$780\ \text{nm} - 1\ \text{mm}$</td><td>Đo nhiệt độ da, đèn hồng ngoại giảm đau, quang phổ IR nhận dạng dược chất</td></tr>
+              <tr><td>Ánh sáng khả kiến</td><td>$380 - 780\ \text{nm}$</td><td>Quang phổ UV-Vis, nội soi, liệu pháp quang động (PDT)</td></tr>
+              <tr><td>Tử ngoại (UV)</td><td>$10 - 380\ \text{nm}$</td><td>Tiệt khuẩn bề mặt, khử trùng nước, tổng hợp vitamin D, gây hại DNA</td></tr>
+              <tr><td>Tia X</td><td>$0,01 - 10\ \text{nm}$</td><td>Chẩn đoán hình ảnh X-quang, CT, xạ trị</td></tr>
+              <tr><td>Tia gamma</td><td>$< 0,01\ \text{nm}$</td><td>Tiệt khuẩn dược phẩm ($^{60}Co$), xạ trị ung thư, SPECT/PET</td></tr>
+            </tbody></table></div>
+            <p><strong>An toàn điện từ:</strong> Thiết bị MRI cần kiểm soát ba nguồn nguy cơ: (1) từ trường tĩnh rất mạnh gây hiệu ứng đạn đạo với vật sắt từ và chóng mặt; (2) trường RF gây nóng mô - theo dõi qua SAR (giới hạn toàn thân $\approx 4\ \text{W/kg}$ trong 6 phút); (3) gradient từ trường biến thiên nhanh gây kích thích thần kinh ngoại vi và tiếng ồn lớn. Tiêu chuẩn ICNIRP đưa ra ngưỡng phơi nhiễm cho dân số và nhân viên y tế.</p>
+            <p><strong>Ý nghĩa:</strong> Sóng điện từ là nền tảng của chẩn đoán hình ảnh, xạ trị, tiệt khuẩn và nhiều kỹ thuật phân tích dược chất. Nắm vững quan hệ $\lambda - f - E$ giúp chọn đúng vùng phổ cho mục đích chẩn đoán hay điều trị, đồng thời nhận diện nguy cơ ion hoá và nguy cơ nhiệt để áp dụng nguyên tắc ALARA.</p>
+
+            <h4>11. Bảng tổng hợp đại lượng và đơn vị</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Đại lượng</th><th>Ký hiệu</th><th>Đơn vị SI</th><th>Ghi chú</th></tr></thead><tbody>
+              <tr><td>Điện tích</td><td>$q$</td><td>Coulomb (C)</td><td>$e = 1,6 \times 10^{-19}\ \text{C}$</td></tr>
+              <tr><td>Cường độ điện trường</td><td>$E$</td><td>V/m</td><td>Màng tế bào $\sim 10^7\ \text{V/m}$</td></tr>
+              <tr><td>Điện thế / hiệu điện thế</td><td>$V$, $U$</td><td>Volt (V)</td><td>Điện thế nghỉ $\approx -70\ \text{mV}$</td></tr>
+              <tr><td>Điện dung</td><td>$C$</td><td>Farad (F)</td><td>Màng tế bào $\approx 1\ \mu\text{F/cm}^2$</td></tr>
+              <tr><td>Cường độ dòng điện</td><td>$I$</td><td>Ampere (A)</td><td>Dòng sinh lý $\mu\text{A} - \text{mA}$</td></tr>
+              <tr><td>Điện trở / điện dẫn</td><td>$R$, $G$</td><td>$\Omega$, S</td><td>$G = 1/R$</td></tr>
+              <tr><td>Cảm ứng từ</td><td>$B$</td><td>Tesla (T)</td><td>$1\ \text{T} = 10^4\ \text{G}$; MRI $1,5 - 3\ \text{T}$</td></tr>
+              <tr><td>Từ thông</td><td>$\Phi$</td><td>Weber (Wb)</td><td>$\Phi = BS\cos\theta$</td></tr>
+              <tr><td>Độ tự cảm</td><td>$L$</td><td>Henry (H)</td><td>$W = \frac{1}{2}LI^2$</td></tr>
+              <tr><td>Năng lượng photon</td><td>$E$</td><td>Joule (J) / eV</td><td>$E = hf$</td></tr>
+            </tbody></table></div>
+            <div class="callout"><div class="callout-title">Cặp dễ nhầm</div>Điện trường ($E$, V/m) khác điện thế ($V$, V); điện thế khác dòng điện; cảm ứng từ $B$ (T) khác cường độ từ trường $H$ (A/m); từ thông ($\Phi$, Wb) khác cảm ứng từ; từ trường tĩnh không gây cảm ứng điện nhưng từ trường biến thiên thì có; dòng xoay chiều 50/60 Hz nguy hiểm hơn dòng một chiều cùng cường độ vì gần tần số tim.</div>
+            <h4>Ý nghĩa và tác dụng tổng kết</h4>
+            <p>Chương Điện và Từ trong Y Dược học khép kín mạch kiến thức vật lý của cơ thể sống: từ điện trường màng, dòng ion qua kênh, mạch RC tương đương, đến từ trường, cảm ứng điện từ và sóng điện từ. Về mặt sinh lý, các nguyên lý này giải thích điện thế nghỉ - hoạt động, dẫn truyền thần kinh và co cơ; về mặt chẩn đoán, chúng là cơ sở của ECG, EEG, MRI, đo lưu lượng máu điện từ; về mặt điều trị, chúng lý giải máy tạo nhịp, máy khử rung, TENS, iontophoresis, đốt điện và nhiệt trị từ; về mặt bào chế, chúng định hướng thiết kế hạt nano từ, hệ dẫn thuốc hướng đích và các kỹ thuật phân tích điện hoá - quang phổ. Cuối cùng, hiểu rõ ngưỡng dòng nguy hiểm, microshock và tương tác từ trường - vật liệu là điều kiện bắt buộc để bảo đảm an toàn cho bệnh nhân và nhân viên y tế.</p>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-ld-6">
+          <div class="doc-header" onclick="toggleDoc('doc-ld-6')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">7</span>
+              <span class="doc-title">Từ khóa thường gặp môn Lý - Dược</span>
+              <span class="doc-tag">Bảng tra nhanh</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <p>Bảng giải nghĩa nhanh các thuật ngữ vật lý và vật lý sinh học thường gặp trong y dược.</p>
+            <h4>1. Nhiệt động học và chất lưu</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Hệ mở / hệ kín / hệ cô lập</td><td>Lần lượt trao đổi cả vật chất và năng lượng / chỉ năng lượng / không trao đổi với môi trường.</td></tr>
+              <tr><td>Trạng thái dừng (steady state)</td><td>Các đại lượng vĩ mô gần ổn định theo thời gian dù vật chất và năng lượng vẫn luân chuyển.</td></tr>
+              <tr><td>Nhiệt (Q), công (W)</td><td>Các hình thức truyền năng lượng qua biên hệ; quy ước dấu phụ thuộc quy ước của giáo trình.</td></tr>
+              <tr><td>Entropy (S)</td><td>Đại lượng trạng thái liên quan số cách phân bố vi mô và chiều tự diễn biến của quá trình.</td></tr>
+              <tr><td>Áp suất (P)</td><td>Lực tác dụng vuông góc trên một đơn vị diện tích; chênh áp có thể tạo dòng chảy.</td></tr>
+              <tr><td>Lưu lượng (Q)</td><td>Thể tích chất lưu đi qua tiết diện trong một đơn vị thời gian.</td></tr>
+              <tr><td>Sức cản (R)</td><td>Độ cản trở dòng chảy; trong mô hình tuần hoàn tuyến tính, $Q=\Delta P/R$.</td></tr>
+              <tr><td>Độ nhớt ($\eta$)</td><td>Mức ma sát nội tại của chất lưu; tăng độ nhớt thường làm tăng sức cản dòng chảy.</td></tr>
+              <tr><td>Định luật Poiseuille</td><td>Dòng chảy tầng trong ống trụ lý tưởng tỉ lệ với $r^4$ và chênh áp, nghịch với độ nhớt và chiều dài ống.</td></tr>
+              <tr><td>Số Reynolds</td><td>Đại lượng không thứ nguyên giúp ước lượng xu hướng dòng tầng hay dòng rối; ngưỡng phụ thuộc hình học và điều kiện.</td></tr>
+              <tr><td>Dòng tầng / dòng rối</td><td>Các lớp chất lưu trượt tương đối trật tự / chuyển động hỗn loạn với trộn mạnh hơn.</td></tr>
+            </tbody></table></div>
+            <h4>2. Điện học và tín hiệu sinh học</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Điện tích (q)</td><td>Đại lượng đặc trưng tương tác điện; điện tích cùng dấu đẩy, trái dấu hút.</td></tr>
+              <tr><td>Điện thế (V)</td><td>Năng lượng điện thế trên một đơn vị điện tích; hiệu điện thế có thể tạo dòng điện.</td></tr>
+              <tr><td>Cường độ dòng điện (I)</td><td>Lượng điện tích đi qua tiết diện trong một đơn vị thời gian.</td></tr>
+              <tr><td>Điện trở (R)</td><td>Mức cản dòng điện; trong mạch thuần trở, định luật Ohm là $V=IR$.</td></tr>
+              <tr><td>Điện dung (C)</td><td>Khả năng tích trữ điện tích trên mỗi đơn vị hiệu điện thế; màng tế bào có tính chất điện dung.</td></tr>
+              <tr><td>Điện thế màng</td><td>Hiệu điện thế giữa hai phía màng, do gradient ion và tính thấm chọn lọc tạo nên.</td></tr>
+              <tr><td>Điện thế Nernst</td><td>Điện thế cân bằng của một ion khi lực điện cân bằng gradient hóa học của ion đó.</td></tr>
+              <tr><td>ECG / EEG</td><td>Điện tâm đồ ghi hoạt động điện của tim / điện não đồ ghi hoạt động điện của não bằng điện cực bề mặt.</td></tr>
+              <tr><td>Điện sinh học (Bioelectricity)</td><td>Hiện tượng điện do tế bào, mô sống tự phát sinh nhờ gradient ion và tính thấm chọn lọc của màng; khác với dòng điện ngoại lai dùng trong điều trị.</td></tr>
+              <tr><td>Dẫn truyền nhảy cóc (Saltatory conduction)</td><td>Lan truyền điện thế hoạt động theo từng bước nhảy giữa các eo Ranvier trên sợi có myelin; nhanh và tiết kiệm năng lượng hơn dẫn truyền liên tục.</td></tr>
+              <tr><td>Trở kháng sinh học (Bioimpedance)</td><td>Tổng trở của mô sống gồm phần thuần trở và phần kháng của màng/tế bào; đo ở nhiều tần số để ước lượng thành phần cơ thể, phù và hoạt động giao cảm.</td></tr>
+            </tbody></table></div>
+            <h4>3. Quang học, bức xạ và đo lường</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Bước sóng ($\lambda$) / tần số ($f$)</td><td>Khoảng cách giữa hai điểm cùng pha / số dao động mỗi giây; trong chân không $c=\lambda f$.</td></tr>
+              <tr><td>Photon</td><td>Lượng tử của bức xạ điện từ; năng lượng $E=hf$.</td></tr>
+              <tr><td>Độ hấp thụ quang (A)</td><td>Thước đo suy giảm cường độ ánh sáng khi qua mẫu; với điều kiện phù hợp tuân theo Beer–Lambert.</td></tr>
+              <tr><td>Định luật Beer–Lambert</td><td>$A=\varepsilon l c$ trong điều kiện dung dịch loãng, ánh sáng đơn sắc và hệ đo phù hợp.</td></tr>
+              <tr><td>Bức xạ ion hóa</td><td>Bức xạ đủ năng lượng để ion hóa nguyên tử/phân tử; cần nguyên tắc bảo vệ thời gian, khoảng cách và che chắn.</td></tr>
+              <tr><td>Siêu âm</td><td>Sóng âm có tần số cao hơn 20 kHz; dùng trong chẩn đoán hình ảnh, tán sỏi, điều trị nhiệt đông và bào chế nano.</td></tr>
+              <tr><td>Trở kháng âm (Z)</td><td>Mức cản trở truyền sóng âm của môi trường ($Z=\rho v$); chênh lệch trở kháng quyết định mức phản xạ tại mặt phân cách.</td></tr>
+              <tr><td>Hiệu ứng áp điện</td><td>Hiện tượng biến đổi thuận nghịch giữa năng lượng cơ học và năng lượng điện trong tinh thể áp điện đầu dò.</td></tr>
+              <tr><td>Hiệu ứng Doppler</td><td>Sự thay đổi tần số sóng phản xạ khi có chuyển động tương đối giữa nguồn phát và vật phản xạ (hồng cầu); ứng dụng đo vận tốc dòng máu.</td></tr>
+              <tr><td>Xâm thực sóng âm (Cavitation)</td><td>Sự hình thành và sụp vỡ mãnh liệt của các vi bọt khí dưới siêu âm năng lượng cao; ứng dụng trong chiết xuất dược liệu và phân tán nano.</td></tr>
+              <tr><td>Độ chính xác / độ đúng</td><td>Độ lặp lại gần nhau giữa phép đo / mức gần giá trị thật; hai khái niệm không đồng nhất.</td></tr>
+            </tbody></table></div>
+            <div class="callout"><div class="callout-title">Cặp dễ nhầm</div>Nhiệt độ không đồng nghĩa nhiệt lượng; điện thế không đồng nghĩa dòng điện; lưu lượng không đồng nghĩa vận tốc; độ đúng không đồng nghĩa độ lặp lại.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle individual document
+    function toggleDoc(docId) {
+      const card = document.getElementById(docId);
+      if (card) {
+        card.classList.toggle('active');
+      }
+    }
+
+    // Toggle entire subject
+    function toggleSubject(subjectId) {
+      const body = document.getElementById('body-' + subjectId);
+      const icon = document.getElementById('icon-' + subjectId);
+      if (body) {
+        const isCollapsed = body.classList.toggle('collapsed');
+        if (icon) {
+          icon.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // Toggle all subjects
+    function toggleAllSubjects(expand) {
+      document.querySelectorAll('.subject-body').forEach(body => {
+        if (expand) {
+          body.classList.remove('collapsed');
+        } else {
+          body.classList.add('collapsed');
+        }
+      });
+      document.querySelectorAll('[id^="icon-subject-"]').forEach(icon => {
+        icon.style.transform = expand ? 'rotate(0deg)' : 'rotate(-90deg)';
+      });
+    }
+
+    // Toggle all documents
+    function toggleAllDocs(expand) {
+      document.querySelectorAll('.doc-card').forEach(card => {
+        if (expand) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    function initKeywordAnchors() {
+      const glossary = document.querySelector('#doc-ld-6 .doc-body') || document.querySelector('#doc-ld-5 .doc-body');
+      if (!glossary) return;
+      const rows = [...glossary.querySelectorAll('tbody tr')];
+      const entries = rows.map(row => {
+        const label = row.cells[0]?.textContent.trim();
+        if (!label) return null;
+        const slug = label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        row.id = `kw-${slug}`;
+        return { label, id: row.id, aliases: [...label.split(/\s*\/\s*/), ...(label.match(/\(([^)]+)\)/g) || []).map(alias => alias.slice(1, -1))] };
+      }).filter(Boolean).filter(entry => entry.label.length >= 3);
+      const terms = entries.flatMap(entry => entry.aliases.map(alias => ({ ...entry, alias }))).filter(entry => entry.alias.length >= 3);
+      const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const pattern = new RegExp(`(^|[^\\p{L}\\p{N}])(${terms.map(({alias}) => escapeRegex(alias)).sort((a,b) => b.length-a.length).join('|')})(?=$|[^\\p{L}\\p{N}])`, 'giu');
+      document.querySelectorAll('.doc-card:not(#doc-ld-6):not(#doc-ld-5) .doc-body').forEach(body => {
+        const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            if (!node.nodeValue.trim() || node.parentElement.closest('a,script,style,.formula-box,.MathJax')) return NodeFilter.FILTER_REJECT;
+            return NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          pattern.lastIndex = 0;
+          if (!pattern.test(node.nodeValue)) return;
+          pattern.lastIndex = 0;
+          const fragment = document.createDocumentFragment();
+          let cursor = 0;
+          for (const match of node.nodeValue.matchAll(pattern)) {
+            const start = match.index + match[1].length;
+            fragment.append(node.nodeValue.slice(cursor, start));
+            const label = match[2];
+            const entry = terms.find(item => item.alias.toLocaleLowerCase() === label.toLocaleLowerCase());
+            if (entry) {
+              const link = document.createElement('a');
+              link.href = `#${entry.id}`;
+              link.textContent = label;
+              link.title = `Xem định nghĩa: ${entry.label}`;
+              fragment.append(link);
+            } else fragment.append(label);
+            cursor = start + label.length;
+          }
+          fragment.append(node.nodeValue.slice(cursor));
+          node.replaceWith(fragment);
+        });
+      });
+    }
+
+    // Auto-expand on anchor link navigate
+    function handleHashNav() {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          const docCard = target.classList.contains('doc-card') ? target : target.closest('.doc-card');
+          if (docCard) {
+            docCard.classList.add('active');
+            const parentBody = docCard.closest('.subject-body');
+            if (parentBody) {
+              parentBody.classList.remove('collapsed');
+              const parentCard = docCard.closest('.subject-card');
+              if (parentCard) {
+                const icon = parentCard.querySelector('[id^="icon-subject-"]');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+              }
+            }
+          } else if (target.classList.contains('subject-card')) {
+            const body = target.querySelector('.subject-body');
+            const icon = target.querySelector('[id^="icon-subject-"]');
+            if (body) body.classList.remove('collapsed');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+          }
+          const top = target.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.4;
+          window.scrollTo({ top, behavior: 'smooth' });
+          if (target.matches('tr[id^="kw-"]')) {
+            target.animate([{ backgroundColor: '#fef08a' }, { backgroundColor: 'transparent' }], { duration: 2500, easing: 'ease-out' });
+          }
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => { initKeywordAnchors(); handleHashNav(); });
+    window.addEventListener('hashchange', handleHashNav);
+  </script>
+  <script src="book-view.js"></script>
+</body>
+</html>

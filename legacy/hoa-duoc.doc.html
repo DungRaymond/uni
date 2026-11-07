@@ -1,0 +1,2499 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📑 Hóa Vô cơ - Dược | Kho Tài Liệu & Giáo Trình</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- MathJax for rendering math formulas -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <link rel="stylesheet" href="book-view.css">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+      --tag-bg: #f1f5f9;
+      --tag-text: #334155;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 28px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 80vw;
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 92vw;
+        max-width: 92vw;
+      }
+    }
+
+    header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Subject Section Cards */
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .subject-header {
+      padding: 16px 22px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .subject-header:hover {
+      filter: brightness(0.98);
+    }
+
+    .subject-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subject-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .subject-body {
+      padding: 20px 22px;
+      display: block;
+    }
+
+    .subject-body.collapsed {
+      display: none;
+    }
+
+    /* Subject Theme 1: Lý - Dược */
+    #subject-ly-duoc {
+      border-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-header {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-bottom-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-title {
+      color: #0369a1;
+    }
+    #subject-ly-duoc .subject-badge {
+      background: #bae6fd;
+      color: #0369a1;
+    }
+    #subject-ly-duoc .doc-card.active {
+      border-left: 4px solid #0284c7;
+    }
+    #subject-ly-duoc .doc-num {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    }
+    #subject-ly-duoc .doc-body h4 {
+      border-left-color: #0284c7;
+    }
+
+    /* Subject Theme 2: Modul Y - Dược */
+    #subject-modul-y-duoc {
+      border-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-header {
+      background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+      border-bottom-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-title {
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .subject-badge {
+      background: #ddd6fe;
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .doc-card.active {
+      border-left: 4px solid #8b5cf6;
+    }
+    #subject-modul-y-duoc .doc-num {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    }
+    #subject-modul-y-duoc .doc-body h4 {
+      border-left-color: #8b5cf6;
+    }
+
+    /* Subject Theme 3: Hóa Vô cơ - Dược */
+    #subject-hoa-vo-co-duoc {
+      border-color: #a7f3d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-header {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-bottom-color: #a7f3d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-title {
+      color: #047857;
+    }
+    #subject-hoa-vo-co-duoc .subject-badge {
+      background: #a7f3d0;
+      color: #047857;
+    }
+    #subject-hoa-vo-co-duoc .doc-card.active {
+      border-left: 4px solid #059669;
+    }
+    #subject-hoa-vo-co-duoc .doc-num {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    #subject-hoa-vo-co-duoc .doc-body h4 {
+      border-left-color: #059669;
+    }
+
+    /* Document Item (Accordion Card) */
+    .doc-card {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+
+    .doc-card:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .doc-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .doc-header {
+      padding: 14px 20px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s ease;
+    }
+
+    .doc-card.active .doc-header {
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .doc-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .doc-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    }
+
+    .doc-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #0f172a;
+    }
+
+    .doc-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 600;
+      margin-left: 8px;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .icon-chevron {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .doc-card.active .icon-chevron {
+      transform: rotate(180deg);
+    }
+
+    .doc-body {
+      display: none;
+      padding: 22px 24px;
+      background: #ffffff;
+      font-size: 0.96rem;
+    }
+
+    .doc-card.active .doc-body {
+      display: block;
+    }
+
+    /* Content Typography */
+    .doc-body h4 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin: 22px 0 12px 0;
+      color: #0f172a;
+      border-left: 4px solid var(--primary);
+      padding: 6px 12px;
+      background: #f8fafc;
+      border-radius: 0 6px 6px 0;
+      display: block;
+    }
+
+    .doc-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .doc-body p {
+      margin-bottom: 12px;
+    }
+
+    .doc-body ul, .doc-body ol {
+      margin-left: 22px;
+      margin-bottom: 16px;
+    }
+
+    .doc-body li {
+      margin-bottom: 7px;
+    }
+
+    /* Example / worked-example box */
+    .example-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .example-title {
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Color-coded Callout Boxes */
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #15803d;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Formula Box with Modern Gradient & Mono Accents */
+    .formula-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #0284c7;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 14px 0;
+      font-size: 1.02rem;
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Responsive Data Tables with Clean UI */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+
+    .data-table th, .data-table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+
+    .data-table th {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+
+    .data-table tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .data-table tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Inline code & badges */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>⚗️ Môn: Hóa Vô cơ - Dược (Inorganic & Coordination Chemistry)</h1>
+      <p>Liên kết hóa học, cấu trúc không gian, phối trí và đồng phân phức chất</p>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="toolbar">
+      <a href="documents.html" class="btn">⬅️ Danh Sách Môn Học (Tài Liệu)</a>
+      <a href="homeworked.html" class="btn">📚 Sang Bài Tập Về Nhà</a>
+      <span style="border-right: 1px solid var(--border-color); margin: 0 4px;"></span>
+      <button class="btn btn-primary" onclick="toggleAllDocs(true)">📖 Mở rộng tất cả chuyên đề</button>
+      <button class="btn" onclick="toggleAllDocs(false)">📕 Thu gọn tất cả chuyên đề</button>
+    </div>
+
+    <!-- SUBJECT 3: Hóa Vô cơ - Dược -->
+    <div class="subject-card" id="subject-hoa-vo-co-duoc">
+      <div class="subject-header" onclick="toggleSubject('subject-hoa-vo-co-duoc')">
+        <div class="subject-title">
+          <span>🧪 Môn: Hóa Vô cơ - Dược</span>
+          <span class="subject-badge">9 Chuyên đề</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); toggleSubject('subject-hoa-vo-co-duoc');">
+            Đóng / Mở môn
+          </button>
+          <span class="icon-chevron" id="icon-subject-hoa-vo-co-duoc">▼</span>
+        </div>
+      </div>
+
+      <div class="subject-body" id="body-subject-hoa-vo-co-duoc">
+        
+        <!-- DOC 3.1 -->
+        <div class="doc-card active" id="doc-hvc-1">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-1')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">1</span>
+              <span class="doc-title">Chuyên đề 1: Đại cương Liên kết Hóa học & Thuyết Lewis - Quy tắc Bát tử (Octet)</span>
+              <span class="doc-tag">Cơ sở cấu tạo chất</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Các đại lượng đặc trưng của liên kết hóa học & phân tử</h4>
+            <ul>
+              <li><strong>Năng lượng liên kết ($E_{lk}$):</strong> Năng lượng cần cung cấp để bẻ gãy 1 mol liên kết ở trạng thái khí thành các nguyên tử cô lập ($kJ/mol$). Bậc liên kết càng lớn thì năng lượng liên kết càng cao:
+                <div class="formula-box">$$E_{lk}(C \equiv C) > E_{lk}(C = C) > E_{lk}(C - C) \quad (839 > 614 > 348 \text{ kJ/mol})$$</div>
+              </li>
+              <li><strong>Độ dài liên kết ($d_{lk}$ hay $r_{lk}$):</strong> Khoảng cách cân bằng giữa hai hạt nhân nguyên tử tham gia liên kết ($\text{Å}$ hoặc $pm$). Bậc liên kết càng cao thì độ dài liên kết càng ngắn:
+                <div class="formula-box">$$r(C - C) \approx 1,54\text{ Å} \ > \ r(C = C) \approx 1,34\text{ Å} \ > \ r(C \equiv C) \approx 1,20\text{ Å}$$</div>
+              </li>
+              <li><strong>Góc liên kết ($\theta$):</strong> Góc tạo bởi hai trục liên kết xuất phát từ cùng một nguyên tử trung tâm, quyết định hình học không gian phân tử.</li>
+              <li><strong>Độ phân cực liên kết & Momen lưỡng cực ($\mu$):</strong>
+                <div class="formula-box">$$\vec{\mu} = q \cdot \vec{d} \quad (\text{Đơn vị: Debye, } 1\text{ D} = 3,336 \times 10^{-30} \text{ C}\cdot\text{m})$$</div>
+                <ul>
+                  <li><strong>Theo hiệu độ âm điện ($\Delta\chi$ Pauling):</strong>
+                    <ul>
+                      <li>$\Delta\chi < 0,4$: Liên kết cộng hóa trị không cực (ví dụ: $H_2, Cl_2, C-H$).</li>
+                      <li>$0,4 \le \Delta\chi < 1,7$: Liên kết cộng hóa trị có cực (ví dụ: $H-Cl, C-O$).</li>
+                      <li>$\Delta\chi \ge 1,7$: Liên kết ion (bản chất hút tĩnh điện đa hướng không bão hòa, ví dụ: $NaCl, KBr$).</li>
+                    </ul>
+                  </li>
+                  <li><strong>Momen lưỡng cực toàn phân tử ($\vec{\mu}_{pt}$):</strong> Là tổng vector của các momen liên kết $\vec{\mu} = \sum \vec{\mu}_i$. Một phân tử chứa liên kết phân cực mạnh nhưng có cấu trúc đối xứng hoàn hảo thì $\mu_{pt} = 0$ (phân tử không cực, ví dụ: $CO_2, CCl_4, BF_3, SF_6$). Phân tử bất đối xứng có $\mu_{pt} > 0$ (phân tử có cực, ví dụ: $H_2O, NH_3, CHCl_3$).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Năng lượng, độ dài và độ phân cực liên kết giúp so sánh độ bền, hình học và tương tác của phân tử; các đặc điểm này ảnh hưởng độ tan, độ ổn định và khả năng thuốc tương tác với môi trường sinh học.</p>
+            <h4>2. Thuyết Lewis & Điện tích hình thức (Formal Charge)</h4>
+            <ul>
+              <li><strong>Quy tắc Bát tử (Octet Rule):</strong> Khi hình thành liên kết, các nguyên tử có xu hướng góp chung, nhường hoặc nhận electron để đạt được cấu hình electron bền vững $ns^2np^6$ (8 electron lớp ngoài cùng) giống khí hiếm (hoặc 2 electron $1s^2$ như He).</li>
+              <li><strong>Công thức tính Điện tích hình thức ($FC$):</strong>
+                <div class="formula-box">$$FC = V - N - \frac{B}{2}$$</div>
+                Trong đó:
+                <ul>
+                  <li>$V$: Số electron hóa trị của nguyên tử tự do (theo nhóm trong bảng tuần hoàn).</li>
+                  <li>$N$: Số electron tự do không liên kết (Lone pairs: $N = 2 \times \text{số cặp e lẻ}$).</li>
+                  <li>$B$: Số electron tham gia liên kết ($B = 2 \times \text{số liên kết xung quanh}$).</li>
+                </ul>
+              </li>
+              <li><strong>Tiêu chuẩn cấu trúc Lewis bền vững:</strong>
+                <ol>
+                  <li>Các nguyên tử tuân theo quy tắc bát tử (nếu có thể).</li>
+                  <li>Tổng đại số điện tích hình thức $FC$ của các nguyên tử bằng đúng điện tích của phân tử/ion: $\sum FC = q_{phân\ tử}$.</li>
+                  <li>Điện tích hình thức càng gần 0 càng tốt. Nếu có điện tích âm, điện tích âm phải ưu tiên nằm trên nguyên tử có độ âm điện lớn hơn.</li>
+                </ol>
+              </li>
+              <li><strong>Hiện tượng cộng hưởng (Resonance):</strong> Khi một phân tử không thể mô tả chính xác chỉ bằng một công thức Lewis duy nhất, cấu trúc thực là sự lai hóa cộng hưởng (hybrid resonance) của nhiều công thức tương đương. Sự giải tỏa electron (delocalization) làm hạ thấp năng lượng hệ và tăng độ bền phân tử (Năng lượng cộng hưởng).
+                <br><em>Ví dụ:</em> Ion $CO_3^{2-}, NO_3^-, SO_4^{2-}$ và phân tử benzen $C_6H_6$. Trong $CO_3^{2-}$, cả 3 liên kết $C-O$ đều có độ dài bằng nhau ($1,28\text{ Å}$), bậc liên kết thực nghiệm là $1\frac{1}{3} \approx 1,33$.
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Cấu trúc Lewis và điện tích hình thức giúp kiểm tra phân bố electron, điện tích và vị trí phản ứng; hỗ trợ suy luận tính acid–base và khả năng tạo liên kết.</p>
+            <h4>3. Các ngoại lệ quan trọng của Quy tắc Bát tử</h4>
+            <div class="callout" style="background:#fffbeb; border-left:4px solid #f59e0b;">
+              <div class="callout-title" style="color:#b45309;">⚠️ 3 trường hợp ngoại lệ kinh điển cần nắm chắc trong đề thi:</div>
+              <ol>
+                <li><strong>Phân tử thiếu electron (Incomplete Octet):</strong> Nguyên tử trung tâm có ít hơn 8 electron hóa trị sau liên kết. Điển hình là Beri ($Be$, 4 electron) và Bo, Nhôm ($B, Al$, 6 electron).
+                  <br><em>Ví dụ:</em> $BeCl_2$ ($Cl-Be-Cl$), $BF_3, AlCl_3$. Do thiếu electron, các chất này đóng vai trò là những <strong>Acid Lewis rất mạnh</strong>, dễ dàng nhận thêm cặp electron tự do từ Base Lewis để đạt bát tử.
+                </li>
+                <li><strong>Phân tử có số electron lẻ (Odd-Electron Molecules / Gốc tự do):</strong> Tổng số electron hóa trị là số lẻ nên không thể ghép đôi hoàn toàn.
+                  <br><em>Ví dụ:</em> $NO$ (11 electron), $NO_2$ (17 electron), $ClO_2$ (19 electron). Các phân tử này có tính thuận từ và hoạt tính hóa học cực cao. Trong Dược học, <strong>Nitric oxide ($NO$)</strong> là chất truyền tin tế bào tối quan trọng, hoạt hóa enzym Guanylyl Cyclase làm giãn cơ trơn mạch máu (hạ huyết áp).
+                </li>
+                <li><strong>Bát tử mở rộng (Expanded Octet / Hợp chất Siêu hóa trị - Hypervalent):</strong> Các nguyên tố từ chu kỳ 3 trở đi ($P, S, Cl, Br, I, Xe$) do có bán kính nguyên tử đủ lớn và có <strong>phân lớp $d$ trống</strong> ($3d, 4d$) có mức năng lượng gần kề tham gia liên kết, nên có thể chứa 10, 12 hoặc 14 electron lớp ngoài cùng.
+                  <br><em>Ví dụ:</em> $PCl_5$ (10 electron quanh P), $SF_6$ (12 electron quanh S), $H_2SO_4$ (12 electron quanh S khi viết 2 liên kết đôi $S=O$ để triệt tiêu điện tích hình thức), $XeF_4, IF_7$.
+                </li>
+              </ol>
+            </div>
+            <p><strong>Ý nghĩa:</strong> Nhận biết ngoại lệ bát tử tránh áp đặt quy tắc lên gốc tự do, acid Lewis thiếu electron hoặc hợp chất siêu hóa trị. NO và CO minh họa liên hệ giữa cấu hình electron với truyền tín hiệu sinh học và độc tính.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Cấu trúc Lewis, điện tích hình thức và cộng hưởng giúp dự đoán cách phân tử liên kết, độ bền tương đối và vị trí có thể tham gia phản ứng. Độ phân cực ảnh hưởng tương tác với nước, màng sinh học và đích thuốc; ngoại lệ bát tử cùng NO minh họa vì sao cấu tạo electron liên quan trực tiếp tới tính phản ứng và tác dụng sinh học.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Tính điện tích hình thức cho $CO_2$ và $NO_3^-$</div>
+              <strong>1) $CO_2$ ($O=C=O$):</strong> C có $V=4, N=0, B=8 \Rightarrow FC = 4 - 0 - 4 = 0$.<br>
+              Mỗi O có $V=6, N=4, B=4 \Rightarrow FC = 6 - 4 - 2 = 0$. Tổng $FC = 0$ → đúng điện tích phân tử trung hòa.<br>
+              <strong>2) $NO_3^-$ (1 liên kết đôi + 2 liên kết đơn):</strong> N có $FC = 5 - 0 - 4 = +1$; O(đôi) có $FC = 0$; mỗi O(đơn) có $FC = 6 - 6 - 1 = -1$.<br>
+              Tổng $FC = (+1) + 0 + (-1) + (-1) = -1$ → khớp điện tích ion. Điện tích âm nằm trên O (nguyên tử có độ âm điện lớn hơn) nên cấu trúc bền.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Ba ngoại lệ bát tử trong thực tế</div>
+              <strong>Thiếu electron:</strong> $BF_3$ chỉ có 6 e quanh B → acid Lewis mạnh, dễ nhận cặp e tự do của $NH_3$ tạo $F_3B-NH_3$.<br>
+              <strong>Bát tử mở rộng:</strong> $PCl_5$ (10 e quanh P), $SF_6$ (12 e quanh S) nhờ orbital $d$ trống của chu kỳ 3.<br>
+              <strong>Số electron lẻ:</strong> $NO$ có 11 e hóa trị → gốc tự do, thuận từ, hoạt tính cao.<br>
+              Trong cơ thể, $NO$ khuếch tán vào cơ trơn mạch máu, hoạt hóa guanylyl cyclase → giãn mạch, hạ huyết áp.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              Quy trình 4 bước viết Lewis: <strong>(1)</strong> tính tổng e hóa trị (trừ đi điện tích dương, cộng vào điện tích âm); <strong>(2)</strong> nối các nguyên tử bằng liên kết đơn rồi rải e tự do cho nguyên tử âm điện nhất (trừ H); <strong>(3)</strong> nếu nguyên tử trung tâm chưa đủ 8 e thì chuyển cặp e thành liên kết bội; <strong>(4)</strong> tính $FC$ và chọn cấu trúc có $|FC|$ nhỏ nhất, tổng $FC$ đúng bằng điện tích.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 3.2 -->
+        <div class="doc-card" id="doc-hvc-2">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-2')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">2</span>
+              <span class="doc-title">Chuyên đề 2: Thuyết Đẩy Cặp Electron Vỏ Hóa Trị (VSEPR) & Cấu trúc Không gian Phân tử</span>
+              <span class="doc-tag">Hình học phân tử</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Nguyên lý cơ bản của thuyết VSEPR (Gillespie - Nyholm)</h4>
+            <ul>
+              <li>Các cặp electron ở lớp vỏ hóa trị của nguyên tử trung tâm tích điện âm và đẩy nhau. Do đó, chúng sẽ tự sắp xếp trong không gian sao cho <strong>lực đẩy tĩnh điện là cực tiểu</strong> (khoảng cách giữa các cặp e là cực đại).</li>
+              <li><strong>Thứ tự độ lớn lực đẩy giữa các cặp electron:</strong>
+                <div class="formula-box">$$\text{LP - LP} \ > \ \text{LP - BP} \ > \ \text{BP - BP}$$</div>
+                <em>(Trong đó: LP = Lone Pair - Cặp electron tự do; BP = Bonding Pair - Cặp electron liên kết).</em>
+                <br>Nguyên nhân: Cặp electron liên kết (BP) bị hút giữ bởi hai hạt nhân nguyên tử nên bị kéo dãn và hẹp lại; trong khi cặp electron tự do (LP) chỉ chịu lực hút của một hạt nhân nguyên tử trung tâm nên đám mây electron phình to hơn và chiếm thể tích không gian lớn hơn, đẩy các liên kết khác mạnh hơn.
+              </li>
+              <li>Liên kết bội (liên kết đôi, ba) có mật độ electron lớn hơn liên kết đơn nên lực đẩy lớn hơn liên kết đơn, tuy nhiên khi xác định số phối trí lập thể ($SN$), liên kết bội chỉ tính là một vùng liên kết.</li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Lực đẩy giữa các miền electron giải thích hình dạng phân tử và ảnh hưởng của cặp electron tự do tới góc liên kết; là cơ sở dự đoán tính phân cực và cách phân tử tiếp xúc với đích thuốc.</p>
+            <h4>2. Phương pháp xác định công thức VSEPR & Số lập thể ($SN$)</h4>
+            <p>Công thức tổng quát của phân tử: <strong>$AX_mE_n$</strong></p>
+            <ul>
+              <li>$A$: Nguyên tử trung tâm.</li>
+              <li>$X$: Phối tử bao quanh ($m$ là số phối tử tạo liên kết $\sigma$).</li>
+              <li>$E$: Cặp electron tự do trên nguyên tử trung tâm $A$ ($n$ là số cặp e tự do).</li>
+              <li><strong>Số phối trí lập thể (Steric Number - $SN$):</strong>
+                <div class="formula-box">$$SN = m + n = \frac{V + M - q}{2}$$</div>
+                Với:
+                <ul>
+                  <li>$V$: Số electron hóa trị của nguyên tử trung tâm $A$.</li>
+                  <li>$M$: Số nguyên tử phối tử đơn hóa trị ($H, F, Cl, Br, I$); các phối tử hai hóa trị như $O, S$ tính $M = 0$.</li>
+                  <li>$q$: Điện tích đại số của ion (dương thì trừ, âm thì cộng).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Viết $AX_mE_n$ và tính số lập thể tạo quy trình nhất quán để dự đoán hình học, tránh phải ghi nhớ rời rạc từng cấu trúc.</p>
+            <h4>3. Bảng tổng hợp toàn diện hình học phân tử theo VSEPR</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>SN</th>
+                    <th>Công thức</th>
+                    <th>Cặp LP ($n$)</th>
+                    <th>Hình học cặp e (Electron Geometry)</th>
+                    <th>Hình học phân tử (Molecular Shape)</th>
+                    <th>Góc liên kết lý thuyết / thực tế</th>
+                    <th>Ví dụ điển hình</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>2</strong></td>
+                    <td>$AX_2$</td>
+                    <td>0</td>
+                    <td>Đường thẳng</td>
+                    <td><strong>Thẳng hàng (Linear)</strong></td>
+                    <td>$180^\circ$</td>
+                    <td>$BeCl_2, CO_2, HCN$</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2"><strong>3</strong></td>
+                    <td>$AX_3$</td>
+                    <td>0</td>
+                    <td>Tam giác phẳng</td>
+                    <td><strong>Tam giác phẳng (Trigonal Planar)</strong></td>
+                    <td>$120^\circ$</td>
+                    <td>$BF_3, SO_3, CO_3^{2-}, NO_3^-$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_2E$</td>
+                    <td>1</td>
+                    <td>Tam giác phẳng</td>
+                    <td><strong>Dạng góc / Chữ V (Bent)</strong></td>
+                    <td>$< 120^\circ$ ($SO_2 \approx 119^\circ$)</td>
+                    <td>$SO_2, NO_2^-, O_3$</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3"><strong>4</strong></td>
+                    <td>$AX_4$</td>
+                    <td>0</td>
+                    <td>Tứ diện đều</td>
+                    <td><strong>Tứ diện (Tetrahedral)</strong></td>
+                    <td>$109{,}5^\circ$ ($109^\circ\,28^{\prime}$)</td>
+                    <td>$CH_4, CCl_4, NH_4^+, SO_4^{2-}$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_3E$</td>
+                    <td>1</td>
+                    <td>Tứ diện đều</td>
+                    <td><strong>Tháp chóp tam giác (Trigonal Pyramidal)</strong></td>
+                    <td>$< 109,5^\circ$ ($NH_3 \approx 107,3^\circ$)</td>
+                    <td>$NH_3, PCl_3, H_3O^+$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_2E_2$</td>
+                    <td>2</td>
+                    <td>Tứ diện đều</td>
+                    <td><strong>Chữ V / Dạng góc (Bent)</strong></td>
+                    <td>$\ll 109,5^\circ$ ($H_2O \approx 104,5^\circ$)</td>
+                    <td>$H_2O, H_2S, OF_2$</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="4"><strong>5</strong></td>
+                    <td>$AX_5$</td>
+                    <td>0</td>
+                    <td>Lưỡng chóp tam giác</td>
+                    <td><strong>Lưỡng chóp tam giác (Trigonal Bipyramidal)</strong></td>
+                    <td>$90^\circ, 120^\circ, 180^\circ$</td>
+                    <td>$PCl_5, PF_5, AsF_5$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_4E$</td>
+                    <td>1</td>
+                    <td>Lưỡng chóp tam giác</td>
+                    <td><strong>Cái bập bênh (Seesaw / Điệp hình)</strong></td>
+                    <td>$< 90^\circ, < 120^\circ$ ($SF_4 \approx 87^\circ, 102^\circ$)</td>
+                    <td>$SF_4, TeCl_4$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_3E_2$</td>
+                    <td>2</td>
+                    <td>Lưỡng chóp tam giác</td>
+                    <td><strong>Dạng chữ T (T-shaped)</strong></td>
+                    <td>$< 90^\circ$ ($ClF_3 \approx 87,5^\circ$)</td>
+                    <td>$ClF_3, BrF_3$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_2E_3$</td>
+                    <td>3</td>
+                    <td>Lưỡng chóp tam giác</td>
+                    <td><strong>Thẳng hàng (Linear)</strong></td>
+                    <td>$180^\circ$</td>
+                    <td>$XeF_2, I_3^-, [ICl_2]^-$</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3"><strong>6</strong></td>
+                    <td>$AX_6$</td>
+                    <td>0</td>
+                    <td>Bát diện đều</td>
+                    <td><strong>Bát diện đều (Octahedral)</strong></td>
+                    <td>$90^\circ, 180^\circ$</td>
+                    <td>$SF_6, [SiF_6]^{2-}, [Fe(CN)_6]^{4-}$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_5E$</td>
+                    <td>1</td>
+                    <td>Bát diện đều</td>
+                    <td><strong>Tháp chóp vuông (Square Pyramidal)</strong></td>
+                    <td>$< 90^\circ$ ($BrF_5 \approx 84,8^\circ$)</td>
+                    <td>$BrF_5, IF_5, XeOF_4$</td>
+                  </tr>
+                  <tr>
+                    <td>$AX_4E_2$</td>
+                    <td>2</td>
+                    <td>Bát diện đều</td>
+                    <td><strong>Vuông phẳng (Square Planar)</strong></td>
+                    <td>$90^\circ, 180^\circ$</td>
+                    <td>$XeF_4, [ICl_4]^-, [PtCl_4]^{2-}$</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>Ý nghĩa:</strong> Bảng hình học liên hệ số miền electron với dạng phân tử và góc liên kết; hình học giúp đánh giá triệt tiêu momen lưỡng cực, độ phân cực và một phần tính hòa tan.</p>
+            <h4>4. Quy tắc Bent & Sự lệch góc liên kết thực tế</h4>
+            <ul>
+              <li><strong>Vị trí ưu tiên của Cặp electron tự do trong khung $SN = 5$:</strong>
+                Trong hình lưỡng chóp tam giác, 3 vị trí mặt phẳng xích đạo (equatorial) có góc $120^\circ$, trong khi 2 vị trí trục (axial) có góc $90^\circ$ với các vị trí xích đạo. Do lực đẩy ở góc $90^\circ$ là nguy hiểm nhất, <strong>cặp electron tự do LUÔN LUÔN ưu tiên chiếm vị trí xích đạo</strong> để giảm tương tác $90^\circ$. Vì vậy $AX_4E$ có dạng bập bênh, $AX_3E_2$ có dạng chữ T, và $AX_2E_3$ có cả 3 cặp e tự do ở xích đạo $\rightarrow$ phân tử trở thành dạng thẳng ($180^\circ$).
+              </li>
+              <li><strong>Quy tắc Bent:</strong> Nguyên tử trung tâm có xu hướng hướng các orbital có đặc tính $p$ nhiều hơn về phía các nhóm thế có độ âm điện lớn hơn.
+                <br><em>Hệ quả:</em> Phối tử có độ âm điện càng lớn thì góc liên kết càng hẹp:
+                <div class="formula-box">$$\widehat{H-O-H} \ (104,5^\circ) \ > \ \widehat{F-O-F} \ (103,1^\circ)$$</div>
+                <div class="formula-box">$$\widehat{H-N-H} \ (107,3^\circ) \ > \ \widehat{F-N-F} \ (102,5^\circ)$$</div>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Quy tắc Bent giải thích độ lệch góc liên kết khi nhóm thế khác độ âm điện, giúp đọc cấu trúc thực tế chính xác hơn mô hình hình học lý tưởng.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>VSEPR giúp dự đoán nhanh hình dạng và góc liên kết, từ đó suy ra phân tử có cực hay không, khả năng tương tác và một phần tính chất vật lý. Trong hóa dược, hình học phân tử quyết định cách phối tử hoặc thuốc định hướng khi gắn vào enzyme/thụ thể; sai khác không gian có thể làm thay đổi hoạt tính.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Dự đoán dạng hình học của $CH_4$, $NH_3$, $H_2O$, $SF_6$</div>
+              $CH_4$: $SN = 4 + 0 = 4$, kiểu $AX_4$ → <strong>tứ diện</strong>, góc $109,5^\circ$.<br>
+              $NH_3$: $SN = 3 + 1 = 4$, kiểu $AX_3E$ → <strong>tháp tam giác</strong>, góc $107,3^\circ$.<br>
+              $H_2O$: $SN = 2 + 2 = 4$, kiểu $AX_2E_2$ → <strong>góc (chữ V)</strong>, góc $104,5^\circ$.<br>
+              $SF_6$: $SN = 6 + 0 = 6$, kiểu $AX_6$ → <strong>bát diện</strong>, góc $90^\circ$ và $180^\circ$.<br>
+              Nhận xét: cùng $SN = 4$ nhưng số cặp e tự do tăng (0 → 1 → 2) thì lực đẩy mạnh hơn, góc liên kết giảm dần: $109,5^\circ > 107,3^\circ > 104,5^\circ$.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Khi $SN = 5$: cặp e tự do chọn vị trí nào?</div>
+              $PCl_5$ ($AX_5$) → <strong>lưỡng chóp tam giác</strong>: 3 vị trí xích đạo $120^\circ$, 2 vị trí trục $90^\circ$.<br>
+              $SF_4$ ($AX_4E$) → cặp e tự do chiếm vị trí <strong>xích đạo</strong>, còn lại dạng <strong>bập bênh</strong>, góc $\approx 102^\circ$ (nhỏ hơn $120^\circ$).<br>
+              $ClF_3$ ($AX_3E_2$) → hai cặp e tự do ở xích đạo → dạng <strong>chữ T</strong>.<br>
+              $XeF_2$ ($AX_2E_3$) → ba cặp e tự do chiếm cả 3 vị trí xích đạo → phân tử <strong>thẳng</strong> $180^\circ$.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              Đếm $SN$ = số nguyên tử liên kết + số cặp e tự do trên nguyên tử trung tâm, rồi đọc bảng: $SN = 2$ thẳng; $3$ tam giác phẳng; $4$ tứ diện; $5$ lưỡng chóp tam giác; $6$ bát diện. Mẹo: <strong>"thẳng – phẳng – tứ diện – chóp đôi – bát diện"</strong> ứng với 2–3–4–5–6. Mỗi cặp e tự do "co" góc liên kết khoảng $2$–$2,5^\circ$; với $SN = 5$, cặp e tự do luôn ngồi xích đạo.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 3.3 -->
+        <div class="doc-card" id="doc-hvc-3">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-3')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">3</span>
+              <span class="doc-title">Chuyên đề 3: Thuyết Liên kết Hóa trị (Valence Bond - VB) & Cơ chế Lai hóa Orbital</span>
+              <span class="doc-tag">Thuyết lượng tử phân tử</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Luận điểm cơ bản của Thuyết VB (Heitler - London - Pauling)</h4>
+            <ul>
+              <li>Liên kết cộng hóa trị hình thành khi hai orbital nguyên tử (AO) của hai nguyên tử khác nhau xen phủ lên nhau. Cặp electron dùng chung có spin đối song song ($\uparrow\downarrow$).</li>
+              <li><strong>Nguyên lý xen phủ cực đại (Pauling):</strong> Độ xen phủ của các AO càng lớn thì mật độ xác suất tìm thấy electron ở vùng giữa hai hạt nhân càng cao $\rightarrow$ liên kết càng bền vững.</li>
+              <li><strong>Tính định hướng của liên kết:</strong> Các orbital nguyên tử ($p, d$) có định hướng xác định trong không gian, do đó liên kết cộng hóa trị được hình thành theo hướng mà sự xen phủ là cực đại $\rightarrow$ quyết định cấu trúc không gian của phân tử.</li>
+              <li><strong>Tính bão hòa của liên kết:</strong> Số lượng liên kết cộng hóa trị mà một nguyên tử có thể tạo thành bị giới hạn bởi số orbital hóa trị có electron độc thân hoặc orbital trống có thể tham gia xen phủ.</li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Thuyết VB mô tả liên kết định hướng qua sự xen phủ orbital, giúp hình dung cấu trúc cục bộ và cách nguyên tử liên kết.</p>
+            <h4>2. Phân loại kiểu xen phủ tạo liên kết ($\sigma, \pi, \delta$)</h4>
+            <ul>
+              <li><strong>Liên kết Sigma ($\sigma$):</strong> Sự xen phủ xảy ra dọc theo trục nối hai hạt nhân nguyên tử (xen phủ trục: $s-s, s-p_z, p_z-p_z, d_{z^2}-d_{z^2}$).
+                <ul>
+                  <li>Mật độ electron cực đại nằm ngay trên đường nối hai hạt nhân.</li>
+                  <li>Có tính đối xứng trục xoay (có thể quay tự do quanh trục liên kết đơn mà không phá vỡ liên kết).</li>
+                  <li>Độ xen phủ lớn $\rightarrow$ <strong>Liên kết $\sigma$ rất bền vững</strong>. Mọi liên kết đơn đều là liên kết $\sigma$.</li>
+                </ul>
+              </li>
+              <li><strong>Liên kết Pi ($\pi$):</strong> Sự xen phủ xảy ra ở hai phía của trục nối hai hạt nhân nguyên tử (xen phủ bên: $p_x-p_x, p_y-p_y, p-d$).
+                <ul>
+                  <li>Mặt phẳng chứa trục liên kết là mặt phẳng nút (nơi mật độ electron bằng 0).</li>
+                  <li>Độ xen phủ nhỏ hơn liên kết $\sigma$ $\rightarrow$ <strong>Liên kết $\pi$ kém bền hơn, dễ bị bẻ gãy hơn</strong>.</li>
+                  <li>Không thể quay tự do quanh trục liên kết đôi/ba (cố định đồng phẳng, là nguyên nhân sinh ra đồng phân hình học cis-trans).</li>
+                </ul>
+              </li>
+              <li><strong>Liên kết Delta ($\delta$):</strong> Sự xen phủ 4 thùy của hai orbital $d$ ($d_{xy}-d_{xy}$ hoặc $d_{x^2-y^2}-d_{x^2-y^2}$) trên hai mặt phẳng song song. Xuất hiện trong các hợp chất vô cơ có liên kết kim loại - kim loại bậc 4, ví dụ ion phức $[Re_2Cl_8]^{2-}$ (chứa $1\sigma + 2\pi + 1\delta$).</li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Phân biệt $\sigma$, $\pi$ và $\delta$ giúp giải thích độ bền tương đối, hạn chế quay quanh liên kết bội và khả năng xuất hiện đồng phân hình học.</p>
+            <h4>3. Thuyết Lai hóa Orbital (Orbital Hybridization)</h4>
+            <p>Lai hóa là sự tổ hợp tuyến tính các AO nguyên tử khác loại nhưng có năng lượng xấp xỉ nhau trong cùng một nguyên tử để tạo thành các orbital lai hóa hoàn toàn đồng nhất về hình dạng, kích thước, năng lượng, chỉ khác nhau về hướng trong không gian.</p>
+            <ul>
+              <li><strong>Lai hóa $sp$:</strong> $1s + 1p \rightarrow 2$ AO lai hóa $sp$. Góc liên kết $180^\circ$, cấu trúc thẳng hàng (ví dụ: $BeH_2, BeCl_2, C_2H_2, CO_2$).</li>
+              <li><strong>Lai hóa $sp^2$:</strong> $1s + 2p \rightarrow 3$ AO lai hóa $sp^2$. Góc liên kết $120^\circ$, cấu trúc tam giác phẳng (ví dụ: $BF_3, C_2H_4, SO_3, CO_3^{2-}$).</li>
+              <li><strong>Lai hóa $sp^3$:</strong> $1s + 3p \rightarrow 4$ AO lai hóa $sp^3$. Góc liên kết $109^\circ\,28^{\prime}$, cấu trúc tứ diện (ví dụ: $CH_4, CCl_4, NH_4^+, SO_4^{2-}$).</li>
+              <li><strong>Lai hóa có sự tham gia của phân lớp $d$:</strong>
+                <ul>
+                  <li><strong>Lai hóa $sp^3d$:</strong> $s + p_x + p_y + p_z + d_{z^2} \rightarrow 5$ AO lai hóa hướng về 5 đỉnh của hình lưỡng chóp tam giác (ví dụ: $PCl_5$).</li>
+                  <li><strong>Lai hóa $dsp^2$:</strong> $d_{x^2-y^2} + s + p_x + p_y \rightarrow 4$ AO lai hóa đồng phẳng hướng về 4 đỉnh của hình vuông ($90^\circ$). Cực kỳ quan trọng trong phức chất vuông phẳng của kim loại $d^8$ ($Pt^{2+}, Pd^{2+}, Ni^{2+}$ trường mạnh như $[Ni(CN)_4]^{2-}, cis-[Pt(NH_3)_2Cl_2]$ - thuốc chống ung thư Cisplatin).</li>
+                  <li><strong>Lai hóa $sp^3d^2$ (Bát diện ngoài) vs $d^2sp^3$ (Bát diện trong):</strong> Tạo 6 orbital lai hóa hướng về các đỉnh của hình bát diện ($90^\circ$). Phức spin cao dùng orbital $nd$ ngoài, phức spin thấp dùng orbital $(n-1)d$ trong (ví dụ: $[FeF_6]^{3-}$ là $sp^3d^2$, $[Fe(CN)_6]^{3-}$ là $d^2sp^3$).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Lai hóa là mô hình trực quan liên hệ hướng orbital với hình học phân tử; hữu ích để mô tả cấu trúc, nhưng không phải lời giải đầy đủ cho mọi tính chất phổ và từ.</p>
+            <h4>4. Đánh giá ưu điểm & Hạn chế chí mạng của Thuyết VB</h4>
+            <ul>
+              <li><strong>Ưu điểm:</strong> Trực quan, dễ hiểu, kết nối mạch lạc với cấu trúc Lewis và hóa học lập thể hữu cơ.</li>
+              <li><strong>Những thất bại mà Thuyết VB không thể giải thích:</strong>
+                <ol>
+                  <li><strong>Tính thuận từ của Oxy ($O_2$):</strong> Thuyết VB viết $O_2$ là $:\ddot{O}=\ddot{O}:$ (tất cả electron đều ghép đôi $\rightarrow$ dự đoán $O_2$ nghịch từ). Nhưng thực nghiệm chứng minh oxy lỏng bị nam châm hút mạnh vì có <strong>tính thuận từ</strong> (có 2 electron độc thân).</li>
+                  <li><strong>Không giải thích được màu sắc & quang phổ phức chất kim loại:</strong> Không định lượng được mức độ tách năng lượng orbital $d$.</li>
+                  <li><strong>Không mô tả được liên kết đa tâm thiếu electron:</strong> Ví dụ phân tử Diborane ($B_2H_6$) có liên kết cầu hydro 3 tâm 2 electron ($3c-2e$, liên kết chuối), VB hoàn toàn bất lực.</li>
+                </ol>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nhận biết giới hạn VB giúp chọn MO hoặc mô hình khác khi cần giải thích electron phi định xứ, từ tính hay quang phổ phức chất.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Thuyết VB và lai hóa cung cấp mô hình trực quan để giải thích liên kết định hướng, hình dạng cục bộ và liên kết σ/π. Điều này hỗ trợ hiểu cấu trúc phân tử và đồng phân hình học; đồng thời cần nhận biết giới hạn của mô hình, nhất là với tính từ và quang phổ phức chất, nơi thuyết MO hoặc mô hình khác phù hợp hơn.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Ba kiểu lai hóa: $sp^3$, $sp^2$, $sp$</div>
+              <strong>$CH_4$ ($sp^3$):</strong> C trộn 1 AO $2s$ + 3 AO $2p$ → 4 AO $sp^3$ hướng về 4 đỉnh tứ diện, góc $109,5^\circ$; tạo 4 liên kết σ C–H.<br>
+              <strong>$C_2H_4$ ($sp^2$):</strong> mỗi C trộn 1 AO $s$ + 2 AO $p$ → 3 AO $sp^2$ phẳng, góc $120^\circ$; còn 1 AO $p$ nguyên chất vuông góc mặt phẳng, xen phủ bên tạo liên kết π.<br>
+              <strong>$C_2H_2$ ($sp$):</strong> mỗi C trộn 1 AO $s$ + 1 AO $p$ → 2 AO $sp$ thẳng hàng $180^\circ$; còn 2 AO $p$ vuông góc nhau tạo 2 liên kết π.<br>
+              Kết quả: $CH_4$ tứ diện, $C_2H_4$ phẳng (có đồng phân cis/trans), $C_2H_2$ thẳng.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Vì sao góc $H-O-H$ chỉ $104,5^\circ$?</div>
+              O trong $H_2O$ vẫn lai hóa $sp^3$ (4 vùng mật độ e), nhưng chỉ 2 vùng là liên kết O–H.<br>
+              Hai AO $sp^3$ còn lại bị <strong>cặp e tự do</strong> chiếm; cặp e tự do đẩy mạnh hơn cặp e liên kết → góc liên kết co lại từ $109,5^\circ$ xuống $104,5^\circ$.<br>
+              $NH_3$ chỉ có 1 cặp e tự do nên góc chỉ giảm còn $107,3^\circ$.<br>
+              Hệ quả dược học: phân tử $H_2O$ có momen lưỡng cực lớn, nhờ đó hòa tan tốt muối và các thuốc phân cực.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Số AO lai hóa = số vùng mật độ electron</strong> quanh nguyên tử trung tâm (số nguyên tử liên kết + số cặp e tự do): 4 vùng → $sp^3$ ($109,5^\circ$); 3 vùng → $sp^2$ ($120^\circ$); 2 vùng → $sp$ ($180^\circ$). Mẹo đọc tên: $sp^3$ = "1 + 3", $sp^2$ = "1 + 2", $sp$ = "1 + 1" — số mũ cộng 1 chính là số vùng.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 3.4 -->
+        <div class="doc-card" id="doc-hvc-4">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-4')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">4</span>
+              <span class="doc-title">Chuyên đề 4: Thuyết Orbital Phân tử (Molecular Orbital - MO) & Phân tích Năng lượng LCAO</span>
+              <span class="doc-tag">Thuyết MO hiện đại</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Bản chất Thuyết MO & Phương pháp LCAO</h4>
+            <ul>
+              <li><strong>Quan điểm hạt nhân đa tâm:</strong> Phân tử được xem như một tập hợp thống nhất gồm các hạt nhân nguyên tử và các electron. Electron không thuộc riêng về một liên kết hai nguyên tử cố định mà chuyển động trong trường thế chung của toàn bộ các hạt nhân trên các <strong>Orbital Phân tử (MO)</strong>.</li>
+              <li><strong>Phương pháp LCAO (Linear Combination of Atomic Orbitals):</strong> Hàm sóng MO ($\Psi_{MO}$) được tính gần đúng bằng tổ hợp tuyến tính các hàm sóng orbital nguyên tử ($\phi_A, \phi_B$):
+                <div class="formula-box">$$\Psi = c_A \phi_A + c_B \phi_B \quad (\text{MO liên kết}) \qquad \text{và} \qquad \Psi^* = c_A \phi_A - c_B \phi_B \quad (\text{MO phản liên kết})$$</div>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> LCAO xây dựng orbital phân tử từ orbital nguyên tử, mô tả electron phân bố trên toàn phân tử thay vì gắn cứng với một liên kết đơn lẻ.</p>
+            <h4>2. Ba điều kiện tiên quyết để tổ hợp AO thành MO có hiệu quả</h4>
+            <ol>
+              <li><strong>Điều kiện năng lượng (Năng lượng tương đương):</strong> Các AO tham gia tổ hợp phải có mức năng lượng xấp xỉ nhau ($\Delta E \le 10 - 14\text{ eV}$). Hiệu năng lượng càng nhỏ, tương tác xen phủ càng mạnh.</li>
+              <li><strong>Điều kiện xen phủ (Khoảng cách không gian):</strong> Các AO phải có mật độ đám mây đủ gần nhau để tích phân xen phủ $S_{AB} = \int \phi_A \phi_B d\tau > 0$ có giá trị đáng kể.</li>
+              <li><strong>Điều kiện đối xứng:</strong> Các AO phải có cùng tính đối xứng đối với trục liên kết (quy ước chọn trục $z$ là trục liên kết).
+                <br><em>Ví dụ:</em> Orbital $s$ tổ hợp được với $s$ và $p_z$ (tạo MO $\sigma$), nhưng tích phân xen phủ giữa $s$ với $p_x$ hoặc $p_y$ bằng 0 do phần dương và phần âm triệt tiêu lẫn nhau $\rightarrow$ không tạo liên kết.
+              </li>
+            </ol>
+
+            <p><strong>Ý nghĩa:</strong> Điều kiện năng lượng, xen phủ và đối xứng cho biết AO nào tương tác đáng kể, giúp lập giản đồ MO phù hợp.</p>
+            <h4>3. Phân loại MO, Bậc liên kết & Từ tính</h4>
+            <ul>
+              <li><strong>MO Liên kết ($\sigma, \pi$):</strong> Năng lượng thấp hơn các AO xuất phát, tăng mật độ electron ở khoảng giữa hai hạt nhân, đóng vai trò kéo giữ hai hạt nhân lại với nhau $\rightarrow$ làm bền hệ thống.</li>
+              <li><strong>MO Phản liên kết ($\sigma^*, \pi^*$):</strong> Năng lượng cao hơn các AO xuất phát, có mặt phẳng nút ở giữa hai hạt nhân nơi mật độ electron bằng 0, electron ở MO này làm tăng lực đẩy hạt nhân $\rightarrow$ làm mất bền hệ thống.</li>
+              <li><strong>MO Không liên kết ($n$):</strong> Không tham gia xen phủ tổ hợp, năng lượng giữ nguyên bằng năng lượng của AO ban đầu.</li>
+              <li><strong>Công thức Bậc liên kết (Bond Order - $BO$):</strong>
+                <div class="formula-box">$$BO = \frac{N_b - N_a}{2}$$</div>
+                <em>($N_b$: Tổng số electron trên các MO liên kết; $N_a$: Tổng số electron trên các MO phản liên kết).</em>
+                <ul>
+                  <li>$BO > 0$: Phân tử tồn tại. $BO$ càng lớn, độ dài liên kết càng ngắn, năng lượng liên kết càng cao.</li>
+                  <li>$BO = 0$: Phân tử không thể tồn tại (ví dụ: $He_2$ có 2 e ở $\sigma_{1s}$ và 2 e ở $\sigma^*_{1s} \implies BO = \frac{2-2}{2} = 0$).</li>
+                  <li>$BO$ có thể nhận giá trị bán nguyên ($0,5; 1,5; 2,5$), phản ánh chính xác các ion phân tử như $H_2^+$ ($BO=0,5$), $O_2^+$ ($BO=2,5$), $O_2^-$ ($BO=1,5$).</li>
+                </ul>
+              </li>
+              <li><strong>Từ tính của phân tử:</strong>
+                <ul>
+                  <li><strong>Thuận từ (Paramagnetic):</strong> Phân tử có ít nhất 1 electron độc thân $\rightarrow$ bị hút bởi từ trường ngoài.</li>
+                  <li><strong>Nghịch từ (Diamagnetic):</strong> Toàn bộ các electron trong phân tử đều ghép đôi cặp ($\uparrow\downarrow$) $\rightarrow$ bị đẩy nhẹ bởi từ trường ngoài.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Bậc liên kết ước lượng độ bền; electron độc thân dự đoán tính thuận từ. Hai yếu tố này cho phép đối chiếu mô hình với thực nghiệm.</p>
+            <h4>4. Giản đồ năng lượng MO phân tử đồng hạch chu kỳ 2 ($A_2$)</h4>
+            <ul>
+              <li><strong>Trường hợp 1: Không có sự tương tác $2s - 2p$ (Trật tự chuẩn với $O_2, F_2$):</strong>
+                Do điện tích hạt nhân hiệu dụng $Z_{eff}$ lớn, orbital $2s$ bị giữ chặt, khoảng cách năng lượng $\Delta E(2p - 2s)$ lớn $\rightarrow$ không có sự trộn lẫn orbital:
+                <div class="formula-box">$$\sigma_{2s} < \sigma^*_{2s} < \sigma_{2p_z} < (\pi_{2p_x} = \pi_{2p_y}) < (\pi^*_{2p_x} = \pi^*_{2p_y}) < \sigma^*_{2p_z}$$</div>
+                <div class="callout" style="background:#f0fdf4; border-left:4px solid #22c55e;">
+                  <div class="callout-title" style="color:#15803d;">🏆 Lời giải chấn động của Thuyết MO cho nghịch lý phân tử Oxy ($O_2$):</div>
+                  Cấu hình electron của $O_2$ (12 electron hóa trị):
+                  $$KK \ (\sigma_{2s})^2 (\sigma^*_{2s})^2 (\sigma_{2p_z})^2 (\pi_{2p_x})^2 (\pi_{2p_y})^2 (\pi^*_{2p_x})^1 (\pi^*_{2p_y})^1$$
+                  <ul>
+                    <li>Bậc liên kết: $BO = \frac{8 - 4}{2} = 2$ (Liên kết đôi gồm $1\sigma + 1\pi$).</li>
+                    <li>Theo quy tắc Hund, 2 electron cuối cùng chiếm 2 orbital suy biến $\pi^*_{2p_x}$ và $\pi^*_{2p_y}$ với spin song song cùng hướng ($\uparrow \ \uparrow$).</li>
+                    <li>$\implies$ Phân tử $O_2$ có <strong>2 electron độc thân</strong>, giải thích hoàn hảo <strong>tính thuận từ</strong> thực nghiệm của Oxy lỏng mà Thuyết VB thất bại!</li>
+                  </ul>
+                </div>
+              </li>
+              <li><strong>Trường hợp 2: Có tương tác $2s - 2p$ (Hiện tượng nghịch đảo năng lượng với $B_2, C_2, N_2$):</strong>
+                Với các nguyên tố đầu chu kỳ ($Z \le 7$), khoảng cách năng lượng $\Delta E(2p - 2s)$ nhỏ ($\le 12\text{ eV}$), xuất hiện lực đẩy tĩnh điện lượng tử giữa $\sigma_{2s}$ và $\sigma_{2p_z}$. Kết quả là mức $\sigma_{2p_z}$ bị đẩy vọt lên cao hơn mức $\pi_{2p_x}, \pi_{2p_y}$:
+                <div class="formula-box">$$\sigma_{2s} < \sigma^*_{2s} < (\pi_{2p_x} = \pi_{2p_y}) < \sigma_{2p_z} < (\pi^*_{2p_x} = \pi^*_{2p_y}) < \sigma^*_{2p_z}$$</div>
+                <br><em>Ví dụ với phân tử Nitơ ($N_2$, 10 electron hóa trị):</em>
+                $$KK \ (\sigma_{2s})^2 (\sigma^*_{2s})^2 (\pi_{2p_x})^2 (\pi_{2p_y})^2 (\sigma_{2p_z})^2$$
+                <ul>
+                  <li>Bậc liên kết: $BO = \frac{8 - 2}{2} = 3$ (Liên kết ba gồm $1\sigma + 2\pi$, cực kỳ bền vững với $E_{lk} \approx 945\text{ kJ/mol}$).</li>
+                  <li>Tất cả electron đều ghép đôi $\rightarrow$ $N_2$ là chất <strong>nghịch từ</strong>.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Giản đồ MO giải thích thứ tự mức năng lượng, độ bền liên kết và khác biệt từ tính như O₂ thuận từ so với N₂ nghịch từ.</p>
+            <h4>5. Phân tử dị hạch & Thuyết Vân đạo biên (Frontier Orbitals HOMO - LUMO)</h4>
+            <ul>
+              <li><strong>Phân tử Carbon Monoxide ($CO$):</strong> Độ âm điện $\chi(O) > \chi(C)$ nên các mức AO của Oxi nằm sâu hơn Carbon. Giản đồ MO của $CO$ tương tự $N_2$ (đồng electron) với $BO = 3$.
+                <br><em>Cơ chế độc tính Dược học của $CO$:</em> MO HOMO (Highest Occupied Molecular Orbital) của $CO$ có mật độ electron tập trung cực lớn hướng về phía nguyên tử Carbon. Khi hít phải $CO$, Carbon đóng vai trò chất cho cặp electron ($\sigma$-donor) siêu mạnh vào orbital $d$ trống của $Fe^{2+}$ trong Hemoglobin, đồng thời nhận mật độ electron phản hồi ($\pi$-backbonding) từ $Fe^{2+}$ vào orbital LUMO ($\pi^*$). Liên kết này bền gấp <strong>200 - 250 lần</strong> so với liên kết $Hb-O_2$, làm bất hoạt khả năng vận chuyển oxy của máu, gây tử vong do ngạt mô nội bào.
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> HOMO/LUMO giúp dự đoán khả năng cho–nhận electron. CO gắn mạnh hemoglobin làm giảm vận chuyển oxy, minh họa liên hệ giữa orbital phân tử và độc tính.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Thuyết MO giải thích bậc liên kết, độ bền, tính thuận từ/nghịch từ và sự hấp thụ ánh sáng tốt hơn trong nhiều trường hợp so với mô hình liên kết cục bộ. HOMO/LUMO giúp hình dung khả năng cho–nhận electron trong phản ứng; ví dụ CO gắn mạnh hemoglobin làm cản vận chuyển oxy, một liên hệ quan trọng giữa cấu trúc orbital và độc tính.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Giản đồ MO của $O_2$ (thuận từ) và $N_2$ (nghịch từ)</div>
+              <strong>$O_2$ (12 e hóa trị):</strong> $\sigma_{2s}^2\,\sigma_{2s}^{*2}\,\sigma_{2p_z}^2\,\pi_{2p}^4\,\pi_{2p}^{*2}$ → 8 e liên kết, 4 e phản liên kết.<br>
+              $BO = \dfrac{8-4}{2} = 2$; trên $\pi^*$ còn <strong>2 e độc thân</strong> → $O_2$ bị nam châm hút (thuận từ), đúng như thực nghiệm.<br>
+              <strong>$N_2$ (10 e hóa trị):</strong> $\sigma_{2s}^2\,\sigma_{2s}^{*2}\,\pi_{2p}^4\,\sigma_{2p_z}^2$ → 8 e liên kết, 2 e phản liên kết.<br>
+              $BO = \dfrac{8-2}{2} = 3$; mọi e đều ghép đôi → <strong>nghịch từ</strong>. Liên kết ba rất bền nên $N_2$ trơ ở điều kiện thường.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Bậc liên kết của họ loài oxygen</div>
+              $O_2^+$ (11 e): $BO = \dfrac{8-3}{2} = 2,5$.<br>
+              $O_2$ (12 e): $BO = \dfrac{8-4}{2} = 2$.<br>
+              $O_2^-$ (13 e): $BO = \dfrac{8-5}{2} = 1,5$.<br>
+              $O_2^{2-}$ (14 e): $BO = \dfrac{8-6}{2} = 1$.<br>
+              Quy luật: thêm e vào orbital phản liên kết → bậc liên kết giảm → độ dài liên kết tăng, năng lượng liên kết giảm.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>$BO = \dfrac{N_{\text{e liên kết}} - N_{\text{e phản liên kết}}}{2}$</strong>. Thứ tự điền: $\sigma_s$, $\sigma_s^*$, rồi $\sigma_p$ và $\pi_p$ — với $N_2$, $B_2$, $C_2$ thì $\pi_p$ thấp hơn $\sigma_p$; từ $O_2$, $F_2$ trở đi thì $\sigma_p$ thấp hơn $\pi_p$. Mẹo: <strong>BO lẻ hoặc còn e lẻ trên $\pi^*$ → thuận từ</strong>; BO càng lớn → liên kết càng ngắn và bền.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 3.5 -->
+        <div class="doc-card" id="doc-hvc-5">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-5')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">5</span>
+              <span class="doc-title">Chuyên đề 5: Tương tác Liên phân tử & Liên kết Hydro trong Dược học</span>
+              <span class="doc-tag">Lực liên phân tử</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Lực tương tác Van der Waals</h4>
+            <p>Là lực tương tác hút tĩnh điện yếu giữa các phân tử trung hòa điện, giảm nhanh theo khoảng cách ($E \propto \frac{1}{r^6}$), bao gồm 3 thành phần:</p>
+            <ul>
+              <li><strong>Lực định hướng (Keesom):</strong> Tương tác giữa các phân tử có cực vĩnh viễn ($\mu \ne 0$), các đầu trái dấu hút nhau. Năng lượng phụ thuộc nghịch biến vào nhiệt độ tuyệt đối $T$:
+                <div class="formula-box">$$E_{Keesom} \propto -\frac{\mu_1^2 \cdot \mu_2^2}{r^6 \cdot k \cdot T}$$</div>
+                <em>Ví dụ:</em> Tương tác giữa các phân tử $HCl, SO_2, NH_3$.
+              </li>
+              <li><strong>Lực cảm ứng (Debye):</strong> Phân tử có cực vĩnh viễn gây biến dạng đám mây electron của phân tử không phân cực lân cận, tạo ra lưỡng cực cảm ứng. Năng lượng không phụ thuộc nhiệt độ:
+                <div class="formula-box">$$E_{Debye} \propto -\frac{\mu^2 \cdot \alpha}{r^6}$$</div>
+                <em>($\alpha$ là độ phân cực hóa của phân tử bị cảm ứng).</em>
+              </li>
+              <li><strong>Lực phân tán (London):</strong> Xuất hiện do sự chuyển động bất đối xứng nhất thời của các electron tạo ra các <strong>lưỡng cực tạm thời</strong>, gây cảm ứng phân cực lên các phân tử kế cận.
+                <ul>
+                  <li><strong>Tồn tại ở TẤT CẢ các phân tử</strong> (kể cả khí hiếm $He, Ar$ và phân tử không cực $CH_4, O_2, I_2$).</li>
+                  <li>Độ lớn của lực London phụ thuộc thuận vào <strong>khối lượng phân tử ($M$)</strong> và <strong>kích thước phân tử</strong> (bán kính nguyên tử càng lớn $\rightarrow$ đám mây electron càng xốp $\rightarrow$ độ phân cực hóa $\alpha$ càng cao).</li>
+                  <li><em>Quy luật nhiệt độ sôi:</em> Dãy halogen $F_2$ (khí) $< Cl_2$ (khí) $< Br_2$ (lỏng) $< I_2$ (rắn); dãy khí hiếm $He < Ne < Ar < Kr < Xe$. Trong gây mê Dược khoa, thuốc mê hô hấp nhóm halogen (Halothane, Isoflurane, Sevoflurane) có lực phân tán London lớn giúp chúng dễ hóa lỏng và hòa tan vào lớp lipid màng nơron thần kinh.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Các lực Keesom, Debye và London ảnh hưởng độ sôi, độ hòa tan và phân bố phân tử giữa nước với pha lipid; điều này góp phần quyết định cách thuốc phân bố trong cơ thể.</p>
+
+            <h4>2. Liên kết Hydro (Hydrogen Bond) & Vai trò sống còn trong Sinh học - Dược học</h4>
+            <ul>
+              <li><strong>Bản chất:</strong> Là liên kết tĩnh điện đặc biệt kèm một phần cộng hóa trị hình thành giữa nguyên tử Hidro ($H$) liên kết với nguyên tử $X$ có độ âm điện lớn và bán kính nhỏ ($F, O, N$) với một nguyên tử $Y$ khác cũng có độ âm điện lớn và mang cặp electron tự do ($X - H \cdots :Y$).
+                <br>Năng lượng liên kết: $10 - 40\text{ kJ/mol}$ (yếu hơn liên kết cộng hóa trị khoảng 10 lần nhưng mạnh hơn lực Van der Waals rất nhiều).
+              </li>
+              <li><strong>Phân loại liên kết Hydro:</strong>
+                <ul>
+                  <li><strong>Liên kết Hydro liên phân tử:</strong> Tạo mạng lưới liên kết giữa các phân tử rời rạc $\rightarrow$ <strong>làm tăng vọt nhiệt độ sôi, nhiệt độ nóng chảy và độ tan trong nước</strong>.
+                    <br><em>Nghịch lý nước ($H_2O$):</em> $H_2O$ ($M=18$) sôi ở $+100^\circ\text{C}$ trong khi $H_2S$ ($M=34$) chỉ sôi ở $-60^\circ\text{C}$ do nước tạo mạng lưới liên kết hydro 3 chiều bền vững (mỗi phân tử $H_2O$ tạo được tối đa 4 liên kết hydro).
+                  </li>
+                  <li><strong>Liên kết Hydro nội phân tử:</strong> Hình thành bên trong cùng một phân tử khi hai nhóm chức ở gần nhau trong không gian (ví dụ: <em>ortho</em>-nitrophenol, acid salicylic). Kiểu liên kết này "khóa" các nhóm phân cực lại, làm <strong>giảm nhiệt độ sôi và giảm độ tan trong nước</strong> so với đồng phân <em>para</em>.</li>
+                </ul>
+              </li>
+              <li><strong>Ứng dụng then chốt trong Dược học & Đích tác động thuốc:</strong>
+                <ul>
+                  <li><strong>Cấu trúc đại phân tử sinh học:</strong> Ổn định chuỗi xoắn kép DNA qua các cặp base bổ sung ($A = T$ bằng 2 liên kết H; $G \equiv C$ bằng 3 liên kết H); ổn định cấu trúc xoắn $\alpha$ và phiến gấp $\beta$ của protein enzym thụ thể.</li>
+                  <li><strong>Tương tác Thuốc - Thụ thể (Drug - Receptor Binding):</strong> Đa số các phân tử thuốc gắn kết vào vị trí hoạt động của thụ thể thông qua mạng lưới liên kết Hydro chính xác về khoảng cách và góc định hướng.</li>
+                  <li><strong>Quy tắc Lipinski (Rule of 5) trong Dược động học:</strong> Để một hoạt chất có khả năng hấp thu tốt qua đường uống: Số nhóm cho liên kết Hydro (OH, NH) $\le 5$ và số nhóm nhận liên kết Hydro (O, N) $\le 10$.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Liên kết hydro ổn định DNA/protein và góp phần vào tính chọn lọc thuốc–thụ thể. Số nhóm cho/nhận liên kết hydro ảnh hưởng tương tác với nước và khả năng hấp thu qua màng.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Lực liên phân tử và liên kết hydro ảnh hưởng độ tan, nhiệt độ sôi, cấu dạng đại phân tử và sự gắn thuốc với đích. Trong bào chế, hiểu các tương tác này hỗ trợ dự đoán độ hòa tan và độ ổn định; trong thiết kế thuốc, chúng giúp giải thích tính chọn lọc của tương tác thuốc–thụ thể, nhưng cần cân nhắc cả môi trường nước và cấu trúc toàn phân tử.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Vì sao $H_2O$ sôi cao hơn $H_2S$?</div>
+              $H_2O$: $M = 18$, nhiệt độ sôi $100^\circ C$; mỗi phân tử có 2 H gắn với O và 2 cặp e tự do → tạo được tới <strong>4 liên kết hydro</strong>, hình thành mạng lưới ba chiều bền.<br>
+              $H_2S$: $M = 34$ (nặng hơn) nhưng nhiệt độ sôi chỉ khoảng $-60^\circ C$; S có độ âm điện thấp hơn nhiều (2,58 so với 3,44) và bán kính lớn → liên kết S–H gần như không phân cực, không tạo liên kết hydro đủ mạnh.<br>
+              Kết luận: khối lượng phân tử không quyết định một mình — <strong>liên kết hydro mới là yếu tố then chốt</strong>.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Liên kết hydro nội phân tử trong acid salicylic</div>
+              Acid salicylic (acid 2-hydroxybenzoic): nhóm $-OH$ phenol ở vị trí <em>ortho</em> tạo liên kết hydro <strong>nội phân tử</strong> với $C=O$ của nhóm carboxyl.<br>
+              Nhờ vậy phân tử "tự khóa" các nhóm phân cực, ít tương tác với nước hơn, nhiệt độ nóng chảy ($\approx 159^\circ C$) và độ tan thấp hơn đồng phân <em>para</em> (acid 4-hydroxybenzoic, $t_{nc} \approx 215^\circ C$).<br>
+              Paracetamol ($HO-C_6H_4-NHCOCH_3$) lại tạo liên kết hydro <strong>liên phân tử</strong> giữa $-OH$ phenol và nhóm amide → mạng tinh thể bền, $t_{nc} \approx 170^\circ C$, tan ít trong nước lạnh nhưng tan tốt hơn khi đun nóng (dùng để kết tinh lại).
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>"F–O–N mới đủ mạnh"</strong>: liên kết hydro cần H gắn trực tiếp với F, O hoặc N và một cặp e tự do trên F/O/N. Đối chiếu nhanh: <strong>liên phân tử</strong> → làm tăng nhiệt độ sôi, tăng độ tan trong nước; <strong>nội phân tử</strong> → "khóa vòng", giảm nhiệt độ sôi và giảm độ tan. Mẹo: nội phân tử chỉ có khi tạo được <em>vòng 5–6 cạnh</em> (như <em>ortho</em>-nitrophenol, acid salicylic).
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 3.6 -->
+        <div class="doc-card active" id="doc-hvc-6">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-6')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">6</span>
+              <span class="doc-title">Chuyên đề 6: Hóa học Phối trí, Phối tử & Phức chất Vô cơ Dược phẩm (Coordination Chemistry & Ligands)</span>
+              <span class="doc-tag">Phối tử & Phối trí</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Thuyết Phối trí Alfred Werner & Bản chất Cầu nội - Cầu ngoại (Inner & Outer Sphere)</h4>
+            <p>Năm 1893, Alfred Werner (nhận giải Nobel Hóa học năm 1913) đã đưa ra thuyết phối trí cách mạng, giải thích cấu trúc không gian và bản chất liên kết của các hợp chất phức vô cơ thông qua khái niệm <strong>Cầu nội</strong> và <strong>Cầu ngoại</strong>:</p>
+
+            <div class="callout" style="background:#eff6ff; border-left:4px solid #3b82f6;">
+              <div class="callout-title" style="color:#1d4ed8;">🔍 ĐỊNH NGHĨA TRỌNG TÂM: CẦU NỘI & CẦU NGOẠI CỦA PHỨC CHẤT</div>
+              <ul>
+                <li><strong>Cầu nội phối trí (Inner Coordination Sphere):</strong>
+                  <ul>
+                    <li><strong>Ký hiệu:</strong> Được viết gọn gàng <strong>bên trong dấu ngoặc vuông <code>[...]</code></strong>.</li>
+                    <li><strong>Thành phần:</strong> Gồm <em>nguyên tử/ion kim loại trung tâm</em> liên kết trực tiếp với các <em>phối tử (ligands)</em> xung quanh.</li>
+                    <li><strong>Bản chất liên kết:</strong> Là <strong>liên kết cộng hóa trị phối trí (liên kết cho - nhận)</strong> rất bền vững, có tính định hướng không gian xác định.</li>
+                    <li><strong>Hành vi trong dung dịch nước:</strong> <strong>KHÔNG phân ly</strong> thành các ion kim loại tự do hoặc phối tử tự do trong điều kiện thường. Toàn bộ cầu nội tồn tại như một ion phức hoặc phân tử phức thống nhất.</li>
+                    <li><strong>Điện tích của cầu nội:</strong> Bằng tổng đại số điện tích của ion kim loại trung tâm và các phối tử:
+                      <div class="formula-box">$$q_{cầu\ nội} = q_{kim\ loại} + \sum q_{phối\ tử}$$</div>
+                      Cầu nội có thể là <strong>Cation phức</strong> ($[Co(NH_3)_6]^{3+}$, $[Cu(NH_3)_4]^{2+}$), <strong>Anion phức</strong> ($[Fe(CN)_6]^{4-}, [PtCl_6]^{2-}$), hoặc <strong>Phức trung hòa điện</strong> ($[Pt(NH_3)_2Cl_2], [Ni(CO)_4]$).
+                    </li>
+                  </ul>
+                </li>
+                <li style="margin-top:8px;"><strong>Cầu ngoại (Outer Coordination Sphere):</strong>
+                  <ul>
+                    <li><strong>Ký hiệu:</strong> Nằm <strong>bên ngoài dấu ngoặc vuông <code>[...]</code></strong>.</li>
+                    <li><strong>Thành phần:</strong> Các ion đơn giản mang điện tích trái dấu với cầu nội (ví dụ: $Cl^-, Br^-, I^-, NO_3^-, SO_4^{2-}, K^+, Na^+$) hoặc các phân tử nước kết tinh.</li>
+                    <li><strong>Bản chất liên kết:</strong> Là <strong>liên kết ion tĩnh điện không định hướng</strong>, kém bền hơn nhiều so với liên kết phối trí trong cầu nội.</li>
+                    <li><strong>Hành vi trong dung dịch nước:</strong> Khi hòa tan vào nước, cầu ngoại <strong>phân ly hoàn toàn thành các ion tự do</strong> mang đầy đủ hoạt tính hóa học thông thường.
+                      <br><em>Ví dụ:</em> Nếu $Cl^-$ nằm ở cầu ngoại sẽ lập tức phản ứng với dung dịch $AgNO_3$ tạo kết tủa trắng $AgCl \downarrow$; nếu $SO_4^{2-}$ ở cầu ngoại sẽ lập tức kết tủa trắng $BaSO_4 \downarrow$ với $Ba^{2+}$.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Tiêu chí so sánh</th>
+                    <th>Cầu nội phối trí (Inner Sphere)</th>
+                    <th>Cầu ngoại (Outer Sphere)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Vị trí công thức</strong></td>
+                    <td>Bên trong dấu ngoặc vuông <code>[...]</code></td>
+                    <td>Bên ngoài dấu ngoặc vuông <code>[...]</code></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thành phần cấu tạo</strong></td>
+                    <td>Ion kim loại trung tâm + Các phối tử (Ligands)</td>
+                    <td>Các ion đối (Counter-ions) đơn giản hoặc nước kết tinh</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Bản chất liên kết</strong></td>
+                    <td>Liên kết cộng hóa trị phối trí (Cho - Nhận), có tính định hướng</td>
+                    <td>Liên kết ion tĩnh điện, không có tính định hướng</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Độ bền liên kết</strong></td>
+                    <td>Rất bền vững, khó bị phá vỡ</td>
+                    <td>Kém bền, dễ bị solvat hóa phân ly</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Điện ly trong nước</strong></td>
+                    <td><strong>Không phân ly</strong> thành các tiểu phân thành phần</td>
+                    <td><strong>Phân ly hoàn toàn $100\%$</strong> thành các ion tự do</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phản ứng với thuốc thử</strong></td>
+                    <td>Không phản ứng với thuốc thử nhận biết ion thông thường</td>
+                    <td>Phản ứng tức thì với thuốc thử tạo tủa ion đặc trưng</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ý nghĩa lập thể</strong></td>
+                    <td>Quyết định hình học không gian phân tử (Vuông phẳng, Tứ diện, Bát diện)</td>
+                    <td>Chỉ bù trừ điện tích, không quyết định hình học phức</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>Ý nghĩa:</strong> Cầu nội quyết định phối tử gắn trực tiếp và hình học quanh kim loại; cầu ngoại quyết định ion tự do khi hòa tan. Phân biệt chúng giúp lập công thức và dự đoán phản ứng định tính.</p>
+
+            <div class="callout" style="background:#fffbeb; border-left:4px solid #f59e0b;">
+              <div class="callout-title" style="color:#b45309;">🔬 THÍ NGHIỆM KINH ĐIỂN CỦA ALFRED WERNER VỚI CHUỖI PHỨC COBALT(III)</div>
+              <p>Werner đã chứng minh sự tồn tại tách biệt giữa Cầu nội và Cầu ngoại bằng cách thêm dung dịch bạc nitrat ($AgNO_3$) dư vào 4 hợp chất ammine của $CoCl_3$ và đo độ dẫn điện đương lượng:</p>
+              <div class="table-responsive" style="margin-top:8px;">
+                <table class="data-table">
+                  <thead>
+                    <tr>
+                      <th>Công thức thực nghiệm</th>
+                      <th>Công thức phối trí hiện đại</th>
+                      <th>Cấu trúc Cầu nội & Cầu ngoại</th>
+                      <th>Số mol $AgCl \downarrow$ tạo thành / 1 mol phức</th>
+                      <th>Tổng số ion sinh ra khi tan</th>
+                      <th>Độ dẫn điện dung dịch</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>$CoCl_3 \cdot 6NH_3$ (Vàng)</td>
+                      <td>$[Co(NH_3)_6]Cl_3$</td>
+                      <td>Cầu nội: $[Co(NH_3)_6]^{3+}$<br>Cầu ngoại: $3Cl^-$</td>
+                      <td><strong>3 mol $AgCl$</strong> (cả 3 Clo đều ở cầu ngoại)</td>
+                      <td><strong>4 ion</strong> ($1$ cation $+ 3$ anion)</td>
+                      <td>Rất cao (chất điện ly 1:3)</td>
+                    </tr>
+                    <tr>
+                      <td>$CoCl_3 \cdot 5NH_3$ (Tím)</td>
+                      <td>$[Co(NH_3)_5Cl]Cl_2$</td>
+                      <td>Cầu nội: $[Co(NH_3)_5Cl]^{2+}$<br>Cầu ngoại: $2Cl^-$</td>
+                      <td><strong>2 mol $AgCl$</strong> (1 Clo bị giữ ở cầu nội)</td>
+                      <td><strong>3 ion</strong> ($1$ cation $+ 2$ anion)</td>
+                      <td>Trung bình cao (chất điện ly 1:2)</td>
+                    </tr>
+                    <tr>
+                      <td>$CoCl_3 \cdot 4NH_3$ (Xanh lục)</td>
+                      <td>$[Co(NH_3)_4Cl_2]Cl$</td>
+                      <td>Cầu nội: $[Co(NH_3)_4Cl_2]^+$<br>Cầu ngoại: $1Cl^-$</td>
+                      <td><strong>1 mol $AgCl$</strong> (2 Clo bị giữ ở cầu nội)</td>
+                      <td><strong>2 ion</strong> ($1$ cation $+ 1$ anion)</td>
+                      <td>Trung bình (chất điện ly 1:1)</td>
+                    </tr>
+                    <tr>
+                      <td>$CoCl_3 \cdot 3NH_3$ (Lục nhạt)</td>
+                      <td>$[Co(NH_3)_3Cl_3]$</td>
+                      <td>Cầu nội: $[Co(NH_3)_3Cl_3]$<br>Cầu ngoại: <strong>Không có</strong></td>
+                      <td><strong>0 mol $AgCl$</strong> (Không tạo kết tủa nào)</td>
+                      <td><strong>0 ion</strong> (Phức trung hòa điện)</td>
+                      <td><strong>Không dẫn điện</strong> (chất không điện ly)</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <p><strong>Ý nghĩa:</strong> Thí nghiệm kết tủa AgCl và đo độ dẫn điện chứng minh ion cầu ngoại phân ly tự do, trong khi phối tử cầu nội gắn với kim loại. Phân biệt này giúp xác định cấu trúc và dự đoán tính chất dung dịch của phức.</p>
+            <p><strong>Ý nghĩa:</strong> Dãy cobalt(III) cho thấy lượng kết tủa và số ion trong dung dịch phụ thuộc số chloride ở cầu ngoại; phép đo minh họa cách kiểm nghiệm cấu trúc phức.</p>
+
+            <h4>2. Nguyên tử Trung tâm, Hóa trị chính - Hóa trị phụ & Số Phối trí (CN)</h4>
+            <ul>
+              <li><strong>Nguyên tử / Ion trung tâm (Central Atom/Ion):</strong> Thường là các cation kim loại chuyển tiếp ($Fe^{2+}, Fe^{3+}, Cu^{2+}, Co^{3+}, Pt^{2+}, Zn^{2+}$) có orbital $d$ trống chưa lấp đầy electron, đóng vai trò là <strong>Acid Lewis</strong> nhận cặp electron.</li>
+              <li><strong>Hóa trị chính & Hóa trị phụ của Werner:</strong>
+                <ul>
+                  <li><em>Hóa trị chính (Primary valence):</em> Chính là <strong>Số oxy hóa</strong> của kim loại trung tâm, được bão hòa bởi các anion ở cầu ngoại hoặc cầu nội, không có tính định hướng không gian.</li>
+                  <li><em>Hóa trị phụ (Secondary valence):</em> Chính là <strong>Số phối trí (Coordination Number - CN)</strong>, được bão hòa bởi các phối tử ở cầu nội, có tính <strong>định hướng không gian xác định</strong>, quyết định cấu hình hình học của phức chất.</li>
+                </ul>
+              </li>
+              <li><strong>Số phối trí ($CN$) thường gặp & Hình học không gian tương ứng:</strong>
+                <ul>
+                  <li>$CN = 2$: Cấu trúc <strong>Thẳng hàng (Linear)</strong> ($[Ag(NH_3)_2]^+$, $[Au(CN)_2]^-$).</li>
+                  <li>$CN = 4$:
+                    <ul>
+                      <li>Cấu trúc <strong>Tứ diện (Tetrahedral)</strong>: Hay gặp ở kim loại có cấu hình $d^{10}$ hoặc phối tử trường yếu ($[Zn(NH_3)_4]^{2+}, [NiCl_4]^{2-}$).</li>
+                      <li>Cấu trúc <strong>Vuông phẳng (Square Planar)</strong>: Cực kỳ đặc trưng cho ion kim loại có cấu hình $d^8$ ($Pt^{2+}, Pd^{2+}, Au^{3+}$ như trong $[PtCl_4]^{2-}, cis-[Pt(NH_3)_2Cl_2]$ - Cisplatin).</li>
+                    </ul>
+                  </li>
+                  <li>$CN = 6$: Cấu trúc <strong>Bát diện (Octahedral)</strong>, phổ biến nhất ($[Fe(CN)_6]^{4-}, [Co(NH_3)_6]^{3+}, [Cr(H_2O)_6]^{3+}$).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Số oxy hóa và số phối trí giúp xác định điện tích phức, số vị trí phối tử và hình học dự kiến; cần thiết để lập công thức và gọi tên chính xác.</p>
+            <h4>3. Phân loại Phối tử (Ligands) chi tiết & Toàn diện</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Loại phối tử</th>
+                    <th>Dung lượng phối trí (Denticity)</th>
+                    <th>Ví dụ tiêu biểu & Ký hiệu</th>
+                    <th>Nguyên tử phối trí cho electron</th>
+                    <th>Đặc điểm & Vai trò Dược học</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Phối tử 1 càng<br>(Monodentate)</strong></td>
+                    <td>1 nguyên tử cho electron trên mỗi phân tử phối tử.</td>
+                    <td>
+                      • Trung hòa: $H_2O$ (aqua), $NH_3$ (ammine), $CO$ (carbonyl), $NO$ (nitrosyl), Pyridine ($py$).<br>
+                      • Anion: $F^-$ (fluoro), $Cl^-$ (chloro), $Br^-$ (bromo), $I^-$ (iodo), $OH^-$ (hydroxo), $CN^-$ (cyano).
+                    </td>
+                    <td>$O, N, C, F, Cl, Br, I$</td>
+                    <td>Chiếm 1 vị trí phối trí trong cầu nội. Ví dụ $NH_3$ và $Cl^-$ trong thuốc chống ung thư Cisplatin $[Pt(NH_3)_2Cl_2]$.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phối tử 2 càng<br>(Bidentate)</strong></td>
+                    <td>2 nguyên tử cho electron, có thể kẹp ion kim loại tạo vòng 5 - 6 cạnh.</td>
+                    <td>
+                      • Ethylenediamine ($en$: $H_2N-CH_2-CH_2-NH_2$)<br>
+                      • Oxalate ($ox^{2-}$ hay $C_2O_4^{2-}$)<br>
+                      • Glycinate ($gly^-$: $H_2N-CH_2-COO^-$)<br>
+                      • 2,2'-Bipyridine ($bipy$), 1,10-Phenanthroline ($phen$).
+                    </td>
+                    <td>$2N$, hoặc $2O$, hoặc $1N + 1O$</td>
+                    <td>Tạo phức chelat bền vững. Oxaliplatin (thuốc chống ung thư thế hệ 3) sử dụng phối tử oxalate 2 càng để giảm độc tính thận.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phối tử đa càng<br>(Polydentate / Chelate)</strong></td>
+                    <td>$\ge 3$ nguyên tử cho electron, ôm trọn ion kim loại (phối tử vòng càng).</td>
+                    <td>
+                      • 3 càng (Tridentate): Diethylenetriamine ($dien$)<br>
+                      • 4 càng (Tetradentate): Triethylenetetramine ($trien$), Vòng Porphyrin<br>
+                      • 6 càng (Hexadentate): Ethylenediaminetetraacetate ($EDTA^{4-}$ / $H_4EDTA$), Deferoxamine.
+                    </td>
+                    <td>$O, N$</td>
+                    <td><strong>Thuốc giải độc kim loại nặng kinh điển</strong> ($EDTA$ thải chì, $Deferoxamine$ thải sắt, $Trien$ thải đồng).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phối tử lưỡng nha<br>(Ambidentate)</strong></td>
+                    <td>Có $\ge 2$ nguyên tử cho khác nhau nhưng tại một thời điểm chỉ liên kết qua 1 nguyên tử duy nhất.</td>
+                    <td>
+                      • $NO_2^-$: Liên kết qua N là <strong>Nitro</strong> ($M-NO_2$); liên kết qua O là <strong>Nitrito</strong> ($M-ONO$).<br>
+                      • $SCN^-$: Liên kết qua S là <strong>Thiocyanato</strong> ($M-SCN$); liên kết qua N là <strong>Isothiocyanato</strong> ($M-NCS$).
+                    </td>
+                    <td>$N$ hoặc $O$; $S$ hoặc $N$</td>
+                    <td>Là nguồn gốc tạo ra hiện tượng <em>đồng phân liên kết</em> (Linkage isomerism).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phối tử cầu nối<br>(Bridging ligands)</strong></td>
+                    <td>Liên kết đồng thời với hai hay nhiều ion kim loại trung tâm khác nhau.</td>
+                    <td>$OH^-$ ($\mu\text{-hydroxo}$), $O^{2-}$ ($\mu\text{-oxo}$), $Cl^-$ ($\mu\text{-chloro}$), $NH_2^-$ ($\mu\text{-amido}$).</td>
+                    <td>Cặp e tự do thứ hai chia sẻ sang kim loại bên cạnh</td>
+                    <td>Tạo nên phức chất đa nhân (Polynuclear complexes). Thường gặp trong cấu trúc trung tâm hoạt động của enzym kim loại (ví dụ Hemerythrin chứa cầu $\mu\text{-oxo}$ giữa 2 ion Fe).</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>Ý nghĩa:</strong> Phân loại phối tử theo số càng và nguyên tử cho giúp dự đoán cấu trúc, độ bền, khả năng tạo chelat và tính chọn lọc với ion kim loại.</p>
+            <h4>4. Hiệu ứng Chelat (Chelate Effect) & Nền tảng Nhiệt động học</h4>
+            <div class="callout" style="background:#f0fdf4; border-left:4px solid #16a34a;">
+              <div class="callout-title" style="color:#15803d;">💡 Hiệu ứng Chelat là gì? Vì sao phối tử đa càng luôn bền hơn phối tử 1 càng?</div>
+              <p><strong>Định nghĩa:</strong> Phức chất vòng càng (chelat) hình thành từ các phối tử đa càng luôn có độ bền nhiệt động học và hằng số bền ($\beta$) cao hơn từ hàng nghìn đến hàng triệu lần so với phức chất tương ứng tạo bởi các phối tử 1 càng có bản chất liên kết tương đương.</p>
+              <br><strong>Giải thích theo Nhiệt động lực học ($\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ$):</strong>
+              <ul>
+                <li>Xem xét phản ứng thế phối tử của ion $Ni^{2+}$:
+                  <div class="formula-box">$$[Ni(H_2O)_6]^{2+} + 6NH_3 \rightleftharpoons [Ni(NH_3)_6]^{2+} + 6H_2O \quad (\log\beta \approx 8,6)$$</div>
+                  <div class="formula-box">$$[Ni(H_2O)_6]^{2+} + 3en \rightleftharpoons [Ni(en)_3]^{2+} + 6H_2O \quad (\log\beta \approx 18,3)$$</div>
+                </li>
+                <li>Trong phản ứng thứ nhất ($6NH_3$ 1 càng): $1$ ion phức $+ 6$ phân tử $NH_3$ ($7$ tiểu phân) sinh ra $1$ phức $+ 6$ nước ($7$ tiểu phân) $\implies \Delta S^\circ \approx 0$.</li>
+                <li>Trong phản ứng thứ hai ($3en$ 2 càng): $1$ ion phức $+ 3$ phân tử $en$ ($4$ tiểu phân) sinh ra $1$ phức $+ 6$ phân tử nước tự do ($7$ tiểu phân) $\implies$ <strong>Số lượng phân tử tự do tăng vọt</strong>, dẫn đến độ hỗn loạn của hệ tăng cao ($\Delta S^\circ \gg 0$).</li>
+                <li>Vì $\Delta S^\circ > 0$ rất lớn, dẫn tới $\Delta G^\circ = \Delta H^\circ - T\Delta S^\circ \ll 0 \implies$ Phản ứng tạo phức chelat diễn ra mãnh liệt và cực kỳ bền vững!</li>
+              </ul>
+            </div>
+
+            <p><strong>Ý nghĩa:</strong> Hiệu ứng chelat giải thích độ bền tương đối của phức đa càng; ứng dụng trong giải độc kim loại phải dựa trên chỉ định, vì chất tạo phức cũng có thể gắn các ion thiết yếu.</p>
+            <h4>5. Quy tắc Danh pháp Phức chất Quốc tế (IUPAC Nomenclature)</h4>
+            <ul>
+              <li><strong>Trật tự gọi tên:</strong>
+                <ol>
+                  <li>Gọi tên phối tử trước, tên nguyên tử/ion kim loại trung tâm sau.</li>
+                  <li>Nếu có nhiều loại phối tử: Xếp theo thứ tự bảng chữ cái Latin (không tính các tiếp đầu ngữ chỉ số lượng như di, tri, tetra...).</li>
+                  <li>Tiếp đầu ngữ chỉ số lượng phối tử đơn giản: Dùng <em>di, tri, tetra, penta, hexa</em>. Nếu tên phối tử phức tạp hoặc đã có sẵn tiếp đầu ngữ số (như ethylenediamine): Dùng <em>bis, tris, tetrakis, pentakis</em> và đặt tên phối tử trong dấu ngoặc đơn.</li>
+                  <li>Tên kim loại trung tâm kèm theo <strong>Số oxy hóa bằng chữ số La Mã đặt trong ngoặc đơn</strong> (ngay sát tên kim loại, không có dấu cách).</li>
+                </ol>
+              </li>
+              <li><strong>Tên kim loại trung tâm:</strong>
+                <ul>
+                  <li>Nếu phức chất là <strong>Cation</strong> hoặc <strong>Trung hòa</strong>: Giữ nguyên tên thông thường của kim loại (ví dụ: Cobalt, Chromium, Platinum, Iron / Sắt, Copper / Đồng).</li>
+                  <li>Nếu phức chất là <strong>Anion</strong>: Tên kim loại bắt buộc phải đổi đuôi thành <strong>-ate</strong> (với nhiều kim loại dùng tên Latin: Iron $\rightarrow$ <em>Ferrate</em>, Copper $\rightarrow$ <em>Cuprate</em>, Lead $\rightarrow$ <em>Plumbate</em>, Silver $\rightarrow$ <em>Argentate</em>, Gold $\rightarrow$ <em>Aurate</em>, Tin $\rightarrow$ <em>Stannate</em>).</li>
+                </ul>
+              </li>
+              <li><strong>Bảng tra cứu ví dụ đọc tên phức chất chuẩn mực:</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Công thức phức chất</th>
+                        <th>Phân loại điện tích phức</th>
+                        <th>Tên IUPAC quốc tế</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>$[Co(NH_3)_6]Cl_3$</td>
+                        <td>Cation phức</td>
+                        <td>Hexaamminecobalt(III) chloride</td>
+                      </tr>
+                      <tr>
+                        <td>$[Pt(NH_3)_2Cl_2]$</td>
+                        <td>Phức trung hòa điện</td>
+                        <td>Diamminedichloridoplatinum(II)</td>
+                      </tr>
+                      <tr>
+                        <td>$K_4[Fe(CN)_6]$</td>
+                        <td>Anion phức</td>
+                        <td>Potassium hexacyanoferrate(II)</td>
+                      </tr>
+                      <tr>
+                        <td>$K_3[Fe(CN)_6]$</td>
+                        <td>Anion phức</td>
+                        <td>Potassium hexacyanoferrate(III)</td>
+                      </tr>
+                      <tr>
+                        <td>$[Co(en)_3]Cl_3$</td>
+                        <td>Cation phức (phối tử đa càng)</td>
+                        <td>Tris(ethylenediamine)cobalt(III) chloride</td>
+                      </tr>
+                      <tr>
+                        <td>$Na[Al(OH)_4]$</td>
+                        <td>Anion phức</td>
+                        <td>Sodium tetrahydroxidoaluminate(III)</td>
+                      </tr>
+                      <tr>
+                        <td>$[Ag(NH_3)_2]NO_3$</td>
+                        <td>Cation phức</td>
+                        <td>Diamminesilver(I) nitrate</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Danh pháp IUPAC giúp suy ngược thành phần, phối tử, điện tích và số oxy hóa từ tên; giảm nhầm lẫn khi đọc tài liệu hóa dược.</p>
+            <h4>6. Các dạng Đồng phân trong Phức chất (Isomerism)</h4>
+            <ul>
+              <li><strong>I. Đồng phân Cấu trúc (Structural Isomerism):</strong>
+                <ol>
+                  <li><strong>Đồng phân ion hóa (Ionization Isomerism):</strong> Phối tử ở cầu nội và anion ở cầu ngoại đổi chỗ cho nhau, tạo các ion khác nhau khi phân ly:
+                    <br>• $[Co(NH_3)_5Br]SO_4$ (Đỏ tím, tác dụng với $BaCl_2$ cho kết tủa trắng $BaSO_4$, không tủa với $AgNO_3$).
+                    <br>• $[Co(NH_3)_5(SO_4)]Br$ (Đỏ hồng, tác dụng với $AgNO_3$ cho kết tủa vàng nhạt $AgBr$, không tủa với $BaCl_2$).
+                  </li>
+                  <li><strong>Đồng phân solvat hóa / hydrat hóa (Solvate/Hydrate Isomerism):</strong> Phân tử dung môi ($H_2O$) đóng vai trò phối tử ở cầu nội hay phân tử nước kết tinh ở cầu ngoại:
+                    <br>• $[Cr(H_2O)_6]Cl_3$: Màu tím hoa cà (cả 3 ion $Cl^-$ kết tủa ngay với $Ag^+$).
+                    <br>• $[Cr(H_2O)_5Cl]Cl_2 \cdot H_2O$: Màu xanh lục nhạt (chỉ có 2 ion $Cl^-$ kết tủa với $Ag^+$).
+                    <br>• $[Cr(H_2O)_4Cl_2]Cl \cdot 2H_2O$: Màu xanh lục đậm (chỉ có 1 ion $Cl^-$ kết tủa với $Ag^+$).
+                  </li>
+                  <li><strong>Đồng phân liên kết (Linkage Isomerism):</strong> Xảy ra với các phối tử lưỡng nha ($NO_2^-, SCN^-$):
+                    <br>• $[Co(NH_3)_5(NO_2)]Cl_2$: Phối tử Nitro gắn qua nguyên tử Nitơ ($Co-NO_2$), màu vàng.
+                    <br>• $[Co(NH_3)_5(ONO)]Cl_2$: Phối tử Nitrito gắn qua nguyên tử Oxi ($Co-ONO$), màu đỏ.
+                  </li>
+                  <li><strong>Đồng phân phối trí (Coordination Isomerism):</strong> Xảy ra khi cả cation và anion đều là ion phức, có sự hoán đổi các phối tử giữa hai tâm kim loại:
+                    <br>• $[Co(NH_3)_6][Cr(CN)_6]$ và $[Cr(NH_3)_6][Co(CN)_6]$.
+                  </li>
+                </ol>
+              </li>
+              <li><strong>II. Đồng phân Lập thể (Stereoisomerism):</strong>
+                <ol>
+                  <li><strong>Đồng phân hình học (Geometric Isomerism):</strong>
+                    <ul>
+                      <li><strong>Hệ vuông phẳng $MA_2B_2$:</strong>
+                        <br>• Dạng <em>cis</em>: 2 phối tử giống nhau nằm kề nhau (góc $90^\circ$).
+                        <br>• Dạng <em>trans</em>: 2 phối tử giống nhau nằm đối diện nhau (góc $180^\circ$).
+                        <br><em>Ví dụ lịch sử Dược học:</em> <strong>Cisplatin</strong> ($cis-[Pt(NH_3)_2Cl_2]$) là thuốc chống ung thư cực mạnh; trong khi đồng phân <strong>Transplatin</strong> ($trans-[Pt(NH_3)_2Cl_2]$) hoàn toàn không có tác dụng trị ung thư vì không thể tạo liên kết uốn gập DNA kép!
+                      </li>
+                      <li><strong>Hệ bát diện $MA_4B_2$:</strong> Dạng <em>cis</em> (2 phối tử B góc $90^\circ$) và dạng <em>trans</em> (2 phối tử B góc $180^\circ$). Ví dụ $[Co(NH_3)_4Cl_2]^+$ có dạng cis màu tím tím, dạng trans màu xanh lục sẫm.</li>
+                      <li><strong>Hệ bát diện $MA_3B_3$ (Đồng phân fac - mer):</strong>
+                        <br>• Dạng <em>fac</em> (Facial): 3 phối tử giống nhau chiếm 3 đỉnh của một mặt tam giác của hình bát diện (cả 3 góc đều là $90^\circ$).
+                        <br>• Dạng <em>mer</em> (Meridional): 3 phối tử giống nhau cùng nằm trên một mặt phẳng xích đạo đi qua tâm kim loại.
+                      </li>
+                    </ul>
+                  </li>
+                  <li><strong>Đồng phân quang học (Optical Isomerism / Chiral Complexes):</strong>
+                    Phân tử không có tâm đối xứng hay mặt phẳng đối xứng, hai dạng đối quang là ảnh phản chiếu qua gương nhưng không thể chồng khít lên nhau (tương tự bàn tay trái và bàn tay phải).
+                    <br><em>Ví dụ:</em> Các phức chelat bát diện như $[Co(en)_3]^{3+}$ và $[Fe(ox)_3]^{3-}$ tồn tại 2 dạng đối quang quay phải ($\Delta$) và quay trái ($\Lambda$). Trong Dược học, tính bất đối xứng lập thể quyết định trực tiếp khả năng gắn khớp vào ổ thụ thể protein sinh học.
+                  </li>
+                </ol>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Phân loại đồng phân giúp nhận ra cùng công thức tổng có thể cho ion hóa, hình học, màu sắc hoặc hoạt tính khác nhau; cisplatin/transplatin minh họa rõ ý nghĩa dược học.</p>
+            <h4>7. Thuyết Trường Tinh thể (Crystal Field Theory - CFT) & Bản chất Liên kết Phối trí</h4>
+            <ul>
+              <li><strong>Bản chất giả định của CFT:</strong> Xem tương tác giữa ion kim loại trung tâm và các phối tử là tương tác <strong>tĩnh điện thuần túy</strong> giữa các điện tích điểm (nếu phối tử là anion) hoặc giữa ion với các đầu lưỡng cực âm (nếu phối tử là phân tử trung hòa như $H_2O, NH_3$).</li>
+              <li><strong>Sự tách mức năng lượng orbital $d$ trong trường bát diện ($O_h$):</strong>
+                Bình thường ở trạng thái cô lập, 5 orbital $d$ ($d_{xy}, d_{yz}, d_{xz}, d_{x^2-y^2}, d_{z^2}$) có năng lượng bằng nhau (suy biến bậc 5). Khi 6 phối tử tiến lại dọc theo 3 trục tọa độ ($x, y, z$) để tạo hình bát diện:
+                <ul>
+                  <li>Hai orbital $e_g$ ($d_{x^2-y^2}, d_{z^2}$) có các thùy hướng thẳng trực diện vào phối tử $\rightarrow$ chịu lực đẩy tĩnh điện lớn nhất $\rightarrow$ <strong>bị nâng cao năng lượng thêm $+0,6\Delta_o$</strong> ($+6Dq$).</li>
+                  <li>Ba orbital $t_{2g}$ ($d_{xy}, d_{yz}, d_{xz}$) có các thùy nằm xen kẽ giữa các trục tọa độ $\rightarrow$ chịu lực đẩy tĩnh điện nhỏ hơn $\rightarrow$ <strong>bị hạ thấp năng lượng xuống $-0,4\Delta_o$</strong> ($-4Dq$).</li>
+                  <li>Khoảng cách năng lượng giữa 2 mức được gọi là <strong>Năng lượng tách trường tinh thể ($\Delta_o$ hay $10Dq$)</strong>.</li>
+                </ul>
+              </li>
+              <li><strong>Dãy phổ hóa học của Phối tử (Spectrochemical Series):</strong>
+                Thực nghiệm quang phổ sắp xếp các phối tử theo chiều tăng dần khả năng tách trường $\Delta_o$:
+                <div class="formula-box">$$I^- < Br^- < S^{2-} < SCN^- < Cl^- < F^- < OH^- < ox^{2-} < H_2O < NCS^- < py \approx NH_3 < en < bipy < phen < NO_2^- < CN^- \approx CO$$</div>
+                <ul>
+                  <li><strong>Phối tử trường yếu (Bên trái $H_2O$):</strong> Có $\Delta_o$ nhỏ.</li>
+                  <li><strong>Phối tử trường mạnh (Bên phải $NH_3$):</strong> Có $\Delta_o$ rất lớn (đặc biệt là $CN^-$ và $CO$).</li>
+                </ul>
+              </li>
+              <li><strong>Quy luật Spin cao (High-Spin) vs Spin thấp (Low-Spin):</strong>
+                Sự sắp xếp electron vào các orbital $d$ phụ thuộc vào sự tương quan giữa $\Delta_o$ và <strong>Năng lượng ghép đôi electron ($P$)</strong>:
+                <ul>
+                  <li><strong>Nếu $\Delta_o < P$ (Trường phối tử yếu):</strong> Năng lượng cần để nhảy lên $e_g$ nhỏ hơn năng lượng cần để ép hai electron ghép đôi vào cùng một orbital $\rightarrow$ Electron ưu tiên điền độc thân vào cả $t_{2g}$ và $e_g$ theo Quy tắc Hund $\rightarrow$ <strong>Phức chất Spin cao (High-spin / Nhiều electron độc thân $\rightarrow$ Thuận từ mạnh)</strong>.
+                    <br><em>Ví dụ:</em> $[FeF_6]^{3-}$ ($Fe^{3+}: d^5$): Cấu hình $(t_{2g})^3 (e_g)^2$ có 5 electron độc thân.
+                  </li>
+                  <li><strong>Nếu $\Delta_o > P$ (Trường phối tử mạnh):</strong> Năng lượng tách $\Delta_o$ quá lớn, electron không thể nhảy lên $e_g$ mà bị ép ghép đôi ngay tại mức $t_{2g}$ $\rightarrow$ <strong>Phức chất Spin thấp (Low-spin / Ít hoặc không có electron độc thân)</strong>.
+                    <br><em>Ví dụ:</em> $[Fe(CN)_6]^{3-}$ ($Fe^{3+}: d^5$): Cấu hình $(t_{2g})^5 (e_g)^0$ chỉ còn 1 electron độc thân. Hay $[Fe(CN)_6]^{4-}$ ($Fe^{2+}: d^6$): Cấu hình $(t_{2g})^6 (e_g)^0$ có 0 electron độc thân $\rightarrow$ chất <strong>nghịch từ</strong> hoàn toàn!
+                  </li>
+                </ul>
+              </li>
+              <li><strong>Năng lượng làm bền trường tinh thể (Crystal Field Stabilization Energy - CFSE):</strong>
+                <div class="formula-box">$$CFSE = \left( -0,4 \cdot n_{t_{2g}} + 0,6 \cdot n_{e_g} \right)\Delta_o + m \cdot P$$</div>
+                <em>($n_{t_{2g}}$: số electron ở mức $t_{2g}$; $n_{e_g}$: số electron ở mức $e_g$; $m$: số cặp electron ghép đôi mới phát sinh do phối tử).</em>
+              </li>
+              <li><strong>Nguồn gốc màu sắc của phức chất:</strong>
+                Khi phức chất hấp thụ photon ánh sáng có năng lượng đúng bằng khoảng cách $\Delta_o$:
+                <div class="formula-box">$$\Delta_o = h\nu = \frac{h \cdot c}{\lambda}$$</div>
+                Electron từ mức $t_{2g}$ nhảy lên mức $e_g$ (bước nhảy $d-d$). Mắt người sẽ quan sát thấy màu bổ sung (màu phụ) của bước sóng bị hấp thụ. Các ion kim loại có cấu hình $d^0$ ($Sc^{3+}, Ti^{4+}$) hoặc $d^{10}$ ($Zn^{2+}, Cu^+$) không thể xảy ra bước nhảy $d-d$ nên dung dịch phức của chúng đều <strong>không có màu</strong>.
+              </li>
+              <li><strong>Hiệu ứng Jahn - Teller (Biến dạng hình học):</strong>
+                Một hệ thống phân tử phi tuyến có trạng thái suy biến điện tử sẽ tự động biến dạng cấu trúc hình học để làm giảm tính đối xứng và hạ thấp năng lượng tổng cộng.
+                <br><em>Điển hình:</em> Ion $Cu^{2+}$ ($d^9$ có cấu hình $(t_{2g})^6 (e_g)^3$ suy biến ở $e_g$). Trong phức bát diện $[Cu(H_2O)_6]^{2+}$, hai liên kết phối tử nước dọc theo trục $z$ bị kéo dài ra đáng kể so với 4 liên kết trên mặt phẳng $xy$ (bát diện bị kéo dài theo trục $z$).
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> CFT liên hệ trường phối tử với phân bố electron d, spin, từ tính và màu sắc; hỗ trợ nhận diện phức và giải thích ảnh hưởng của phối tử lên kim loại trung tâm.</p>
+            <h4>8. Cân bằng Phức chất, Hằng số Bền & Thuyết HSAB trong Dược khoa</h4>
+            <ul>
+              <li><strong>Hằng số bền từng nấc ($k_i$) và Hằng số bền tổng cộng ($\beta_n$):</strong>
+                Xét quá trình tạo phức từng nấc giữa kim loại $M$ và phối tử $L$:
+                <div class="formula-box">$$M + L \rightleftharpoons ML \ (k_1); \quad ML + L \rightleftharpoons ML_2 \ (k_2); \ \dots \ ; \ ML_{n-1} + L \rightleftharpoons ML_n \ (k_n)$$</div>
+                Hằng số bền tổng cộng:
+                <div class="formula-box">$$\beta_n = k_1 \cdot k_2 \cdots k_n = \frac{[ML_n]}{[M][L]^n}$$</div>
+                $\beta_n$ càng lớn thì phức chất càng bền vững. Đại lượng nghịch đảo gọi là hằng số không bền: $K_{kb} = \frac{1}{\beta_n}$.
+              </li>
+              <li><strong>Hằng số bền điều kiện ($\beta'$):</strong>
+                Trong dung dịch thực tế của kiểm nghiệm Dược phẩm, ion kim loại có thể tạo phức hydroxo phụ với $OH^-$, còn phối tử (như $EDTA$) là một đa acid bị proton hóa bởi $H^+$. Để định lượng chính xác độ bền thực tế ở một pH xác định:
+                <div class="formula-box">$$\beta' = \frac{\beta_{ML}}{\alpha_M \cdot \alpha_L}$$</div>
+                <em>($\alpha_M, \alpha_L$ là các hệ số phản ứng phụ). Đây là nguyên lý cốt lõi để chuẩn độ complexon chọn lọc ion $Ca^{2+}, Mg^{2+}, Bi^{3+}, Zn^{2+}$ trong Dược điển.</em>
+              </li>
+              <li><strong>Thuyết Acid - Base Cứng và Mềm của Pearson (HSAB Theory):</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Đặc điểm</th>
+                        <th>Phân loại CỨNG (Hard)</th>
+                        <th>Phân loại MỀM (Soft)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Acid Lewis<br>(Ion kim loại)</strong></td>
+                        <td>Bán kính ion nhỏ, điện tích dương cao, mật độ điện tích lớn, không có electron $d$ ngoài cùng, khó bị cực hóa.<br><em>Ví dụ:</em> $H^+, Li^+, Na^+, K^+, Mg^{2+}, Ca^{2+}, Al^{3+}, Fe^{3+}, Cr^{3+}, Ti^{4+}$.</td>
+                        <td>Bán kính ion lớn, điện tích thấp ($\le +2$), có nhiều electron phân lớp $d$, dễ bị biến dạng cực hóa.<br><em>Ví dụ:</em> $Ag^+, Cu^+, Au^+, Pt^{2+}, Pd^{2+}, Hg^{2+}, Cd^{2+}, Tl^+$.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Base Lewis<br>(Phối tử)</strong></td>
+                        <td>Nguyên tử phối trí có độ âm điện rất lớn, bán kính nhỏ, liên kết chặt chẽ với electron, khó bị oxy hóa.<br><em>Ví dụ:</em> $F^-, OH^-, H_2O, NH_3, SO_4^{2-}, CO_3^{2-}, RCOO^-$.</td>
+                        <td>Nguyên tử phối trí có độ âm điện thấp, bán kính lớn, đám mây electron xốp dễ bị phân cực hóa.<br><em>Ví dụ:</em> $I^-, S^{2-}, SCN^-, CN^-, CO, R-SH$ (thiol), $R_2S$.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Quy tắc phối trí Pearson</strong></td>
+                        <td colspan="2"><strong>"Acid cứng ưu tiên phối trí với Base cứng; Acid mềm ưu tiên phối trí với Base mềm"</strong> (Liên kết Cứng - Cứng mang bản chất tĩnh điện ion; liên kết Mềm - Mềm mang bản chất cộng hóa trị).</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Ý nghĩa Độc chất học & Giải độc Dược</strong></td>
+                        <td colspan="2">Các ion kim loại nặng cực độc ($Hg^{2+}, Cd^{2+}, Pb^{2+}, As^{3+}$) đều là <strong>Acid mềm hoặc trung gian</strong>. Trong cơ thể sống, chúng có ái lực mãnh liệt với các nhóm sulfhydryl ($-SH$, là <strong>Base mềm</strong>) trên các enzym và protein quan trọng, gây biến tính và ức chế hoàn toàn chức năng sống.
+                        <br>$\rightarrow$ Thuốc giải độc đặc hiệu bắt buộc phải là các phối tử chứa lưu huỳnh (Base mềm) như <strong>D-Penicillamine, Dimercaprol (BAL), DMPS</strong> để cạnh tranh lôi kéo ion kim loại nặng ra khỏi liên kết với tế bào.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+            </ul>
+
+            <p><strong>Ý nghĩa:</strong> Hằng số bền và HSAB giúp dự đoán cạnh tranh tạo phức trong dung dịch sinh học, tương tác thuốc–kim loại và nguyên lý chọn chất tạo phức giải độc.</p>
+            <h4>9. Bảng Tổng Hợp Toàn Diện Ứng Dụng Hóa Phối Trí trong Y Dược</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Lĩnh vực / Tên thuốc</th>
+                    <th>Công thức & Cấu trúc phối trí</th>
+                    <th>Cơ chế phối trí & Ứng dụng điều trị</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Cisplatin</strong><br>(Thuốc chống ung thư)</td>
+                    <td>$cis-[Pt(NH_3)_2Cl_2]$<br>Vuông phẳng ($dsp^2$), 2 phối tử ammine và 2 chloro ở vị trí cis.</td>
+                    <td>Hai phối tử $Cl^-$ rời đi trong môi trường nội bào có nồng độ $Cl^-$ thấp. $Pt^{2+}$ liên kết cộng hóa trị phối trí với nguyên tử $N_7$ của Guanine trên 2 mắt xích DNA, uốn cong DNA kép ngăn cản quá trình sao chép, kích hoạt tự hủy tế bào ác tính (Apoptosis).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Carboplatin & Oxaliplatin</strong><br>(Thế hệ 2 & 3)</td>
+                    <td>$Pt^{2+}$ phối trí với phối tử chelat dicarboxylate (cyclobutanedicarboxylate, oxalate) và diamine.</td>
+                    <td>Tăng độ bền liên kết phối tử, làm giảm tốc độ thủy phân $\rightarrow$ giảm độc tính trên thận và thần kinh thính giác so với Cisplatin.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$CaNa_2\text{-EDTA}$</strong><br>(Giải độc chì)</td>
+                    <td>Phối tử chelat EDTA 6 càng ($2N + 4O$).</td>
+                    <td>$Pb^{2+}$ có hằng số bền với EDTA ($\log\beta \approx 18$) cao hơn $Ca^{2+}$ ($\log\beta \approx 10,7$). Khi tiêm, $Pb^{2+}$ đẩy $Ca^{2+}$ ra ngoài, tạo phức tan $[Pb(EDTA)]^{2-}$ đào thải qua thận, không gây hạ canxi máu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>D-Penicillamine</strong><br>(Giải độc đồng)</td>
+                    <td>Phối tử aminothiol chelat qua nhóm $-SH$ và $-NH_2$.</td>
+                    <td>Đặc trị <strong>Bệnh thoái hóa gan - đậu Wilson</strong> do ứ đọng $Cu^{2+}$ trong mô, tạo phức chelat tan đào thải đồng qua đường niệu; giải độc thủy ngân ($Hg^{2+}$) và chì ($Pb^{2+}$).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Deferoxamine (Desferal)</strong><br>(Giải độc sắt)</td>
+                    <td>Phối tử trihydroxamate tự nhiên tạo phức bát diện 6 càng với $Fe^{3+}$.</td>
+                    <td>Hằng số bền với $Fe^{3+}$ siêu cao ($\log\beta \approx 31$). Đặc trị quá tải sắt do truyền máu kéo dài ở bệnh nhân thiếu máu tán huyết Thalassemia.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Dimercaprol (BAL)</strong><br>(British Anti-Lewisite)</td>
+                    <td>$CH_2(SH)-CH(SH)-CH_2OH$<br>Dithiol phối trí 2 càng qua 2 nhóm $-SH$.</td>
+                    <td>Đặc trị ngộ độc kim loại nặng mềm: Asen ($As^{3+}$), Thủy ngân ($Hg^{2+}$), Vàng ($Au$), Antimon ($Sb$). Cạnh tranh kéo kim loại ra khỏi liên kết với enzym pyruvate dehydrogenase.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$Gd\text{-DTPA}$ (Magnevist) & $Gd\text{-DOTA}$</strong><br>(Chất cản quang MRI)</td>
+                    <td>Ion $Gd^{3+}$ (Gadolinium, $4f^7$ có 7 electron độc thân) phối trí với phối tử đa càng DTPA / DOTA.</td>
+                    <td>$Gd^{3+}$ tự do cực độc, nhưng khi tạo phức chelat có hằng số bền $\log\beta > 22$, phức chất đào thải nguyên vẹn qua thận. 7 electron độc thân tạo momen từ khổng lồ làm rút ngắn thời gian hồi phục $T_1$ của proton nước trong mô, giúp hình ảnh cộng hưởng từ MRI hiển thị rõ các khối u và tổn thương mạch máu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>$^{99m}Tc\text{-Sestamibi}$ (Cardiolite)</strong><br>(Chẩn đoán hạt nhân)</td>
+                    <td>Đồng vị phóng xạ $^{99m}Tc$ phối trí với 6 phối tử isonitrile.</td>
+                    <td>Phức cation thân dầu tích điện dương, tập trung chọn lọc vào màng ty thể tế bào cơ tim còn sống. Phát tia gamma $140\text{ keV}$ cho phép máy SPECT chụp xạ hình chẩn đoán chính xác vùng cơ tim thiếu máu cục bộ.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hemoglobin & Myoglobin</strong><br>(Hệ phức sinh học)</td>
+                    <td>$Fe^{2+}$ phối trí với vòng Porphyrin (Heme) và gốc acid amin Histidine.</td>
+                    <td>Vị trí phối trí thứ 6 liên kết thuận nghịch với phân tử $O_2$ để vận chuyển khí nuôi mô tế bào. Bị ức chế bất thuận nghịch bởi phối tử trường mạnh $CO$ và $CN^-$.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Vitamin B12 (Cobalamin)</strong></td>
+                    <td>$Co^{3+}$ phối trí bát diện với vòng Corrin (4N), nucleotide dimethylbenzimidazole (1N) và nhóm $-CN$ hoặc $-CH_3$.</td>
+                    <td>Coenzym sống còn tham gia tổng hợp methionine, tạo hồng cầu và phát triển hệ thần kinh.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>Ý nghĩa:</strong> Các ví dụ ứng dụng cho thấy cùng nguyên lý phối trí được dùng trong điều trị, chẩn đoán và giải độc; mỗi ứng dụng cần cân nhắc độ bền phức, phân bố, thải trừ và độc tính.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Đọc ba phức chất thường gặp</div>
+              <strong>$[Cu(NH_3)_4]^{2+}$:</strong> $Cu^{2+}$ ($3d^9$) + 4 phối tử $NH_3$ đơn càng → số phối trí 4, dạng vuông phẳng, dung dịch xanh lam đậm; còn 1 e độc thân nên <strong>thuận từ</strong>.<br>
+              <strong>$[Fe(CN)_6]^{3-}$:</strong> $Fe^{3+}$ ($3d^5$) + 6 phối tử $CN^-$ (trường mạnh) → bát diện, cấu hình $t_{2g}^5$ (low-spin), 1 e độc thân, $\mu \approx 1,73$ BM theo công thức spin-only; hằng số bền rất lớn ($\log\beta \approx 44$).<br>
+              <strong>$[Ag(NH_3)_2]^+$:</strong> $Ag^+$ ($4d^{10}$) + 2 phối tử → số phối trí 2, dạng <strong>thẳng</strong>; đây là cơ sở phản ứng hòa tan $AgCl$ trong dung dịch $NH_3$ đặc.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — EDTA: phối tử 6 càng và ứng dụng giải độc</div>
+              $EDTA^{4-}$ có 4 nhóm carboxylate (4 nguyên tử O) + 2 nguyên tử N, mỗi vị trí cho 1 cặp e → <strong>6 càng</strong>, "ôm" ion kim loại tạo nhiều vòng 5 cạnh (chelat).<br>
+              Hiệu ứng chelat: giải phóng nhiều phân tử nước khi tạo phức làm tăng entropy → phức bền hơn hẳn phức của phối tử đơn càng ($\log\beta$ với $Fe^{3+}$ khoảng 25).<br>
+              <strong>Ứng dụng:</strong> $CaNa_2EDTA$ dùng giải độc chì ($Pb^{2+}$); trong bào chế, EDTA liều thấp được thêm vào thuốc để "khóa" vết $Fe^{3+}/Cu^{2+}$ xúc tác phản ứng oxy hóa, giúp chế phẩm ổn định hơn.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Số càng = số cặp e tự do mà phối tử cho được</strong> (mỗi N, O, S thường góp 1 cặp): $NH_3$, $H_2O$, $CN^-$, $Cl^-$ → 1 càng; ethylenediamine (en), oxalate ($C_2O_4^{2-}$) → 2 càng; EDTA → 6 càng. Mẹo đếm EDTA: <strong>"4 O + 2 N = 6"</strong>. Phức càng nhiều vòng chelat càng bền.
+            </div>
+          </div>
+        </div>
+
+        <!-- Chuyên đề 7: Đồng phân Phức chất -->
+        <div class="doc-card" id="doc-hvc-7">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-7')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">7</span>
+              <span class="doc-title">Chuyên đề 7: Đồng phân Phức chất — Phân loại Hệ thống &amp; Ứng dụng Dược học (Isomerism in Coordination Compounds)</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+
+            <h4>1. Tổng quan &amp; Phân loại Hai Nhánh Lớn</h4>
+            <p>Đồng phân phức chất là hiện tượng các phức chất có cùng công thức phân tử nhưng khác nhau về cấu trúc hoặc sự sắp xếp trong không gian, dẫn đến các tính chất vật lý, hóa học và đặc biệt là <strong>hoạt tính sinh học – dược lý</strong> hoàn toàn khác biệt. Đây là lĩnh vực cốt lõi trong thiết kế thuốc hiện đại.</p>
+            <p><strong>Ý nghĩa:</strong> Phân loại đồng phân giúp chọn tiêu chí nhận diện và dự đoán khác biệt về cấu tạo, hình học, tính chất sinh học dù công thức tổng giống nhau.</p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th colspan="3" style="text-align:center; background: linear-gradient(135deg,#1a237e,#283593); color:#fff;">Sơ đồ Phân loại Tổng thể Đồng phân Phức chất</th>
+                  </tr>
+                  <tr>
+                    <th>Nhánh Lớn</th>
+                    <th>Loại Đồng phân</th>
+                    <th>Tiêu chí Phân biệt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="4" style="background:#e8eaf6; font-weight:700; color:#1a237e; vertical-align:middle; text-align:center;">I. Đồng phân<br>Cấu trúc<br>(Structural<br>Isomerism)</td>
+                    <td><strong>Ion hóa (Ionization)</strong></td>
+                    <td>Anion cầu nội ⇌ cầu ngoại đổi chỗ nhau → ion hóa khác nhau khi phân ly</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Solvat hóa / Hydrat hóa (Solvate)</strong></td>
+                    <td>Phân tử dung môi (H₂O) ở cầu nội hay cầu ngoại</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Liên kết (Linkage)</strong></td>
+                    <td>Phối tử lưỡng nha gắn qua nguyên tử khác nhau</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Phối trí (Coordination)</strong></td>
+                    <td>Hoán đổi phối tử giữa hai ion phức cation &amp; anion</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="2" style="background:#fce4ec; font-weight:700; color:#880e4f; vertical-align:middle; text-align:center;">II. Đồng phân<br>Lập thể<br>(Stereo-<br>isomerism)</td>
+                    <td><strong>Hình học (Geometric) – cis/trans, fac/mer</strong></td>
+                    <td>Cùng liên kết, khác vị trí tương đối các phối tử trong không gian</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Quang học (Optical) – Δ/Λ, R/S</strong></td>
+                    <td>Phân tử không có tâm/mặt phẳng đối xứng → ảnh gương không chồng khít</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>Ý nghĩa:</strong> Phân loại đồng phân giúp chọn tiêu chí nhận diện đúng, rồi dự đoán khác biệt về cấu tạo, hình học và tính chất dược học dù công thức tổng giống nhau.</p>
+
+            <h4>2. Đồng phân Ion hóa (Ionization Isomerism)</h4>
+            <ul>
+              <li><strong>Nguyên lý:</strong> Xảy ra khi một anion (hoặc cation) nằm ở <strong>cầu ngoại</strong> và một phối tử trung tính đang phối trí ở <strong>cầu nội</strong> có thể hoán đổi vị trí cho nhau. Do đó cùng một công thức phân tử tổng thể nhưng ion phức có điện tích khác nhau.</li>
+              <li>
+                <strong>Ví dụ phân tích sâu:</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Công thức phức</th>
+                        <th>Màu sắc</th>
+                        <th>Thêm BaCl₂</th>
+                        <th>Thêm AgNO₃</th>
+                        <th>Giải thích</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>$[Co(NH_3)_5Br]SO_4$</td>
+                        <td>🟣 Đỏ tím</td>
+                        <td>↓ Trắng BaSO₄</td>
+                        <td>Không tủa</td>
+                        <td>$SO_4^{2-}$ ở cầu ngoại → bị kết tủa bởi $Ba^{2+}$; $Br^-$ bị giữ trong cầu nội</td>
+                      </tr>
+                      <tr>
+                        <td>$[Co(NH_3)_5(SO_4)]Br$</td>
+                        <td>🔴 Đỏ hồng</td>
+                        <td>Không tủa</td>
+                        <td>↓ Vàng AgBr</td>
+                        <td>$Br^-$ ở cầu ngoại → bị kết tủa bởi $Ag^+$; $SO_4^{2-}$ phối trí trong cầu nội</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li><strong>Ý nghĩa Dược học:</strong> Phân biệt đồng phân ion hóa thông qua phản ứng hóa học đặc trưng (kết tủa) là phương pháp kiểm nghiệm cơ bản trong Dược điển.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Vị trí anion trong hay ngoài cầu phối trí quyết định ion nào được giải phóng, ảnh hưởng phản ứng định tính, độ tan và dạng ion có mặt trong dung dịch.</p>
+
+            <h4>3. Đồng phân Solvat hóa / Hydrat hóa (Solvate / Hydrate Isomerism)</h4>
+            <ul>
+              <li><strong>Nguyên lý:</strong> Phân tử dung môi (đặc biệt là $H_2O$) có thể đóng vai trò phối tử trong <strong>cầu nội</strong> hoặc phân tử dung môi kết tinh nằm ở <strong>cầu ngoại</strong>. Điều này thay đổi số lượng ion $Cl^-$ tự do có thể bị kết tủa.</li>
+              <li>
+                <strong>Ba đồng phân hydrat của Chromium(III) chloride:</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Công thức đầy đủ</th>
+                        <th>Viết gọn</th>
+                        <th>Màu</th>
+                        <th>Cl⁻ tự do kết tủa với Ag⁺</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>$[Cr(H_2O)_6]Cl_3$</td>
+                        <td>Violet (tím)</td>
+                        <td>🟣</td>
+                        <td>3 ion $Cl^-$ (tất cả)</td>
+                      </tr>
+                      <tr>
+                        <td>$[Cr(H_2O)_5Cl]Cl_2 \cdot H_2O$</td>
+                        <td>Lục nhạt</td>
+                        <td>🟢</td>
+                        <td>2 ion $Cl^-$</td>
+                      </tr>
+                      <tr>
+                        <td>$[Cr(H_2O)_4Cl_2]Cl \cdot 2H_2O$</td>
+                        <td>Lục đậm</td>
+                        <td>🟩</td>
+                        <td>1 ion $Cl^-$</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li><strong>Ứng dụng:</strong> Xác định số lượng phối tử trong cầu nội bằng cách đo độ dẫn điện hoặc lượng $AgCl$ kết tủa — phương pháp kiểm tra cổ điển trong hóa phân tích Dược.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nước ở cầu nội hay cầu ngoại làm đổi số ion tự do, trạng thái hydrat và tính chất tinh thể; các khác biệt này ảnh hưởng kiểm nghiệm và đặc tính hòa tan của nguyên liệu.</p>
+
+            <h4>4. Đồng phân Liên kết (Linkage Isomerism)</h4>
+            <ul>
+              <li><strong>Nguyên lý:</strong> Xảy ra với các <strong>phối tử lưỡng nha (ambidentate ligands)</strong> — phối tử có thể gắn vào kim loại qua <em>hai nguyên tử khác nhau</em> trong cùng phân tử. Ví dụ phổ biến nhất là $NO_2^-$ và $SCN^-$.</li>
+              <li>
+                <strong>Phối tử $NO_2^-$: Nitro vs Nitrito</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Loại liên kết</th>
+                        <th>Tên phối tử</th>
+                        <th>Nguyên tử gắn vào kim loại</th>
+                        <th>Ví dụ</th>
+                        <th>Màu &amp; Tính chất</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>$M{-}N{=}O_2$ (N-gắn)</td>
+                        <td><em>Nitro</em> ($\eta^1$-N)</td>
+                        <td>Nguyên tử <strong>N</strong></td>
+                        <td>$[Co(NH_3)_5(NO_2)]Cl_2$</td>
+                        <td>🟡 Vàng, bền hơn về nhiệt động</td>
+                      </tr>
+                      <tr>
+                        <td>$M{-}O{-}N{=}O$ (O-gắn)</td>
+                        <td><em>Nitrito</em> ($\eta^1$-O)</td>
+                        <td>Nguyên tử <strong>O</strong></td>
+                        <td>$[Co(NH_3)_5(ONO)]Cl_2$</td>
+                        <td>🔴 Đỏ, kém bền, chuyển dần sang dạng Nitro</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li>
+                <strong>Phối tử $SCN^-$: Thiocyanato vs Isothiocyanato</strong>
+                <ul>
+                  <li>Gắn qua $S$: Phối tử <em>Thiocyanato</em> ($M-S-C \equiv N$) — ưu tiên với kim loại mềm ($Pt^{2+}, Pd^{2+}$).</li>
+                  <li>Gắn qua $N$: Phối tử <em>Isothiocyanato</em> ($M-N=C=S$) — ưu tiên với kim loại cứng ($Co^{3+}, Cr^{3+}$).</li>
+                  <li>→ <em>Nguyên lý HSAB của Pearson</em> giải thích sự chọn lọc này: Kim loại mềm ái lực với nguyên tử phối trí mềm (S); kim loại cứng ái lực với nguyên tử phối trí cứng (N).</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Nguyên tử cho khác nhau làm đổi liên kết kim loại–phối tử, độ bền và khả năng phản ứng của phức; HSAB giúp lý giải xu hướng chọn vị trí gắn.</p>
+
+            <h4>5. Đồng phân Phối trí (Coordination Isomerism)</h4>
+            <ul>
+              <li><strong>Nguyên lý:</strong> Chỉ xảy ra khi <strong>cả cation lẫn anion của muối phức đều là ion phức</strong>. Các phối tử hoán đổi qua lại giữa hai ion phức với nhau, tạo ra các phức chất mới.</li>
+              <li>
+                <strong>Ví dụ:</strong>
+                <div class="formula-box">
+                  $$[Co(NH_3)_6][Cr(CN)_6] \quad \text{và} \quad [Cr(NH_3)_6][Co(CN)_6]$$
+                  $$[Pt^{II}(NH_3)_4][Pt^{IV}Cl_6] \quad \text{và} \quad [Pt^{IV}(NH_3)_4Cl_2][Pt^{II}Cl_4]$$
+                </div>
+              </li>
+              <li><strong>Phân tích:</strong> Dù cùng công thức phân tử $Co(NH_3)_6Cr(CN)_6$, hai phức chất có màu sắc, cấu trúc tinh thể và tính chất hóa học hoàn toàn khác nhau do bản chất trung tâm kim loại gắn kết với mỗi loại phối tử khác nhau.</li>
+            </ul>
+            <p><strong>Ý nghĩa:</strong> Phân biệt cách phối tử phân bố giữa hai ion phức giúp xác định cấu trúc và dự đoán tính chất hóa học, màu sắc, độ tan của muối phức.</p>
+
+            <h4>6. Đồng phân Hình học (Geometric Isomerism)</h4>
+            <ul>
+              <li><strong>Nguyên lý:</strong> Các phối tử giống nhau được sắp xếp ở các vị trí khác nhau trong không gian quanh tâm kim loại, dù không thay đổi liên kết hóa học. Xuất hiện khi phức có <strong>số phối trí ≥ 4</strong> và <strong>không đồng nhất các phối tử</strong>.</li>
+            </ul>
+
+            <p><strong>A. Hệ Vuông phẳng — $[MA_2B_2]$ và $[MA_2BC]$:</strong></p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Hệ</th>
+                    <th>Dạng cis</th>
+                    <th>Dạng trans</th>
+                    <th>Ví dụ lịch sử</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$[MA_2B_2]$ Vuông phẳng</td>
+                    <td>2 phối tử A <strong>kề nhau</strong> (góc 90°)</td>
+                    <td>2 phối tử A <strong>đối diện nhau</strong> (góc 180°)</td>
+                    <td rowspan="2">
+                      <strong>Cisplatin</strong> $cis\text{-}[Pt(NH_3)_2Cl_2]$ → Thuốc chống ung thư mạnh.<br>
+                      <strong>Transplatin</strong> $trans\text{-}[Pt(NH_3)_2Cl_2]$ → <em>Không có hoạt tính</em> vì không thể tạo liên kết chéo với DNA.
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>$[MA_2BC]$ Vuông phẳng</td>
+                    <td>2 phối tử A kề nhau</td>
+                    <td>2 phối tử A đối diện</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>B. Hệ Bát diện — Các kiểu đồng phân hình học:</strong></p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Công thức</th>
+                    <th>Dạng cis</th>
+                    <th>Dạng trans</th>
+                    <th>Ví dụ</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$[MA_4B_2]$</td>
+                    <td>2 phối tử B góc 90° (liền kề)</td>
+                    <td>2 phối tử B góc 180° (đối diện)</td>
+                    <td>$[Co(NH_3)_4Cl_2]^+$: cis (🟣 tím), trans (🟢 xanh lục)</td>
+                  </tr>
+                  <tr>
+                    <td>$[MA_3B_3]$ — <strong>fac/mer</strong></td>
+                    <td><strong>Facial (fac):</strong> 3 phối tử B chiếm 3 đỉnh cùng mặt tam giác → tất cả góc 90°</td>
+                    <td><strong>Meridional (mer):</strong> 3 phối tử B cùng nằm trên mặt phẳng xích đạo → tạo thành hàng thẳng (1 góc 180° + 2 góc 90°)</td>
+                    <td>$[Co(NH_3)_3Cl_3]$, $[IrCl_3(PMe_3)_3]$</td>
+                  </tr>
+                  <tr>
+                    <td>$[MA_2B_2C_2]$</td>
+                    <td colspan="2">Có thể có nhiều đồng phân hình học do sự kết hợp phức tạp hơn</td>
+                    <td>$[Pt(NH_3)_2(Cl)_2(NO_2)_2]$ có ít nhất 5 đồng phân hình học</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p><strong>Ý nghĩa:</strong> Bảng này đối chiếu cách cấu tạo và hình học tạo các dạng đồng phân khác nhau; dùng làm sơ đồ định hướng trước khi xét từng loại cụ thể.</p>
+
+            <div class="formula-box">
+              <strong>💊 Ứng dụng Dược học then chốt — Cisplatin vs Transplatin:</strong><br>
+              Cis-[Pt(NH₃)₂Cl₂]: Hai nhóm $Cl^-$ ở vị trí cis, khoảng cách 3.3 Å phù hợp chính xác để <em>tạo liên kết chéo nội chuỗi</em> với hai base Guanine liền kề trên DNA, uốn cong chuỗi DNA 30–40°, ngăn cản polymerase sao chép → gây apoptosis tế bào ung thư.<br>
+              Trans-[Pt(NH₃)₂Cl₂]: Hai nhóm $Cl^-$ ở vị trí trans, khoảng cách 6.6 Å quá lớn, không thể đồng thời kết nối với 2 base liền kề → Không có cơ chế gây độc tế bào → Không có tác dụng chống ung thư.
+            </div>
+            <p><strong>Ý nghĩa:</strong> Vị trí tương đối của phối tử có thể quyết định khả năng gắn đồng thời vào đích sinh học. Cisplatin/transplatin là ví dụ trực tiếp về hình học phân tử làm thay đổi hoạt tính thuốc.</p>
+
+            <h4>7. Đồng phân Quang học (Optical Isomerism / Chirality)</h4>
+            <ul>
+              <li><strong>Điều kiện phát sinh:</strong> Phân tử phức chất <strong>không có tâm đối xứng ($i$), mặt phẳng đối xứng ($\sigma$) hoặc trục quay nghịch đảo ($S_n$)</strong> nào. Hai đồng phân là <strong>ảnh gương qua gương nhưng không thể chồng khít</strong> lên nhau, gọi là cặp đối quang (enantiomers).</li>
+              <li>
+                <strong>Ký hiệu quay phực (Configuration Descriptors):</strong>
+                <ul>
+                  <li><strong>Δ (Delta)</strong>: Ký hiệu cấu hình helicity của một số phức bát diện có phối tử càng; mô tả chiều xoắn phải của các vòng chelat theo quy ước quan sát dọc trục thích hợp.</li>
+                  <li><strong>Λ (Lambda)</strong>: Cấu hình ảnh gương với Δ, có chiều xoắn trái theo cùng quy ước. Δ/Λ mô tả cấu hình không gian, <strong>không tự cho biết</strong> chất làm quay ánh sáng phân cực sang phải (+) hay sang trái (−); dấu quay phải đo thực nghiệm bằng phân cực kế.</li>
+                </ul>
+              </li>
+              <li>
+                <strong>Các hệ phức quang hoạt điển hình:</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Phức chất</th>
+                        <th>Cấu hình</th>
+                        <th>Phối tử</th>
+                        <th>Tính chất quang học</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>$[Co(en)_3]^{3+}$</td>
+                        <td>Bát diện</td>
+                        <td>3 ethylenediamine (en) chelat 2 càng</td>
+                        <td>Tồn tại cặp đối quang Δ và Λ; phân giải được bằng tác nhân chiral (tartrate)</td>
+                      </tr>
+                      <tr>
+                        <td>$[Fe(ox)_3]^{3-}$</td>
+                        <td>Bát diện</td>
+                        <td>3 oxalate ($ox^{2-}$) chelat 2 càng</td>
+                        <td>Cặp Δ/Λ; nghịch từ (Low-spin $d^5$)</td>
+                      </tr>
+                      <tr>
+                        <td>$[Cr(bipy)_3]^{3+}$</td>
+                        <td>Bát diện</td>
+                        <td>3 bipyridyl chelat 2 càng</td>
+                        <td>Quang hoạt; ổn định cấu hình do vòng chelat cứng nhắc</td>
+                      </tr>
+                      <tr>
+                        <td>$[Co(EDTA)]^-$</td>
+                        <td>Bát diện bất đối xứng</td>
+                        <td>EDTA 6 càng</td>
+                        <td>Phức chelat dị vòng tạo cấu hình bất đối xứng; quan trọng trong chuẩn độ complexon chọn lọc</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li>
+                <strong>Phân biệt Quang học &amp; Hình học trong hệ bát diện $[MA_2B_2C_2]$:</strong>
+                <ul>
+                  <li>Hệ này vừa có đồng phân hình học (cis/trans) vừa có đồng phân quang học (nếu dạng cis không có mặt phẳng đối xứng).</li>
+                  <li>Ví dụ: Dạng cis của $[CoCl_2(en)_2]^+$ tồn tại 2 đối quang Δ-cis và Λ-cis; dạng trans có mặt phẳng đối xứng → không quang hoạt.</li>
+                </ul>
+              </li>
+            </ul>
+            <p><strong>Phân biệt cấu hình và tính quang hoạt:</strong> Một cặp enantiomer tinh khiết thường quay mặt phẳng ánh sáng phân cực với độ lớn bằng nhau, chiều ngược nhau trong cùng điều kiện đo; không thể suy dấu (+)/(−) chỉ từ nhãn Δ/Λ. Hỗn hợp hai enantiomer bằng nhau (hỗn hợp racemic) có độ quay tổng bằng 0 do triệt tiêu, dù từng phân tử vẫn là chiral. Mẫu không quay ánh sáng cũng có thể do cấu trúc achiral hoặc do bù trừ hỗn hợp; vì vậy phép đo quang học không thay thế việc xác định cấu hình và độ tinh khiết lập thể.</p>
+            <p><strong>Ý nghĩa:</strong> Đối quang có thể tương tác khác nhau với protein, enzyme và receptor bất đối xứng; xác định cấu hình giúp đánh giá hoạt tính, độ chọn lọc và độ tinh khiết lập thể.</p>
+
+            <h4>8. Ý nghĩa Dược học Tổng hợp — Tại sao Đồng phân Phức chất Quan trọng?</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Loại đồng phân</th>
+                    <th>Ý nghĩa Dược học / Lâm sàng</th>
+                    <th>Ví dụ tiêu biểu</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Hình học (cis/trans)</strong></td>
+                    <td>Quyết định hình học phân tử → Khả năng khớp với ổ tiếp nhận (receptor) hoặc DNA → Hoạt tính ung thư hoàn toàn khác biệt</td>
+                    <td><em>Cisplatin (hoạt tính)</em> vs <em>Transplatin (không hoạt tính)</em></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Quang học (Δ/Λ)</strong></td>
+                    <td>Môi trường sinh học là bất đối xứng (enzyme, receptor đều là protein chiral) → Chỉ một đối quang gắn được → Hoạt tính, độc tính, dược động học khác nhau</td>
+                    <td>Oxaliplatin dùng dạng thuần quang ($1R,2R$-DACH); đối quang còn lại không có hoạt tính</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Liên kết (Linkage)</strong></td>
+                    <td>Nguyên tử gắn khác nhau → Độ bền phức, tốc độ thủy phân, vị trí gắn DNA/protein khác nhau</td>
+                    <td>Phức $Pt$-$SCN^-$ (gắn qua S, bền) vs $Pt$-$NCS^-$ (gắn qua N, kém bền)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ion hóa (Ionization)</strong></td>
+                    <td>Ảnh hưởng đến dạng ion tự do trong dung dịch sinh lý → độ tan, hoạt động sinh học, tương tác với màng tế bào</td>
+                    <td>Muối Cobalt dạng ion hóa khác nhau cho thử nghiệm kết tủa Dược điển</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Hình học fac/mer</strong></td>
+                    <td>Ảnh hưởng đến hình dạng tổng thể phức chất → Khả năng thẩm thấu màng tế bào và tương tác enzyme</td>
+                    <td>Phức $IrCl_3(PR_3)_3$ fac vs mer có phản ứng trao đổi phối tử khác nhau</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>Ý nghĩa:</strong> Bảng tổng hợp liên hệ loại đồng phân với thay đổi về tương tác đích, độ tan, ion hóa và dược động học; hỗ trợ đánh giá vì sao cần kiểm soát dạng đồng phân của phức thuốc.</p>
+
+            <div class="formula-box">
+              <strong>📌 Quy tắc Nhanh kiểm tra khả năng tồn tại Đồng phân Quang học:</strong><br>
+              • Nếu phức có <strong>mặt phẳng đối xứng</strong> ($\sigma$) → <em>Không quang hoạt</em> (là hợp chất meso hoặc achiral).<br>
+              • Nếu phức <strong>không</strong> có $\sigma$ và không có $i$ → <em>Quang hoạt</em>, tồn tại cặp Δ/Λ.<br>
+              • Dạng <em>trans</em> của $[MA_4B_2]$ thường có $\sigma$ → không quang hoạt.<br>
+              • Dạng <em>cis</em> của $[M(chelat)_2B_2]$ thường không có $\sigma$ → quang hoạt.
+            </div>
+
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Đồng phân phức chất có cùng công thức tổng nhưng khác cách liên kết hoặc sắp xếp không gian, nên có thể khác độ tan, tốc độ phân ly, tương tác sinh học và độc tính. Nhận diện đúng đồng phân giúp đọc công thức, dự đoán sản phẩm phản ứng và hiểu vì sao hình học phối trí ảnh hưởng hiệu quả của thuốc kim loại.</p>
+
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — cisplatin và transplatin: cùng công thức, khác số phận</div>
+              Cả hai đều là $[Pt(NH_3)_2Cl_2]$ với $Pt^{2+}$ ($5d^8$), cấu trúc <strong>vuông phẳng</strong>.<br>
+              <strong>cis:</strong> hai $NH_3$ nằm <em>kề nhau</em>, hai $Cl$ kề nhau → vào tế bào, thủy phân mất $Cl^-$, rồi liên kết với N7 của guanine trên DNA tạo <strong>cầu nối nội sợi</strong> → ức chế sao chép DNA, chữa ung thư.<br>
+              <strong>trans:</strong> hai $NH_3$ nằm <em>đối nhau</em> → khoảng cách hình học không cho phép tạo cầu nối chéo đúng kiểu, lại bị thải nhanh → <strong>không có hoạt tính chống ung thư</strong>.<br>
+              Bài học: chỉ đổi cách sắp xếp phối tử mà hoạt tính dược lý đảo ngược hoàn toàn.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Đồng phân quang học $\Delta/\Lambda$</div>
+              $[Co(en)_3]^{3+}$ (en = ethylenediamine, 2 càng): 3 phối tử 2 càng xoắn quanh Co tạo hai dạng <strong>Δ và Λ</strong> như hai bàn tay, không chồng khít lên nhau.<br>
+              Phức này <strong>không có mặt phẳng đối xứng</strong> → quang hoạt, hai đồng phân xoay mặt phẳng ánh sáng phân cực ngược chiều nhau.<br>
+              Ngược lại, $[Co(NH_3)_4Cl_2]^+$ dạng <em>trans</em> có mặt phẳng đối xứng → <strong>không quang hoạt</strong>; dạng <em>cis</em> không có $\sigma$ → quang hoạt (Δ/Λ).<br>
+              Trong sản xuất thuốc, chỉ dạng đồng phân mong muốn mới được dùng; dạng còn lại có thể kém tác dụng hoặc độc hơn.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              Quy trình 3 bước: <strong>(1)</strong> đếm loại phối tử → đoán loại đồng phân (ion hóa, hydrat, liên kết, phối trí, hình học, quang học); <strong>(2)</strong> vẽ <em>cis</em> = "kề nhau", <em>trans</em> = "đối nhau"; <strong>(3)</strong> tìm mặt phẳng đối xứng $\sigma$: có $\sigma$ → không quang hoạt, không có $\sigma$ → có cặp Δ/Λ. Mẹo: <strong>"cis kề – trans đối; trans dễ có gương phẳng"</strong>.
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Chuyên đề 8: Nhiệt hóa học -->
+        <div class="doc-card active" id="doc-hvc-8">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-8')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">8</span>
+              <span class="doc-title">Chuyên đề 8: Nhiệt hóa học &amp; Năng lượng phản ứng trong Dược học (Thermochemistry)</span>
+              <span class="doc-tag">Năng lượng &amp; Độ bền thuốc</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <p><strong>Nhiệt hóa học</strong> nghiên cứu nhiệt lượng kèm theo các phản ứng hóa học và các quá trình chuyển pha. Với dược sĩ, đây không phải kiến thức "để thi": mọi viên thuốc đều có <em>năng lượng dự trữ</em> — dạng bền thì tồn tại lâu, dạng kém bền thì phân hủy, chuyển dạng hoặc tương kỵ với tá dược. Hiểu nhiệt hóa học giúp trả lời ba câu hỏi thực tế: <strong>phản ứng có tự xảy ra không? tỏa hay thu nhiệt? và nhanh chậm thế nào khi tăng nhiệt độ?</strong></p>
+
+            <h4>1. Hệ - trạng thái - nội năng - enthalpy</h4>
+            <ul>
+              <li><strong>Hệ và môi trường:</strong> phần vật chất đang xét là <em>hệ</em>, phần còn lại là <em>môi trường</em>. Hệ <strong>mở</strong> trao đổi cả chất và năng lượng (cơ thể, cốc nước để hở); hệ <strong>kín</strong> chỉ trao đổi năng lượng (ống nghiệm đậy kín); hệ <strong>cô lập</strong> không trao đổi gì (bình nhiệt lượng kế lý tưởng).</li>
+              <li><strong>Hàm trạng thái:</strong> chỉ phụ thuộc trạng thái đầu - cuối, không phụ thuộc đường đi: $U$ (nội năng), $H$ (enthalpy), $S$ (entropy), $G$ (năng lượng Gibbs). Ngược lại $Q$ (nhiệt) và $A$ (công) là <em>hàm đường đi</em> — cùng biến đổi trạng thái nhưng lượng nhiệt/công có thể khác nhau.</li>
+              <li><strong>Nội năng $U$:</strong> tổng động năng và thế năng của mọi phân tử trong hệ. Không đo được giá trị tuyệt đối, chỉ đo được <strong>biến thiên</strong> $\Delta U$.</li>
+              <li><strong>Enthalpy $H = U + PV$:</strong> ở áp suất không đổi (đa số thí nghiệm và quá trình sống), nhiệt trao đổi đúng bằng biến thiên enthalpy:
+                <div class="formula-box">$$Q_p = \Delta H \qquad \text{và} \qquad \Delta H = \Delta U + P\Delta V$$</div>
+              </li>
+              <li><strong>Quy ước dấu:</strong> $\Delta H < 0$: hệ <em>tỏa nhiệt</em> ra môi trường (phản ứng cháy, trung hòa, hydrat hóa); $\Delta H > 0$: hệ <em>thu nhiệt</em> (phân hủy, hòa tan $NH_4NO_3$, thăng hoa).</li>
+            </ul>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Đại lượng</th><th>Ký hiệu</th><th>Đơn vị</th><th>Ý nghĩa thực tế</th></tr></thead><tbody>
+              <tr><td>Nhiệt phản ứng</td><td>$Q$, $\Delta H$</td><td>J; kJ/mol</td><td>Nhiệt tỏa/ thu khi phản ứng xảy ra</td></tr>
+              <tr><td>Nội năng</td><td>$U$</td><td>J; kJ/mol</td><td>Năng lượng bên trong hệ</td></tr>
+              <tr><td>Entropy</td><td>$S$</td><td>J/(mol·K)</td><td>Mức "mất trật tự" của hệ</td></tr>
+              <tr><td>Năng lượng Gibbs</td><td>$G$</td><td>kJ/mol</td><td>Phần năng lượng dùng được để sinh công</td></tr>
+              <tr><td>Nhiệt dung riêng</td><td>$c$</td><td>J/(g·K)</td><td>Nhiệt cần để 1 g chất tăng 1 K</td></tr>
+            </tbody></table></div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>"Tỏa là âm — Thu là dương"</strong> (nhìn từ phía hệ). Còn <strong>"H ở áp suất không đổi — U ở thể tích không đổi"</strong>: làm thí nghiệm trong cốc hở thì đo $\Delta H$, trong bom kín thì đo $\Delta U$.
+            </div>
+
+            <h4>2. Định luật I nhiệt động học và nhiệt phản ứng</h4>
+            <ul>
+              <li><strong>Định luật I (bảo toàn năng lượng):</strong> năng lượng không tự sinh ra hay mất đi, chỉ chuyển hóa. Với hệ kín:
+                <div class="formula-box">$$Q = \Delta U + A \qquad \text{hay} \qquad \Delta U = Q - A$$</div>
+                trong đó $A$ là công hệ sinh ra (nếu hệ nhận công thì $A < 0$). Nhiệt lượng kế đo $Q$, từ đó suy ra $\Delta U$ hoặc $\Delta H$.
+              </li>
+              <li><strong>Liên hệ $\Delta H$ và $\Delta U$ khi có khí:</strong>
+                <div class="formula-box">$$\Delta H = \Delta U + \Delta n_{khí}RT$$</div>
+                với $\Delta n_{khí}$ = số mol khí sản phẩm − số mol khí tham gia. Nếu không có khí ($\Delta n = 0$) thì $\Delta H \approx \Delta U$.
+              </li>
+              <li><strong>Các loại nhiệt phản ứng:</strong>
+                <ul>
+                  <li><em>Nhiệt tạo thành chuẩn</em> $\Delta H_f^\circ$: nhiệt khi tạo 1 mol hợp chất từ các đơn chất ở trạng thái bền nhất, điều kiện chuẩn. Đơn chất bền (O₂, N₂, H₂, C than chì) có $\Delta H_f^\circ = 0$.</li>
+                  <li><em>Nhiệt cháy</em> $\Delta H_c^\circ$: nhiệt khi đốt cháy hoàn toàn 1 mol chất (luôn âm).</li>
+                  <li><em>Nhiệt trung hòa, nhiệt hòa tan, nhiệt hydrat hóa, nhiệt thăng hoa</em>: tương ứng với từng quá trình.</li>
+                </ul>
+              </li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 1 — Một viên glucose 5 g cung cấp bao nhiêu năng lượng?</div>
+              Phản ứng đốt cháy hoàn toàn glucose: $\text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2 \rightarrow 6\text{CO}_2 + 6\text{H}_2\text{O}$, $\Delta H_c^\circ = -2803\ \text{kJ/mol}$.<br>
+              Số mol trong 5 g: $n = \dfrac{5}{180} \approx 0,0278\ \text{mol}$.<br>
+              Nhiệt tỏa ra: $Q = 0,0278 \times 2803 \approx 78\ \text{kJ}$. Đổi ra kcal: $78 / 4,184 \approx 18,6\ \text{kcal}$.<br>
+              <strong>Kết luận:</strong> một viên glucose 5 g cho khoảng 78 kJ (≈ 19 kcal) — đúng cỡ một viên năng lượng dùng khi hạ đường huyết nhẹ.
+            </div>
+
+            <h4>3. Định luật Hess và cách tính nhiệt phản ứng</h4>
+            <p>Vì $H$ là hàm trạng thái, nhiệt phản ứng <strong>không phụ thuộc đường đi</strong> mà chỉ phụ thuộc chất đầu và chất cuối. Đây là <strong>định luật Hess</strong> — công cụ mạnh nhất để tính những phản ứng không thể đo trực tiếp (quá chậm, có phản ứng phụ, hoặc nguy hiểm).</p>
+            <div class="formula-box">$$\Delta H^\circ_{pư} = \sum \Delta H_f^\circ(\text{sản phẩm}) - \sum \Delta H_f^\circ(\text{chất tham gia})$$</div>
+            <p>Hệ quả: có thể cộng trừ các phương trình nhiệt hóa như cộng trừ phương trình đại số.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 2 — Tính nhiệt tổng hợp urê (Hess)</div>
+              Phản ứng: $\text{CO}_2(k) + 2\text{NH}_3(k) \rightarrow \text{CO(NH}_2)_2(r) + \text{H}_2\text{O}(l)$.<br>
+              Nhiệt tạo thành chuẩn: $\text{CO}_2$: $-393,5$; $\text{NH}_3$: $-46,2$; urê: $-333,5$; $\text{H}_2\text{O}(l)$: $-285,8$ (kJ/mol).<br>
+              $$\Delta H^\circ = [(-333,5) + (-285,8)] - [(-393,5) + 2(-46,2)] = -619,3 + 485,9 = -133,4\ \text{kJ/mol}$$
+              <strong>Đọc kết quả:</strong> phản ứng <em>tỏa</em> ≈ 133 kJ cho mỗi mol urê, nên về mặt nhiệt động rất thuận lợi; trong công nghiệp vẫn cần áp suất cao để tăng tốc độ và dịch chuyển cân bằng.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ công thức Hess</div>
+              <strong>"Sản phẩm trừ chất tham gia"</strong> — nhớ theo thứ tự đọc từ trái sang phải của một phản ứng. Mẹo kiểm tra: nếu kết quả ra dương mà phản ứng đốt cháy thì chắc chắn đã đảo dấu.
+            </div>
+
+            <h4>4. Năng lượng liên kết: năng lượng "nằm trong" phân tử</h4>
+            <ul>
+              <li><strong>Năng lượng liên kết</strong> là năng lượng cần để bẻ gãy 1 mol liên kết ở pha khí (luôn <strong>dương</strong> — phải cấp năng lượng).</li>
+              <li><strong>Nguyên tắc:</strong> phản ứng hóa học = bẻ liên kết cũ (thu năng lượng) + tạo liên kết mới (tỏa năng lượng):
+                <div class="formula-box">$$\Delta H \approx \sum E_{liên\ kết\ bẻ\ gãy} - \sum E_{liên\ kết\ hình\ thành}$$</div>
+              </li>
+            </ul>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Liên kết</th><th>$E$ (kJ/mol)</th><th>Liên kết</th><th>$E$ (kJ/mol)</th></tr></thead><tbody>
+              <tr><td>H–H</td><td>436</td><td>C–H</td><td>413</td></tr>
+              <tr><td>O=O</td><td>498</td><td>C–C</td><td>347</td></tr>
+              <tr><td>C=O</td><td>745 (trong $\text{CO}_2$: 799)</td><td>C=C</td><td>614</td></tr>
+              <tr><td>O–H</td><td>463</td><td>C≡C</td><td>839</td></tr>
+              <tr><td>N–H</td><td>391</td><td>C–O</td><td>358</td></tr>
+            </tbody></table></div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 3 — Đốt methane bằng năng lượng liên kết</div>
+              $\text{CH}_4 + 2\text{O}_2 \rightarrow \text{CO}_2 + 2\text{H}_2\text{O}(k)$<br>
+              <strong>Bẻ gãy:</strong> $4 \times \text{C–H} = 4(413) = 1652$; $2 \times \text{O=O} = 2(498) = 996$ → tổng $2648\ \text{kJ}$.<br>
+              <strong>Tạo thành:</strong> $2 \times \text{C=O}$ (trong $\text{CO}_2$) $= 2(799) = 1598$; $4 \times \text{O–H} = 4(463) = 1852$ → tổng $3450\ \text{kJ}$.<br>
+              $$\Delta H \approx 2648 - 3450 = -802\ \text{kJ/mol}$$
+              <strong>So với thực nghiệm:</strong> $-802\ \text{kJ/mol}$ đúng với trường hợp nước ở thể <em>hơi</em>; nếu nước ngưng tụ thành lỏng, cộng thêm $2 \times 44 = 88\ \text{kJ}$ → $\approx -890\ \text{kJ/mol}$. Bài học: năng lượng liên kết trung bình chỉ cho <em>ước lượng</em>, sai số vài % và phụ thuộc trạng thái vật lý.
+            </div>
+
+            <h4>5. Nhiệt dung và nhiệt lượng kế</h4>
+            <ul>
+              <li><strong>Nhiệt lượng thu/tỏa khi thay đổi nhiệt độ:</strong>
+                <div class="formula-box">$$Q = m\,c\,\Delta T \qquad \text{với nước: } c \approx 4,18\ \text{J/(g}\cdot\text{K)}$$</div>
+                $m$: khối lượng (g), $c$: nhiệt dung riêng, $\Delta T$: độ tăng nhiệt độ (K).
+              </li>
+              <li><strong>Nhiệt lượng kế bom:</strong> đốt mẫu trong bình kín chứa O₂, nhúng trong nước; đo $\Delta T$ của nước → tính $Q$ → suy ra $\Delta H_c^\circ$. Vì thể tích không đổi, giá trị đo trực tiếp là $\Delta U$; chuyển sang $\Delta H$ bằng $\Delta H = \Delta U + \Delta nRT$.</li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 4 — Đo nhiệt cháy glucose bằng nhiệt lượng kế</div>
+              Đốt $0,50\ \text{g}$ glucose trong bom nhiệt lượng kế chứa $500\ \text{g}$ nước; nhiệt độ nước tăng $3,7\ \text{K}$.<br>
+              $$Q_{nước} = 500 \times 4,18 \times 3,7 \approx 7,73 \times 10^3\ \text{J} = 7,73\ \text{kJ}$$
+              Số mol glucose: $0,50/180 \approx 2,78 \times 10^{-3}\ \text{mol}$ → $\Delta U \approx -\dfrac{7,73}{2,78 \times 10^{-3}} \approx -2,78 \times 10^3\ \text{kJ/mol}$.<br>
+              <strong>Nhận xét:</strong> gần với giá trị chuẩn $-2803\ \text{kJ/mol}$; phần chênh lệch do thất thoát nhiệt ra môi trường và nhiệt dung của bom, cốc, nhiệt kế chưa được tính hết.
+            </div>
+
+            <h4>6. Định luật II - entropy - năng lượng Gibbs: phản ứng có tự xảy ra?</h4>
+            <ul>
+              <li><strong>Entropy $S$:</strong> đo mức độ phân tán/mất trật tự. Hệ cô lập chỉ tự diễn biến theo chiều $\Delta S > 0$ (rắn → lỏng → khí, tăng số hạt khí, trộn lẫn).</li>
+              <li><strong>Năng lượng Gibbs:</strong> tiêu chuẩn gộp cả yếu tố nhiệt và yếu tố trật tự ở nhiệt độ $T$:
+                <div class="formula-box">$$\Delta G = \Delta H - T\Delta S$$</div>
+                $\Delta G < 0$: phản ứng tự xảy ra (thuận lợi); $\Delta G = 0$: cân bằng; $\Delta G > 0$: không tự xảy ra (cần cấp năng lượng, ví dụ ghép với ATP).
+              </li>
+              <li><strong>Nhiệt độ đảo chiều:</strong> khi $\Delta H$ và $\Delta S$ cùng dấu, đặt $\Delta G = 0$:
+                <div class="formula-box">$$T_{đảo} = \frac{\Delta H}{\Delta S}$$</div>
+              </li>
+            </ul>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>$\Delta H$</th><th>$\Delta S$</th><th>Tự xảy ra khi</th><th>Ví dụ</th></tr></thead><tbody>
+              <tr><td>−</td><td>+</td><td>Mọi nhiệt độ</td><td>Cháy, trung hòa acid - base</td></tr>
+              <tr><td>−</td><td>−</td><td>Nhiệt độ thấp</td><td>Đông đặc, ngưng tụ</td></tr>
+              <tr><td>+</td><td>+</td><td>Nhiệt độ cao</td><td>Nung đá vôi, phân hủy thuốc</td></tr>
+              <tr><td>+</td><td>−</td><td>Không bao giờ</td><td>Quá trình "phi tự nhiên"</td></tr>
+            </tbody></table></div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 5 — Nung đá vôi: bao nhiêu độ thì phân hủy?</div>
+              $\text{CaCO}_3(r) \rightarrow \text{CaO}(r) + \text{CO}_2(k)$ có $\Delta H^\circ = +178\ \text{kJ/mol}$, $\Delta S^\circ = +160,5\ \text{J/(mol}\cdot\text{K)}$.<br>
+              $$\Delta G = 0 \Rightarrow T = \frac{178\,000}{160,5} \approx 1109\ \text{K} \approx 836^\circ\text{C}$$
+              <strong>Đọc kết quả:</strong> dưới 836 °C phản ứng không tự xảy ra (đá vôi bền); trên nhiệt độ đó bắt đầu phân hủy mạnh. Đây là lý do lò nung vôi phải chạy trên 900 °C.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 6 — Vì sao $NH_4NO_3$ tan trong nước lại làm lạnh?</div>
+              Hòa tan $NH_4NO_3$: $\Delta H_{hòa\ tan} \approx +25,7\ \text{kJ/mol}$ (thu nhiệt) nhưng $\Delta S > 0$ rất lớn vì ion bị phân tán và phá vỡ mạng tinh thể.<br>
+              Ở $T = 298\ \text{K}$: $\Delta G = 25\,700 - 298 \times \Delta S$. Với $\Delta S \approx +110\ \text{J/K}$: $\Delta G \approx 25\,700 - 32\,800 = -7\,100\ \text{J} < 0$ → vẫn tan tự phát.<br>
+              <strong>Hệ quả:</strong> quá trình hút nhiệt từ nước xung quanh → nhiệt độ dung dịch giảm, ứng dụng làm túi chườm lạnh tức thời. Ngược lại, hòa tan $NaOH$ hay $H_2SO_4$ tỏa nhiệt mạnh → phải cho acid vào nước từ từ, không làm ngược lại.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>"G = H trừ T·S; âm thì chạy, dương thì dừng"</strong>. Phản ứng tỏa nhiệt ($\Delta H < 0$) <em>chưa chắc</em> tự xảy ra — phải xét cả entropy. Mẹo đọc bảng: cặp <strong>"âm dương" là luôn chạy</strong>, cặp <strong>"dương âm" là không bao giờ</strong>, hai cặp còn lại phụ thuộc nhiệt độ.
+            </div>
+
+            <h4>7. Ứng dụng trong bào chế, bảo quản và phân tích thuốc</h4>
+            <ul>
+              <li><strong>Độ bền thuốc và nhiệt độ (phương trình Arrhenius):</strong> tốc độ phân hủy tăng theo nhiệt độ:
+                <div class="formula-box">$$k = A\,e^{-E_a/RT} \qquad \Rightarrow \qquad \frac{k_2}{k_1} = e^{\frac{E_a}{R}\left(\frac{1}{T_1} - \frac{1}{T_2}\right)}$$</div>
+                $E_a$: năng lượng hoạt hóa (J/mol), $R = 8,314\ \text{J/(mol}\cdot\text{K)}$, $T$: nhiệt độ tuyệt đối (K).
+              </li>
+              <li><strong>Quy tắc $Q_{10}$:</strong> với đa số phản ứng phân hủy, cứ tăng 10 °C thì tốc độ tăng khoảng 2 - 3 lần. Vì vậy bảo quản thuốc ở 2 - 8 °C có thể kéo dài hạn dùng lên nhiều lần; ngược lại, để thuốc trong cốp xe nóng 50 °C có thể làm hỏng thuốc chỉ trong vài ngày.</li>
+              <li><strong>Đa hình (polymorph) và năng lượng Gibbs:</strong> hai dạng tinh thể cùng công thức nhưng khác cấu trúc có $G$ khác nhau. Dạng <em>siêu bền</em> có $G$ cao hơn nên độ tan (và tốc độ hấp thu) cao hơn, nhưng có xu hướng chuyển thành dạng bền hơn — làm giảm hiệu lực hoặc thay đổi tương đương sinh học theo thời gian. Đây là lý do cần kiểm soát đa hình trong sản xuất (ví dụ ritonavir).</li>
+              <li><strong>Phân tích nhiệt (DSC/TGA):</strong> đo nhiệt thu/tỏa khi nung mẫu giúp phát hiện điểm nóng chảy, chuyển dạng đa hình, mất nước kết tinh và <strong>tương kỵ thuốc - tá dược</strong> (xuất hiện pic lạ hoặc dịch chuyển pic).</li>
+              <li><strong>Đông khô (lyophilization):</strong> nước thăng hoa trực tiếp từ băng cần cấp nhiệt thăng hoa ($\Delta H_{sub} \approx 51\ \text{kJ/mol}$ ở 0 °C) trong môi trường chân không — hiểu nhiệt hóa giúp chọn chu trình sấy và tránh nóng chảy khối băng.</li>
+              <li><strong>Nhiệt hòa tan và thuốc tiêm:</strong> thuốc tan tỏa nhiệt mạnh có thể gây đau hoặc hoại tử mô tại chỗ tiêm; pha loãng, làm ấm dung dịch và tiêm chậm giúp giảm phản ứng. Ngược lại, thuốc tan thu nhiệt gây cảm giác lạnh.</li>
+              <li><strong>Năng lượng mạng tinh thể và độ tan:</strong> muối có năng lượng mạng lớn (liên kết ion mạnh) thường khó tan; chu trình Born - Haber phân tách quá trình thành thăng hoa, ion hóa, phân ly và hydrat hóa — mỗi bước đều là một $\Delta H$ riêng.</li>
+              <li><strong>Bảo quản theo điều kiện khí hậu (ICH):</strong> nghiên cứu độ ổn định ở 25 °C/60% RH, 30 °C/65% RH và 40 °C/75% RH rồi ngoại suy bằng Arrhenius để xác định hạn dùng và điều kiện bảo quản.</li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ 7 — Tăng 10 °C, thuốc phân hủy nhanh thêm bao nhiêu?</div>
+              Một hoạt chất có $E_a = 75\ \text{kJ/mol}$, bảo quản từ 25 °C lên 35 °C:<br>
+              $$\frac{k_{35}}{k_{25}} = e^{\frac{75\,000}{8,314}\left(\frac{1}{298} - \frac{1}{308}\right)} = e^{0,982} \approx 2,7$$
+              <strong>Kết luận:</strong> tốc độ phân hủy tăng ≈ 2,7 lần, nên hạn dùng ở 35 °C chỉ còn khoảng $1/2,7 \approx 37\%$ so với ở 25 °C. Đây là cơ sở định lượng của quy tắc "tăng 10 °C nhanh gấp 2 - 3 lần" và của việc bắt buộc bảo quản lạnh với vaccine, insulin, một số kháng sinh pha tiêm.
+            </div>
+
+            <h4>8. Quy trình 4 bước giải một bài nhiệt hóa</h4>
+            <ol>
+              <li><strong>Xác định hệ và quá trình:</strong> phản ứng cháy, hòa tan, chuyển pha hay tạo phức? Ở áp suất không đổi (dùng $\Delta H$) hay thể tích không đổi (dùng $\Delta U$)?</li>
+              <li><strong>Chọn công thức gốc:</strong> có $\Delta H_f^\circ$ → dùng Hess; có năng lượng liên kết → dùng $\sum E_{bẻ} - \sum E_{tạo}$; có khối lượng và $\Delta T$ → dùng $Q = mc\Delta T$.</li>
+              <li><strong>Tính toán kèm đơn vị:</strong> đổi kJ ↔ J, °C → K ($T = t + 273$), gam → mol. Kiểm tra dấu: tỏa nhiệt phải âm.</li>
+              <li><strong>Biện luận:</strong> nếu đề hỏi "có tự xảy ra không" thì phải tính $\Delta G = \Delta H - T\Delta S$ và so với 0; nếu hỏi "ở nhiệt độ nào" thì giải $\Delta G = 0$.</li>
+            </ol>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Công thức</th><th>Dùng khi</th><th>Lưu ý</th></tr></thead><tbody>
+              <tr><td>$Q = mc\Delta T$</td><td>Đo nhiệt lượng kế</td><td>$c_{nước} = 4,18\ \text{J/(g}\cdot\text{K)}$; $\Delta T$ tính bằng K</td></tr>
+              <tr><td>$\Delta H = \Delta U + \Delta nRT$</td><td>Chuyển giữa hai điều kiện</td><td>Chỉ tính mol khí</td></tr>
+              <tr><td>$\Delta H^\circ = \sum \Delta H_f^\circ(sp) - \sum \Delta H_f^\circ(tg)$</td><td>Có bảng nhiệt tạo thành</td><td>Nhân đúng hệ số cân bằng</td></tr>
+              <tr><td>$\Delta H \approx \sum E_{bẻ} - \sum E_{tạo}$</td><td>Chỉ có năng lượng liên kết</td><td>Chỉ là giá trị gần đúng, pha khí</td></tr>
+              <tr><td>$\Delta G = \Delta H - T\Delta S$</td><td>Xét chiều tự diễn biến</td><td>Đơn vị: kJ và J phải đổi cho khớp</td></tr>
+              <tr><td>$T_{đảo} = \Delta H/\Delta S$</td><td>$\Delta H$, $\Delta S$ cùng dấu</td><td>Kết quả là Kelvin</td></tr>
+              <tr><td>$k = Ae^{-E_a/RT}$</td><td>Độ ổn định, hạn dùng</td><td>$T$ phải là Kelvin; $E_a$ đổi ra J</td></tr>
+            </tbody></table></div>
+            <div class="callout"><div class="callout-title">Cách nhớ toàn chuyên đề</div>
+              <strong>"Một định luật — Hai trạng thái — Ba câu hỏi":</strong> Một định luật bảo toàn năng lượng; hai cặp khái niệm đối lập (tỏa/thu, bền/kém bền); ba câu hỏi cần trả lời cho mọi phản ứng: <em>(1) tỏa hay thu? (2) có tự xảy ra không? (3) nhanh hay chậm?</em> — tương ứng $\Delta H$, $\Delta G$ và $E_a$.
+            </div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Nhiệt hóa học cung cấp ngôn ngữ định lượng cho toàn bộ vòng đời của một thuốc: từ tính toán năng lượng phản ứng tổng hợp (Hess, năng lượng liên kết), kiểm soát quá trình sản xuất (nhiệt lượng kế, DSC), đến dự đoán độ ổn định và hạn dùng (Arrhenius, $Q_{10}$) và lựa chọn điều kiện bảo quản. Ba cặp khái niệm cốt lõi — $\Delta H$ (tỏa/thu), $\Delta G$ (tự diễn biến hay không) và $E_a$ (nhanh/chậm) — giải thích được phần lớn các hiện tượng thực tế từ đá vôi nung 900 °C, túi chườm lạnh $NH_4NO_3$, đến vì sao vaccine phải giữ 2 - 8 °C.</p>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-hvc-9">
+          <div class="doc-header" onclick="toggleDoc('doc-hvc-9')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">9</span>
+              <span class="doc-title">Từ khóa thường gặp môn Hóa Vô cơ - Dược</span>
+              <span class="doc-tag">Bảng tra nhanh</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <p>Bảng tóm tắt thuật ngữ nền tảng trong hóa học vô cơ và hóa dược; xem công thức, điện tích và điều kiện phản ứng theo từng chuyên đề để tránh áp dụng máy móc.</p>
+            <h4>1. Cấu tạo nguyên tử và liên kết</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Số hiệu nguyên tử (Z)</td><td>Số proton trong hạt nhân; xác định nguyên tố.</td></tr>
+              <tr><td>Số khối (A)</td><td>Tổng số proton và neutron trong hạt nhân của một đồng vị.</td></tr>
+              <tr><td>Đồng vị</td><td>Các nguyên tử cùng Z nhưng khác số neutron và số khối.</td></tr>
+              <tr><td>Electron hóa trị</td><td>Electron lớp ngoài cùng hoặc electron tham gia liên kết/phản ứng hóa học.</td></tr>
+              <tr><td>Độ âm điện ($\chi$)</td><td>Khả năng tương đối của nguyên tử hút electron liên kết trong phân tử.</td></tr>
+              <tr><td>Liên kết ion</td><td>Tương tác hút tĩnh điện giữa các ion trái dấu; chất rắn ion tạo mạng tinh thể.</td></tr>
+              <tr><td>Liên kết cộng hóa trị</td><td>Liên kết hình thành khi các nguyên tử dùng chung một hay nhiều cặp electron.</td></tr>
+              <tr><td>Liên kết phối trí</td><td>Liên kết cộng hóa trị trong đó cả hai electron dùng chung ban đầu do một phía cho.</td></tr>
+              <tr><td>Điện tích hình thức</td><td>Cách phân bổ electron quy ước trên cấu trúc Lewis; tổng điện tích hình thức bằng điện tích toàn hệ.</td></tr>
+              <tr><td>Cộng hưởng</td><td>Nhiều cấu trúc Lewis đóng góp vào một cấu trúc thực có electron giải tỏa; không phải phân tử chuyển qua lại giữa các cấu trúc.</td></tr>
+              <tr><td>VSEPR</td><td>Mô hình dự đoán hình học phân tử dựa trên lực đẩy giữa các miền electron hóa trị.</td></tr>
+              <tr><td>Momen lưỡng cực</td><td>Đại lượng vector mô tả sự phân tách điện tích; momen toàn phân tử là tổng vector các momen liên kết.</td></tr>
+            </tbody></table></div>
+            <h4>2. Phản ứng và cân bằng hóa học</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Số oxy hóa</td><td>Điện tích quy ước gán cho nguyên tử theo quy tắc phân bổ electron; dùng nhận diện oxy hóa–khử.</td></tr>
+              <tr><td>Oxy hóa / khử</td><td>Nhường electron / nhận electron; chất khử bị oxy hóa, chất oxy hóa bị khử.</td></tr>
+              <tr><td>Acid / base Brønsted–Lowry</td><td>Chất cho proton H⁺ / chất nhận proton H⁺.</td></tr>
+              <tr><td>Acid / base Lewis</td><td>Chất nhận cặp electron / chất cho cặp electron.</td></tr>
+              <tr><td>pH</td><td>$-\log_{10} a_{H^+}$; trong dung dịch loãng thường xấp xỉ $-\log_{10}[H^+]$.</td></tr>
+              <tr><td>Dung dịch đệm</td><td>Hệ acid yếu/base liên hợp hạn chế biến đổi pH khi thêm lượng nhỏ acid hoặc base.</td></tr>
+              <tr><td>Tích số tan ($K_{sp}$)</td><td>Hằng số cân bằng biểu diễn độ tan của muối ít tan theo hoạt độ/nồng độ ion tại cân bằng.</td></tr>
+              <tr><td>Hiệu ứng ion chung</td><td>Ion chung làm giảm độ tan cân bằng của chất điện ly ít tan trong điều kiện thích hợp.</td></tr>
+              <tr><td>Hằng số cân bằng ($K$)</td><td>Tỷ số hoạt độ sản phẩm/chất tham gia ở trạng thái cân bằng, với số mũ là hệ số phản ứng.</td></tr>
+              <tr><td>Nguyên lý Le Châtelier</td><td>Hệ cân bằng dịch chuyển theo chiều làm giảm tác động của biến đổi nồng độ, áp suất hoặc nhiệt độ.</td></tr>
+              <tr><td>Chất xúc tác</td><td>Tăng tốc độ đạt cân bằng bằng con đường năng lượng hoạt hóa thấp hơn; không làm đổi hằng số cân bằng.</td></tr>
+            </tbody></table></div>
+            <h4>3. Phức chất và hóa dược</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Ion trung tâm</td><td>Thường là ion kim loại nhận cặp electron từ phối tử trong phức chất.</td></tr>
+              <tr><td>Phối tử</td><td>Ion hoặc phân tử có ít nhất một cặp electron tự do để tạo liên kết phối trí.</td></tr>
+              <tr><td>Số phối trí</td><td>Số nguyên tử cho liên kết trực tiếp với ion trung tâm; không luôn bằng số phối tử.</td></tr>
+              <tr><td>Cầu nội / cầu ngoại</td><td>Phần phối tử liên kết trực tiếp với ion trung tâm / ion đối nằm ngoài ngoặc vuông phức.</td></tr>
+              <tr><td>Chelate (phối tử càng cua)</td><td>Phối tử đa càng tạo từ hai hay nhiều liên kết phối trí với cùng ion trung tâm, thường tạo vòng.</td></tr>
+              <tr><td>Hằng số tạo phức</td><td>Đại lượng cân bằng mô tả mức độ tạo phức; giá trị lớn thường biểu thị phức bền nhiệt động hơn trong điều kiện xác định.</td></tr>
+              <tr><td>Đồng phân ion hóa</td><td>Phức có cùng thành phần tổng thể nhưng khác ion ở cầu nội và cầu ngoại, nên có thể phân ly tạo ion khác nhau.</td></tr>
+              <tr><td>Đồng phân hình học</td><td>Khác cách sắp xếp phối tử quanh ion trung tâm, như cis/trans hoặc fac/mer.</td></tr>
+              <tr><td>Đồng phân quang học</td><td>Các cấu trúc là ảnh gương không chồng khít, có thể quay mặt phẳng ánh sáng phân cực theo hướng khác nhau.</td></tr>
+              <tr><td>Độ tan / độ hòa tan</td><td>Lượng chất tan cân bằng trong điều kiện xác định / quá trình chất phân tán ở mức phân tử hoặc ion trong dung môi.</td></tr>
+            </tbody></table></div>
+            <div class="callout"><div class="callout-title">Cặp dễ nhầm</div>Chất oxy hóa là chất nhận electron; chất khử là chất nhường electron. Số phối trí đếm nguyên tử cho liên kết, không phải số phối tử. Chất xúc tác làm nhanh quá trình nhưng không dịch chuyển vị trí cân bằng.</div>
+            <h4>4. Bảng tính tan một số muối thường gặp</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Ion / nhóm muối</th><th>Quy tắc tính tan trong nước</th><th>Ngoại lệ và điểm cần nhớ</th></tr></thead><tbody>
+              <tr><td>Kim loại kiềm ($Li^+, Na^+, K^+, Rb^+, Cs^+$)</td><td>Hầu hết muối tan.</td><td>Một số muối lithium có độ tan thấp hơn các muối kiềm khác; vẫn xét chất cụ thể và nhiệt độ.</td></tr>
+              <tr><td>Ammonium ($NH_4^+$)</td><td>Hầu hết muối ammonium tan.</td><td>Quy tắc tổng quát cho muối vô cơ thông dụng.</td></tr>
+              <tr><td>Nitrate ($NO_3^-$), chlorate ($ClO_3^-$), perchlorate ($ClO_4^-$)</td><td>Hầu hết tan.</td><td>Perchlorate có thể ít tan trong một số dung môi/hệ ion đặc biệt; trong quy tắc dung dịch nước phổ thông xem là tan.</td></tr>
+              <tr><td>Acetate ($CH_3COO^-$)</td><td>Phần lớn tan.</td><td>Một số acetate kim loại nặng thủy phân hoặc có độ tan hạn chế; không coi quy tắc là tuyệt đối.</td></tr>
+              <tr><td>Chloride ($Cl^-$)</td><td>Phần lớn tan.</td><td>$AgCl$, $PbCl_2$ (ít tan trong nước lạnh, tan hơn nước nóng), $Hg_2Cl_2$ ít tan. $HgCl_2$ tan, khác với muối mercury(I).</td></tr>
+              <tr><td>Bromide ($Br^-$), iodide ($I^-$)</td><td>Phần lớn tan.</td><td>Muối của $Ag^+$, $Pb^{2+}$, $Hg_2^{2+}$ thường ít tan; $PbBr_2$ và $PbI_2$ tan hơn khi nóng. Một số iodide có phản ứng oxy hóa-khử phụ.</td></tr>
+              <tr><td>Fluoride ($F^-$)</td><td>Muối kim loại kiềm và ammonium thường tan.</td><td>Nhiều fluoride kim loại kiềm thổ và kim loại khác ít tan, gồm $CaF_2$, $SrF_2$, $BaF_2$, $MgF_2$, $PbF_2$.</td></tr>
+              <tr><td>Sulfate ($SO_4^{2-}$)</td><td>Phần lớn tan.</td><td>$BaSO_4$, $SrSO_4$, $PbSO_4$ rất ít tan; $CaSO_4$, $Ag_2SO_4$, $Hg_2SO_4$ ít tan hoặc tan hạn chế.</td></tr>
+              <tr><td>Hydroxide ($OH^-$)</td><td>Phần lớn ít tan; hydroxide kim loại kiềm tan.</td><td>$Ba(OH)_2$ tan; $Sr(OH)_2$ và $Ca(OH)_2$ tan một phần (Ca ít tan); phần lớn hydroxide kim loại chuyển tiếp, $Mg(OH)_2$ ít tan.</td></tr>
+              <tr><td>Oxide ($O^{2-}$)</td><td>Phần lớn oxide kim loại không tan trong nước; oxide kim loại kiềm và một số oxide kiềm thổ phản ứng với nước tạo hydroxide.</td><td>Không đánh đồng “tan” với “phản ứng”: $Na_2O$ phản ứng mạnh tạo $NaOH$; nhiều oxide chỉ phản ứng khi nung hoặc không phản ứng đáng kể.</td></tr>
+              <tr><td>Sulfide ($S^{2-}$)</td><td>Sulfide kim loại kiềm và ammonium tan; nhiều sulfide kim loại khác ít tan.</td><td>Sulfide nhóm IIA biến thiên: $MgS$, $CaS$, $SrS$, $BaS$ có hành vi khác nhau và có thể thủy phân; độ tan còn phụ thuộc pH.</td></tr>
+              <tr><td>Carbonate ($CO_3^{2-}$)</td><td>Phần lớn ít tan.</td><td>Muối kim loại kiềm và ammonium tan. Acid hóa giải phóng $CO_2$; bicarbonate không cùng quy tắc với carbonate.</td></tr>
+              <tr><td>Hydrogen carbonate / bicarbonate ($HCO_3^-$)</td><td>Muối kim loại kiềm và ammonium tan; bicarbonate kim loại kiềm thổ thường tồn tại trong dung dịch.</td><td>Nhiều bicarbonate kim loại không bền khi cô cạn/nung, chuyển thành carbonate, $CO_2$ và nước.</td></tr>
+              <tr><td>Phosphate ($PO_4^{3-}$), phosphite</td><td>Phần lớn ít tan.</td><td>Muối kim loại kiềm và ammonium tan; dạng proton hóa và pH làm thay đổi cân bằng/độ tan.</td></tr>
+              <tr><td>Sulfite ($SO_3^{2-}$)</td><td>Phần lớn ít tan.</td><td>Muối kim loại kiềm và ammonium tan; acid hóa giải phóng $SO_2$.</td></tr>
+              <tr><td>Thiosulfate ($S_2O_3^{2-}$)</td><td>Muối kim loại kiềm và ammonium tan; nhiều muối khác tan.</td><td>$Ag_2S_2O_3$ và một số thiosulfate kim loại nặng không bền, có thể phân hủy/kết tủa; xét phản ứng cụ thể.</td></tr>
+              <tr><td>Chromate ($CrO_4^{2-}$), dichromate ($Cr_2O_7^{2-}$)</td><td>Muối kim loại kiềm và ammonium thường tan; nhiều chromate kim loại nặng ít tan.</td><td>$BaCrO_4$, $PbCrO_4$, $Ag_2CrO_4$ ít tan. Tỷ lệ chromate/dichromate phụ thuộc pH.</td></tr>
+              <tr><td>Oxalate ($C_2O_4^{2-}$)</td><td>Muối kim loại kiềm và ammonium tan; nhiều oxalate kim loại khác ít tan.</td><td>$CaC_2O_4$ ít tan; tạo phức hoặc pH có thể ảnh hưởng độ tan biểu kiến.</td></tr>
+              <tr><td>Silicate ($SiO_3^{2-}$ và silicate)</td><td>Silicate kim loại kiềm thường tan; phần lớn silicate khác ít tan.</td><td>Silicate có cấu trúc và công thức đa dạng; quy tắc chỉ dùng định tính.</td></tr>
+              <tr><td>Cyanide ($CN^-$)</td><td>Muối kim loại kiềm và ammonium tan.</td><td>Nhiều cyanide kim loại nặng ít tan hoặc tạo phức bền; cyanide rất độc, acid hóa có thể giải phóng HCN nguy hiểm.</td></tr>
+              <tr><td>Chromium(III), aluminium, zinc hydroxide</td><td>Một số hydroxide lưỡng tính, ít tan trong nước.</td><td>$Al(OH)_3$, $Cr(OH)_3$, $Zn(OH)_2$ tan trong acid và trong kiềm dư tạo phức hydroxo; đây là phản ứng acid-base/tạo phức, không phải quy tắc muối đơn thuần.</td></tr>
+            </tbody></table></div>
+            <p><strong>Cách dùng:</strong> Đây là bộ quy tắc định tính phổ thông cho các nhóm ion vô cơ thường gặp, không phải danh sách độ tan định lượng của mọi hợp chất. Dự đoán kết tủa cần tính $Q_{sp}$ và so với $K_{sp}$ khi có số liệu; xét nhiệt độ, pH, tạo phức, oxy hóa-khử và ion chung. “Ít tan” không có nghĩa độ tan bằng 0.</p>
+
+            <h4>5. Độ âm điện Pauling của một số nguyên tố</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Z</th><th>Ký hiệu</th><th>Nguyên tố</th><th>$\chi_P$</th><th>Z</th><th>Ký hiệu</th><th>Nguyên tố</th><th>$\chi_P$</th><th>Z</th><th>Ký hiệu</th><th>Nguyên tố</th><th>$\chi_P$</th></tr></thead><tbody>
+              <tr><td>1</td><td>H</td><td>Hydrogen</td><td>2,20</td><td>2</td><td>He</td><td>Helium</td><td>—</td><td>3</td><td>Li</td><td>Lithium</td><td>0,98</td></tr>
+              <tr><td>4</td><td>Be</td><td>Beryllium</td><td>1,57</td><td>5</td><td>B</td><td>Boron</td><td>2,04</td><td>6</td><td>C</td><td>Carbon</td><td>2,55</td></tr>
+              <tr><td>7</td><td>N</td><td>Nitrogen</td><td>3,04</td><td>8</td><td>O</td><td>Oxygen</td><td>3,44</td><td>9</td><td>F</td><td>Fluorine</td><td>3,98</td></tr>
+              <tr><td>10</td><td>Ne</td><td>Neon</td><td>—</td><td>11</td><td>Na</td><td>Sodium</td><td>0,93</td><td>12</td><td>Mg</td><td>Magnesium</td><td>1,31</td></tr>
+              <tr><td>13</td><td>Al</td><td>Aluminium</td><td>1,61</td><td>14</td><td>Si</td><td>Silicon</td><td>1,90</td><td>15</td><td>P</td><td>Phosphorus</td><td>2,19</td></tr>
+              <tr><td>16</td><td>S</td><td>Sulfur</td><td>2,58</td><td>17</td><td>Cl</td><td>Chlorine</td><td>3,16</td><td>18</td><td>Ar</td><td>Argon</td><td>—</td></tr>
+              <tr><td>19</td><td>K</td><td>Potassium</td><td>0,82</td><td>20</td><td>Ca</td><td>Calcium</td><td>1,00</td><td>21</td><td>Sc</td><td>Scandium</td><td>1,36</td></tr>
+              <tr><td>22</td><td>Ti</td><td>Titanium</td><td>1,54</td><td>23</td><td>V</td><td>Vanadium</td><td>1,63</td><td>24</td><td>Cr</td><td>Chromium</td><td>1,66</td></tr>
+              <tr><td>25</td><td>Mn</td><td>Manganese</td><td>1,55</td><td>26</td><td>Fe</td><td>Iron</td><td>1,83</td><td>27</td><td>Co</td><td>Cobalt</td><td>1,88</td></tr>
+              <tr><td>28</td><td>Ni</td><td>Nickel</td><td>1,91</td><td>29</td><td>Cu</td><td>Copper</td><td>1,90</td><td>30</td><td>Zn</td><td>Zinc</td><td>1,65</td></tr>
+              <tr><td>31</td><td>Ga</td><td>Gallium</td><td>1,81</td><td>32</td><td>Ge</td><td>Germanium</td><td>2,01</td><td>33</td><td>As</td><td>Arsenic</td><td>2,18</td></tr>
+              <tr><td>34</td><td>Se</td><td>Selenium</td><td>2,55</td><td>35</td><td>Br</td><td>Bromine</td><td>2,96</td><td>36</td><td>Kr</td><td>Krypton</td><td>3,00</td></tr>
+              <tr><td>37</td><td>Rb</td><td>Rubidium</td><td>0,82</td><td>38</td><td>Sr</td><td>Strontium</td><td>0,95</td><td>39</td><td>Y</td><td>Yttrium</td><td>1,22</td></tr>
+              <tr><td>40</td><td>Zr</td><td>Zirconium</td><td>1,33</td><td>41</td><td>Nb</td><td>Niobium</td><td>1,60</td><td>42</td><td>Mo</td><td>Molybdenum</td><td>2,16</td></tr>
+              <tr><td>43</td><td>Tc</td><td>Technetium</td><td>1,90</td><td>44</td><td>Ru</td><td>Ruthenium</td><td>2,20</td><td>45</td><td>Rh</td><td>Rhodium</td><td>2,28</td></tr>
+              <tr><td>46</td><td>Pd</td><td>Palladium</td><td>2,20</td><td>47</td><td>Ag</td><td>Silver</td><td>1,93</td><td>48</td><td>Cd</td><td>Cadmium</td><td>1,69</td></tr>
+              <tr><td>49</td><td>In</td><td>Indium</td><td>1,78</td><td>50</td><td>Sn</td><td>Tin</td><td>1,96</td><td>51</td><td>Sb</td><td>Antimony</td><td>2,05</td></tr>
+              <tr><td>52</td><td>Te</td><td>Tellurium</td><td>2,10</td><td>53</td><td>I</td><td>Iodine</td><td>2,66</td><td>54</td><td>Xe</td><td>Xenon</td><td>2,60</td></tr>
+              <tr><td>55</td><td>Cs</td><td>Caesium</td><td>0,79</td><td>56</td><td>Ba</td><td>Barium</td><td>0,89</td><td>57</td><td>La</td><td>Lanthanum</td><td>1,10</td></tr>
+              <tr><td>58</td><td>Ce</td><td>Cerium</td><td>1,12</td><td>59</td><td>Pr</td><td>Praseodymium</td><td>1,13</td><td>60</td><td>Nd</td><td>Neodymium</td><td>1,14</td></tr>
+              <tr><td>61</td><td>Pm</td><td>Promethium</td><td>1,13*</td><td>62</td><td>Sm</td><td>Samarium</td><td>1,17</td><td>63</td><td>Eu</td><td>Europium</td><td>1,20*</td></tr>
+              <tr><td>64</td><td>Gd</td><td>Gadolinium</td><td>1,20</td><td>65</td><td>Tb</td><td>Terbium</td><td>1,10</td><td>66</td><td>Dy</td><td>Dysprosium</td><td>1,22</td></tr>
+              <tr><td>67</td><td>Ho</td><td>Holmium</td><td>1,23</td><td>68</td><td>Er</td><td>Erbium</td><td>1,24</td><td>69</td><td>Tm</td><td>Thulium</td><td>1,25</td></tr>
+              <tr><td>70</td><td>Yb</td><td>Ytterbium</td><td>1,10*</td><td>71</td><td>Lu</td><td>Lutetium</td><td>1,27</td><td>72</td><td>Hf</td><td>Hafnium</td><td>1,30</td></tr>
+              <tr><td>73</td><td>Ta</td><td>Tantalum</td><td>1,50</td><td>74</td><td>W</td><td>Tungsten</td><td>2,36</td><td>75</td><td>Re</td><td>Rhenium</td><td>1,90</td></tr>
+              <tr><td>76</td><td>Os</td><td>Osmium</td><td>2,20</td><td>77</td><td>Ir</td><td>Iridium</td><td>2,20</td><td>78</td><td>Pt</td><td>Platinum</td><td>2,28</td></tr>
+              <tr><td>79</td><td>Au</td><td>Gold</td><td>2,54</td><td>80</td><td>Hg</td><td>Mercury</td><td>2,00</td><td>81</td><td>Tl</td><td>Thallium</td><td>1,62</td></tr>
+              <tr><td>82</td><td>Pb</td><td>Lead</td><td>2,33</td><td>83</td><td>Bi</td><td>Bismuth</td><td>2,02</td><td>84</td><td>Po</td><td>Polonium</td><td>2,00</td></tr>
+              <tr><td>85</td><td>At</td><td>Astatine</td><td>2,20</td><td>86</td><td>Rn</td><td>Radon</td><td>—</td><td>87</td><td>Fr</td><td>Francium</td><td>≈0,70*</td></tr>
+              <tr><td>88</td><td>Ra</td><td>Radium</td><td>0,90</td><td>89</td><td>Ac</td><td>Actinium</td><td>1,10</td><td>90</td><td>Th</td><td>Thorium</td><td>1,30</td></tr>
+              <tr><td>91</td><td>Pa</td><td>Protactinium</td><td>1,50</td><td>92</td><td>U</td><td>Uranium</td><td>1,38</td><td>93</td><td>Np</td><td>Neptunium</td><td>1,36</td></tr>
+              <tr><td>94</td><td>Pu</td><td>Plutonium</td><td>1,28</td><td>95</td><td>Am</td><td>Americium</td><td>1,30</td><td>96</td><td>Cm</td><td>Curium</td><td>1,30</td></tr>
+              <tr><td>97</td><td>Bk</td><td>Berkelium</td><td>1,30</td><td>98</td><td>Cf</td><td>Californium</td><td>1,30</td><td>99</td><td>Es</td><td>Einsteinium</td><td>1,30</td></tr>
+              <tr><td>100</td><td>Fm</td><td>Fermium</td><td>1,30</td><td>101</td><td>Md</td><td>Mendelevium</td><td>1,30</td><td>102</td><td>No</td><td>Nobelium</td><td>1,30</td></tr>
+              <tr><td>103</td><td>Lr</td><td>Lawrencium</td><td>1,30†</td><td>104</td><td>Rf</td><td>Rutherfordium</td><td>—</td><td>105</td><td>Db</td><td>Dubnium</td><td>—</td></tr>
+              <tr><td>106</td><td>Sg</td><td>Seaborgium</td><td>—</td><td>107</td><td>Bh</td><td>Bohrium</td><td>—</td><td>108</td><td>Hs</td><td>Hassium</td><td>—</td></tr>
+              <tr><td>109</td><td>Mt</td><td>Meitnerium</td><td>—</td><td>110</td><td>Ds</td><td>Darmstadtium</td><td>—</td><td>111</td><td>Rg</td><td>Roentgenium</td><td>—</td></tr>
+              <tr><td>112</td><td>Cn</td><td>Copernicium</td><td>—</td><td>113</td><td>Nh</td><td>Nihonium</td><td>—</td><td>114</td><td>Fl</td><td>Flerovium</td><td>—</td></tr>
+              <tr><td>115</td><td>Mc</td><td>Moscovium</td><td>—</td><td>116</td><td>Lv</td><td>Livermorium</td><td>—</td><td>117</td><td>Ts</td><td>Tennessine</td><td>—</td></tr>
+              <tr><td>118</td><td>Og</td><td>Oganesson</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+            </tbody></table></div>
+            <p><strong>Ghi chú:</strong> Giá trị theo thang Pauling phổ biến, làm tròn xấp xỉ; độ âm điện phụ thuộc thang đo. Dấu “—” nghĩa là chưa có giá trị Pauling đáng tin cậy/được chấp nhận rộng rãi. *Pm, Eu và Yb thường được nêu trong khoảng xấp xỉ 1,1–1,2; số trong bảng là giá trị tham khảo, không phải giá trị xác lập. Francium 0,70 là ước lượng cổ điển. Giá trị cho nguyên tố phóng xạ và siêu nặng cần thận trọng.</p>
+            <p><strong>Ý nghĩa:</strong> Độ âm điện Pauling so sánh xu hướng hút electron liên kết; chênh lệch gợi ý độ phân cực, nhưng không tự quyết định hoàn toàn bản chất ion/cộng hóa trị hoặc hình học.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle individual document
+    function toggleDoc(docId) {
+      const card = document.getElementById(docId);
+      if (card) {
+        card.classList.toggle('active');
+      }
+    }
+
+    // Toggle entire subject
+    function toggleSubject(subjectId) {
+      const body = document.getElementById('body-' + subjectId);
+      const icon = document.getElementById('icon-' + subjectId);
+      if (body) {
+        const isCollapsed = body.classList.toggle('collapsed');
+        if (icon) {
+          icon.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // Toggle all subjects
+    function toggleAllSubjects(expand) {
+      document.querySelectorAll('.subject-body').forEach(body => {
+        if (expand) {
+          body.classList.remove('collapsed');
+        } else {
+          body.classList.add('collapsed');
+        }
+      });
+      document.querySelectorAll('[id^="icon-subject-"]').forEach(icon => {
+        icon.style.transform = expand ? 'rotate(0deg)' : 'rotate(-90deg)';
+      });
+    }
+
+    // Toggle all documents
+    function toggleAllDocs(expand) {
+      document.querySelectorAll('.doc-card').forEach(card => {
+        if (expand) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    function initKeywordAnchors() {
+      const glossary = document.querySelector('#doc-hvc-9 .doc-body');
+      if (!glossary) return;
+      const entries = [...glossary.querySelectorAll('tbody tr')].map(row => {
+        const label = row.cells[0]?.textContent.trim();
+        if (!label) return null;
+        row.id = `kw-${label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+        return { label, id: row.id, aliases: [...label.split(/\s*\/\s*/), ...(label.match(/\(([^)]+)\)/g) || []).map(alias => alias.slice(1, -1))] };
+      }).filter(Boolean);
+      const terms = entries.flatMap(entry => entry.aliases.map(alias => ({ ...entry, alias }))).filter(entry => entry.alias.length >= 3);
+      const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const pattern = new RegExp(`(^|[^\\p{L}\\p{N}])(${terms.map(({alias}) => escapeRegex(alias)).sort((a,b) => b.length-a.length).join('|')})(?=$|[^\\p{L}\\p{N}])`, 'giu');
+      document.querySelectorAll('.doc-card:not(#doc-hvc-9) .doc-body').forEach(body => {
+        const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            return !node.nodeValue.trim() || node.parentElement.closest('a,script,style,.formula-box,.MathJax') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          pattern.lastIndex = 0;
+          if (!pattern.test(node.nodeValue)) return;
+          pattern.lastIndex = 0;
+          const fragment = document.createDocumentFragment();
+          let cursor = 0;
+          for (const match of node.nodeValue.matchAll(pattern)) {
+            const start = match.index + match[1].length;
+            fragment.append(node.nodeValue.slice(cursor, start));
+            const label = match[2];
+            const entry = terms.find(item => item.alias.toLocaleLowerCase() === label.toLocaleLowerCase());
+            if (entry) {
+              const link = document.createElement('a');
+              link.href = `#${entry.id}`;
+              link.textContent = label;
+              link.title = `Xem định nghĩa: ${entry.label}`;
+              fragment.append(link);
+            } else fragment.append(label);
+            cursor = start + label.length;
+          }
+          fragment.append(node.nodeValue.slice(cursor));
+          node.replaceWith(fragment);
+        });
+      });
+    }
+
+    // Auto-expand on anchor link navigate
+    function handleHashNav() {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          const docCard = target.classList.contains('doc-card') ? target : target.closest('.doc-card');
+          if (docCard) {
+            docCard.classList.add('active');
+            const parentBody = docCard.closest('.subject-body');
+            if (parentBody) {
+              parentBody.classList.remove('collapsed');
+              const parentCard = docCard.closest('.subject-card');
+              if (parentCard) {
+                const icon = parentCard.querySelector('[id^="icon-subject-"]');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+              }
+            }
+          } else if (target.classList.contains('subject-card')) {
+            const body = target.querySelector('.subject-body');
+            const icon = target.querySelector('[id^="icon-subject-"]');
+            if (body) body.classList.remove('collapsed');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+          }
+          const top = target.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.4;
+          window.scrollTo({ top, behavior: 'smooth' });
+          if (target.matches('tr[id^="kw-"]')) {
+            target.animate([{ backgroundColor: '#fef08a' }, { backgroundColor: 'transparent' }], { duration: 2500, easing: 'ease-out' });
+          }
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => { initKeywordAnchors(); handleHashNav(); });
+    window.addEventListener('hashchange', handleHashNav);
+  </script>
+  <script src="book-view.js"></script>
+</body>
+</html>

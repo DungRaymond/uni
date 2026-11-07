@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 Modul Y - Dược | Lời Giải Bài Tập Về Nhà</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- MathJax for rendering math formulas -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #e0e7ff;
+      --badge-text: #3730a3;
+      --success-bg: #dcfce7;
+      --success-text: #166534;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 28px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 80vw;
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 92vw;
+        max-width: 92vw;
+      }
+    }
+
+    header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Subject Section Cards */
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .subject-header {
+      padding: 16px 22px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: filter 0.15s ease;
+    }
+
+    .subject-header:hover {
+      filter: brightness(0.97);
+    }
+
+    .subject-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subject-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .subject-body {
+      padding: 20px 22px;
+      display: block;
+    }
+
+    .subject-body.collapsed {
+      display: none;
+    }
+
+    /* Theme: Lý - Dược (Sky Blue) */
+    #subject-ly-duoc {
+      border-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-header {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-bottom-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-title {
+      color: #0369a1;
+    }
+    #subject-ly-duoc .subject-badge {
+      background: #bae6fd;
+      color: #0369a1;
+    }
+    #subject-ly-duoc .question-card.active {
+      border-left: 4px solid #0284c7;
+    }
+    #subject-ly-duoc .question-num {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    }
+    #subject-ly-duoc .question-body h4 {
+      border-left-color: #0284c7;
+      background: #f0f9ff;
+    }
+
+    /* Theme: Modul Y - Dược (Violet) */
+    #subject-modul-y-duoc {
+      border-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-header {
+      background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+      border-bottom-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-title {
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .subject-badge {
+      background: #ddd6fe;
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .question-card.active {
+      border-left: 4px solid #8b5cf6;
+    }
+    #subject-modul-y-duoc .question-num {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    }
+    #subject-modul-y-duoc .question-body h4 {
+      border-left-color: #8b5cf6;
+      background: #faf5ff;
+    }
+
+    /* Question Item */
+    .question-card {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+
+    .question-card:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .question-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .question-header {
+      padding: 14px 20px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s ease;
+    }
+
+    .question-card.active .question-header {
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .question-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .question-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    }
+
+    .question-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #0f172a;
+    }
+
+    .status-tag {
+      background: var(--success-bg);
+      color: var(--success-text);
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      margin-left: 8px;
+      flex-shrink: 0;
+      border: 1px solid #bbf7d0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .icon-chevron {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .question-card.active .icon-chevron {
+      transform: rotate(180deg);
+    }
+
+    .question-body {
+      display: none;
+      padding: 22px 24px;
+      background: #ffffff;
+      font-size: 0.96rem;
+    }
+
+    .question-card.active .question-body {
+      display: block;
+    }
+
+    /* Content Typography */
+    .question-body h4 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin: 22px 0 12px 0;
+      color: #0f172a;
+      border-left: 4px solid var(--primary);
+      padding: 6px 12px;
+      background: #eff6ff;
+      border-radius: 0 6px 6px 0;
+      display: block;
+    }
+
+    .question-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .question-body p {
+      margin-bottom: 12px;
+    }
+
+    .question-body ul, .question-body ol {
+      margin-left: 22px;
+      margin-bottom: 16px;
+    }
+
+    .question-body li {
+      margin-bottom: 7px;
+    }
+
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .formula-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #2563eb;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 14px 0;
+      font-size: 1rem;
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    table th, table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+
+    table th {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+
+    table tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    table tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Inline code */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>💊 Môn: Modul Y - Dược — Lời Giải Chi Tiết</h1>
+      <p>Lời giải bài tập về nhà huyết áp tâm thu, huyết áp tâm trương</p>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="toolbar">
+      <a href="homeworked.html" class="btn">⬅️ Danh Sách Môn Học (Bài Tập)</a>
+      <a href="documents.html" class="btn">📑 Sang Kho Tài Liệu</a>
+      <span style="border-right: 1px solid var(--border-color); margin: 0 4px;"></span>
+      <button class="btn btn-primary" onclick="toggleAllQuestions(true)">📖 Mở rộng tất cả câu hỏi</button>
+      <button class="btn" onclick="toggleAllQuestions(false)">📕 Thu gọn tất cả câu hỏi</button>
+    </div>
+
+    <!-- SUBJECT 2: Modul Y - Dược -->
+    <div class="subject-card" id="subject-modul-y-duoc">
+      <div class="subject-header" onclick="toggleSubject('subject-modul-y-duoc')">
+        <div class="subject-title">
+          <span>💊 Môn: Modul Y - Dược (Sinh Lý & Dược Lý)</span>
+          <span class="subject-badge">1 Bài tập</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); toggleSubject('subject-modul-y-duoc');">
+            Đóng / Mở môn
+          </button>
+          <span class="icon-chevron" id="icon-subject-modul-y-duoc">▼</span>
+        </div>
+      </div>
+
+      <div class="subject-body" id="body-subject-modul-y-duoc">
+        
+        <!-- QUESTION 3 -->
+        <div class="question-card active" id="q3">
+          <div class="question-header" onclick="toggleQuestion('q3')">
+            <div class="question-title-wrap">
+              <span class="question-num">3</span>
+              <span class="question-title">Huyết áp tâm thu và huyết áp tâm trương? Vai trò?</span>
+              <span class="status-tag">✅ Hoàn thành</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="question-body">
+            <h4>1. Huyết áp tâm thu (Systolic Blood Pressure - SBP)</h4>
+            <ul>
+              <li><strong>Khái niệm:</strong> Là áp lực tối đa của dòng máu tác động lên thành động mạch trong thời kỳ tâm thất co bóp (tâm thu) tống máu vào hệ tuần hoàn. Thường được gọi là <em>huyết áp tối đa</em>.</li>
+              <li><strong>Trị số bình thường:</strong> Dao động từ <strong>$90 - 120\text{ mmHg}$</strong> ở người trưởng thành khi nghỉ ngơi.</li>
+              <li><strong>Yếu tố quyết định:</strong> Phụ thuộc trực tiếp vào <strong>lực co bóp của cơ tim</strong>, <strong>thể tích nhát bóp ($SV$)</strong> và tốc độ tống máu của tâm thất trái.</li>
+              <li><strong>Vai trò & Ý nghĩa sinh lý:</strong>
+                <ul>
+                  <li><strong>Tạo động lực tưới máu cơ quan:</strong> Cung cấp năng lượng áp suất vượt qua sức cản ngoại vi để đẩy máu giàu oxy đến các cơ quan ở xa (não, thận, các chi).</li>
+                  <li><strong>Đánh giá chức năng tim:</strong> Phản ánh trực tiếp khả năng làm việc cơ học và hiệu năng bơm máu của tâm thất.</li>
+                  <li><strong>Ý nghĩa bệnh học:</strong> SBP tăng cao kéo dài ($>140\text{ mmHg}$) làm tăng hậu tải, dẫn đến phì đại cơ tim, suy tim và nguy cơ nứt vỡ mạch máu não (tai biến xuất huyết não).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>2. Huyết áp tâm trương (Diastolic Blood Pressure - DBP)</h4>
+            <ul>
+              <li><strong>Khái niệm:</strong> Là áp lực thấp nhất của dòng máu đo được trong động mạch trong thời kỳ tâm thất giãn nghỉ (tâm trương), khi van tổ chim (van động mạch chủ) đã đóng lại. Thường được gọi là <em>huyết áp tối thiểu</em>.</li>
+              <li><strong>Trị số bình thường:</strong> Dao động từ <strong>$60 - 80\text{ mmHg}$</strong>.</li>
+              <li><strong>Yếu tố quyết định:</strong> Phụ thuộc chủ yếu vào <strong>sức cản ngoại vi</strong> của các tiểu động mạch ($R$) và <strong>độ đàn hồi (chun giãn)</strong> của thành động mạch lớn (hiệu ứng đệm Windkessel).</li>
+              <li><strong>Vai trò & Ý nghĩa sinh lý:</strong>
+                <ul>
+                  <li><strong>Duy trì dòng máu liên tục:</strong> Nhờ tính đàn hồi co hồi của thành động mạch chủ, áp lực tâm trương giúp dòng máu tiếp tục chảy đều đặn đến các mô ngay cả khi tim đang nghỉ không bơm máu.</li>
+                  <li><strong>Quyết định tưới máu mạch vành nuôi tim:</strong> Cơ tim chỉ nhận máu nuôi qua động mạch vành chủ yếu trong <em>thời kỳ tâm trương</em> (thời kỳ tâm thu cơ tim co thắt bóp nghẹt các mạch máu trong cơ tim). Nếu DBP quá thấp ($<60\text{ mmHg}$), tim sẽ bị thiếu máu nuôi dưỡng nghiêm trọng.</li>
+                  <li><strong>Ý nghĩa bệnh học:</strong> DBP tăng cao phản ánh tình trạng xơ cứng hoặc co thắt hệ tiểu động mạch ngoại vi, gây tổn thương vi mạch tại thận và đáy mắt.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>3. Huyết áp hiệu số (Hiệu áp / Pulse Pressure - PP)</h4>
+            <div class="formula-box">$$PP = \text{SBP} - \text{DBP}$$</div>
+            <ul>
+              <li><strong>Giá trị bình thường:</strong> $30 - 50\text{ mmHg}$.</li>
+              <li><strong>Ý nghĩa lâm sàng:</strong> 
+                Nếu $PP \le 20\text{ mmHg}$ gọi là <em>huyết áp kẹt</em> (thường gặp trong suy tim nặng, sốc mất máu, tràn dịch màng tim gây chèn ép tim cấp), máu không đủ chênh lệch áp suất để lưu thông hiệu quả.
+              </li>
+            </ul>
+
+            <div class="callout">
+              <div class="callout-title">💡 Bảng tóm tắt so sánh nhanh:</div>
+              <table style="width:100%; border-collapse: collapse; margin-top: 8px;">
+                <thead>
+                  <tr style="background:#e2e8f0; text-align:left;">
+                    <th style="padding:6px 10px; border:1px solid #cbd5e1;">Đặc điểm</th>
+                    <th style="padding:6px 10px; border:1px solid #cbd5e1;">Huyết áp tâm thu (SBP)</th>
+                    <th style="padding:6px 10px; border:1px solid #cbd5e1;">Huyết áp tâm trương (DBP)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;"><strong>Thời điểm</strong></td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">Tim co bóp tống máu</td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">Tim giãn nghỉ</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;"><strong>Chuẩn bình thường</strong></td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">$90 - 120\text{ mmHg}$</td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">$60 - 80\text{ mmHg}$</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;"><strong>Yếu tố phụ thuộc</strong></td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">Lực co bóp cơ tim, thể tích nhát bóp</td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">Sức cản ngoại vi, tính đàn hồi thành mạch</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;"><strong>Vai trò trọng tâm</strong></td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">Đẩy máu đi nuôi toàn thân</td>
+                    <td style="padding:6px 10px; border:1px solid #cbd5e1;">Duy trì dòng chảy liên tục & <strong>tưới máu mạch vành</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle individual question
+    function toggleQuestion(questionId) {
+      const card = document.getElementById(questionId);
+      if (card) {
+        card.classList.toggle('active');
+      }
+    }
+
+    // Toggle entire subject
+    function toggleSubject(subjectId) {
+      const body = document.getElementById('body-' + subjectId);
+      const icon = document.getElementById('icon-' + subjectId);
+      if (body) {
+        const isCollapsed = body.classList.toggle('collapsed');
+        if (icon) {
+          icon.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // Toggle all subjects
+    function toggleAllSubjects(expand) {
+      document.querySelectorAll('.subject-body').forEach(body => {
+        if (expand) {
+          body.classList.remove('collapsed');
+        } else {
+          body.classList.add('collapsed');
+        }
+      });
+      document.querySelectorAll('[id^="icon-subject-"]').forEach(icon => {
+        icon.style.transform = expand ? 'rotate(0deg)' : 'rotate(-90deg)';
+      });
+    }
+
+    // Toggle all questions
+    function toggleAllQuestions(expand) {
+      document.querySelectorAll('.question-card').forEach(card => {
+        if (expand) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    // Auto-expand on anchor link navigate
+    function handleHashNav() {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          if (target.classList.contains('question-card')) {
+            target.classList.add('active');
+            const parentBody = target.closest('.subject-body');
+            if (parentBody) {
+              parentBody.classList.remove('collapsed');
+              const parentCard = target.closest('.subject-card');
+              if (parentCard) {
+                const icon = parentCard.querySelector('[id^="icon-subject-"]');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+              }
+            }
+          }
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', handleHashNav);
+    window.addEventListener('hashchange', handleHashNav);
+  </script>
+</body>
+</html>

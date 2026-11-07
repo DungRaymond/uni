@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 Lý - Dược | Lời Giải Bài Tập Về Nhà</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- MathJax for rendering math formulas -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #e0e7ff;
+      --badge-text: #3730a3;
+      --success-bg: #dcfce7;
+      --success-text: #166534;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 28px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 80vw;
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 92vw;
+        max-width: 92vw;
+      }
+    }
+
+    header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
+    }
+
+    /* Subject Section Cards */
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+    }
+
+    .subject-header {
+      padding: 16px 22px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: filter 0.15s ease;
+    }
+
+    .subject-header:hover {
+      filter: brightness(0.97);
+    }
+
+    .subject-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subject-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .subject-body {
+      padding: 20px 22px;
+      display: block;
+    }
+
+    .subject-body.collapsed {
+      display: none;
+    }
+
+    /* Theme: Lý - Dược (Sky Blue) */
+    #subject-ly-duoc {
+      border-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-header {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-bottom-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-title {
+      color: #0369a1;
+    }
+    #subject-ly-duoc .subject-badge {
+      background: #bae6fd;
+      color: #0369a1;
+    }
+    #subject-ly-duoc .question-card.active {
+      border-left: 4px solid #0284c7;
+    }
+    #subject-ly-duoc .question-num {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    }
+    #subject-ly-duoc .question-body h4 {
+      border-left-color: #0284c7;
+      background: #f0f9ff;
+    }
+
+    /* Theme: Modul Y - Dược (Violet) */
+    #subject-modul-y-duoc {
+      border-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-header {
+      background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+      border-bottom-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-title {
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .subject-badge {
+      background: #ddd6fe;
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .question-card.active {
+      border-left: 4px solid #8b5cf6;
+    }
+    #subject-modul-y-duoc .question-num {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    }
+    #subject-modul-y-duoc .question-body h4 {
+      border-left-color: #8b5cf6;
+      background: #faf5ff;
+    }
+
+    /* Question Item */
+    .question-card {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+
+    .question-card:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .question-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .question-header {
+      padding: 14px 20px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s ease;
+    }
+
+    .question-card.active .question-header {
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .question-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .question-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    }
+
+    .question-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #0f172a;
+    }
+
+    .status-tag {
+      background: var(--success-bg);
+      color: var(--success-text);
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      margin-left: 8px;
+      flex-shrink: 0;
+      border: 1px solid #bbf7d0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .icon-chevron {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .question-card.active .icon-chevron {
+      transform: rotate(180deg);
+    }
+
+    .question-body {
+      display: none;
+      padding: 22px 24px;
+      background: #ffffff;
+      font-size: 0.96rem;
+    }
+
+    .question-card.active .question-body {
+      display: block;
+    }
+
+    /* Content Typography */
+    .question-body h4 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin: 22px 0 12px 0;
+      color: #0f172a;
+      border-left: 4px solid var(--primary);
+      padding: 6px 12px;
+      background: #eff6ff;
+      border-radius: 0 6px 6px 0;
+      display: block;
+    }
+
+    .question-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .question-body p {
+      margin-bottom: 12px;
+    }
+
+    .question-body ul, .question-body ol {
+      margin-left: 22px;
+      margin-bottom: 16px;
+    }
+
+    .question-body li {
+      margin-bottom: 7px;
+    }
+
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #1d4ed8;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .formula-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #2563eb;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 14px 0;
+      font-size: 1rem;
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Table Styles */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+    }
+
+    table th, table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+
+    table th {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+
+    table tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    table tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Inline code */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>🩺 Môn: Lý - Dược — Lời Giải Chi Tiết</h1>
+      <p>Lời giải bài tập về nhà cơ học hô hấp, độ nhớt và màng tế bào</p>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="toolbar">
+      <a href="homeworked.html" class="btn">⬅️ Danh Sách Môn Học (Bài Tập)</a>
+      <a href="documents.html" class="btn">📑 Sang Kho Tài Liệu</a>
+      <span style="border-right: 1px solid var(--border-color); margin: 0 4px;"></span>
+      <button class="btn btn-primary" onclick="toggleAllQuestions(true)">📖 Mở rộng tất cả câu hỏi</button>
+      <button class="btn" onclick="toggleAllQuestions(false)">📕 Thu gọn tất cả câu hỏi</button>
+    </div>
+
+    <!-- SUBJECT 1: Lý - Dược -->
+    <div class="subject-card" id="subject-ly-duoc">
+      <div class="subject-header" onclick="toggleSubject('subject-ly-duoc')">
+        <div class="subject-title">
+          <span>🩺 Môn: Lý - Dược (Lý Sinh / Vật Lý Y Dược)</span>
+          <span class="subject-badge">3 Bài tập</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); toggleSubject('subject-ly-duoc');">
+            Đóng / Mở môn
+          </button>
+          <span class="icon-chevron" id="icon-subject-ly-duoc">▼</span>
+        </div>
+      </div>
+
+      <div class="subject-body" id="body-subject-ly-duoc">
+        
+        <!-- QUESTION 1 -->
+        <div class="question-card active" id="q1">
+          <div class="question-header" onclick="toggleQuestion('q1')">
+            <div class="question-title-wrap">
+              <span class="question-num">1</span>
+              <span class="question-title">Liệt kê các đại lượng đặc trưng cho chức năng hô hấp của cơ thể</span>
+              <span class="status-tag">✅ Hoàn thành</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="question-body">
+            <h4>1. Các thể tích khí hô hấp (Lung Volumes)</h4>
+            <p>Các thể tích thành phần cơ bản không chồng lấp lên nhau:</p>
+            <ul>
+              <li><strong>Thể tích khí lưu thông ($V_T$ - Tidal Volume):</strong> Lượng khí hít vào hoặc thở ra trong một nhịp thở bình thường (khoảng $400 - 500\text{ ml}$).</li>
+              <li><strong>Thể tích khí dự trữ hít vào ($IRV$ - Inspiratory Reserve Volume):</strong> Lượng khí có thể gắng sức hít thêm vào sau khi đã hít vào bình thường (khoảng $1.500 - 2.000\text{ ml}$).</li>
+              <li><strong>Thể tích khí dự trữ thở ra ($ERV$ - Expiratory Reserve Volume):</strong> Lượng khí có thể gắng sức thở ra hết mức sau khi đã thở ra bình thường (khoảng $1.000 - 1.500\text{ ml}$).</li>
+              <li><strong>Thể tích khí cặn ($RV$ - Residual Volume):</strong> Lượng khí còn lại trong phổi sau khi đã thở ra tối đa (khoảng $1.000 - 1.200\text{ ml}$).</li>
+            </ul>
+
+            <h4>2. Các dung tích phổi (Lung Capacities)</h4>
+            <p>Tổng của hai hay nhiều thể tích khí:</p>
+            <ul>
+              <li><strong>Dung tích sống ($VC$ / $FVC$ - Vital Capacity):</strong> Thể tích khí tối đa thở ra được sau khi hít vào tối đa:
+                <div class="formula-box">$$VC = V_T + IRV + ERV$$</div>
+                <em>(Người Việt Nam trưởng thành: Nam $\approx 3,5 - 4,0\text{ L}$, Nữ $\approx 2,5 - 3,0\text{ L}$)</em>
+              </li>
+              <li><strong>Dung tích hít vào ($IC$ - Inspiratory Capacity):</strong> Lượng khí tối đa có thể hít vào tính từ mức thở ra bình thường:
+                <div class="formula-box">$$IC = V_T + IRV \approx 2.000 - 2.500\text{ ml}$$</div>
+              </li>
+              <li><strong>Dung tích cặn chức năng ($FRC$ - Functional Residual Capacity):</strong> Lượng khí còn lại trong phổi sau khi thở ra bình thường:
+                <div class="formula-box">$$FRC = ERV + RV \approx 2.000 - 2.500\text{ ml}$$</div>
+              </li>
+              <li><strong>Tổng dung tích phổi ($TLC$ - Total Lung Capacity):</strong> Tổng lượng khí chứa trong phổi sau khi hít vào tối đa:
+                <div class="formula-box">$$TLC = VC + RV \approx 4,5 - 6,0\text{ L}$$</div>
+              </li>
+            </ul>
+
+            <h4>3. Các đại lượng động học và thông khí phổi</h4>
+            <ul>
+              <li><strong>Tần số hô hấp ($f$):</strong> Số nhịp thở trong 1 phút (người lớn nghỉ ngơi: $16 - 20\text{ lần/phút}$).</li>
+              <li><strong>Thông khí phút ($MV$ hay $\dot{V}_E$ - Minute Ventilation):</strong> Lưu lượng thông khí trong 1 phút:
+                <div class="formula-box">$$\dot{V}_E = V_T \times f \approx 6 - 8\text{ L/phút}$$</div>
+              </li>
+              <li><strong>Thông khí phế nang ($\dot{V}_A$):</strong> Lượng khí thực tế đến phế nang tham gia trao đổi khí (trừ thể tích khoảng chết $V_D \approx 150\text{ ml}$):
+                <div class="formula-box">$$\dot{V}_A = (V_T - V_D) \times f \approx 4,2 - 5,5\text{ L/phút}$$</div>
+              </li>
+              <li><strong>Thể tích thở ra tối đa trong giây đầu tiên ($FEV_1$):</strong> Thể tích khí tống ra được trong giây đầu tiên khi thở ra gắng sức tối đa (người bình thường $\ge 75 - 80\%$ của $FVC$).</li>
+              <li><strong>Chỉ số Tiffeneau ($FEV_1 / VC$) & Gaensler ($FEV_1 / FVC$):</strong> Đánh giá mức độ thông khí tắc nghẽn.</li>
+              <li><strong>Lưu lượng đỉnh ($PEF$ - Peak Expiratory Flow):</strong> Vận tốc dòng khí cao nhất đạt được trong một nhịp thở ra gắng sức.</li>
+            </ul>
+
+            <h4>4. Các đại lượng cơ học và vật lý hô hấp (Trọng tâm Lý - Dược)</h4>
+            <ul>
+              <li><strong>Áp suất khoang màng phổi ($P_{pl}$):</strong> Luôn âm so với áp suất khí quyển (khoảng $-2 \text{ đến } -4\text{ mmHg}$ cuối thì thở ra bình thường; giảm còn $-6 \text{ đến } -8\text{ mmHg}$ khi hít vào).</li>
+              <li><strong>Độ giãn nở của phổi (Compliance - $C$):</strong> Đo mức độ giãn nở thể tích phổi tương ứng với áp suất xuyên phổi:
+                <div class="formula-box">$$C = \frac{\Delta V}{\Delta P}$$</div>
+              </li>
+              <li><strong>Sức cản đường thở ($R$ - Airway Resistance):</strong> Tỉ số chênh lệch áp suất và lưu lượng dòng khí:
+                <div class="formula-box">$$R = \frac{\Delta P}{\dot{V}}$$</div>
+              </li>
+              <li><strong>Công hô hấp ($W$):</strong> Năng lượng cơ học cơ thể sinh ra để thực hiện thông khí:
+                <div class="formula-box">$$W = \int P \, dV$$</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- QUESTION 2 -->
+        <div class="question-card active" id="q2">
+          <div class="question-header" onclick="toggleQuestion('q2')">
+            <div class="question-title-wrap">
+              <span class="question-num">2</span>
+              <span class="question-title">Ôn kiến thức hệ hô hấp</span>
+              <span class="status-tag">✅ Hoàn thành</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="question-body">
+            <h4>1. Cơ học hô hấp (Thông khí phổi)</h4>
+            <ul>
+              <li><strong>Định luật Boyle - Mariotte ($P \cdot V = \text{const}$):</strong> 
+                Cơ hoành và cơ liên sườn ngoài co $\rightarrow$ Lồng ngực dãn $\rightarrow$ Thể tích $V$ tăng $\rightarrow$ Áp suất phế nang giảm thấp hơn khí quyển $\rightarrow$ Khí đi vào (hít vào chủ động). Khi cơ giãn, tính đàn hồi kéo về vị trí cũ $\rightarrow$ Khí thoát ra (thở ra thụ động).
+              </li>
+              <li><strong>Áp suất âm màng phổi:</strong> Giúp phổi nở bám sát lồng ngực, giảm sức cản tuần hoàn phổi, hỗ trợ máu tĩnh mạch trở về tim.</li>
+              <li><strong>Định luật Laplace & Sức căng bề mặt:</strong>
+                <div class="formula-box">$$P = \frac{2T}{r}$$</div>
+                Chất <strong>Surfactant</strong> (hoạt diện) làm giảm sức căng bề mặt $T$ mạnh mẽ ở các phế nang nhỏ ($r$ nhỏ), giúp cân bằng áp suất giữa các phế nang lớn nhỏ, chống xẹp phổi.
+              </li>
+              <li><strong>Định luật Poiseuille & Sức cản đường thở:</strong>
+                <div class="formula-box">$$R = \frac{8\eta l}{\pi r^4}$$</div>
+                Bán kính đường dẫn khí $r$ giảm đi 1 nửa làm sức cản $R$ tăng vọt 16 lần (cơ chế co thắt phế quản ở bệnh nhân hen).
+              </li>
+            </ul>
+
+            <h4>2. Quá trình khuếch tán khí qua màng phế nang - mao mạch</h4>
+            <p>Trao đổi khí diễn ra theo cơ chế khuếch tán thụ động tuân theo <strong>Định luật Fick</strong>:</p>
+            <div class="formula-box">$$\frac{dQ}{dt} = -D \cdot S \cdot \frac{\Delta P}{\Delta x}$$</div>
+            <ul>
+              <li>$S$: Diện tích bề mặt tiếp xúc ($\approx 70 - 100\text{ m}^2$).</li>
+              <li>$\Delta x$: Độ dày màng phế nang - mao mạch ($\approx 0,5 - 1\,\mu\text{m}$). Phù phổi/viêm xơ làm tăng $\Delta x \rightarrow$ suy giảm khuếch tán.</li>
+              <li>$D$: Hệ số khuếch tán, tỉ lệ thuận với độ tan $\alpha$ và tỉ lệ nghịch với $\sqrt{M}$:
+                <div class="formula-box">$$D \propto \frac{\alpha}{\sqrt{M}}$$</div>
+              </li>
+            </ul>
+            <div class="callout">
+              <div class="callout-title">💡 Điểm cốt lõi Lý - Dược:</div>
+              Tuy phân tử lượng $CO_2$ ($M=44$) nặng hơn $O_2$ ($M=32$), nhưng độ tan của $CO_2$ trong nước gấp 24 lần $O_2$. Do đó <strong>tốc độ khuếch tán của $CO_2$ nhanh gấp khoảng 20 lần $O_2$</strong>. Bệnh nhân tổn thương màng phế nang luôn bị thiếu oxy máu trước khi bị ứ $CO_2$.
+            </div>
+
+            <h4>3. Quá trình vận chuyển khí trong máu</h4>
+            <ul>
+              <li><strong>Vận chuyển Oxy ($O_2$):</strong>
+                <ul>
+                  <li>Dạng hòa tan: $\approx 1,5\% - 3\%$.</li>
+                  <li>Dạng kết hợp Hemoglobin: $\approx 97\% - 98,5\%$ ($Hb + 4O_2 \rightleftharpoons Hb(O_2)_4$).</li>
+                  <li><strong>Hiệu ứng Bohr:</strong> Đồ thị phân ly lệch phải (dễ nhả $O_2$ cho mô) khi pH giảm, $PCO_2$ tăng, nhiệt độ tăng, nồng độ $2,3\text{-DPG}$ tăng.</li>
+                </ul>
+              </li>
+              <li><strong>Vận chuyển $CO_2$ (3 dạng):</strong>
+                <ul>
+                  <li>Dạng hòa tan: $\approx 7\%$.</li>
+                  <li>Dạng hợp chất Carbamin (kết hợp nhóm $-NH_2$ của protein và Hb): $\approx 23\%$.</li>
+                  <li>Dạng muối Bicarbonat ($HCO_3^-$): $\approx 70\%$ (dạng chủ đạo):
+                    <div class="formula-box">$$CO_2 + H_2O \overset{\text{Carbonic Anhydrase (CA)}}{\rightleftharpoons} H_2CO_3 \rightleftharpoons H^+ + HCO_3^-$$</div>
+                  </li>
+                  <li><strong>Hiện tượng Hamburger (đổi ion Clorua):</strong> $HCO_3^-$ ra huyết tương, ion $Cl^-$ đi vào hồng cầu để bảo toàn điện tích.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>4. Ứng dụng Y - Dược thực tiễn</h4>
+            <ul>
+              <li><strong>Hô hấp ký (Spirometry):</strong> Đo lường để phân biệt rối loạn thông khí tắc nghẽn ($FEV_1/FVC < 70\%$) và rối loạn thông khí hạn chế ($TLC < 80\%$, $VC$ giảm).</li>
+              <li><strong>Khí dung thuốc (Aerosol Drug Delivery):</strong> Kích thước khí dung tối ưu để hấp thu sâu tại phế quản nhỏ và phế nang là <strong>$1 - 5\,\mu\text{m}$</strong> (hạt $>5\,\mu\text{m}$ lắng đọng ở hầu họng do va đập quán tính, hạt $<0,5\,\mu\text{m}$ bị thở ra ngoài).</li>
+              <li><strong>Ngộ độc khí $CO$:</strong> Ái lực của $CO$ với $Hb$ mạnh gấp 210–250 lần so với oxy, tạo $HbCO$ bền vững. Điều trị cấp cứu bằng oxy cao áp ($HBO$) để tăng $O_2$ hòa tan và đẩy $CO$ ra ngoài.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- QUESTION 4 -->
+        <div class="question-card active" id="q4">
+          <div class="question-header" onclick="toggleQuestion('q4')">
+            <div class="question-title-wrap">
+              <span class="question-num">4</span>
+              <span class="question-title">Vai trò của độ nhớt đối với hệ thuốc dạng lỏng & Vận chuyển vật chất qua màng tế bào</span>
+              <span class="status-tag">✅ Hoàn thành</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="question-body">
+            
+            <h3 style="color:#1d4ed8; border-bottom:2px solid #93c5fd; padding-bottom:6px; margin-bottom:14px;">PHẦN 1: VAI TRÒ CỦA ĐỘ NHỚT ĐỐI VỚI CÁC HỆ THUỐC DẠNG LỎNG</h3>
+            
+            <h4>1. Khái niệm & Bản chất vật lý của độ nhớt ($\eta$)</h4>
+            <p>Độ nhớt đặc trưng cho nội ma sát cản trở sự chuyển động tương đối giữa các lớp phân tử chất lưu khi có dòng chảy, tuân theo định luật Newton:</p>
+            <div class="formula-box">$$\tau = \eta \cdot \frac{dv}{dx}$$</div>
+            <p><em>(Trong đó $\tau$ là ứng suất trượt, $\frac{dv}{dx}$ là gradient vận tốc trượt, $\eta$ là hệ số độ nhớt).</em></p>
+            <ul>
+              <li><strong>Chất lỏng Newton:</strong> Dung dịch thuốc thật, cồn, nước ($\eta$ không phụ thuộc tốc độ khuấy/trượt).</li>
+              <li><strong>Chất lỏng phi Newton (rất quan trọng trong Dược):</strong> Hỗn dịch, nhũ tương, gel thuốc. Thường có tính <em>chảy giả dẻo (pseudoplastic)</em> hoặc <em>xúc biến (thixotropy)</em> – khi lắc mạnh độ nhớt giảm giúp thuốc dễ chảy/rót, khi để yên độ nhớt tăng trở lại giúp ổn định cấu trúc.</li>
+            </ul>
+
+            <h4>2. Các vai trò cốt lõi trong bào chế và sinh dược học</h4>
+            <ul>
+              <li><strong>Ổn định vật lý của hỗn dịch & nhũ tương (Định luật Stokes):</strong>
+                <div class="formula-box">$$v = \frac{2r^2(\rho_1 - \rho_2)g}{9\eta}$$</div>
+                Vận tốc lắng tiểu phân rắn $v$ tỉ lệ nghịch với độ nhớt $\eta$ của môi trường phân tán. Tăng độ nhớt (bằng cách thêm gôm arabic, CMC, HPMC, Carbopol) làm giảm tốc độ lắng hạt trong hỗn dịch và giảm tốc độ nổi kem/tách pha trong nhũ tương $\rightarrow$ kéo dài hạn sử dụng và độ bền phân tán.
+              </li>
+              <li><strong>Đảm bảo tính chính xác và an toàn khi phân liều:</strong>
+                Nếu độ nhớt quá loãng, hoạt chất lắng nhanh xuống đáy chai ngay sau khi lắc, dẫn đến các liều đầu bị thiếu thuốc và liều cuối bị quá liều (nguy cơ độc tính). Độ nhớt tối ưu giữ hoạt chất phân tán đồng đều đủ thời gian để rót liều chính xác.
+              </li>
+              <li><strong>Kéo dài thời gian lưu bám và tăng sinh khả dụng tại chỗ:</strong>
+                Trong thuốc nhỏ mắt, siro ho, thuốc xịt mũi: Tăng độ nhớt giúp thuốc bám dính tốt trên biểu mô/giác mạc, chống lại lực rửa trôi tự nhiên của nước mắt hoặc hệ thống lông chuyển niêm mạc hô hấp $\rightarrow$ kéo dài thời gian tiếp xúc của dược chất, tăng mức độ hấp thu.
+              </li>
+              <li><strong>Ảnh hưởng đến lưu thông và lực tiêm thuốc (Định luật Poiseuille):</strong>
+                <div class="formula-box">$$Q = \frac{\pi \Delta P r^4}{8\eta l}$$</div>
+                Đối với thuốc tiêm: Nếu $\eta$ quá cao sẽ khó rút thuốc vào ống tiêm và cần áp lực nén $\Delta P$ rất lớn khi đẩy thuốc qua kim nhỏ, gây đau buốt cho người bệnh. Thuốc tiêm bắp tác dụng kéo dài thường cần hệ xúc biến (lỏng khi qua kim tiêm, đặc lại khi vào bắp tạo khoang lưu trữ - depot).
+              </li>
+              <li><strong>Điều hòa tốc độ phóng thích và hòa tan dược chất (Stokes - Einstein):</strong>
+                <div class="formula-box">$$D = \frac{k_B T}{6\pi \eta r}$$</div>
+                Độ nhớt tăng làm giảm hệ số khuếch tán $D$, làm chậm tốc độ hòa tan và phóng thích hoạt chất ra khỏi dạng thuốc lỏng (ứng dụng thiết kế thuốc phóng thích kéo dài).
+              </li>
+            </ul>
+
+            <hr style="margin:20px 0; border:0; border-top:1px dashed #cbd5e1;">
+
+            <h3 style="color:#b91c1c; border-bottom:2px solid #fca5a5; padding-bottom:6px; margin-bottom:14px;">PHẦN 2: VẬN CHUYỂN VẬT CHẤT QUA MÀNG TẾ BÀO (TRỌNG TÂM THI CỬ)</h3>
+
+            <h4>1. Phân loại tổng quan các cơ chế vận chuyển màng</h4>
+            
+            <p><strong>A. Vận chuyển thụ động (Passive Transport):</strong> Không tiêu tốn năng lượng ATP, di chuyển xuôi chiều gradient nồng độ hoặc điện thế (từ nơi nồng độ cao $\rightarrow$ thấp).</p>
+            <ul>
+              <li><strong>Khuếch tán đơn thuần qua lớp kép lipid:</strong> Dành cho các phân tử nhỏ, không phân cực, tan mạnh trong lipid ($O_2, CO_2, N_2$, steroid, cồn, các dạng thuốc không ion hóa). Tuân theo định luật Fick: tốc độ khuếch tán tỉ lệ thuận với hệ số phân bố lipid/nước ($K_{ow}$) của thuốc.</li>
+              <li><strong>Khuếch tán qua kênh protein (Channel diffusion):</strong> Nước (qua kênh Aquaporin), các ion tích điện nhỏ ($Na^+, K^+, Ca^{2+}, Cl^-$) qua các kênh ion có cổng đóng/mở (cổng điện thế, cổng phối tử).</li>
+              <li><strong>Khuếch tán thuận lợi (Facilitated Diffusion - có chất mang):</strong> 
+                <ul>
+                  <li>Dành cho các chất phân cực hoặc kích thước lớn hơn như <strong>Glucose</strong> (họ chất mang GLUT: GLUT1 - GLUT5), acid amin.</li>
+                  <li><em>Đặc tính hay thi:</em> Không dùng ATP, có tính đặc hiệu cao, có tính ức chế cạnh tranh, và <strong>có hiện tượng bão hòa</strong> (khi mọi vị trí gắn trên protein mang đều đầy, tốc độ đạt cực đại $V_{max}$).</li>
+                </ul>
+              </li>
+              <li><strong>Hiện tượng thẩm thấu (Osmosis):</strong> Sự chuyển dịch của dung môi (nước) qua màng bán thấm từ nơi có áp suất thẩm thấu thấp sang nơi có áp suất thẩm thấu cao. Phương trình Van 't Hoff: $P_{os} = RTC$. Áp suất thẩm thấu huyết tương $\approx 290 - 300\text{ mOsm/L}$. Dung dịch tiêm phải đẳng trương ($NaCl\ 0,9\%$, Glucose $5\%$) để tránh làm vỡ hồng cầu (nhược trương) hoặc teo tế bào (ưu trương).</li>
+            </ul>
+
+            <p><strong>B. Vận chuyển chủ động (Active Transport):</strong> Tiêu tốn năng lượng, di chuyển ngược chiều gradient nồng độ (từ thấp $\rightarrow$ cao).</p>
+            <ul>
+              <li><strong>Vận chuyển chủ động nguyên phát (Primary Active):</strong> Sử dụng trực tiếp năng lượng từ sự thủy phân ATP.
+                <ul>
+                  <li><strong>Bơm $Na^+-K^+$-ATPase:</strong> Mỗi chu kỳ thủy phân 1 ATP sẽ bơm <strong>$3\ Na^+$ ra ngoài</strong> và <strong>$2\ K^+$ vào trong</strong> tế bào $\rightarrow$ duy trì điện thế nghỉ của màng, giữ thể tích tế bào. <em>Lưu ý Dược lý:</em> Thuốc trợ tim Glycosid (Digoxin, Ouabain) ức chế chọn lọc bơm này.</li>
+                  <li><strong>Bơm proton $H^+/K^+$-ATPase:</strong> Nằm ở màng tế bào viền dạ dày bơm $H^+$ vào lòng dạ dày tạo acid $HCl$. <em>Lưu ý Dược lý:</em> Bị ức chế không hồi phục bởi thuốc nhóm PPI (Omeprazole, Pantoprazole).</li>
+                  <li><strong>Bơm $Ca^{2+}$-ATPase:</strong> Giữ nồng độ $Ca^{2+}$ nội bào luôn ở mức cực thấp so với dịch ngoại bào.</li>
+                </ul>
+              </li>
+              <li><strong>Vận chuyển chủ động thứ phát (Secondary Active / Đồng vận chuyển):</strong> 
+                Không dùng ATP trực tiếp mà mượn thế năng gradient nồng độ ion (chủ yếu là $Na^+$ do bơm $Na^+-K^+$-ATPase tạo ra) để kéo chất khác đi ngược chiều gradient:
+                <ul>
+                  <li><em>Đồng vận chuyển cùng chiều (Symport):</em> Hấp thu Glucose cùng $Na^+$ qua protein <strong>SGLT-1</strong> (ở niêm mạc ruột non) và <strong>SGLT-2</strong> (ở ống lượn gần của thận - đích tác dụng của nhóm thuốc tiểu đường SGLT-2i).</li>
+                  <li><em>Đồng vận chuyển ngược chiều (Antiport):</em> Bơm trao đổi $Na^+/Ca^{2+}$, bơm trao đổi $Na^+/H^+$.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>C. Vận chuyển bọc màng (Vesicular Transport / Lượng lớn):</strong> Dành cho đại phân tử hoặc vật thể vi mô.</p>
+            <ul>
+              <li><strong>Nhập bào (Endocytosis):</strong> 
+                <ul>
+                  <li><em>Thực bào (Phagocytosis):</em> Tế bào nuốt vi khuẩn, mảnh vụn tế bào (đại thực bào, bạch cầu trung tính).</li>
+                  <li><em>Ẩm bào (Pinocytosis):</em> Uống các giọt dịch ngoại bào.</li>
+                  <li><em>Nhập bào qua trung gian thụ thể:</em> Bắt giữ đặc hiệu các phân tử như thụ thể LDL bắt giữ hạt LDL-Cholesterol đưa vào tế bào.</li>
+                </ul>
+              </li>
+              <li><strong>Xuất bào (Exocytosis):</strong> Các túi bài tiết hòa nhập với màng sinh chất để tống chất ra ngoài, ví dụ tế bào beta đảo tụy tiết Insulin, hoặc cúc tận cùng synap giải phóng Acetylcholin.</li>
+            </ul>
+
+            <div class="callout" style="background:#fef2f2; border-left:4px solid #ef4444;">
+              <div class="callout-title" style="color:#b91c1c;">🎯 TÓM TẮT MẸO GHI NHỚ ĐI THI (HIGH-YIELD EXAM SUMMARY):</div>
+              <table style="width:100%; border-collapse: collapse; margin-top: 8px; font-size:0.92rem;">
+                <thead>
+                  <tr style="background:#fee2e2; text-align:left;">
+                    <th style="padding:6px; border:1px solid #fca5a5;">Hình thức</th>
+                    <th style="padding:6px; border:1px solid #fca5a5;">Cần ATP?</th>
+                    <th style="padding:6px; border:1px solid #fca5a5;">Chiều gradient</th>
+                    <th style="padding:6px; border:1px solid #fca5a5;">Chất mang?</th>
+                    <th style="padding:6px; border:1px solid #fca5a5;">Hiện tượng bão hòa?</th>
+                    <th style="padding:6px; border:1px solid #fca5a5;">Ví dụ hay gặp trong đề thi</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Khuếch tán đơn thuần</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Không</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Xuôi ($Cao \rightarrow Thấp$)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Không</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Không (tỉ lệ tuyến tính)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">$O_2, CO_2$, rượu, thuốc tan trong dầu</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Khuếch tán thuận lợi</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Không</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Xuôi ($Cao \rightarrow Thấp$)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có</strong> (protein mang)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có ($V_{max}$)</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Vận chuyển Glucose qua protein <strong>GLUT</strong></td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Chủ động nguyên phát</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có (ATP trực tiếp)</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Ngược ($Thấp \rightarrow Cao$)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có</strong> (bơm protein)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Bơm $Na^+-K^+$-ATPase, bơm proton $H^+/K^+$</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Chủ động thứ phát</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Gián tiếp (nhờ gradient $Na^+$)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Ngược cho chất được kéo theo</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có</strong> (symport / antiport)</td>
+                    <td style="padding:6px; border:1px solid #fca5a5;"><strong>Có</strong></td>
+                    <td style="padding:6px; border:1px solid #fca5a5;">Đồng vận chuyển $Na^+$-Glucose (<strong>SGLT</strong>)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle individual question
+    function toggleQuestion(questionId) {
+      const card = document.getElementById(questionId);
+      if (card) {
+        card.classList.toggle('active');
+      }
+    }
+
+    // Toggle entire subject
+    function toggleSubject(subjectId) {
+      const body = document.getElementById('body-' + subjectId);
+      const icon = document.getElementById('icon-' + subjectId);
+      if (body) {
+        const isCollapsed = body.classList.toggle('collapsed');
+        if (icon) {
+          icon.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // Toggle all subjects
+    function toggleAllSubjects(expand) {
+      document.querySelectorAll('.subject-body').forEach(body => {
+        if (expand) {
+          body.classList.remove('collapsed');
+        } else {
+          body.classList.add('collapsed');
+        }
+      });
+      document.querySelectorAll('[id^="icon-subject-"]').forEach(icon => {
+        icon.style.transform = expand ? 'rotate(0deg)' : 'rotate(-90deg)';
+      });
+    }
+
+    // Toggle all questions
+    function toggleAllQuestions(expand) {
+      document.querySelectorAll('.question-card').forEach(card => {
+        if (expand) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    // Auto-expand on anchor link navigate
+    function handleHashNav() {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          if (target.classList.contains('question-card')) {
+            target.classList.add('active');
+            const parentBody = target.closest('.subject-body');
+            if (parentBody) {
+              parentBody.classList.remove('collapsed');
+              const parentCard = target.closest('.subject-card');
+              if (parentCard) {
+                const icon = parentCard.querySelector('[id^="icon-subject-"]');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+              }
+            }
+          }
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', handleHashNav);
+    window.addEventListener('hashchange', handleHashNav);
+  </script>
+</body>
+</html>

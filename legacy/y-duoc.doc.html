@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📑 Modul Y - Dược | Kho Tài Liệu & Giáo Trình</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- MathJax for rendering math formulas -->
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <!-- Book View Stylesheet -->
+  <link rel="stylesheet" href="book-view.css">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+      --tag-bg: #f1f5f9;
+      --tag-text: #334155;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 28px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 80vw;
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 92vw;
+        max-width: 92vw;
+      }
+    }
+
+    header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Subject Section Cards */
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .subject-header {
+      padding: 16px 22px;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.15s ease;
+    }
+
+    .subject-header:hover {
+      filter: brightness(0.98);
+    }
+
+    .subject-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subject-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .subject-body {
+      padding: 20px 22px;
+      display: block;
+    }
+
+    .subject-body.collapsed {
+      display: none;
+    }
+
+    /* Subject Theme 1: Lý - Dược */
+    #subject-ly-duoc {
+      border-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-header {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-bottom-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-title {
+      color: #0369a1;
+    }
+    #subject-ly-duoc .subject-badge {
+      background: #bae6fd;
+      color: #0369a1;
+    }
+    #subject-ly-duoc .doc-card.active {
+      border-left: 4px solid #0284c7;
+    }
+    #subject-ly-duoc .doc-num {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+    }
+    #subject-ly-duoc .doc-body h4 {
+      border-left-color: #0284c7;
+    }
+
+    /* Subject Theme 2: Modul Y - Dược */
+    #subject-modul-y-duoc {
+      border-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-header {
+      background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%);
+      border-bottom-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-title {
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .subject-badge {
+      background: #ddd6fe;
+      color: #6d28d9;
+    }
+    #subject-modul-y-duoc .doc-card.active {
+      border-left: 4px solid #8b5cf6;
+    }
+    #subject-modul-y-duoc .doc-num {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+    }
+    #subject-modul-y-duoc .doc-body h4 {
+      border-left-color: #8b5cf6;
+    }
+
+    /* Subject Theme 3: Hóa Vô cơ - Dược */
+    #subject-hoa-vo-co-duoc {
+      border-color: #a7f3d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-header {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border-bottom-color: #a7f3d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-title {
+      color: #047857;
+    }
+    #subject-hoa-vo-co-duoc .subject-badge {
+      background: #a7f3d0;
+      color: #047857;
+    }
+    #subject-hoa-vo-co-duoc .doc-card.active {
+      border-left: 4px solid #059669;
+    }
+    #subject-hoa-vo-co-duoc .doc-num {
+      background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    }
+    #subject-hoa-vo-co-duoc .doc-body h4 {
+      border-left-color: #059669;
+    }
+
+    /* Document Item (Accordion Card) */
+    .doc-card {
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      margin-bottom: 16px;
+      background: #ffffff;
+      overflow: hidden;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.03);
+    }
+
+    .doc-card:hover {
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+      border-color: #cbd5e1;
+    }
+
+    .doc-card:last-child {
+      margin-bottom: 0;
+    }
+
+    .doc-header {
+      padding: 14px 20px;
+      background: #ffffff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+      border-bottom: 1px solid transparent;
+      transition: background 0.15s ease;
+    }
+
+    .doc-card.active .doc-header {
+      border-bottom: 1px solid var(--border-color);
+      background: #f8fafc;
+    }
+
+    .doc-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1;
+    }
+
+    .doc-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      border-radius: 50%;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.12);
+    }
+
+    .doc-title {
+      font-weight: 700;
+      font-size: 1.02rem;
+      color: #0f172a;
+    }
+
+    .doc-tag {
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 0.74rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 600;
+      margin-left: 8px;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .icon-chevron {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-left: 10px;
+    }
+
+    .doc-card.active .icon-chevron {
+      transform: rotate(180deg);
+    }
+
+    .doc-body {
+      display: none;
+      padding: 22px 24px;
+      background: #ffffff;
+      font-size: 0.96rem;
+    }
+
+    .doc-card.active .doc-body {
+      display: block;
+    }
+
+    /* Content Typography */
+    .doc-body h4 {
+      font-size: 1.08rem;
+      font-weight: 700;
+      margin: 22px 0 12px 0;
+      color: #0f172a;
+      border-left: 4px solid var(--primary);
+      padding: 6px 12px;
+      background: #f8fafc;
+      border-radius: 0 6px 6px 0;
+      display: block;
+    }
+
+    .doc-body h4:first-child {
+      margin-top: 0;
+    }
+
+    .doc-body p {
+      margin-bottom: 12px;
+    }
+
+    .doc-body ul, .doc-body ol {
+      margin-left: 22px;
+      margin-bottom: 16px;
+    }
+
+    .doc-body li {
+      margin-bottom: 7px;
+    }
+
+    /* Example / worked-example box */
+    .example-box {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .example-title {
+      font-weight: 700;
+      color: #b45309;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Color-coded Callout Boxes */
+    .callout {
+      background: #f0fdf4;
+      border-left: 4px solid #16a34a;
+      padding: 14px 18px;
+      border-radius: 0 8px 8px 0;
+      margin: 16px 0;
+      font-size: 0.94rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: #15803d;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Formula Box with Modern Gradient & Mono Accents */
+    .formula-box {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #0284c7;
+      border-radius: 8px;
+      padding: 12px 18px;
+      margin: 14px 0;
+      font-size: 1.02rem;
+      overflow-x: auto;
+      box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+
+    /* Responsive Data Tables with Clean UI */
+    .table-responsive {
+      overflow-x: auto;
+      margin: 16px 0;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.03);
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      text-align: left;
+    }
+
+    .data-table th, .data-table td {
+      border: 1px solid #e2e8f0;
+      padding: 10px 14px;
+    }
+
+    .data-table th {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: 0.01em;
+    }
+
+    .data-table tr:nth-child(even) {
+      background: #fafafa;
+    }
+
+    .data-table tr:hover {
+      background: #f1f5f9;
+    }
+
+    /* Inline code & badges */
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.88em;
+      background: #f1f5f9;
+      color: #0369a1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>💊 Môn: Modul Y - Dược (Sinh Lý & Dược Lý Đại Cương)</h1>
+      <p>Hệ thống chuyên đề và tài liệu sinh lý, dược động học, bệnh học & miễn dịch đại cương</p>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="toolbar">
+      <a href="documents.html" class="btn">⬅️ Danh Sách Môn Học (Tài Liệu)</a>
+      <a href="homeworked.html" class="btn">📚 Sang Bài Tập Về Nhà</a>
+      <span style="border-right: 1px solid var(--border-color); margin: 0 4px;"></span>
+      <button class="btn btn-primary" onclick="toggleAllDocs(true)">📖 Mở rộng tất cả chuyên đề</button>
+      <button class="btn" onclick="toggleAllDocs(false)">📕 Thu gọn tất cả chuyên đề</button>
+    </div>
+
+    <!-- SUBJECT 2: Modul Y - Dược -->
+    <div class="subject-card" id="subject-modul-y-duoc">
+      <div class="subject-header" onclick="toggleSubject('subject-modul-y-duoc')">
+        <div class="subject-title">
+          <span>💊 Môn: Modul Y - Dược (Sinh Lý & Dược Lý Đại Cương)</span>
+          <span class="subject-badge">14 Tài liệu</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <button class="btn" style="padding: 4px 10px; font-size: 0.75rem;" onclick="event.stopPropagation(); toggleSubject('subject-modul-y-duoc');">
+            Đóng / Mở môn
+          </button>
+          <span class="icon-chevron" id="icon-subject-modul-y-duoc">▼</span>
+        </div>
+      </div>
+
+      <div class="subject-body" id="body-subject-modul-y-duoc">
+        
+        <!-- DOC 2.1 -->
+        <div class="doc-card active" id="doc-myd-1">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-1')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">1</span>
+              <span class="doc-title">Chuyên đề 1: Sinh lý tim mạch & Hệ thống điều hòa huyết áp thể dịch - thần kinh</span>
+              <span class="doc-tag">Sinh lý học</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Cung lượng tim (Cardiac Output - $CO$)</h4>
+            <div class="formula-box">$$CO = HR \times SV$$</div>
+            <ul>
+              <li>$HR$ (Heart Rate): Nhịp tim ($\approx 70 - 80\text{ nhịp/phút}$).</li>
+              <li>$SV$ (Stroke Volume): Thể tích nhát bóp ($\approx 60 - 80\text{ ml/nhát}$).</li>
+              <li>Cung lượng tim lúc nghỉ đạt khoảng $4,5 - 5,5\text{ L/phút}$. Các yếu tố điều hòa $SV$: Tiền tải (Định luật Frank-Starling), Hậu tải (sức cản động mạch chủ) và Sức co bóp cơ tim.</li>
+            </ul>
+
+            <h4>2. Hệ trục điều hòa huyết áp thần kinh & nội tiết</h4>
+            <ul>
+              <li><strong>Phản xạ áp thụ quan (Baroreceptor reflex):</strong> Xoang cảnh và quai động mạch chủ cảm nhận sự thay đổi huyết áp tức thời $\rightarrow$ điều chỉnh thần kinh giao cảm/phó giao cảm bù trừ trong vài giây.</li>
+              <li><strong>Hệ Renin - Angiotensin - Aldosterone (Hệ RAA):</strong>
+                <ul>
+                  <li>Thận tiết <strong>Renin</strong> khi huyết áp/áp lực tưới máu thận giảm.</li>
+                  <li>Renin chuyển Angiotensinogen $\rightarrow$ <strong>Angiotensin I</strong>.</li>
+                  <li>Enzym chuyển (ACE) tại mao mạch phổi biến đổi thành <strong>Angiotensin II</strong> (chất co mạch cực mạnh và kích thích vỏ thượng thận tiết <strong>Aldosterone</strong> giữ muối $Na^+$ và nước).</li>
+                </ul>
+              </li>
+            </ul>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Cung lượng tim và các cơ chế điều hòa giúp duy trì tưới máu, cung cấp oxy cho cơ quan và ổn định huyết áp. Hiểu phản xạ áp thụ quan và hệ RAA giúp giải thích đáp ứng khi mất máu/mất nước, cơ chế tăng huyết áp và tác dụng của thuốc như thuốc ức chế ACE, chẹn thụ thể angiotensin hoặc lợi tiểu.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Tính cung lượng tim khi nghỉ và khi sốc</div>
+              Người nghỉ ngơi có $HR = 75$ nhịp/phút, $SV = 70$ ml/nhát.<br>
+              <strong>Tính:</strong> $CO = 75 \times 70 = 5.250$ ml/phút $= 5,25$ L/phút, nằm trong khoảng bình thường $4,5 - 5,5$ L/phút.<br>
+              <strong>Tình huống sốc giảm thể tích:</strong> mất khoảng 1 L máu làm $SV$ giảm còn 45 ml; tim bù bằng cách tăng $HR$ lên 110 nhịp/phút.<br>
+              Khi đó $CO = 110 \times 45 = 4.950$ ml/phút $\approx 5$ L/phút, nhưng chủ yếu nhờ tim nhanh; nếu tiếp tục mất máu, $SV$ giảm nhanh hơn khả năng bù và $CO$ sụp.<br>
+              <strong>Kết luận:</strong> huyết áp phụ thuộc $CO$ và sức cản ngoại vi ($HA \approx CO \times RPT$), nên sốc biểu hiện mạch nhanh, chi lạnh, huyết áp tụt.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>$CO = HR \times SV$</strong> — "nhịp tim × lượng máu mỗi nhịp".<br>
+              <strong>Ba yếu tố của $SV$:</strong> Tiền tải (Frank-Starling) — Hậu tải — Sức co bóp.<br>
+              <strong>Hai tầng điều hòa:</strong> Baroreceptor phản ứng "vài giây"; hệ RAA phản ứng "vài giờ đến vài ngày".<br>
+              <strong>Dòng RAA:</strong> Renin → Angiotensin I → (ACE) → Angiotensin II → Aldosterone → giữ $Na^+$ và nước.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 2.2 -->
+        <div class="doc-card" id="doc-myd-2">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-2')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">2</span>
+              <span class="doc-title">Chuyên đề 2: Các thông số Dược động học cơ bản (Hệ ADME)</span>
+              <span class="doc-tag">Dược lý đại cương</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Hấp thu (Absorption) & Sinh khả dụng (Bioavailability - $F$)</h4>
+            <ul>
+              <li><strong>Sinh khả dụng ($F$):</strong> Tỉ lệ phần trăm hoạt chất nguyên vẹn vào được vòng tuần hoàn chung so với liều dùng:
+                <div class="formula-box">$$F = \frac{AUC_{đường\ dùng}}{AUC_{tiêm\ tĩnh\ mạch}} \times 100\%$$</div>
+              </li>
+              <li>Tiêm tĩnh mạch ($IV$) mặc định có $F = 100\%$. Dùng đường uống ($PO$) chịu ảnh hưởng của chuyển hóa bước đầu qua gan (First-pass effect).</li>
+            </ul>
+
+            <h4>2. Phân bố (Distribution) & Thể tích phân bố ($V_d$)</h4>
+            <div class="formula-box">$$V_d = \frac{D}{C_0}$$</div>
+            <ul>
+              <li>$V_d$ nhỏ ($< 5\text{ L}$): Thuốc chủ yếu nằm trong lòng mạch, gắn nhiều với protein huyết tương (Albumin).</li>
+              <li>$V_d$ lớn ($> 40\text{ L}$): Thuốc phân bố rộng khắp các mô và khoang nội bào (ví dụ thuốc tan nhiều trong mỡ).</li>
+            </ul>
+
+            <h4>3. Thải trừ (Elimination) & Thời gian bán thải ($t_{1/2}$)</h4>
+            <div class="formula-box">$$t_{1/2} = \frac{0,693 \cdot V_d}{Cl}$$</div>
+            <ul>
+              <li>$Cl$ (Clearance): Độ thanh thải – thể tích huyết tương được loại sạch thuốc trong một đơn vị thời gian.</li>
+              <li><em>Ý nghĩa $t_{1/2}$ trong điều trị:</em> Cần khoảng $5 \times t_{1/2}$ để thuốc đạt trạng thái nồng độ ổn định ($C_{ss}$) trong máu và cũng cần khoảng $5 \times t_{1/2}$ để đào thải gần như hoàn toàn ($>97\%$) thuốc ra khỏi cơ thể.</li>
+            </ul>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>ADME giúp dự đoán nồng độ thuốc tại vị trí tác dụng, thời điểm khởi phát, thời gian duy trì và nguy cơ tích lũy. Các thông số sinh khả dụng, thể tích phân bố, độ thanh thải và bán thải hỗ trợ chọn đường dùng, khoảng cách liều và điều chỉnh liều khi chức năng gan/thận thay đổi; quyết định cụ thể phải theo thuốc và hướng dẫn điều trị.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Tính $V_d$, $t_{1/2}$ và chỉnh liều theo thận</div>
+              <strong>Tính $V_d$:</strong> tiêm tĩnh mạch 500 mg, nồng độ đỉnh $C_0 = 25$ mg/L.<br>
+              $$V_d = \frac{500}{25} = 20\text{ L}$$ — thuốc phân bố chủ yếu trong dịch ngoại bào, không vào mô mỡ.<br>
+              <strong>Tính $t_{1/2}$:</strong> $V_d = 40$ L, $Cl = 4$ L/giờ $\Rightarrow t_{1/2} = \frac{0,693 \times 40}{4} \approx 6,9$ giờ.<br>
+              Cần khoảng $5 \times 6,9 \approx 35$ giờ để đạt $C_{ss}$ ổn định.<br>
+              <strong>Tình huống suy thận:</strong> $Cl$ giảm còn 1 L/giờ $\Rightarrow t_{1/2} \approx 28$ giờ; phải giảm liều hoặc giãn khoảng cách liều theo chức năng thận và theo dõi nồng độ thuốc.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>ADME:</strong> Hấp thu — Phân bố — Chuyển hóa — Thải trừ.<br>
+              <strong>$V_d$ nhỏ (vài L):</strong> thuốc ở lòng mạch, gắn albumin nhiều; <strong>$V_d$ lớn (hàng chục L):</strong> thuốc vào mô, mỡ.<br>
+              <strong>Quy tắc 5:</strong> $5 \times t_{1/2}$ để đạt $C_{ss}$ và cũng $5 \times t_{1/2}$ để thải $> 97\%$ thuốc.<br>
+              <strong>Thận yếu:</strong> $Cl$ giảm → $t_{1/2}$ dài ra → giảm liều hoặc giãn khoảng cách.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-3">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-3')">
+            <div class="doc-title-wrap"><span class="doc-num">3</span><span class="doc-title">Chuyển hóa năng lượng và hô hấp tế bào</span><span class="doc-tag">Hóa sinh</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. ATP: dạng năng lượng trực tiếp của tế bào</h4>
+            <p>ATP (adenosine triphosphate) cung cấp năng lượng cho co cơ, vận chuyển chủ động, tổng hợp đại phân tử và duy trì gradient ion. Thủy phân ATP thành ADP và phosphate vô cơ giải phóng năng lượng tự do; tế bào liên tục tái tổng hợp ATP, không dự trữ được lượng lớn trong thời gian dài. Phosphocreatine là đệm năng lượng nhanh ở cơ, còn chuyển hóa oxy hóa đáp ứng phần lớn nhu cầu kéo dài.</p>
+            <h4>2. Ba giai đoạn oxy hóa glucose</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Giai đoạn</th><th>Vị trí</th><th>Kết quả chính trên mỗi glucose</th></tr></thead><tbody><tr><td>Đường phân</td><td>Bào tương</td><td>2 pyruvat, 2 ATP ròng, 2 NADH</td></tr><tr><td>Oxy hóa pyruvat và chu trình acid citric</td><td>Chất nền ty thể (eukaryote)</td><td>Acetyl-CoA bị oxy hóa thành CO₂; tạo NADH, FADH₂ và 2 GTP/ATP ở chu trình</td></tr><tr><td>Chuỗi chuyền electron và phosphoryl hóa oxy hóa</td><td>Màng trong ty thể</td><td>Electron từ NADH/FADH₂ tạo gradient H⁺; ATP synthase dùng gradient để tổng hợp ATP; O₂ nhận electron cuối cùng tạo nước</td></tr></tbody></table></div>
+            <p>Ở tế bào nhân thực, oxy hóa hoàn toàn một glucose thường cho khoảng <strong>30–32 ATP</strong>; con số tùy shuttle đưa electron NADH bào tương vào ty thể và hiệu suất ghép cặp. Đây là ước tính sinh hóa, không phải hằng số tuyệt đối cho mọi mô/điều kiện.</p>
+            <h4>3. Đường phân và số phận của pyruvat</h4>
+            <p>Đường phân gồm pha đầu tư năng lượng (tiêu thụ 2 ATP) và pha thu hồi (tạo 4 ATP cùng 2 NADH), nên thu ròng 2 ATP/glucose. Khi ty thể hoạt động và oxy đáp ứng, phức hợp pyruvat dehydrogenase chuyển pyruvat thành acetyl-CoA trong chất nền ty thể; phản ứng này tạo NADH và CO₂, không tạo ATP trực tiếp. Khi tái oxy hóa NADH bị giới hạn hoặc nhu cầu đường phân cao, lactate dehydrogenase chuyển pyruvat thành lactat, tái sinh NAD⁺ để đường phân tiếp tục. Tạo lactat không đồng nghĩa luôn có thiếu oxy mô; cần diễn giải theo bệnh cảnh.</p>
+            <h4>4. Chu trình acid citric và chuỗi hô hấp</h4>
+            <ul>
+              <li>Mỗi acetyl-CoA vào chu trình acid citric tạo 3 NADH, 1 FADH₂, 1 GTP (tương đương ATP) và 2 CO₂. Oxaloacetate được tái sinh để chu trình tiếp diễn.</li>
+              <li>NADH/FADH₂ nhường electron cho các phức hợp chuỗi hô hấp. Năng lượng electron bơm H⁺ qua màng trong ty thể, tạo lực điện hóa proton.</li>
+              <li>H⁺ đi qua ATP synthase thúc đẩy phosphoryl hóa ADP. O₂ là chất nhận electron cuối; thiếu oxy nặng làm chậm chuỗi chuyền electron, giảm tái oxy hóa NADH và hạn chế ATP oxy hóa.</li>
+              <li>Rò rỉ proton, độc tố ức chế chuỗi hoặc tổn thương ty thể làm giảm hiệu suất; một phần năng lượng chuyển thành nhiệt.</li>
+            </ul>
+            <h4>5. Chuyển hóa yếm khí và chu trình Cori</h4>
+            <p>Hồng cầu trưởng thành không có ty thể nên tạo ATP chủ yếu bằng đường phân, tạo lactat ngay cả khi oxy có mặt. Cơ vận động cường độ cao cũng tăng tốc đường phân và tạo lactat. Lactat có thể theo máu về gan, được chuyển thành glucose qua <strong>chu trình Cori</strong>; quá trình này giúp tái sử dụng carbon nhưng tiêu tốn năng lượng ở gan.</p>
+            <h4>6. Điều hòa theo nhu cầu và nhiên liệu</h4>
+            <ul><li><strong>Insulin sau ăn:</strong> tăng thu nhận glucose ở cơ/mô mỡ, tổng hợp glycogen và hoạt hóa các đường đồng hóa.</li><li><strong>Glucagon khi đói:</strong> tăng phân giải glycogen gan và tân tạo glucose; mô mỡ tăng giải phóng acid béo làm nhiên liệu.</li><li><strong>AMP/ADP tăng:</strong> báo hiệu thiếu năng lượng, thúc đẩy dị hóa tạo ATP; ATP và citrate cao thường phản hồi hạn chế một số bước đường phân.</li><li><strong>Thiamine (vitamin B₁):</strong> cần cho pyruvat dehydrogenase và alpha-ketoglutarate dehydrogenase; thiếu hụt nặng có thể làm rối loạn oxy hóa carbohydrate và thần kinh.</li></ul>
+            <h4>7. Liên hệ lâm sàng và dược lý</h4>
+            <p>Thiếu oxy, thiếu máu nặng hoặc giảm tưới máu có thể giới hạn cung cấp O₂; rối loạn ty thể/enzym và một số độc chất cũng làm giảm hô hấp tế bào. Tế bào tăng phụ thuộc đường phân, có thể tăng lactat và giảm ATP, dẫn tới suy bơm ion, phù tế bào và tổn thương cơ quan. Một số thuốc tác động chuyển hóa ty thể hoặc làm thay đổi glucose/lactat; cần xem xét liều, chức năng gan thận và bệnh cảnh.</p>
+            <div class="callout"><div class="callout-title">Sơ đồ nhớ</div>Glucose → đường phân → pyruvat → acetyl-CoA → chu trình acid citric → NADH/FADH₂ → chuỗi hô hấp + O₂ → gradient H⁺ → ATP synthase → ATP. Thiếu khả năng oxy hóa: pyruvat → lactat để tái sinh NAD⁺.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Hô hấp tế bào giải thích cách mô tạo ATP để duy trì chức năng sống và vì sao thiếu oxy, thiếu máu, sốc hoặc độc chất ty thể có thể gây suy cơ quan. Kiến thức này giúp liên hệ lactat, đường huyết và tưới máu với trạng thái năng lượng của tế bào, đồng thời hiểu tác dụng hoặc độc tính chuyển hóa của một số thuốc.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Cân bằng ATP và hệ số hô hấp</div>
+              <strong>Hiệu suất năng lượng:</strong> oxy hóa hoàn toàn 1 glucose giải phóng khoảng $686$ kcal/mol; 30 ATP × $7,3$ kcal/mol $\approx 219$ kcal.<br>
+              Hiệu suất $\approx \frac{219}{686} \times 100\% \approx 32\%$; phần còn lại chuyển thành nhiệt — ước lượng, thay đổi theo mô.<br>
+              <strong>Hệ số hô hấp $RQ = \frac{VCO_2}{VO_2}$:</strong> carbohydrate $\approx 1,0$; lipid $\approx 0,7$; protein $\approx 0,8$.<br>
+              Nếu $VCO_2 = 200$ ml/phút và $VO_2 = 250$ ml/phút thì $RQ = 0,8$ — cơ thể đang đốt hỗn hợp nhiên liệu.<br>
+              <strong>Thiếu oxy:</strong> chuỗi chuyền electron chậm, NADH không được tái oxy hóa, pyruvat chuyển thành lactat và ATP giảm.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>3 chặng — 3 vị trí:</strong> Đường phân ở <strong>bào tương</strong>; chu trình Krebs ở <strong>chất nền ty thể</strong>; chuỗi hô hấp ở <strong>màng trong ty thể</strong>.<br>
+              <strong>Sản phẩm khí:</strong> mỗi glucose tạo $6CO_2$ và tiêu thụ $6O_2$ khi oxy hóa hoàn toàn.<br>
+              <strong>Không có $O_2$:</strong> pyruvat → lactat để tái sinh $NAD^+$, chỉ thu 2 ATP/glucose.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-4">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-4')">
+            <div class="doc-title-wrap"><span class="doc-num">4</span><span class="doc-title">Máu, tạo máu và rối loạn huyết học cơ bản</span><span class="doc-tag">Huyết học</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Thành phần máu và các chỉ số cơ bản</h4>
+            <p>Máu là mô liên kết lỏng gồm <strong>huyết tương</strong> (nước, albumin và protein đông máu, điện giải, chất dinh dưỡng, hormone, chất thải) và thành phần hữu hình: hồng cầu, bạch cầu, tiểu cầu. Hematocrit là tỷ lệ thể tích hồng cầu trong máu; hemoglobin phản ánh lượng protein vận chuyển oxy. Thể tích máu và khoảng tham chiếu thay đổi theo tuổi, giới, thai kỳ, độ cao và phòng xét nghiệm.</p>
+            <ul><li><strong>Hồng cầu:</strong> vận chuyển O₂ nhờ hemoglobin; hình dạng lõm hai mặt tăng diện tích trao đổi và khả năng biến dạng qua mao mạch.</li><li><strong>Bạch cầu:</strong> gồm bạch cầu trung tính, lymphocyte, monocyte, eosinophil và basophil; mỗi nhóm có vai trò khác nhau trong miễn dịch bẩm sinh/thích ứng, viêm và chống ký sinh trùng/dị ứng.</li><li><strong>Tiểu cầu:</strong> mảnh tế bào từ megakaryocyte, bám dính/hoạt hóa/kết tập tại vị trí tổn thương mạch để tạo nút cầm máu ban đầu.</li></ul>
+            <h4>2. Vận chuyển khí</h4>
+            <p>O₂ được vận chuyển chủ yếu gắn thuận nghịch với hemoglobin; một phần nhỏ hòa tan trong huyết tương. Ái lực hemoglobin với O₂ giảm khi CO₂, H⁺, nhiệt độ hoặc 2,3-BPG tăng, hỗ trợ nhả oxy tại mô hoạt động. CO₂ được vận chuyển hòa tan, gắn protein/hemoglobin và chủ yếu dưới dạng bicarbonate sau phản ứng trong hồng cầu do carbonic anhydrase xúc tác. Hemoglobin đệm H⁺ và góp phần vận chuyển CO₂.</p>
+            <h4>3. Tạo máu và biệt hóa tế bào</h4>
+            <p>Tạo máu ở người trưởng thành diễn ra chủ yếu tại tủy xương đỏ từ tế bào gốc tạo máu đa tiềm năng. Tế bào biệt hóa thành dòng tủy (hồng cầu, tiểu cầu, nhiều bạch cầu) và dòng lympho. Các yếu tố tăng trưởng/cytokine điều hòa số lượng, trưởng thành và chức năng tế bào; thay đổi tủy xương, dinh dưỡng, thận hoặc viêm mạn đều có thể ảnh hưởng công thức máu.</p>
+            <h4>4. Sinh hồng cầu và chuyển hóa sắt</h4>
+            <ol><li>Thiếu oxy mô kích thích thận tăng erythropoietin (EPO), kích thích tiền thân hồng cầu ở tủy xương.</li><li>Hồng cầu trưởng thành cần sắt để tổng hợp hemoglobin, folate và vitamin B₁₂ để tổng hợp DNA/phân chia bình thường; thiếu từng chất gây kiểu hình thiếu máu khác nhau.</li><li>Hồng cầu lưu hành khoảng 120 ngày; đại thực bào lách/gan loại bỏ hồng cầu già. Sắt được tái sử dụng hoặc dự trữ dưới dạng ferritin/hemosiderin; phần heme còn lại chuyển thành bilirubin để gan bài tiết.</li></ol>
+            <p>Hepcidin của gan là hormone điều hòa sắt chủ chốt: tăng hepcidin làm giảm hấp thu sắt ở ruột và giảm phóng thích sắt từ đại thực bào; viêm mạn có thể làm sắt bị giữ trong kho dù dự trữ không cạn.</p>
+            <h4>5. Cầm máu, đông máu và tiêu sợi huyết</h4>
+            <ul><li><strong>Cầm máu ban đầu:</strong> co mạch; von Willebrand factor hỗ trợ tiểu cầu bám collagen; tiểu cầu hoạt hóa, phóng thích chất trung gian và kết tập tạo nút tiểu cầu.</li><li><strong>Đông máu:</strong> các yếu tố đông máu hoạt hóa theo mạng lưới phản ứng, tạo thrombin; thrombin chuyển fibrinogen thành fibrin, làm vững cục máu đông. Ca²⁺ và phospholipid tiểu cầu tham gia nhiều bước.</li><li><strong>Điều hòa:</strong> antithrombin, protein C/S và nội mô hạn chế đông máu lan rộng; plasmin phân giải fibrin trong tiêu sợi huyết.</li><li>Rối loạn cầm máu có thể do giảm số lượng/chức năng tiểu cầu, thiếu yếu tố đông máu, bệnh von Willebrand, bệnh gan, thuốc chống đông/kháng tiểu cầu hoặc tăng đông.</li></ul>
+            <h4>6. Rối loạn huyết học thường gặp</h4>
+            <ul>
+              <li><strong>Thiếu máu:</strong> giảm hemoglobin/khả năng vận chuyển oxy; phân loại ban đầu theo MCV (hồng cầu nhỏ, bình thường, to) và đáp ứng hồng cầu lưới. Nguyên nhân gồm mất máu, giảm sinh, thiếu sắt, bệnh mạn, tan máu, thiếu B₁₂/folate hoặc bệnh tủy.</li>
+              <li><strong>Tan máu:</strong> phá hủy hồng cầu tăng, có thể gây vàng da, tăng bilirubin gián tiếp, tăng LDH, giảm haptoglobin và tăng hồng cầu lưới; kết quả tùy vị trí và nguyên nhân.</li>
+              <li><strong>Tăng hồng cầu:</strong> có thể tương đối do giảm thể tích huyết tương hoặc tuyệt đối do tăng sinh nguyên phát/tăng EPO thứ phát; nguy cơ huyết khối tùy nguyên nhân và mức độ.</li>
+              <li><strong>Giảm bạch cầu trung tính:</strong> tăng nguy cơ nhiễm trùng, đặc biệt khi giảm sâu/kéo dài; cần đánh giá thuốc, nhiễm trùng, tự miễn và tủy xương.</li>
+              <li><strong>Giảm tiểu cầu:</strong> có thể do giảm sản xuất, tăng phá hủy/tiêu thụ hoặc giữ ở lách; biểu hiện chấm xuất huyết, bầm tím, chảy máu niêm mạc tùy mức độ.</li>
+              <li><strong>Bệnh ác tính huyết học:</strong> leukemia, lymphoma và myeloma liên quan tăng sinh dòng tế bào bất thường; chẩn đoán cần xét nghiệm chuyên sâu như phết máu, tủy đồ, miễn dịch học và di truyền tế bào.</li>
+            </ul>
+            <h4>7. Đọc công thức máu theo trình tự</h4>
+            <ol><li>Đánh giá Hb/Hct và triệu chứng; xác định thiếu máu hay tăng hồng cầu.</li><li>Nếu thiếu máu, xem MCV, RDW và hồng cầu lưới: hồng cầu lưới tăng gợi ý đáp ứng tủy (mất máu/tan máu), thấp hoặc không tương xứng gợi ý giảm sinh.</li><li>Đối chiếu ferritin, sắt, transferrin/TIBC, B₁₂/folate, chức năng thận, dấu hiệu viêm và phết máu theo chỉ định.</li><li>Đọc tổng bạch cầu cùng công thức bạch cầu tuyệt đối; đọc số lượng tiểu cầu và phết máu để loại trừ kết cụm giả.</li></ol>
+            <p>Các chỉ số không tự xác định nguyên nhân. Ferritin có thể tăng trong viêm; MCV bình thường không loại trừ thiếu sắt sớm hoặc phối hợp nhiều nguyên nhân. Diễn giải theo ngưỡng tham chiếu và bối cảnh lâm sàng.</p>
+            <div class="callout"><div class="callout-title">Dấu hiệu cần đánh giá khẩn</div>Chảy máu không cầm, nôn/đi cầu ra máu, khó thở hoặc đau ngực kèm thiếu máu nặng, sốt khi giảm bạch cầu nặng, hoặc xuất huyết kèm giảm tiểu cầu cần được nhân viên y tế đánh giá kịp thời.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Hiểu máu và tạo máu giúp nhận biết thiếu oxy do thiếu máu, nguy cơ nhiễm trùng khi giảm bạch cầu và nguy cơ chảy máu/huyết khối khi rối loạn tiểu cầu–đông máu. Đọc công thức máu theo cơ chế giúp định hướng xét nghiệm tiếp theo và theo dõi đáp ứng điều trị, thay vì kết luận nguyên nhân từ một chỉ số đơn lẻ.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Phân loại thiếu máu theo MCV/MCH</div>
+              <strong>Ca 1:</strong> nữ 28 tuổi, mệt, Hb $90$ g/L, MCV $70$ fL, MCH $22$ pg, ferritin $8$ µg/L.<br>
+              $\Rightarrow$ thiếu máu <strong>hồng cầu nhỏ, nhược sắc</strong>, phù hợp thiếu sắt (ferritin thấp); cần tìm nguồn mất máu (kinh nguyệt, tiêu hóa).<br>
+              <strong>Ca 2:</strong> nam 65 tuổi, Hb $95$ g/L, MCV $115$ fL, vitamin B₁₂ thấp, có dị cảm tay chân.<br>
+              $\Rightarrow$ thiếu máu <strong>hồng cầu to</strong> do thiếu B₁₂; không phải thiếu sắt dù Hb thấp.<br>
+              <strong>Đọc thêm hồng cầu lưới:</strong> tăng gợi ý tủy đáp ứng (mất máu/tan máu); thấp gợi ý giảm sinh.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>MCV 3 nhóm:</strong> $< 80$ fL = nhỏ (thiếu sắt, thalassemia); $80 - 100$ fL = bình thường; $> 100$ fL = to (B₁₂/folate, rượu, thuốc).<br>
+              <strong>Bộ ba thiếu sắt:</strong> Hb thấp + MCV nhỏ + ferritin thấp.<br>
+              <strong>Thứ tự đọc:</strong> Hb/Hct → MCV → hồng cầu lưới → ferritin/B₁₂ → phết máu.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-5">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-5')">
+            <div class="doc-title-wrap"><span class="doc-num">5</span><span class="doc-title">Chuyển hóa và rối loạn chuyển hóa thường gặp</span><span class="doc-tag">Hóa sinh lâm sàng</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Chuyển hóa là gì?</h4>
+            <p>Chuyển hóa (metabolism) là toàn bộ phản ứng hóa học có enzyme trong cơ thể. <strong>Dị hóa</strong> phân giải phân tử, giải phóng năng lượng và tạo chất trung gian; <strong>đồng hóa</strong> dùng năng lượng để tổng hợp protein, acid nucleic, glycogen, lipid và cấu trúc tế bào. ATP là chất mang năng lượng chủ yếu; NADH và FADH₂ mang electron tới chuỗi hô hấp. Các con đường được điều hòa theo tình trạng ăn no/đói, hormone, cơ quan và nhu cầu năng lượng.
+            </p>
+            <h4>2. Chuyển hóa glucid</h4>
+            <ul>
+              <li><strong>Đường phân:</strong> xảy ra ở bào tương, chuyển glucose thành pyruvat; thu ròng 2 ATP và 2 NADH mỗi glucose. Khi oxy và chức năng ty thể đầy đủ, pyruvat thành acetyl-CoA để oxy hóa tiếp; khi tốc độ đường phân vượt khả năng oxy hóa hoặc thiếu oxy, pyruvat có thể thành lactat để tái sinh NAD⁺.</li>
+              <li><strong>Glycogenesis:</strong> tổng hợp glycogen ở gan và cơ sau ăn. Glycogen gan góp phần duy trì đường huyết; glycogen cơ chủ yếu cung cấp nhiên liệu tại cơ.</li>
+              <li><strong>Glycogenolysis:</strong> phân giải glycogen. Glucagon kích thích gan khi đói; adrenaline hỗ trợ huy động glycogen khi stress/vận động. Cơ không giải phóng đáng kể glucose tự do vào máu do thiếu glucose-6-phosphatase.</li>
+              <li><strong>Tân tạo glucose:</strong> tạo glucose mới chủ yếu tại gan, một phần tại thận khi đói kéo dài; dùng lactat, glycerol và một số acid amin làm nguyên liệu.</li>
+              <li><strong>Điều hòa:</strong> insulin tăng thu nhận glucose ở cơ/mô mỡ qua GLUT4, tăng tổng hợp glycogen và lipid; glucagon chủ yếu tác động lên gan, tăng phân giải glycogen và tân tạo glucose.</li>
+            </ul>
+            <h4>3. Chuyển hóa lipid</h4>
+            <ul>
+              <li>Triglycerid thức ăn được thủy phân, hấp thu ở ruột, đóng gói vào chylomicron và phân phối tới mô. Gan tổng hợp lipoprotein tỷ trọng rất thấp (VLDL); LDL đưa cholesterol tới mô, còn HDL tham gia vận chuyển cholesterol ngược về gan.</li>
+              <li><strong>Lipolysis:</strong> mô mỡ giải phóng acid béo và glycerol, tăng khi insulin thấp và tín hiệu catecholamine tăng. Acid béo được oxy hóa qua beta-oxy hóa trong ty thể, tạo acetyl-CoA, NADH và FADH₂.</li>
+              <li>Khi thiếu insulin rõ, tăng ly giải mỡ và tạo thể ceton tại gan; ceton tăng quá mức có thể gây toan ceton. Gan nhiễm mỡ thường liên quan mất cân bằng giữa acid béo đi vào/tổng hợp với oxy hóa và xuất triglycerid.</li>
+            </ul>
+            <h4>4. Chuyển hóa protein và nitơ</h4>
+            <p>Protein được tiêu hóa thành acid amin để tổng hợp protein cơ thể, chất dẫn truyền thần kinh và các phân tử chứa nitơ. Cơ thể không có kho dự trữ acid amin chuyên biệt; acid amin dư bị khử amin, nitơ tạo amoniac độc được gan chuyển thành urê, sau đó thận bài tiết. Suy gan nặng có thể giảm khử độc amoniac; suy thận có thể làm giảm thải các sản phẩm nitơ.</p>
+            <h4>5. Chuyển trạng thái sau ăn và khi đói</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Trạng thái</th><th>Hormone/nhiên liệu</th><th>Đáp ứng chuyển hóa chính</th></tr></thead><tbody><tr><td>Sau ăn</td><td>Insulin tăng</td><td>Thu nhận glucose, tổng hợp glycogen, lipid và protein tăng; ly giải mỡ và tạo glucose ở gan giảm.</td></tr><tr><td>Đói ngắn hạn</td><td>Insulin giảm, glucagon tăng</td><td>Gan phân giải glycogen; sau đó tăng tân tạo glucose; mô mỡ giải phóng acid béo.</td></tr><tr><td>Đói kéo dài</td><td>Insulin thấp, thích nghi nội tiết</td><td>Tăng oxy hóa acid béo và tạo thể ceton; cơ thể giảm dần sử dụng protein làm nguyên liệu tạo glucose.</td></tr></tbody></table></div>
+            <h4>6. Rối loạn chuyển hóa thường gặp</h4>
+            <ul>
+              <li><strong>Đái tháo đường:</strong> thiếu insulin tuyệt đối/tương đối hoặc đề kháng insulin gây tăng glucose máu; lâu dài có thể tổn thương mạch máu, thận, võng mạc và thần kinh. Đánh giá bằng triệu chứng và xét nghiệm glucose/HbA1c theo tiêu chuẩn hiện hành.</li>
+              <li><strong>Hạ đường huyết:</strong> glucose thấp có thể gây vã mồ hôi, run, lú lẫn, co giật hoặc hôn mê; đặc biệt lưu ý người dùng insulin/thuốc hạ đường huyết. Xử trí phụ thuộc tỉnh táo, khả năng nuốt và nguyên nhân.</li>
+              <li><strong>Rối loạn lipid máu:</strong> tăng LDL/triglycerid hoặc HDL thấp liên quan xơ vữa và nguy cơ tim mạch. Diễn giải lipid máu cần tính nguy cơ toàn thể, bệnh nền, thuốc và điều kiện lấy mẫu.</li>
+              <li><strong>Toan lactic:</strong> lactat tăng có thể liên quan giảm tưới máu/thiếu oxy, nhiễm trùng nặng, thuốc hoặc suy giảm chuyển hóa; không quy kết nguyên nhân chỉ từ một kết quả lactat.</li>
+              <li><strong>Tăng uric máu/gút:</strong> liên quan tạo hoặc thải urat; tinh thể urat lắng đọng có thể gây viêm khớp. Nồng độ urat đơn lẻ không đủ xác nhận cơn gút.</li>
+            </ul>
+            <div class="callout"><div class="callout-title">Khung tư duy</div>Với bất thường chuyển hóa, lần lượt hỏi: chất nào tăng/giảm; cơ quan nào tạo, sử dụng hoặc thải chất đó; hormone và enzyme nào điều hòa; hậu quả cấp tính nào nguy hiểm; xét nghiệm nào xác nhận cơ chế.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Kiến thức chuyển hóa giải thích cách cơ thể duy trì năng lượng và đường huyết khi ăn no, đói, vận động hoặc bệnh. Nhận diện rối loạn giúp hiểu cơ chế đái tháo đường, hạ đường huyết, rối loạn lipid, toan lactic và tác động chuyển hóa của sốt; từ đó hỗ trợ lựa chọn xét nghiệm, theo dõi biến chứng và điều trị nguyên nhân.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Đái tháo đường và hạ đường huyết</div>
+              <strong>Ca 1:</strong> nam 52 tuổi, khát nhiều, tiểu nhiều, sụt 4 kg/3 tháng; glucose đói $13$ mmol/L ($234$ mg/dL), HbA1c $8,5\%$.<br>
+              Glucose đói $13$ mmol/L ($234$ mg/dL), HbA1c $8,5\%$: cả hai đều vượt ngưỡng chẩn đoán (glucose đói $\geq 7,0$ mmol/L; HbA1c $\geq 6,5\%$) và cần lặp lại xét nghiệm để xác nhận theo tiêu chuẩn.<br>
+              <strong>Ca 2:</strong> nữ 70 tuổi dùng insulin, run tay, vã mồ hôi, glucose $3,1$ mmol/L.<br>
+              $\Rightarrow$ hạ đường huyết có triệu chứng; nếu còn tỉnh và nuốt được, cho khoảng $15$ g carbohydrate nhanh rồi kiểm tra lại sau 15 phút.<br>
+              <strong>Ca 3:</strong> bệnh nhân sốc nhiễm trùng, lactat $5$ mmol/L $\Rightarrow$ toan lactic do giảm tưới máu; cần xử trí nguyên nhân, không chỉ nhìn con số lactat.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>"No — Ngắn — Dài":</strong> Ăn no = insulin, dự trữ glycogen/lipid; đói ngắn = glucagon, phân giải glycogen; đói dài = tân tạo glucose + thể ceton.<br>
+              <strong>Gan giữ đường huyết, cơ giữ glycogen cho chính mình</strong> (cơ thiếu glucose-6-phosphatase).<br>
+              <strong>Bốn câu hỏi:</strong> chất nào bất thường — cơ quan nào chịu trách nhiệm — hormone/enzyme nào — hậu quả cấp nào nguy hiểm.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-6">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-6')">
+            <div class="doc-title-wrap"><span class="doc-num">6</span><span class="doc-title">Thực hành đo huyết áp và diễn giải kết quả</span><span class="doc-tag">Kỹ năng lâm sàng</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Chuẩn bị và thao tác</h4>
+            <ol><li>Cho người đo nghỉ yên ít nhất 5 phút; tránh hút thuốc, caffeine và vận động trong 30 phút trước đo nếu có thể.</li><li>Ngồi tựa lưng, bàn chân đặt phẳng, không bắt chéo chân; cánh tay trần được đỡ ngang mức tim.</li><li>Chọn băng quấn đúng chu vi cánh tay, đặt mép dưới trên nếp khuỷu; không nói chuyện trong lúc đo.</li><li>Đo ít nhất hai lần cách nhau khoảng 1 phút; ghi cả huyết áp tâm thu, tâm trương, tư thế, tay đo và thời điểm.</li></ol>
+            <h4>2. Ý nghĩa và sai số</h4>
+            <p>Huyết áp tâm thu phản ánh áp lực khi thất co; huyết áp tâm trương phản ánh áp lực khi tim giãn. Băng quấn quá nhỏ, tay thấp hơn tim, nói chuyện, đau hoặc lo âu có thể làm kết quả sai lệch. Chẩn đoán tăng huyết áp dựa trên đo lặp lại đúng quy trình và hướng dẫn chuyên môn, không dựa một lần đo đơn độc.</p>
+            <div class="callout"><div class="callout-title">Thực hành an toàn</div>Đo lại và đánh giá triệu chứng khi kết quả bất thường. Huyết áp rất cao kèm đau ngực, khó thở, yếu liệt hoặc rối loạn ý thức cần được đánh giá cấp cứu.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Đo đúng giúp phát hiện và theo dõi tăng huyết áp, đánh giá nguy cơ tim mạch và đáp ứng điều trị. Chuẩn hóa tư thế, băng quấn và số lần đo giảm sai số, tránh chẩn đoán hoặc thay đổi thuốc dựa trên kết quả không đáng tin cậy.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Một lần đo cao chưa phải tăng huyết áp</div>
+              <strong>Lần 1 (đo vội):</strong> bệnh nhân vừa leo cầu thang, băng quấn nhỏ, tay thấp hơn tim $\Rightarrow 150/95$ mmHg.<br>
+              <strong>Đo lại đúng quy trình:</strong> nghỉ 5 phút, ngồi tựa lưng, tay ngang mức tim, băng quấn đúng cỡ $\Rightarrow 132/84$ mmHg.<br>
+              Lần 3 cách 1 phút: $130/82$ mmHg.<br>
+              <strong>Kết luận:</strong> kết quả đầu là sai số do kỹ thuật; chưa đủ căn cứ chẩn đoán tăng huyết áp, cần theo dõi thêm tại nhà/phòng khám theo hướng dẫn.<br>
+              <strong>Bài học:</strong> luôn đo lặp lại và ghi đủ tư thế, tay đo, thời điểm trước khi kết luận.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>4 bước "Nghỉ — Thế — Quấn — Lặp":</strong> nghỉ 5 phút; tư thế ngồi tựa, chân phẳng, tay ngang tim; băng quấn đúng chu vi; đo ít nhất 2 lần cách 1 phút.<br>
+              <strong>3 sai số hay gặp:</strong> băng quấn nhỏ, tay thấp hơn tim, nói chuyện/lo âu — đều làm huyết áp "cao giả".<br>
+              <strong>Một con số không phải chẩn đoán:</strong> cần đo lặp lại và đánh giá nguy cơ tim mạch.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-7">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-7')">
+            <div class="doc-title-wrap"><span class="doc-num">7</span><span class="doc-title">Trao đổi chất qua màng tế bào</span><span class="doc-tag">Sinh lý tế bào</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Cấu trúc màng và gradient</h4>
+            <p>Màng tế bào là lớp kép phospholipid có cholesterol, protein màng và carbohydrate bề mặt. Lõi lipid kỵ nước cho phép một số phân tử nhỏ, không phân cực như O₂/CO₂ khuếch tán tương đối dễ; ion và chất phân cực thường cần kênh, chất tải hoặc túi màng. Mỗi chất di chuyển theo gradient nồng độ và điện thế; với ion, lực thúc đẩy tổng hợp gọi là <strong>gradient điện hóa</strong>. Phương trình Nernst mô tả điện thế cân bằng của một ion: <span class="formula-box">$$E_{ion}=\frac{RT}{zF}\ln\left(\frac{[ion]_{ngoài}}{[ion]_{trong}}\right)$$</span>trong đó $z$ là hóa trị ion, $R$ hằng số khí, $T$ nhiệt độ tuyệt đối và $F$ hằng số Faraday.</p>
+            <h4>2. Khuếch tán đơn giản và thẩm thấu</h4>
+            <ul>
+              <li><strong>Khuếch tán đơn giản:</strong> chất đi xuôi gradient qua lớp lipid hoặc lỗ màng, không tiêu thụ ATP; tốc độ phụ thuộc gradient, diện tích, độ thấm và khoảng cách khuếch tán.</li>
+              <li><strong>Thẩm thấu:</strong> nước di chuyển qua màng bán thấm về phía có nồng độ chất tan hữu hiệu cao hơn. Aquaporin tạo đường dẫn nước nhanh ở nhiều mô.</li>
+              <li><strong>Áp suất thẩm thấu:</strong> gần đúng theo định luật van ’t Hoff, $\pi=iCRT$ với dung dịch loãng. Trong thực hành sinh lý, cần phân biệt osmolality (mOsm/kg nước) với osmolarity (mOsm/L dung dịch).</li>
+            </ul>
+            <h4>3. Khuếch tán được hỗ trợ</h4>
+            <p>Chất đi xuôi gradient qua protein màng, không dùng ATP trực tiếp. <strong>Kênh</strong> tạo lỗ chọn lọc, có thể đóng/mở theo điện thế, ligand hoặc lực cơ học; ví dụ kênh Na⁺, K⁺, Ca²⁺ và Cl⁻. <strong>Chất tải</strong> gắn chất rồi đổi cấu hình; ví dụ GLUT vận chuyển glucose theo gradient. Tính chọn lọc và bão hòa khiến tốc độ chất tải có giới hạn, khác khuếch tán đơn giản.</p>
+            <h4>4. Vận chuyển chủ động sơ cấp</h4>
+            <p>Bơm dùng trực tiếp năng lượng ATP để chuyển chất ngược gradient điện hóa. Na⁺/K⁺-ATPase mỗi chu kỳ thủy phân một ATP, đưa 3 Na⁺ ra và 2 K⁺ vào; nhờ vậy duy trì thể tích tế bào, gradient ion và điều kiện cho vận chuyển thứ cấp. Ca²⁺-ATPase đưa Ca²⁺ khỏi bào tương hoặc vào lưới nội cơ tương; H⁺/K⁺-ATPase ở tế bào viền dạ dày bài tiết acid, là đích của thuốc ức chế bơm proton.</p>
+            <h4>5. Vận chuyển chủ động thứ cấp</h4>
+            <p>Không thủy phân ATP trực tiếp tại chất tải; năng lượng đến từ gradient ion do bơm sơ cấp tạo ra. <strong>Đồng vận chuyển (symport)</strong> đưa hai hay nhiều chất cùng chiều, như đồng vận chuyển Na⁺-glucose (SGLT) ở ruột/thận. <strong>Đối vận chuyển (antiport)</strong> đưa chất theo hai chiều ngược nhau, như trao đổi Na⁺/Ca²⁺. Ức chế bơm Na⁺/K⁺ có thể làm suy giảm gián tiếp các vận chuyển phụ thuộc gradient Na⁺.</p>
+            <h4>6. Nhập bào, xuất bào và vận chuyển qua biểu mô</h4>
+            <ul><li><strong>Nhập bào:</strong> màng lõm vào tạo túi; gồm thực bào hạt lớn, ẩm bào dịch và nhập bào qua thụ thể có chọn lọc.</li><li><strong>Xuất bào:</strong> túi hòa màng giải phóng chất, ví dụ phóng thích chất dẫn truyền thần kinh, hormone và enzyme.</li><li><strong>Qua biểu mô:</strong> chất có thể đi xuyên tế bào (transcellular) hoặc qua khe liên bào (paracellular); tính phân cực mặt lòng ống/mặt đáy-bên quyết định chiều hấp thu và bài tiết.</li></ul>
+            <h4>7. Liên hệ dược lý và lâm sàng</h4>
+            <p>Đường dùng và tính tan ảnh hưởng hấp thu thuốc; chất vận chuyển ở ruột, gan, thận và hàng rào máu–não có thể làm thay đổi nồng độ thuốc. SGLT2 là đích của nhóm thuốc ức chế đồng vận chuyển Na⁺-glucose ở thận; thuốc chẹn kênh ion thay đổi tính hưng phấn tế bào. Dung dịch ưu trương kéo nước khỏi tế bào; dung dịch nhược trương có thể làm tế bào trương. Tác động thực tế phụ thuộc thành phần dung dịch, tốc độ truyền và tình trạng người bệnh.</p>
+            <div class="callout"><div class="callout-title">Cách phân loại nhanh</div>Hỏi chất đi xuôi hay ngược gradient; có protein màng hay không; có tiêu thụ ATP trực tiếp hay dùng gradient ion; đi qua màng bằng kênh/chất tải hay túi màng.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Trao đổi qua màng duy trì thành phần dịch nội–ngoại bào, hấp thu chất dinh dưỡng, bài tiết và truyền tín hiệu. Đây cũng là nền tảng để hiểu hấp thu thuốc, vận chuyển glucose ở ruột/thận và tác dụng của thuốc lên bơm, kênh hoặc chất tải màng.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Phương trình Nernst với $K^+$</div>
+              Ở $37^\circ C$, với ion hóa trị 1: $E = 61,5 \log\frac{[ion]_{ngoài}}{[ion]_{trong}}$ (mV).<br>
+              Nồng độ $K^+$ ngoài $= 4$ mmol/L, trong $= 140$ mmol/L:<br>
+              $$E_K = 61,5 \times \log\frac{4}{140} \approx 61,5 \times (-1,54) \approx -95\text{ mV}$$<br>
+              <strong>Nhận xét:</strong> $E_K$ rất âm, gần với điện thế nghỉ, vì màng nghỉ thấm nhiều với $K^+$.<br>
+              <strong>Tình huống tăng $K^+$ máu:</strong> $K^+$ ngoài tăng lên 6 mmol/L $\Rightarrow E_K \approx -84$ mV; màng bớt âm hơn, tế bào dễ khử cực và dễ rối loạn nhịp tim.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-8">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-8')">
+            <div class="doc-title-wrap"><span class="doc-num">8</span><span class="doc-title">Điện thế màng và điện thế hoạt động</span><span class="doc-tag">Điện sinh lý</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Điện thế nghỉ</h4>
+            <p>Điện thế màng phát sinh từ chênh lệch nồng độ ion hai bên màng và tính thấm chọn lọc của màng. Bơm Na⁺/K⁺ duy trì gradient ion; ở nhiều neuron, điện thế nghỉ xấp xỉ −70 mV, nhưng thay đổi theo loại tế bào.</p>
+            <h4>2. Điện thế hoạt động</h4>
+            <ol><li>Kích thích đạt ngưỡng mở kênh Na⁺ phụ thuộc điện thế, Na⁺ đi vào gây khử cực.</li><li>Kênh Na⁺ bất hoạt, kênh K⁺ mở; K⁺ đi ra gây tái cực và đôi khi quá phân cực ngắn.</li><li>Thời kỳ trơ giới hạn tần số phát xung; bao myelin giúp dẫn truyền nhảy cóc tại các eo Ranvier.</li></ol>
+            <h4>3. Cơ tim và liên hệ thuốc</h4>
+            <p>Điện thế hoạt động cơ tim có pha bình nguyên liên quan dòng Ca²⁺, hỗ trợ co bóp và thời kỳ trơ dài. Thuốc gây tê tại chỗ chẹn kênh Na⁺; nhiều thuốc chống loạn nhịp tác động lên kênh ion hoặc dẫn truyền điện học. Thay đổi K⁺, Ca²⁺ ngoài tế bào có thể làm biến đổi tính hưng phấn.</p>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Điện thế màng là cơ sở của dẫn truyền thần kinh, co cơ và nhịp tim. Nắm cơ chế giúp hiểu ECG, rối loạn nhịp do thay đổi điện giải và cách thuốc gây tê/chống loạn nhịp tác động lên kênh ion; cũng giúp nhận biết vì sao rối loạn K⁺ hoặc Ca²⁺ có thể nguy hiểm.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Nernst với $Na^+$ và pha khử cực</div>
+              $Na^+$ ngoài $= 140$ mmol/L, trong $= 14$ mmol/L:<br>
+              $$E_{Na} = 61,5 \times \log\frac{140}{14} = 61,5 \times 1 = +61,5\text{ mV}$$<br>
+              Khi kênh $Na^+$ mở, $Na^+$ ùa vào theo cả gradient nồng độ và điện thế, kéo điện thế màng từ $-70$ mV lên gần $+30$ mV.<br>
+              Sau đó kênh $Na^+$ bất hoạt, $K^+$ đi ra, điện thế quay về phía $E_K \approx -95$ mV (tái cực).<br>
+              <strong>Ứng dụng:</strong> thuốc tê tại chỗ chẹn kênh $Na^+$ làm giảm khử cực, nên mất cảm giác đau tại vùng được tiêm.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>$Na^+$ vào = khử cực; $K^+$ ra = tái cực; $Ca^{2+}$ vào = pha bình nguyên cơ tim.</strong><br>
+              <strong>Nernst:</strong> ion ngoài càng nhiều so với trong → điện thế cân bằng càng dương.<br>
+              <strong>Thời kỳ trơ:</strong> "cửa $Na^+$ đang khóa" — giới hạn tần số phát xung, đặc biệt quan trọng ở tim.
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-9">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-9')">
+            <div class="doc-title-wrap"><span class="doc-num">9</span><span class="doc-title">Bệnh nguyên và bệnh sinh</span><span class="doc-tag">Bệnh học đại cương</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Bệnh nguyên: căn nguyên và điều kiện</h4>
+            <p><strong>Bệnh nguyên (etiology)</strong> nghiên cứu nguyên nhân và điều kiện làm bệnh xuất hiện. Cần phân biệt <em>nguyên nhân</em> (yếu tố trực tiếp hoặc thiết yếu trong bệnh cụ thể) với <em>điều kiện thuận lợi/nguy cơ</em> (làm tăng hoặc giảm xác suất mắc bệnh, không nhất thiết tự nó gây bệnh). Một bệnh có thể đa yếu tố; cùng yếu tố nguy cơ không làm mọi người mắc bệnh như nhau.</p>
+            <ul>
+              <li><strong>Sinh học:</strong> vi khuẩn, virus, nấm, ký sinh trùng, độc tố sinh học.</li>
+              <li><strong>Di truyền và phát triển:</strong> biến thể gene, bất thường nhiễm sắc thể, yếu tố thai kỳ.</li>
+              <li><strong>Vật lý/hóa học:</strong> chấn thương, nhiệt, bức xạ, hóa chất, thuốc và độc chất.</li>
+              <li><strong>Miễn dịch:</strong> tự miễn, quá mẫn, suy giảm miễn dịch.</li>
+              <li><strong>Môi trường và hành vi:</strong> dinh dưỡng, hút thuốc, nghề nghiệp, điều kiện sống và tác nhân xã hội.</li>
+            </ul>
+            <h4>2. Bệnh sinh: từ nguyên nhân tới biểu hiện</h4>
+            <p><strong>Bệnh sinh (pathogenesis)</strong> là chuỗi cơ chế phát triển bệnh sau khi yếu tố nguyên nhân tác động. Mô hình khái quát: tác nhân/điều kiện → tương tác với cơ thể → tổn thương tế bào/mô → rối loạn chức năng → dấu hiệu, triệu chứng và biến chứng. Chuỗi này có thể có nhiều vòng phản hồi; đáp ứng bù trừ ban đầu giúp duy trì chức năng nhưng kéo dài có thể trở thành yếu tố gây hại.</p>
+            <p>Ví dụ minh họa: xơ vữa động mạch hình thành qua rối loạn chức năng nội mô, giữ lipoprotein trong thành mạch, phản ứng viêm và phát triển mảng xơ vữa; mảng gây hẹp mạn tính hoặc nứt/vỡ, hoạt hóa tiểu cầu và huyết khối. Đây là mô hình cơ chế, không thay thế đánh giá nguy cơ của từng người.</p>
+            <h4>3. Viêm</h4>
+            <p><strong>Viêm</strong> là đáp ứng bảo vệ của mô có mạch máu trước nhiễm trùng hoặc tổn thương, nhằm loại bỏ tác nhân, dọn mô hư hại và khởi động sửa chữa. Tế bào nhận diện tác nhân/tổn thương rồi giải phóng các chất trung gian như <a href="#kw-histamine">histamine</a>, <a href="#kw-prostaglandin">prostaglandin</a>, <a href="#kw-cytokine">cytokine</a> và <a href="#kw-chemokine">chemokine</a>. Giãn mạch, tăng tính thấm thành mạch gây đỏ, nóng, sưng; kích thích thần kinh và chất trung gian gây đau, đôi khi giảm chức năng. <a href="#kw-bach-cau">Bạch cầu</a> được huy động tới mô để <a href="#kw-thuc-bao">thực bào</a> và tiêu diệt tác nhân. <a href="#kw-viem-cap">Viêm cấp</a> có thể khỏi, tạo mủ hoặc chuyển thành <a href="#kw-viem-man">viêm mạn</a>; viêm quá mức hay kéo dài có thể gây tổn thương mô thứ phát.</p>
+            <p><strong>Các giai đoạn chính:</strong></p>
+            <ol>
+              <li><strong>Nhận diện:</strong> Thụ thể miễn dịch bẩm sinh trên tế bào thường trú nhận diện cấu trúc của vi sinh vật hoặc tín hiệu từ tế bào bị tổn thương. Đại thực bào, dưỡng bào và tế bào nội mô góp phần khởi phát đáp ứng.</li>
+              <li><strong>Thay đổi mạch máu:</strong> <a href="#kw-histamine">Histamine</a> và các chất trung gian khác gây giãn tiểu động mạch, tăng lưu lượng máu tại chỗ và tăng tính thấm vi mạch. Dịch cùng protein huyết tương thoát ra mô tạo <a href="#kw-dich-ri-viem">dịch rỉ viêm</a>, gây sưng; cô đặc máu và dòng chảy chậm giúp bạch cầu tiếp xúc thành mạch.</li>
+              <li><strong>Huy động bạch cầu:</strong> <a href="#kw-bach-cau">Bạch cầu</a> bám dính nội mô, xuyên mạch và di chuyển theo <a href="#kw-hoa-huong-dong">hóa hướng động</a> đến ổ viêm. Bạch cầu trung tính thường đến sớm trong <a href="#kw-viem-cap">viêm cấp</a>; monocyte đi vào mô có thể biệt hóa thành đại thực bào. Tế bào <a href="#kw-thuc-bao">thực bào</a> nhận diện, nuốt và tiêu diệt tác nhân, đồng thời dọn mảnh vụn tế bào.</li>
+              <li><strong>Kết thúc hoặc chuyển mạn:</strong> Khi tác nhân được kiểm soát, tín hiệu viêm giảm, đại thực bào dọn mô hư và các cơ chế sửa chữa được hoạt hóa. Nếu tác nhân tồn tại dai dẳng hoặc điều hòa miễn dịch thất bại, viêm có thể kéo dài, gây phá hủy mô và xơ hóa.</li>
+            </ol>
+            <p><strong>Biểu hiện và kiểu hình:</strong> Năm dấu hiệu kinh điển gồm đỏ, nóng, sưng, đau và giảm/mất chức năng. <a href="#kw-viem-cap">Viêm cấp</a> thường khởi phát nhanh, nổi bật phù nề và bạch cầu trung tính; <a href="#kw-viem-man">viêm mạn</a> kéo dài hơn, thường có đại thực bào, lymphocyte, tổn thương mô và quá trình sửa chữa/xơ hóa đồng thời. Mủ là dịch chứa nhiều bạch cầu, vi sinh vật và mô hoại tử; không phải mọi ổ viêm đều tạo mủ.</p>
+            <p><strong>Chất trung gian tiêu biểu:</strong> <a href="#kw-histamine">Histamine</a> làm tăng tính thấm mạch; <a href="#kw-prostaglandin">prostaglandin</a> góp phần gây đau và sốt; <a href="#kw-cytokine">cytokine</a> như <a href="#kw-tnf">TNF</a>, <a href="#kw-il1-il6">IL-1</a> và IL-6 điều phối đáp ứng toàn thân; <a href="#kw-chemokine">chemokine</a> hướng dẫn bạch cầu tới mô. <a href="#kw-bo-the">Bổ thể</a> hỗ trợ opsonin hóa, hóa hướng động và tiêu diệt vi sinh vật. Mỗi chất có nhiều tác dụng, phụ thuộc mô và thời điểm đáp ứng.</p>
+            <p><strong>Các rối loạn và biến chứng liên quan đến viêm:</strong> Rối loạn có thể do đáp ứng quá yếu, quá mạnh, kéo dài hoặc không được kết thúc đúng lúc. Viêm là một cơ chế bệnh sinh; thuật ngữ dưới đây mô tả các kiểu đáp ứng hoặc hậu quả, không tự xác định nguyên nhân ở một người cụ thể.</p>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Kiểu rối loạn</th><th>Cơ chế khái quát</th><th>Hậu quả / ví dụ minh họa</th></tr></thead><tbody>
+              <tr><td><strong>Viêm cấp quá mức hoặc lan rộng</strong></td><td>Giải phóng chất trung gian mạnh, giãn mạch và tăng tính thấm quá mức; bạch cầu và enzyme gây tổn thương cả mô lành lân cận.</td><td>Phù nề, đau, hoại tử hoặc giảm chức năng cơ quan; nguy cơ phụ thuộc vị trí, tác nhân và mức độ đáp ứng.</td></tr>
+              <tr><td><strong>Đáp ứng viêm toàn thân</strong></td><td>Cytokine và các chất trung gian đi vào tuần hoàn, ảnh hưởng nhiều cơ quan; có thể gây sốt/hạ thân nhiệt, nhịp tim nhanh, thay đổi bạch cầu và rối loạn chức năng cơ quan.</td><td><a href="#kw-sirs">Hội chứng đáp ứng viêm toàn thân (SIRS)</a> là mô tả lâm sàng không đặc hiệu, có thể do nhiễm trùng hoặc nguyên nhân không nhiễm trùng. <a href="#kw-sepsis">Nhiễm khuẩn huyết (sepsis)</a> là rối loạn chức năng cơ quan đe dọa tính mạng do đáp ứng mất điều hòa với nhiễm trùng; không đồng nghĩa với SIRS hay chỉ riêng cấy máu dương tính.</td></tr>
+              <tr><td><strong>Viêm mạn và phá hủy mô</strong></td><td>Tác nhân dai dẳng, tự miễn hoặc kích thích lặp lại duy trì huy động đại thực bào/lymphocyte và tổn thương mô.</td><td>Mất chức năng kéo dài, tái cấu trúc mô và có thể xơ hóa; gặp trong nhiều bệnh mạn, nhưng cần xác định căn nguyên cụ thể.</td></tr>
+              <tr><td><strong>Viêm u hạt</strong></td><td>Một kiểu viêm mạn có các cụm đại thực bào hoạt hóa (tế bào dạng biểu mô), đôi khi có tế bào khổng lồ đa nhân, bao quanh tác nhân khó loại bỏ.</td><td>Có thể gặp trong một số nhiễm trùng, bệnh viêm hoặc phản ứng dị vật; hình ảnh u hạt không tự xác định nguyên nhân.</td></tr>
+              <tr><td><strong>Quá mẫn / dị ứng</strong></td><td>Đáp ứng miễn dịch quá mức hoặc không phù hợp với kháng nguyên; một số phản ứng giải phóng histamine nhanh, phản ứng khác gây tổn thương qua kháng thể hoặc tế bào T.</td><td>Biểu hiện từ tại chỗ đến toàn thân. Phản vệ là cấp cứu: khó thở, phù lưỡi/họng, tụt huyết áp hoặc ngất cần gọi cấp cứu ngay.</td></tr>
+              <tr><td><strong>Rối loạn tự miễn</strong></td><td>Mất dung nạp với thành phần của chính cơ thể; tự kháng thể hoặc tế bào miễn dịch gây viêm tại cơ quan hoặc nhiều cơ quan.</td><td>Tổn thương có thể tái phát và cần đánh giá chuyên khoa; dấu hiệu viêm đơn thuần không đủ để kết luận bệnh tự miễn.</td></tr>
+              <tr><td><strong>Viêm không giải quyết / sửa chữa bất thường</strong></td><td>Tác nhân còn tồn tại, tín hiệu kết thúc viêm không hiệu quả, hoặc sửa chữa lệch hướng sau tổn thương.</td><td>Viêm kéo dài, áp-xe, dính hoặc xơ hóa tùy mô và nguyên nhân; xơ hóa quá mức có thể hạn chế chức năng cơ quan.</td></tr>
+              <tr><td><strong>Đáp ứng viêm suy giảm</strong></td><td>Giảm số lượng hoặc chức năng bạch cầu, bổ thể hay hàng rào mô; có thể liên quan bệnh nền, thuốc hoặc suy giảm miễn dịch.</td><td>Nguy cơ nhiễm trùng tăng và biểu hiện viêm có thể kín đáo; sốt ở người suy giảm miễn dịch cần được đánh giá y tế sớm.</td></tr>
+            </tbody></table></div>
+            <p><strong>Rối loạn tại chỗ thường gặp:</strong> Tăng tính thấm mạch gây phù; thoát mạch nhiều hoặc kéo dài có thể chèn ép mô và cản trở trao đổi oxy. Tắc nghẽn dẫn lưu hoặc dịch nhiễm trùng khu trú có thể tạo áp-xe; nếu ổ nhiễm không được kiểm soát, tác nhân và đáp ứng viêm có thể lan rộng. Mức phù, đỏ hay đau riêng lẻ không đủ xác định có nhiễm khuẩn hay không.</p>
+            <p><strong>Đánh giá theo cơ chế:</strong> Xem vị trí và thời gian khởi phát; tìm yếu tố khởi phát (nhiễm trùng, tổn thương, dị ứng, tự miễn); đánh giá mức độ tại chỗ và dấu hiệu toàn thân; dùng xét nghiệm phù hợp để tìm nguyên nhân và tổn thương cơ quan. Bạch cầu, CRP hay ESR là dấu ấn không đặc hiệu: kết quả bình thường không luôn loại trừ bệnh, còn tăng không tự chứng minh nhiễm khuẩn. Điều trị hướng vào nguyên nhân và mức độ; không tự dùng kháng sinh hoặc thuốc ức chế miễn dịch chỉ dựa trên dấu hiệu viêm.</p>
+            <p><strong>Ý nghĩa:</strong> Viêm khu trú giúp giới hạn tác nhân, loại bỏ tế bào hư hại và khởi động lành thương; phản ứng toàn thân vừa hỗ trợ phòng vệ vừa có thể gây mệt mỏi, chán ăn và thay đổi xét nghiệm. Nhận diện tính chất, vị trí và diễn biến viêm giúp định hướng tìm nguyên nhân, đánh giá mức độ tổn thương và theo dõi đáp ứng. Viêm là cơ chế, không phải chẩn đoán nguyên nhân: nhiễm trùng, tự miễn, dị ứng và tổn thương vô khuẩn đều có thể gây viêm; ức chế viêm không phù hợp có thể che lấp hoặc làm nặng một số bệnh nền.</p>
+            <h4>4. Sốt</h4>
+            <p><strong><a href="#kw-sot">Sốt</a></strong> là tăng thân nhiệt có điều hòa: chất gây sốt ngoại sinh (thường là thành phần vi sinh vật) kích hoạt tế bào miễn dịch giải phóng cytokine gây sốt như <a href="#kw-il1-il6">IL-1</a>, IL-6 và <a href="#kw-tnf">TNF</a>. Tín hiệu làm tăng tổng hợp <strong><a href="#kw-pge2">prostaglandin E₂ (PGE₂)</a></strong> ở vùng dưới đồi, nâng <a href="#kw-diem-dieu-nhiet">điểm điều nhiệt</a>. Cơ thể co mạch da, rét run và tăng sinh nhiệt tới điểm đặt mới; khi điểm đặt hạ, giãn mạch và vã mồ hôi giúp thải nhiệt. Sốt làm tăng nhu cầu chuyển hóa và mất nước, nhất là khi kéo dài hoặc ăn uống kém.</p>
+            <p><strong>Diễn tiến sinh lý:</strong> Khi <a href="#kw-diem-dieu-nhiet">điểm điều nhiệt</a> tăng, người bệnh có thể thấy lạnh dù nhiệt độ đang tăng; co mạch da làm da lạnh, rét run tạo thêm nhiệt. Khi điểm điều nhiệt trở về mức thấp hơn, cơ thể cảm thấy nóng, giãn mạch và vã mồ hôi để thải nhiệt. Sốt là đáp ứng có điều hòa, khác với <a href="#kw-tang-than-nhiet">tăng thân nhiệt</a> do cơ thể không thải được nhiệt hoặc sinh nhiệt quá mức mà điểm điều nhiệt không tăng.</p>
+            <p><strong>Sốt do virus</strong> phát sinh khi virus kích hoạt miễn dịch bẩm sinh và cytokine; kiểu sốt đơn thuần không xác định được tác nhân. Cần xét thời gian bệnh, triệu chứng, dịch tễ và xét nghiệm phù hợp. Kháng sinh không điều trị virus. Cần phân biệt sốt (điểm điều nhiệt tăng) với <strong>tăng thân nhiệt</strong> (sinh nhiệt/vấp nhiệt vượt khả năng thải nhiệt mà điểm điều nhiệt không tăng, như say nóng); thuốc hạ sốt thường không xử lý được tăng thân nhiệt do môi trường.</p>
+            <p><strong>Ý nghĩa:</strong> Sốt là dấu hiệu cho thấy cơ thể đang đáp ứng với một kích thích, thường gặp trong nhiễm trùng nhưng không chỉ do nhiễm trùng; bản thân nhiệt độ không xác định được căn nguyên hay mức độ nặng. Tăng nhiệt độ có thể hỗ trợ một số chức năng miễn dịch nhưng cũng làm tăng nhu cầu chuyển hóa, nhịp tim và mất nước. Vì vậy cần đánh giá toàn trạng, tuổi, thời gian sốt, triệu chứng kèm theo và dấu hiệu cảnh báo, thay vì chỉ dựa vào con số nhiệt độ; đồng thời phân biệt sốt với tăng thân nhiệt vì cơ chế và xử trí khác nhau.</p>
+            <ul>
+              <li><strong>Chăm sóc:</strong> nghỉ ngơi, uống/bù dịch phù hợp, mặc thoáng và theo dõi nhiệt độ, lượng tiểu, tỉnh táo, nhịp thở. Tránh chườm đá, nước lạnh hoặc cồn; nếu khó chịu có thể lau người bằng nước ấm vừa và dừng nếu rét run. Thuốc hạ sốt dùng đúng hướng dẫn theo tuổi/cân nặng, chống chỉ định; tránh trùng hoạt chất.</li>
+              <li><strong>Nếu nghi dengue:</strong> tránh aspirin và ibuprofen/NSAID do nguy cơ chảy máu; cần được đánh giá y tế và dùng thuốc theo hướng dẫn chuyên môn.</li>
+              <li><strong>Cần khám khẩn:</strong> khó thở, lơ mơ/co giật, đau ngực, cổ cứng, tím tái, mất nước rõ, đau bụng dữ dội, nôn liên tục, chảy máu hoặc tình trạng xấu nhanh. Trẻ dưới 3 tháng có nhiệt độ từ 38°C cần được đánh giá y tế ngay.</li>
+            </ul>
+            <h4>5. Tổn thương tế bào và đáp ứng</h4>
+            <ul>
+              <li>Tổn thương có thể do thiếu oxy/thiếu máu, tác nhân hóa học, nhiễm trùng, miễn dịch hoặc rối loạn dinh dưỡng.</li>
+              <li>Tế bào thích nghi bằng phì đại, tăng sản, teo hoặc chuyển sản; nếu tác nhân vượt khả năng thích nghi có thể gây tổn thương hồi phục hoặc chết tế bào (hoại tử, apoptosis).</li>
+              <li>Viêm là đáp ứng bảo vệ nhằm loại bỏ tác nhân và khởi động sửa chữa; viêm quá mức/kéo dài có thể gây tổn thương mô thứ phát.</li>
+            </ul>
+            <h4>6. Diễn biến bệnh và khái niệm lâm sàng</h4>
+            <p>Bệnh cấp tính thường khởi phát nhanh và kéo dài ngắn; bệnh mạn tính tiến triển kéo dài, có thể có đợt ổn định và đợt cấp. Giai đoạn tiềm tàng/ủ bệnh, khởi phát, toàn phát và kết thúc là sơ đồ học tập, không áp dụng cứng cho mọi bệnh. <strong>Triệu chứng</strong> là điều người bệnh cảm nhận; <strong>dấu hiệu</strong> là phát hiện khách quan; hội chứng là nhóm biểu hiện thường đi cùng nhưng có thể do nhiều nguyên nhân.</p>
+            <h4>7. Dự phòng, chẩn đoán và điều trị theo cơ chế</h4>
+            <ul>
+              <li><strong>Dự phòng nguyên phát:</strong> giảm phơi nhiễm/yếu tố nguy cơ và tăng bảo vệ trước khi mắc bệnh; dự phòng thứ phát phát hiện sớm; dự phòng tam cấp hạn chế biến chứng và mất chức năng.</li>
+              <li><strong>Chẩn đoán:</strong> kết hợp bệnh sử, khám, xét nghiệm và chẩn đoán hình ảnh; kiểm tra xem cơ chế giả định có giải thích được dữ kiện và chẩn đoán phân biệt hay không.</li>
+              <li><strong>Điều trị:</strong> có thể loại bỏ/kiểm soát nguyên nhân, chặn mắt xích bệnh sinh, hỗ trợ chức năng hoặc giảm triệu chứng. Chọn thuốc cần cân nhắc chỉ định, chống chỉ định, tương tác, chức năng gan thận và theo dõi đáp ứng.</li>
+            </ul>
+            <div class="callout"><div class="callout-title">Bài tập lập luận</div>Với mỗi ca bệnh, lập bảng ba cột: yếu tố nguyên nhân/nguy cơ; cơ chế gây tổn thương; dữ kiện lâm sàng/xét nghiệm dự kiến. Sau đó chỉ ra chỗ nào là giả thuyết và bằng chứng nào có thể bác bỏ giả thuyết.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Phân biệt bệnh nguyên với bệnh sinh giúp lập luận từ yếu tố nguy cơ tới tổn thương và biểu hiện, bao gồm đáp ứng viêm và sốt; từ đó chọn xét nghiệm có mục tiêu, kiểm soát nguyên nhân và hạn chế tổn thương thứ phát.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Từ viêm họng đến biến chứng</div>
+              Bé 8 tuổi: sốt $38,8^\circ C$, đau họng, amidan có mủ, hạch cổ đau; bạch cầu $14$ G/L, CRP $60$ mg/L.<br>
+              <strong>Bệnh nguyên:</strong> nhiễm liên cầu tan máu $\beta$ nhóm A.<br>
+              <strong>Bệnh sinh:</strong> vi khuẩn → viêm cấp tại họng (đỏ, sưng, đau, sốt) → nếu không kiểm soát, kháng thể phản ứng chéo với mô tim/khớp có thể gây thấp tim sau 2–3 tuần.<br>
+              <strong>Kết luận:</strong> cùng một bệnh có "nguyên nhân" (liên cầu) và "chuỗi cơ chế" (viêm → phản ứng miễn dịch) khác nhau; điều trị đúng giai đoạn và theo dõi biến chứng.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Sốt khác tăng thân nhiệt</div>
+              <strong>Sốt:</strong> nhiễm virus, $39^\circ C$, kèm rét run, da lạnh, mồ hôi; dùng thuốc hạ sốt có đáp ứng vì điểm điều nhiệt đã tăng rồi hạ xuống.<br>
+              <strong>Tăng thân nhiệt:</strong> vận động viên chạy marathon dưới nắng, nhiệt độ $41^\circ C$, da nóng khô, không rét run, không đáp ứng với paracetamol.<br>
+              $\Rightarrow$ say nóng cần <strong>làm mát cơ thể ngay</strong> và gọi cấp cứu; thuốc hạ sốt không giải quyết nguyên nhân.<br>
+              <strong>Bài học:</strong> phải hỏi bối cảnh và dấu hiệu đi kèm, không chỉ nhìn nhiệt kế.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>5 dấu hiệu viêm:</strong> Đỏ — Nóng — Sưng — Đau — Mất chức năng.<br>
+              <strong>Chuỗi sốt 3 bước:</strong> tác nhân ngoại sinh → cytokine (IL-1, IL-6, TNF) → $PGE_2$ ở dưới đồi → nâng điểm điều nhiệt.<br>
+              <strong>Phân biệt nhanh:</strong> sốt = "máy điều hòa bị chỉnh lên"; tăng thân nhiệt = "máy điều hòa vẫn cũ nhưng phòng quá nóng".
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-card" id="doc-myd-10">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-10')">
+            <div class="doc-title-wrap"><span class="doc-num">10</span><span class="doc-title">Dịch cơ thể, cân bằng nước và rối loạn thường gặp</span><span class="doc-tag">Sinh lý dịch thể</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Phân bố nước và các khoang dịch</h4>
+            <p>Nước toàn cơ thể ở người trưởng thành thường xấp xỉ 50–60% khối lượng cơ thể, thay đổi theo tuổi, giới và tỷ lệ mô mỡ. Khoảng 2/3 nước nằm trong <strong>dịch nội bào (ICF)</strong>; khoảng 1/3 nằm trong <strong>dịch ngoại bào (ECF)</strong>, gồm dịch kẽ và huyết tương. Các tỷ lệ này chỉ là ước tính sinh lý, không dùng thay số đo ở người bệnh. Màng tế bào cho nước đi tương đối dễ nhưng kiểm soát ion: Na⁺ là cation chính của ECF, K⁺ là cation chính của ICF.</p>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Khoang</th><th>Ước lượng ở người 70 kg</th><th>Đặc điểm chính</th></tr></thead><tbody><tr><td>Nước toàn cơ thể</td><td>Khoảng 42 L (ước tính 60%)</td><td>Giảm tỷ lệ ở người lớn tuổi và người có nhiều mô mỡ.</td></tr><tr><td>ICF</td><td>Khoảng 28 L</td><td>Khoảng 2/3 nước toàn cơ thể; K⁺ và phosphate nội bào tương đối cao.</td></tr><tr><td>ECF</td><td>Khoảng 14 L</td><td>Khoảng 1/3 nước toàn cơ thể; Na⁺ là ion quyết định phần lớn osmolality.</td></tr><tr><td>Dịch kẽ / huyết tương</td><td>Khoảng 11 L / 3 L</td><td>Hai thành phần chính của ECF; protein huyết tương góp phần tạo áp lực keo.</td></tr></tbody></table></div>
+            <h4>2. Osmolality, tonicity và dịch chuyển nước</h4>
+            <p><strong>Osmolality</strong> là số tiểu phân thẩm thấu trên kg nước; khoảng tham chiếu huyết tương thường 275–295 mOsm/kg, tùy phòng xét nghiệm. <strong>Tonicity</strong> phản ánh tác động của các chất tan không dễ qua màng lên thể tích tế bào. Na⁺ và glucose thường là chất tan hữu hiệu trong ECF; urê góp phần vào osmolality đo được nhưng qua màng tương đối tự do nên ít duy trì chênh lệch tonicity lâu dài. Dịch ưu trương làm nước rời tế bào; dịch nhược trương làm nước vào tế bào; dịch đẳng trương không gây dịch chuyển nước bền vững đáng kể qua màng tế bào.</p>
+            <p>Ước tính osmolality huyết tương khi glucose và BUN tính bằng mg/dL: <span class="formula-box">$$Osm_{ước\ tính}=2[Na^+]+\frac{glucose}{18}+\frac{BUN}{2.8}\quad (mOsm/kg)$$</span>Khoảng trống osmolal (osmolal gap) là osmolality đo được trừ ước tính; tăng có thể gợi ý chất tan chưa được tính, nhưng không xác định nguyên nhân nếu đứng riêng.</p>
+            <h4>3. Cân bằng nước vào-ra</h4>
+            <p>Nước vào từ đồ uống, thức ăn và một lượng nhỏ do chuyển hóa; nước ra qua nước tiểu, da, hô hấp và phân. Thận điều chỉnh lượng nước tiểu theo nhu cầu. Cảm giác khát tăng khi osmolality tăng hoặc thể tích tuần hoàn hiệu dụng giảm. Sốt, thở nhanh, tiêu chảy, nôn, bỏng và lợi tiểu làm thay đổi mất nước; suy tim, suy thận hoặc xơ gan có thể gây giữ nước/Na⁺ dù thể tích tuần hoàn hiệu dụng thấp.</p>
+            <h4>4. Điều hòa thận và hormone</h4>
+            <ul>
+              <li><strong>ADH/vasopressin:</strong> được giải phóng khi osmolality tăng hoặc khi giảm thể tích/áp lực tuần hoàn đáng kể; gắn thụ thể V₂ ở ống góp, đưa aquaporin-2 lên màng lòng ống, tăng tái hấp thu nước tự do. ADH quá mức gây giữ nước và có thể hạ natri máu; thiếu ADH hoặc thận kháng ADH gây đa niệu, nước tiểu loãng.</li>
+              <li><strong>Hệ renin–angiotensin–aldosterone:</strong> giảm tưới máu thận, giảm NaCl tới macula densa hoặc kích thích giao cảm làm tăng renin. Angiotensin II co mạch, tăng khát và kích thích aldosterone; aldosterone tăng tái hấp thu Na⁺ và tăng bài tiết K⁺/H⁺ ở nephron xa. Nước thường đi theo Na⁺, nhưng điều chỉnh Na⁺ toàn cơ thể chủ yếu quyết định thể tích ECF, không đồng nghĩa trực tiếp với nồng độ Na⁺ huyết thanh.</li>
+              <li><strong>Peptide lợi niệu nhĩ/BNP:</strong> được giải phóng khi buồng tim căng, hỗ trợ thải Na⁺ và nước, đối kháng một phần hệ RAA.</li>
+              <li><strong>Thận:</strong> điều chỉnh lọc cầu thận và tái hấp thu nước, Na⁺, K⁺, bicarbonate; vai trò này phụ thuộc tưới máu và chức năng nephron.</li>
+            </ul>
+            <h4>5. Trao đổi dịch mao mạch và phù</h4>
+            <p>Dịch qua thành mao mạch chịu tác động của áp lực thủy tĩnh, áp lực keo huyết tương, tính thấm thành mạch và dẫn lưu bạch huyết. Phù xuất hiện khi lọc dịch vượt tái hấp thu/dẫn lưu, ví dụ tăng áp lực tĩnh mạch, giảm albumin máu, tăng tính thấm do viêm hoặc tắc bạch huyết. Phù ngoại biên không tự nó cho biết tổng thể tích tuần hoàn hiệu dụng; cần đánh giá nguyên nhân tim, thận, gan, thuốc và tại chỗ.</p>
+            <h4>6. Natri máu: nồng độ không đồng nhất với lượng natri toàn cơ thể</h4>
+            <p>Nồng độ Na⁺ huyết thanh chủ yếu phản ánh tương quan giữa lượng chất tan trao đổi được (Na⁺ và K⁺) với tổng nước cơ thể. Vì vậy hạ natri máu thường là dư nước tương đối so với chất tan, không nhất thiết là thiếu natri toàn cơ thể; tăng natri máu thường phản ánh thiếu nước tương đối. Luôn diễn giải cùng tình trạng thể tích, glucose, chức năng thận và osmolality.</p>
+            <ul>
+              <li><strong>Hạ natri máu:</strong> xác nhận có giảm natri thật và phân biệt nhược trương với tăng đường huyết hoặc giả hạ natri; đánh giá thể tích, thuốc, chức năng tuyến giáp/thượng thận khi phù hợp và khả năng bài tiết nước. Triệu chứng nặng có thể gồm co giật, giảm ý thức; điều trị phụ thuộc nguyên nhân và mức độ.</li>
+              <li><strong>Tăng natri máu:</strong> thường do mất nước không được bù đủ hoặc hiếm hơn do tăng natri; đánh giá nguồn mất nước, khả năng khát, ADH/thận và huyết động.</li>
+              <li><strong>An toàn:</strong> thay đổi natri quá nhanh có nguy cơ tổn thương thần kinh. Tốc độ điều chỉnh phải do nhân viên y tế quyết định, có xét nghiệm theo dõi; không tự bù dịch/điện giải dựa trên công thức đơn lẻ.</li>
+            </ul>
+            <h4>7. Đánh giá thực hành và công thức ước tính</h4>
+            <p>Đánh giá gồm cân nặng thay đổi, lượng vào-ra, mạch/huyết áp tư thế, niêm mạc, phù, tĩnh mạch cổ, lượng nước tiểu, Na⁺/K⁺/ure/creatinin, glucose và osmolality khi có chỉ định. Mỗi dấu hiệu riêng lẻ có giới hạn; ghép nhiều dữ kiện và theo dõi xu hướng.</p>
+            <p>Thiếu hụt nước tự do có thể được ước tính khi tăng natri máu: <span class="formula-box">$$Thiếu\ hụt\ nước\ (L)\approx TBW\times\left(\frac{Na_{đo}}{Na_{mục\ tiêu}}-1\right)$$</span>$TBW$ là tổng lượng nước cơ thể ước tính. Đây chỉ là ước tính ban đầu, không tính mất tiếp diễn hay đáp ứng thận; không phải hướng dẫn tự điều trị và không thay thế đánh giá lâm sàng.</p>
+            <div class="callout"><div class="callout-title">Tóm tắt cơ chế</div>Nước cơ thể được điều chỉnh chủ yếu qua ADH/khát; thể tích ECF phụ thuộc mạnh vào tổng Na⁺ trao đổi được. Na⁺ huyết thanh là nồng độ, không phải phép đo trực tiếp lượng Na⁺ toàn thân. Phù, mất nước và rối loạn natri cần tìm nguyên nhân trước khi điều chỉnh.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Cân bằng nước và điện giải cần thiết cho thể tích tuần hoàn, huyết áp, hoạt động thần kinh–cơ và chức năng thận. Hiểu các khoang dịch cùng ADH/RAA giúp phân biệt mất nước, quá tải dịch, phù và rối loạn natri; từ đó định hướng đánh giá nguyên nhân và tránh bù dịch hoặc điều chỉnh điện giải không an toàn.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Ước tính thiếu hụt nước tự do</div>
+              Nam 70 kg, nước toàn cơ thể ước tính $TBW \approx 0,6 \times 70 = 42$ L.<br>
+              Xét nghiệm $Na^+ = 155$ mmol/L, mục tiêu $145$ mmol/L:<br>
+              $$Thiếu\ hụt \approx 42 \times \left(\frac{155}{145} - 1\right) = 42 \times 0,069 \approx 2,9\text{ L}$$<br>
+              <strong>Diễn giải:</strong> cơ thể đang thiếu tương đối khoảng 2,9 L nước tự do; đây chỉ là ước tính ban đầu, chưa tính mất nước tiếp diễn.<br>
+              <strong>An toàn:</strong> hạ $Na^+$ quá nhanh có thể gây phù não; tốc độ bù phải do nhân viên y tế quyết định và theo dõi xét nghiệm (thường không vượt khoảng 10 mmol/L/ngày).
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>Quy tắc 60 — 40 — 20:</strong> nước toàn cơ thể $\approx 60\%$ cân nặng; dịch nội bào $\approx 40\%$; dịch ngoại bào $\approx 20\%$.<br>
+              Hay dùng tỷ lệ: <strong>2/3 nội bào — 1/3 ngoại bào.</strong><br>
+              <strong>$Na^+$ là nồng độ, không phải lượng:</strong> hạ $Na^+$ thường là dư nước tương đối, không nhất thiết thiếu natri toàn cơ thể.<br>
+              <strong>Điều hòa:</strong> ADH giữ nước; aldosterone giữ $Na^+$ và thải $K^+$; BNP thải $Na^+$ và nước.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 2.11 -->
+        <div class="doc-card" id="doc-myd-11">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-11')">
+            <div class="doc-title-wrap">
+              <span class="doc-num">11</span>
+              <span class="doc-title">Chuyên đề 11: Đại cương về miễn dịch (Hệ thống miễn dịch, cơ chế phòng vệ & ứng dụng y dược)</span>
+              <span class="doc-tag">Miễn dịch học</span>
+            </div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Khái niệm, chức năng và phân loại hệ thống miễn dịch</h4>
+            <p><strong>Miễn dịch học (Immunology)</strong> nghiên cứu cấu trúc, chức năng và cơ chế hoạt động của hệ thống miễn dịch. Miễn dịch là khả năng của cơ thể nhận biết các thành phần <em>"của mình" (Self)</em> và phân biệt với các yếu tố <em>"lạ / không phải của mình" (Non-self)</em>, từ đó vô hiệu hóa hoặc tiêu diệt tác nhân ngoại lai gây hại và các tế bào cơ thể bị biến đổi ác tính/tổn thương, nhằm duy trì tính toàn vẹn và hằng định nội môi sinh học.</p>
+            <ul>
+              <li><strong>Ba chức năng cơ bản của hệ thống miễn dịch:</strong>
+                <ul>
+                  <li><em>Phòng vệ (Defense):</em> Ngăn cản, tiêu diệt và đào thải vi sinh vật gây bệnh (vi khuẩn, virus, nấm, ký sinh trùng) và độc tố của chúng. Suy giảm chức năng phòng vệ dẫn tới nhiễm trùng cơ hội; đáp ứng quá mức dẫn tới quá mẫn / dị ứng.</li>
+                  <li><em>Cân bằng nội môi (Homeostasis):</em> Dọn dẹp các tế bào già cỗi (như hồng cầu hết đời sống $\approx 120\text{ ngày}$), tế bào chết theo chương trình (apoptosis) và mảnh vỡ mô để tái tạo cấu trúc bình thường.</li>
+                  <li><em>Giám sát miễn dịch (Surveillance):</em> Nhận diện và tiêu hủy các tế bào đột biến gen có nguy cơ phát triển thành khối u hoặc ung thư.</li>
+                </ul>
+              </li>
+              <li><strong>Hai hệ thống phòng vệ phối hợp:</strong> <strong>Miễn dịch bẩm sinh (Innate immunity)</strong> phản ứng tức thì không đặc hiệu; <strong>Miễn dịch thích ứng (Adaptive immunity)</strong> đáp ứng chậm hơn nhưng có tính đặc hiệu cao và tạo trí nhớ miễn dịch lâu dài.</li>
+            </ul>
+
+            <h4>2. Miễn dịch bẩm sinh (Innate Immunity - Miễn dịch không đặc hiệu)</h4>
+            <p>Miễn dịch bẩm sinh là tuyến phòng thủ tự nhiên có sẵn ngay từ khi sinh ra, đáp ứng ngay lập tức trong vài phút đến vài giờ đầu sau khi tiếp xúc mầm bệnh, không đòi hỏi tiếp xúc trước và không để lại trí nhớ miễn dịch dài hạn.</p>
+            <ul>
+              <li><strong>Hàng rào vật lý & cơ học:</strong>
+                <ul>
+                  <li><em>Lớp sừng của da:</em> Hàng rào giải phẫu kiên cố, liên tục bong vảy mang theo vi sinh vật bám dính.</li>
+                  <li><em>Niêm mạc & lớp chất nhầy (Mucus):</em> Bẫy giữ vi sinh vật tại đường hô hấp, tiêu hóa, tiết niệu - sinh dục; hệ thống biểu mô lông chuyển (ciliary escalator) quét chất nhầy và mầm bệnh lên hầu họng để tống xuất ra ngoài qua ho/hắt hơi.</li>
+                  <li><em>Rửa trôi cơ học:</em> Dòng nước mắt, nước bọt, dòng nước tiểu và nhu động ruột liên tục cản trở sự bám dính và xâm nhập của vi khuẩn.</li>
+                </ul>
+              </li>
+              <li><strong>Hàng rào hóa học & sinh học:</strong>
+                <ul>
+                  <li><em>Acid béo tuyến bã & mồ hôi:</em> Duy trì pH da acid ($pH \approx 5,5$) ức chế nhiều loại vi khuẩn.</li>
+                  <li><em>Acid dịch vị dạ dày:</em> Nồng độ $HCl$ cao ($pH \approx 1,5 - 2,0$) tiêu diệt hầu hết vi sinh vật nuốt vào theo đường ăn uống.</li>
+                  <li><em>Lysozyme:</em> Enzym có trong nước mắt, nước bọt, dịch tiết phế quản; phân giải liên kết peptidoglycan ở thành tế bào vi khuẩn Gram dương.</li>
+                  <li><em>Defensin & cathelicidin:</em> Các peptide kháng khuẩn tự nhiên làm thủng màng tế bào vi khuẩn.</li>
+                  <li><em>Hệ vi sinh vật thường trú (Microbiota):</em> Cạnh tranh thụ thể bám dính và chất dinh dưỡng với mầm bệnh ngoại lai; tiết bacteriocin và acid béo chuỗi ngắn ức chế vi khuẩn có hại. Dùng kháng sinh phổ rộng kéo dài làm tổn hại hệ vi khuẩn này, dễ dẫn đến viêm ruột giả mạc do <em>Clostridioides difficile</em>.</li>
+                </ul>
+              </li>
+              <li><strong>Hàng rào tế bào bẩm sinh:</strong>
+                <ul>
+                  <li><em>Bạch cầu đa nhân trung tính (Neutrophil):</em> Tế bào thực bào tuần hoàn chiếm tỷ lệ cao nhất ($60 - 70\%$), là lực lượng tiếp cận ổ viêm đầu tiên; tiêu diệt vi khuẩn qua thực bào, enzyme ly giải trong lysosome, bùng nổ oxy hóa giải phóng ROS (Reactive Oxygen Species) và phóng bẫy ngoại bào NETs (Neutrophil Extracellular Traps).</li>
+                  <li><em>Đại thực bào (Macrophage):</em> Bắt nguồn từ monocyte máu di chuyển vào mô; có khả năng thực bào mạnh mẽ, dọn mảnh vụn mô, giải phóng cytokine tiền viêm ($IL-1, IL-6, TNF-\alpha$) và là tế bào trình diện kháng nguyên (APC).</li>
+                  <li><em>Tế bào tua (Dendritic Cell - DC):</em> Tế bào APC chuyên nghiệp quan trọng nhất, đóng vai trò cầu nối mấu chốt giữa miễn dịch bẩm sinh và miễn dịch thích ứng.</li>
+                  <li><em>Tế bào diệt tự nhiên (Natural Killer - NK):</em> Tế bào lympho lớn nhận diện các tế bào đích bị nhiễm virus hoặc tế bào ung thư bị giảm/mất biểu hiện phân tử MHC-I (theo cơ chế <em>Missing-self hypothesis</em>); tiêu diệt tế bào đích bằng cách giải phóng perforin và granzyme gây apoptosis.</li>
+                  <li><em>Dưỡng bào (Mast cell), Bạch cầu ưa kiềm (Basophil) & ưa acid (Eosinophil):</em> Phóng hạt histamine trong phản ứng dị ứng và viêm; eosinophil giải phóng protein kiềm chính (MBP) tiêu diệt ấu trùng giun sán.</li>
+                </ul>
+              </li>
+              <li><strong>Cơ chế nhận diện bẩm sinh (PRRs & PAMPs/DAMPs):</strong>
+                <p>Tế bào miễn dịch bẩm sinh nhận diện tác nhân gây bệnh thông qua các <strong>Thụ thể nhận diện mẫu (PRRs - Pattern Recognition Receptors)</strong>, điển hình là các thụ thể dạng Toll (<strong>TLRs - Toll-like Receptors</strong>). Các PRR nhận biết các cấu trúc phân tử bảo tồn chung của vi sinh vật gọi là <strong>PAMPs (Pathogen-Associated Molecular Patterns)</strong> như LPS của vi khuẩn Gram âm, axit lipoteichoic của vi khuẩn Gram dương, flagellin của roi vi khuẩn, hoặc dsRNA của virus; đồng thời nhận diện <strong>DAMPs (Damage-Associated Molecular Patterns)</strong> giải phóng từ tế bào cơ thể bị hoại tử/tổn thương để kích hoạt đáp ứng viêm.</p>
+              </li>
+              <li><strong>Hệ thống Bổ thể (Complement System):</strong>
+                <p>Gồm hơn 30 loại protein huyết tương và trên bề mặt tế bào do tế bào gan tổng hợp, lưu hành dưới dạng tiền enzym (zymogen) bất hoạt. Khi được kích hoạt theo cơ chế dòng thác (cascade):</p>
+                <ul>
+                  <li><em>Ba con đường hoạt hóa:</em>
+                    <ol>
+                      <li><strong>Con đường cổ điển (Classical pathway):</strong> Kích hoạt bởi phức hợp Kháng nguyên - Kháng thể ($IgG$ hoặc $IgM$) gắn với protein $C1q$.</li>
+                      <li><strong>Con đường Lectin:</strong> MBL (Mannose-Binding Lectin) gắn vào gốc mannose trên bề mặt vi sinh vật.</li>
+                      <li><strong>Con đường nhánh tắt (Alternative pathway):</strong> Tự kích hoạt liên tục ở mức thấp do phân cắt tự phát $C3 \rightarrow C3b$, liên kết trực tiếp lên thành tế bào vi khuẩn thiếu protein ức chế.</li>
+                    </ol>
+                  </li>
+                  <li><em>Ba tác dụng sinh học chính:</em>
+                    <ul>
+                      <li><strong>Opsonin hóa (Opsonization):</strong> Phân tử $C3b$ gắn bao phủ bề mặt vi khuẩn, đóng vai trò như "chất dẫn dụ" để đại thực bào và neutrophil có thụ thể $CR1$ dễ dàng nhận diện và bắt giữ thực bào.</li>
+                      <li><strong>Hóa hướng động & hoạt hóa viêm:</strong> Các mảnh phân cắt nhỏ $C3a$ và $C5a$ (được gọi là <em>phản vệ tố - Anaphylatoxins</em>) kích thích dưỡng bào giải phóng histamine, gây giãn mạch, tăng tính thấm và thu hút bạch cầu về ổ viêm.</li>
+                      <li><strong>Ly giải tế bào mầm bệnh:</strong> Tạo thành <strong>Phức hợp tấn công màng (MAC - Membrane Attack Complex)</strong> gồm $C5b-6-7-8-9$ đục thủng màng phospholipid của vi khuẩn, làm nước và ion tràn vào gây vỡ tế bào (đặc biệt quan trọng trong phòng vệ vi khuẩn <em>Neisseria</em>).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>3. Cơ quan và Mô của Hệ Thống Miễn Dịch</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Phân loại cơ quan</th>
+                    <th>Tên cơ quan</th>
+                    <th>Vị trí & Cấu trúc chính</th>
+                    <th>Vai trò sinh lý miễn dịch</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td rowspan="2"><strong>Cơ quan lympho trung ương (tiên phát)</strong><br><small>Nơi sinh sản, biệt hóa và chọn lọc tế bào lympho</small></td>
+                    <td><strong>Tủy xương (Bone Marrow)</strong></td>
+                    <td>Xương xốp (xương chậu, xương ức, đốt sống...)</td>
+                    <td>Tế bào gốc tạo máu ($HSC$) sinh ra mọi tế bào máu và miễn dịch; nơi tế bào lympho B biệt hóa, phát triển thụ thể BCR và trải qua chọn lọc âm tính.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tuyến ức (Thymus)</strong></td>
+                    <td>Trung thất trước trên</td>
+                    <td>Nơi tiền thân tế bào T từ tủy xương chuyển đến để "huấn luyện": biệt hóa thành tế bào T mang thụ thể TCR; trải qua chọn lọc dương tính (vỏ tuyến ức) để nhận biết MHC bản thân và chọn lọc âm tính (tủy tuyến ức) để loại bỏ tế bào tự phản ứng gây tự miễn.</td>
+                  </tr>
+                  <tr>
+                    <td rowspan="3"><strong>Cơ quan lympho ngoại vi (thứ phát)</strong><br><small>Nơi tế bào miễn dịch định cư và gặp kháng nguyên để kích hoạt đáp ứng</small></td>
+                    <td><strong>Hạch lympho (Lymph Nodes)</strong></td>
+                    <td>Phân bố dọc theo mạng lưới mạch bạch huyết toàn thân</td>
+                    <td>Lọc bạch huyết; vùng vỏ chứa nang lympho (vùng B), vùng cận vỏ (vùng T); nơi tế bào APC đưa kháng nguyên từ mô về trình diện cho tế bào T và B để khởi phát đáp ứng miễn dịch thích ứng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Lách (Spleen)</strong></td>
+                    <td>Hạ sườn trái</td>
+                    <td>Lọc máu toàn thân: tủy đỏ phá hủy hồng cầu già và tiểu cầu hết hạn; tủy trắng (vùng quanh tiểu động mạch PALS chứa tế bào T, nang lympho chứa tế bào B) bẫy giữ và đáp ứng với kháng nguyên theo đường máu.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Mô lympho liên kết niêm mạc (MALT)</strong></td>
+                    <td>Dưới lớp biểu mô niêm mạc đường tiêu hóa, hô hấp, niệu dục</td>
+                    <td>Bao gồm GALT (mảng Peyer ở ruột, ruột thừa), BALT (phế quản), NALT (amidan vòm/khẩu cái); sản xuất kháng thể $sIgA$ bảo vệ các cửa ngõ niêm mạc cơ thể.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4 id="sec-khang-nguyen">4. Kháng nguyên học đại cương (Antigenology & Cơ chế sinh miễn dịch)</h4>
+            <p><strong>Kháng nguyên (Antigen - Ag):</strong> Là bất kỳ phân tử hoặc cấu trúc nào có khả năng được nhận diện và gắn kết đặc hiệu bởi các thụ thể của hệ miễn dịch thích ứng (gồm Thụ thể tế bào B - BCR / Kháng thể hòa tan và Thụ thể tế bào T - TCR).</p>
+            
+            <p><strong>Hai thuộc tính cơ bản của một kháng nguyên:</strong></p>
+            <ul>
+              <li><strong>Tính sinh miễn dịch (Immunogenicity):</strong> Khả năng kích thích hệ thống miễn dịch của vật chủ khởi động đáp ứng miễn dịch (sinh kháng thể dịch thể và/hoặc hoạt hóa dòng tế bào lympho T cảm ứng).</li>
+              <li><strong>Tính đặc hiệu miễn dịch (Antigenicity / Specificity):</strong> Khả năng kết hợp đặc hiệu với các sản phẩm của đáp ứng miễn dịch mà nó kích thích sinh ra (kháng thể hoặc thụ thể tế bào T).</li>
+              <li><strong>Phân biệt Kháng nguyên hoàn chỉnh vs Bán kháng nguyên (Hapten):</strong>
+                <ul>
+                  <li><em>Kháng nguyên hoàn chỉnh (Complete Antigen):</em> Mang đầy đủ cả 2 thuộc tính: vừa có tính sinh miễn dịch, vừa có tính đặc hiệu (ví dụ: protein lạ, vi khuẩn, virus, ngoại độc tố).</li>
+                  <li><em>Bán kháng nguyên (Hapten / Incomplete Antigen):</em> Là những phân tử nhỏ chỉ có <strong>tính đặc hiệu</strong> (có thể gắn kết với kháng thể tương ứng) nhưng <strong>không có tính sinh miễn dịch</strong> khi đứng đơn độc. Khi hapten được liên kết cộng hóa trị với một đại phân tử protein mang (<strong>Carrier</strong>), phức hợp <em>Hapten - Carrier</em> mới trở thành kháng nguyên hoàn chỉnh, kích thích cơ thể sinh kháng thể chống lại hapten.</li>
+                  <li><em>Ứng dụng Dược học lâm sàng:</em> Hiện tượng <strong>dị ứng thuốc</strong> (kháng sinh Penicillin, Cephalosporin, nhóm Sulfamid, thuốc chống co giật Carbamazepine, NSAIDs...). Bản thân phân tử thuốc có khối lượng phân tử nhỏ ($M < 1.000\text{ Da}$) đóng vai trò là hapten. Khi vào cơ thể, sản phẩm chuyển hóa của thuốc gắn kết với protein huyết tương (như Albumin màng tế bào) tạo thành phức hợp kháng nguyên hoàn chỉnh, kích thích hệ miễn dịch sinh kháng thể $IgE$ hoặc tế bào T mẫn cảm, dẫn tới phản ứng dị ứng thuốc hoặc sốc phản vệ nguy kịch.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Các yếu tố quyết định và ảnh hưởng đến tính sinh miễn dịch:</strong></p>
+            <ul>
+              <li><strong>Tính chất "lạ" (Foreignness):</strong> Cơ thể bình thường chỉ sinh miễn dịch chống lại các cấu trúc không thuộc về bản thân ("Non-self"). Khoảng cách tiến hóa di truyền giữa kháng nguyên và vật chủ càng xa thì tính sinh miễn dịch càng mạnh (Dị loài <em>Heterologous</em> > Đồng loài <em>Allogeneic</em> > Tự thân <em>Autologous</em>).</li>
+              <li><strong>Bản chất hóa học:</strong>
+                <ul>
+                  <li><em>Protein:</em> Là loại kháng nguyên phổ biến và có <strong>tính sinh miễn dịch mạnh nhất</strong> nhờ cấu trúc không gian 3 chiều phức tạp, bậc 3-4 đa dạng và chuỗi polypeptide gồm nhiều acid amin khác nhau.</li>
+                  <li><em>Polysaccharide (Carbohydrate):</em> Tính sinh miễn dịch đứng thứ hai; thường là kháng nguyên bề mặt của vi sinh vật (vỏ phế cầu, màng não cầu, kháng nguyên nhóm máu ABO). Thường là kháng nguyên không phụ thuộc tuyến ức.</li>
+                  <li><em>Lipid và Acid Nucleic:</em> Đơn thuần hầu như <strong>không có tính sinh miễn dịch</strong>; chỉ khi liên kết với protein tạo thành Lipoprotein hoặc Nucleoprotein mới có tính sinh miễn dịch (ví dụ phức hợp DNA-protein kích thích sinh kháng thể kháng nhân ANA trong bệnh Lupus ban đỏ hệ thống SLE).</li>
+                </ul>
+              </li>
+              <li><strong>Khối lượng phân tử (Molecular Weight):</strong> Phân tử khối càng lớn thì tính sinh miễn dịch càng cao. Phân tử có $M > 100.000\text{ Da}$ (100 kDa) thường có tính sinh miễn dịch rất mạnh; từ $10.000 - 100.000\text{ Da}$ sinh miễn dịch trung bình; các chất có $M < 5.000\text{ Da}$ thường chỉ đóng vai trò là hapten.</li>
+              <li><strong>Cấu hình không gian và độ cứng vững:</strong> Phân tử có cấu trúc không gian ổn định, các liên kết bền vững mới kích thích miễn dịch tốt. Đồng thời phân tử phải có khả năng bị enzym của tế bào APC phân giải (biodegradable) thành các đoạn peptide để trình diện cho tế bào T.</li>
+              <li><strong>Liều lượng và đường đưa vào:</strong>
+                <ul>
+                  <li><em>Liều lượng:</em> Liều quá thấp không đủ ngưỡng kích hoạt tế bào lympho; liều quá cao có thể làm "tê liệt miễn dịch" (gây trạng thái dung nạp miễn dịch - Immune tolerance).</li>
+                  <li><em>Đường xâm nhập:</em> Tiêm trong da (Intradermal) hoặc dưới da (Subcutaneous) tạo đáp ứng miễn dịch mạnh nhất vì tiếp xúc mạng lưới tế bào tua (Dendritic cells) phong phú tại mô liên kết; tiêm bắp (Intramuscular) hấp thu tốt; tiêm tĩnh mạch (IV) hoặc đường tiêu hóa (PO) phân tán nhanh, dễ dẫn tới dung nạp miễn dịch.</li>
+                </ul>
+              </li>
+              <li><strong>Chất bổ trợ miễn dịch (Adjuvants - Tá chất miễn dịch trong sản xuất Vaccine):</strong>
+                <ul>
+                  <li><em>Định nghĩa:</em> Là chất khi trộn cùng kháng nguyên sẽ làm <strong>tăng cường đáng kể đáp ứng miễn dịch</strong> của cơ thể đối với kháng nguyên đó, mặc dù bản thân chất bổ trợ không mang tính đặc hiệu kháng nguyên.</li>
+                  <li><em>Cơ chế hoạt động:</em> (1) Tạo "kho lắng đọng" (Depot effect) giúp kháng nguyên giải phóng từ từ, kéo dài thời gian tiếp xúc với hệ miễn dịch; (2) Kích thích phản ứng viêm tại chỗ, thu hút và hoạt hóa các tế bào APC; (3) Kích hoạt trực tiếp các thụ thể PRR (như TLRs) thúc đẩy sản xuất cytokine kích thích miễn dịch.</li>
+                  <li><em>Ứng dụng Dược học:</em> <strong>Muối nhôm (Alum - Nhôm hydroxyd $Al(OH)_3$, Nhôm phosphat $AlPO_4$)</strong> là chất bổ trợ an toàn được cấp phép rộng rãi nhất trong các vaccine tiêm cho người (vaccine uốn ván, bạch hầu, ho gà, viêm gan B, HPV); tá chất nhũ tương lipid sinh học AS01, AS04, MF59.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Cấu trúc quyết định kháng nguyên (Epitope) và Phản ứng chéo:</strong></p>
+            <ul>
+              <li><strong>Epitope (Vùng quyết định kháng nguyên):</strong> Là đơn vị cấu trúc nhỏ nhất (khoảng 5 - 8 acid amin hoặc vài gốc đường) trên phân tử kháng nguyên được nhận diện và gắn kết trực tiếp bởi một phân tử kháng thể (qua vùng paratope) hoặc một thụ thể TCR. Một kháng nguyên đa diện có thể chứa nhiều epitope giống nhau hoặc khác nhau.</li>
+              <li><strong>So sánh Epitope tế bào B vs Epitope tế bào T:</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Tiêu chí so sánh</th>
+                        <th>Epitope nhận diện bởi tế bào B (và Kháng thể)</th>
+                        <th>Epitope nhận diện bởi tế bào T (TCR)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Vị trí trên kháng nguyên</strong></td>
+                        <td>Nằm ở bề mặt ngoài của phân tử kháng nguyên</td>
+                        <td>Nằm ẩn bên trong cấu trúc kháng nguyên</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Trạng thái kháng nguyên</strong></td>
+                        <td>Kháng nguyên ở <strong>dạng tự nhiên (Native form)</strong> nguyên vẹn, không cần qua xử lý</td>
+                        <td>Bắt buộc kháng nguyên phải được <strong>xử lý (processing)</strong> cắt nhỏ thành đoạn peptide bởi tế bào APC</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Dạng cấu trúc epitope</strong></td>
+                        <td>Có thể là <em>Epitope tuần tự (Linear / Sequential)</em> hoặc <em>Epitope cấu hình không gian (Conformational)</em> tạo bởi cuộn gập chuỗi</td>
+                        <td>Luôn luôn là <strong>Epitope tuần tự (Linear peptide)</strong></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Bản chất hóa học</strong></td>
+                        <td>Protein, Polysaccharide, Glycolipid, Acid nucleic</td>
+                        <td>Hầu như luôn là <strong>Peptide (Protein)</strong></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Yêu cầu phân tử MHC</strong></td>
+                        <td><strong>Không cần MHC</strong> (kháng thể gắn trực tiếp lên epitope bề mặt)</td>
+                        <td><strong>Bắt buộc phải gắn trên phân tử MHC</strong> của tế bào APC (Hiện tượng giới hạn bởi MHC)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li><strong>Hiện tượng phản ứng chéo (Cross-Reactivity):</strong> Xảy ra khi hai kháng nguyên có nguồn gốc hoàn toàn khác nhau nhưng lại mang các epitope giống hệt nhau hoặc có cấu trúc không gian tương đồng cao. Kháng thể sinh ra chống kháng nguyên này có thể gắn kết với kháng nguyên kia.
+                <div class="callout"><div class="callout-title">Bệnh học minh họa phản ứng chéo</div>Nhiễm trùng vi khuẩn liên cầu tan máu $\beta$ nhóm A (<em>Streptococcus pyogenes</em>) kích thích cơ thể sinh kháng thể chống lại protein M của vi khuẩn. Do protein M có cấu trúc epitope bắt chước phân tử (<em>molecular mimicry</em>) giống hệt protein Myosin ở màng cơ tim và van tim người, kháng thể này phản ứng chéo tấn công mô tim, dẫn đến <strong>Bệnh thấp tim (Rheumatic Heart Disease)</strong> gây hở/hẹp van tim.</div>
+              </li>
+            </ul>
+
+            <p><strong>Phân loại Kháng nguyên toàn diện:</strong></p>
+            <ul>
+              <li><strong>1. Theo cơ chế phụ thuộc tế bào T hỗ trợ ($CD4^+$):</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Đặc điểm phân biệt</th>
+                        <th>Kháng nguyên phụ thuộc tuyến ức (TD - Thymus-Dependent)</th>
+                        <th>Kháng nguyên không phụ thuộc tuyến ức (TI - Thymus-Independent)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Bản chất hóa học</strong></td>
+                        <td><strong>Protein</strong>, glycoprotein hòa tan hoặc màng vi sinh vật</td>
+                        <td><strong>Polysaccharide lặp lại</strong>, LPS vi khuẩn Gram âm, Ficoll, Dextran</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Cơ chế hoạt hóa tế bào B</strong></td>
+                        <td>Bắt buộc phải có sự hỗ trợ của tế bào <strong>$T\ CD4^+$ ($T_H$)</strong> thông qua tương tác CD40L - CD40 và các cytokine ($IL-4, IL-5$)</td>
+                        <td>Không cần tế bào T; cấu trúc đa hóa trị lặp lại tự liên kết chéo hàng loạt thụ thể BCR trên màng tế bào B để kích hoạt trực tiếp</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Lớp kháng thể tạo thành</strong></td>
+                        <td>Ban đầu tạo $IgM$, sau đó <strong>chuyển lớp mạnh mẽ sang $IgG, IgA, IgE$</strong></td>
+                        <td><strong>Hầu như chỉ tạo $IgM$</strong> đơn thuần; không hoặc rất ít chuyển lớp</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Trí nhớ miễn dịch</strong></td>
+                        <td><strong>Hình thành tế bào nhớ ($B_{mem}, T_{mem}$) bền vững</strong>; có đột biến soma tăng ái lực kháng thể (Affinity Maturation)</td>
+                        <td><strong>Không tạo trí nhớ miễn dịch</strong>; tái phơi nhiễm đáp ứng tương tự như lần đầu</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Ứng dụng Dược học / Vaccine</strong></td>
+                        <td>Kháng nguyên của hầu hết các vaccine thông thường (uốn ván, bạch hầu, sởi, cúm, COVID-19) tạo miễn dịch bền vững lâu dài.</td>
+                        <td>Vaccine polysaccharide vỏ vi khuẩn (như phế cầu, màng não cầu) <em>không kích thích được hệ miễn dịch trẻ em dưới 2 tuổi</em>. Để giải quyết, công nghệ <strong>Vaccine cộng hợp (Conjugate Vaccine)</strong> liên kết polysaccharide với một protein mang (Toxoid) biến kháng nguyên TI thành TD (ví dụ: vaccine Synflorix, Prevenar 13).</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li><strong>2. Siêu kháng nguyên (Superantigens):</strong>
+                <p>Là nhóm độc tố protein vi sinh vật đặc biệt (tiêu biểu: <strong>Độc tố hội chứng sốc nhiễm độc TSST-1</strong> của tụ cầu vàng <em>Staphylococcus aureus</em>, độc tố ruột tụ cầu, ngoại độc tố liên cầu tan máu nhóm A). Siêu kháng nguyên không cần tế bào APC xử lý thành peptide; chúng gắn kết trực tiếp đồng thời vào mặt ngoài của chuỗi $\beta$ phân tử MHC lớp II trên APC và đoạn $V\beta$ của thụ thể TCR trên tế bào T. Tương tác này kích hoạt ồ ạt không chọn lọc tới <strong>$5 - 25\%$ tổng số tế bào T</strong> của cơ thể (bình thường chỉ $0,001 - 0,01\%$). Tế bào T giải phóng ồ ạt một lượng khổng lồ cytokine ($IL-1, IL-2, TNF-\alpha, IFN-\gamma$) dẫn tới <strong>Hội chứng bão Cytokine (Cytokine Storm)</strong>, giãn mạch toàn thân, hạ huyết áp trụy mạch, sốc nhiễm độc và suy đa tạng nguy kịch.</p>
+              </li>
+              <li><strong>3. Theo nguồn gốc sinh học:</strong>
+                <ul>
+                  <li><em>Kháng nguyên ngoại sinh (Exogenous Antigens):</em> Xâm nhập từ bên ngoài vào cơ thể (vi khuẩn, nấm, bào tử, độc tố vi sinh vật, phấn hoa, thuốc, bụi). Được xử lý bởi con đường nội bào lysosome và trình diện trên <strong>MHC lớp II</strong> cho tế bào $T\ CD4^+$.</li>
+                  <li><em>Kháng nguyên nội sinh (Endogenous Antigens):</em> Được tạo ra ngay từ bên trong tế bào cơ thể (protein do virus nhân lên trong tế bào, protein đột biến của tế bào u). Được xử lý bởi bộ máy proteasome và trình diện trên <strong>MHC lớp I</strong> cho tế bào $T\ CD8^+$.</li>
+                  <li><em>Tự kháng nguyên (Autoantigens):</em> Là các phân tử bình thường của chính cơ thể, do sự thất bại của cơ chế dung nạp miễn dịch (tolerance) bị hệ miễn dịch nhận nhầm là "lạ" và tấn công (gặp trong bệnh tự miễn như Lupus ban đỏ, viêm khớp dạng thấp, đái tháo đường type 1). Một số "kháng nguyên ẩn" (như protein thể thủy tinh, tinh hoàn, mô thần kinh myelin) bình thường được ngăn cách bởi hàng rào sinh học, khi chấn thương rò rỉ vào máu sẽ bị hệ miễn dịch coi là kháng nguyên lạ và tấn công.</li>
+                  <li><em>Đồng kháng nguyên (Alloantigens / Isoantigens):</em> Kháng nguyên có sự khác biệt giữa các cá thể trong cùng một loài (điển hình: Hệ kháng nguyên nhóm máu ABO, Rh của hồng cầu, và phức hợp hòa hợp mô HLA - rào cản chính gây thải ghép tạng).</li>
+                  <li><em>Dị kháng nguyên (Heteroantigens / Xenoantigens):</em> Kháng nguyên có mặt ở các loài sinh vật khác nhau; là nguyên nhân gây hiện tượng thải ghép tối cấp khi ghép cơ quan từ động vật (như lợn) sang người (Xenotransplantation).</li>
+                </ul>
+              </li>
+            </ul>
+
+            <p><strong>Các hệ thống Kháng nguyên quan trọng trong Dược học & Lâm sàng:</strong></p>
+            <ul>
+              <li><strong>Kháng nguyên của vi sinh vật gây bệnh:</strong>
+                <ul>
+                  <li><em>Kháng nguyên thân O (Somatic antigen):</em> Là phần chuỗi polysaccharide của phân tử Lipopolysaccharide (LPS) ở thành tế bào vi khuẩn Gram âm; chịu nhiệt độ cao ($100^\circ\text{C}$); dùng định danh huyết thanh học các vi khuẩn đường ruột (như <em>Salmonella, Shigella, E. coli</em>).</li>
+                  <li><em>Kháng nguyên lông H (Flagellar antigen):</em> Cấu tạo từ protein Flagellin của lông vi khuẩn; không chịu nhiệt; kích thích sinh kháng thể ngưng kết dạng hạt lớn, xốp.</li>
+                  <li><em>Kháng nguyên vỏ K / Vi (Capsular antigen):</em> Là lớp polysaccharide hoặc polypeptide bao quanh thành tế bào (ví dụ kháng nguyên Vi của trực khuẩn thương hàn <em>Salmonella Typhi</em>, vỏ phế cầu <em>Streptococcus pneumoniae</em>); có tác dụng ức chế hiện tượng thực bào của bạch cầu.</li>
+                  <li><em>Ngoại độc tố (Exotoxins):</em> Độc tố bản chất protein do vi khuẩn tiết ra (độc tố uốn ván, bạch hầu, ngộ độc thịt botulinum). Khi xử lý bằng nhiệt và formol sẽ mất độc tính nhưng vẫn giữ nguyên tính sinh miễn dịch, tạo thành <strong>Giải độc tố (Toxoid)</strong> dùng làm vaccine.</li>
+                  <li><em>Kháng nguyên bề mặt của virus:</em> Protein gai (Spike - S) của virus SARS-CoV-2 (kháng nguyên đích của các vaccine phòng COVID-19); Kháng nguyên Hemagglutinin (HA) và Neuraminidase (NA) của virus cúm (A/H1N1, A/H3N2, A/H5N1) liên tục biến đổi kháng nguyên nhỏ (Antigenic drift) và biến đổi lớn (Antigenic shift) đòi hỏi cập nhật vaccine hàng năm.</li>
+                </ul>
+              </li>
+              <li><strong>Kháng nguyên hệ nhóm máu hồng cầu người:</strong>
+                <ul>
+                  <li><em>Hệ nhóm máu ABO:</em> Kháng nguyên A và B là các chuỗi oligosaccharide gắn trên màng hồng cầu. Người nhóm A có kháng nguyên A; nhóm B có kháng nguyên B; nhóm AB có cả A và B; nhóm O không có cả A và B. Trong huyết thanh có kháng thể tự nhiên lớp IgM (người nhóm A có anti-B; nhóm B có anti-A; nhóm O có cả anti-A và anti-B; nhóm AB không có). <em>Quy tắc truyền máu:</em> Không để kháng nguyên trên hồng cầu người cho bị ngưng kết bởi kháng thể trong huyết tương người nhận.</li>
+                  <li><em>Hệ Rhesus (Rh):</em> Kháng nguyên protein D (Rh D) có tính sinh miễn dịch rất mạnh. Người mang kháng nguyên D là Rh(+), không có là Rh(-). Kháng thể anti-D là loại kháng thể miễn dịch lớp IgG xuất hiện sau khi phơi nhiễm (qua truyền máu nhầm hoặc mẹ Rh(-) mang thai con Rh(+)); IgG qua được nhau thai gây <strong>Bệnh tan máu sơ sinh (Erythroblastosis fetalis)</strong> ở lần mang thai sau. Dự phòng bằng cách tiêm kháng thể Anti-D immunoglobulin cho mẹ ngay sau sinh.</li>
+                </ul>
+              </li>
+              <li><strong>Kháng nguyên dấu ấn khối u (Tumor Markers):</strong>
+                <p>Các phân tử do tế bào ung thư tăng biểu hiện hoặc tiết ra vào máu; ứng dụng theo dõi điều trị và tái phát:
+                  <ul>
+                    <li><strong>AFP (Alpha-fetoprotein):</strong> Dấu ấn ung thư biểu mô tế bào gan nguyên phát (HCC) và u quái tinh hoàn.</li>
+                    <li><strong>CEA (Carcinoembryonic Antigen):</strong> Dấu ấn ung thư đại trực tràng, dạ dày, phổi.</li>
+                    <li><strong>PSA (Prostate-Specific Antigen):</strong> Dấu ấn ung thư tuyến tiền liệt.</li>
+                    <li><strong>CA 125:</strong> Dấu ấn ung thư buồng trứng.</li>
+                    <li><strong>CA 19-9:</strong> Dấu ấn ung thư tụy và ung thư đường mật.</li>
+                    <li><strong>HER2/neu:</strong> Thụ thể yếu tố tăng trưởng biểu bì tăng biểu hiện trong ung thư vú; đích tác dụng của kháng thể đơn dòng điều trị đích Trastuzumab.</li>
+                  </ul>
+                </p>
+              </li>
+            </ul>
+
+            <h4>5. Phức hợp phù hợp mô chủ yếu (MHC / HLA) & Trình diện kháng nguyên</h4>
+            <p><strong>Phức hợp phù hợp mô chủ yếu (MHC - Major Histocompatibility Complex, ở người gọi là HLA):</strong> Hệ thống glycoprotein màng tế bào có vai trò "trình diện" các đoạn peptide kháng nguyên cho tế bào lympho T nhận biết:</p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Tiêu chí so sánh</th>
+                    <th>MHC lớp I (HLA-A, HLA-B, HLA-C)</th>
+                    <th>MHC lớp II (HLA-DP, HLA-DQ, HLA-DR)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Phân bố tế bào</strong></td>
+                    <td>Có trên bề mặt <strong>hầu hết mọi tế bào có nhân</strong> và tiểu cầu</td>
+                    <td>Chỉ biểu hiện trên các <strong>tế bào APC chuyên nghiệp</strong> (Đại thực bào, Tế bào tua DC, Lympho B)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Nguồn gốc peptide trình diện</strong></td>
+                    <td><strong>Kháng nguyên nội sinh:</strong> Protein virus nhân lên trong tế bào, kháng nguyên ung thư, protein nội bào đột biến</td>
+                    <td><strong>Kháng nguyên ngoại sinh:</strong> Vi khuẩn, độc tố ngoại bào được tế bào APC thực bào và tiêu hóa trong phagolysosome</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tế bào T nhận diện</strong></td>
+                    <td>Trình diện cho tế bào <strong>$T\ CD8^+$</strong> (T gây độc tế bào / CTL)</td>
+                    <td>Trình diện cho tế bào <strong>$T\ CD4^+$</strong> (T hỗ trợ / T helper)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Quy tắc nhân nhớ nhanh</strong></td>
+                    <td>$\mathbf{1 \times 8 = 8}$ (MHC-I gắn với CD8)</td>
+                    <td>$\mathbf{2 \times 4 = 8}$ (MHC-II gắn với CD4)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>6. Kháng thể (Immunoglobulin) và Miễn dịch thể dịch</h4>
+            <p><strong>Cấu trúc cơ bản của Kháng thể (Immunoglobulin - Ig):</strong> Kháng thể là các glycoprotein do tương bào (plasma cells, biệt hóa từ tế bào lympho B) tiết ra. Cấu trúc monomer kinh điển có hình chữ <strong>Y</strong>, gồm 4 chuỗi polypeptide:</p>
+            <ul>
+              <li>2 chuỗi nặng (<strong>H - Heavy chain</strong>: $\gamma, \alpha, \mu, \delta, \varepsilon$ tương ứng 5 lớp $IgG, IgA, IgM, IgD, IgE$) và 2 chuỗi nhẹ (<strong>L - Light chain</strong>: $\kappa$ hoặc $\lambda$), liên kết với nhau bằng các cầu nối disulfide ($-S-S-$).</li>
+              <li><strong>Vùng Fab (Fragment antigen-binding):</strong> Gồm toàn bộ chuỗi nhẹ và phần đầu tận amin của chuỗi nặng ($V_L, C_L, V_H, C_{H1}$). Chứa các vùng siêu biến CDR tạo nên hốc gắn kháng nguyên đặc hiệu (mỗi monomer có 2 nhánh Fab, gắn được 2 epitope).</li>
+              <li><strong>Vùng Fc (Fragment crystallizable):</strong> Do phần tận carboxy của 2 chuỗi nặng tạo thành ($C_{H2}, C_{H3}, \dots$). Quyết định các chức năng sinh học của kháng thể: gắn vào thụ thể FcR trên đại thực bào/bạch cầu (opsonin hóa), gắn protein $C1q$ (kích hoạt bổ thể theo đường cổ điển), và qua nhau thai ($IgG$).</li>
+            </ul>
+
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Lớp Ig</th>
+                    <th>Cấu trúc</th>
+                    <th>Tỷ lệ huyết thanh</th>
+                    <th>Thời gian bán hủy ($t_{1/2}$)</th>
+                    <th>Đặc tính sinh học & Ý nghĩa dược lý lâm sàng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>IgG</strong></td>
+                    <td>Monomer</td>
+                    <td>$75 - 80\%$ (chiếm ưu thế nhất)</td>
+                    <td>$\approx 21 - 23\text{ ngày}$ (dài nhất)</td>
+                    <td>Kháng thể chính của <strong>đáp ứng thứ phát</strong>; là lớp Ig <strong>duy nhất qua được hàng rào nhau thai</strong> (nhờ thụ thể FcRn) để cung cấp miễn dịch thụ động bảo vệ thai nhi và trẻ sơ sinh trong 6 tháng đầu; opsonin hóa, hoạt hóa bổ thể và trung hòa virus/độc tố.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>IgM</strong></td>
+                    <td>Pentamer (5 phân tử nối chuỗi J, 10 vị trí gắn)</td>
+                    <td>$5 - 10\%$</td>
+                    <td>$\approx 5\text{ ngày}$</td>
+                    <td>Kích thước lớn nhất; là kháng thể <strong>xuất hiện sớm nhất trong đáp ứng tiên phát</strong> (xét nghiệm IgM dương tính chỉ điểm tình trạng nhiễm trùng cấp tính mới mắc); hiệu quả hoạt hóa bổ thể và ngưng kết mầm bệnh mạnh nhất.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>IgA</strong></td>
+                    <td>Dạng dịch tiết là Dimer (kèm Secretory component); huyết thanh là Monomer</td>
+                    <td>$10 - 15\%$</td>
+                    <td>$\approx 6\text{ ngày}$</td>
+                    <td>Có mặt phong phú trong các <strong>dịch tiết niêm mạc</strong> (nước bọt, nước mắt, dịch phế quản, dịch tiêu hóa, sữa non); mảnh tiết (SC) bảo vệ IgA không bị enzym tiêu hóa phân hủy; là "lá chắn niêm mạc" ngăn vi khuẩn và virus bám dính vào biểu mô.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>IgE</strong></td>
+                    <td>Monomer</td>
+                    <td>$< 0,05\%$ (rất thấp trong máu)</td>
+                    <td>$\approx 2 - 3\text{ ngày}$</td>
+                    <td>Gắn rất chặt lên thụ thể $Fc\varepsilon RI$ trên màng dưỡng bào (mast cell) và bạch cầu ưa kiềm; tham gia phòng vệ chống nhiễm ký sinh trùng (giun sán); là kháng thể trung gian mấu chốt trong <strong>phản ứng quá mẫn type I (dị ứng, sốc phản vệ)</strong>.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>IgD</strong></td>
+                    <td>Monomer</td>
+                    <td>$< 1\%$</td>
+                    <td>$\approx 3\text{ ngày}$</td>
+                    <td>Đồng biểu hiện cùng monomer IgM trên bề mặt tế bào lympho B ngây thơ; đóng vai trò là thụ thể nhận diện kháng nguyên của tế bào B (BCR - B Cell Receptor) trong quá trình biệt hóa.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p><strong>Động học đáp ứng kháng thể: Tiên phát vs Thứ phát:</strong></p>
+            <ul>
+              <li><strong>Đáp ứng miễn dịch tiên phát (Lần đầu tiếp xúc kháng nguyên):</strong>
+                <ul>
+                  <li>Pha tiềm tàng (Lag phase) kéo dài: khoảng $5 - 10\text{ ngày}$ để tế bào APC xử lý, trình diện và nhân dòng lympho B.</li>
+                  <li>Nồng độ kháng thể tăng chậm, đạt đỉnh ở mức vừa phải rồi giảm dần; kháng thể xuất hiện đầu tiên là <strong>IgM</strong>, sau đó mới chuyển lớp thành <strong>IgG</strong>.</li>
+                  <li>Để lại các tế bào B nhớ ($B_{mem}$) và T nhớ ($T_{mem}$) tuần hoàn trong máu và cơ quan lympho.</li>
+                </ul>
+              </li>
+              <li><strong>Đáp ứng miễn dịch thứ phát (Khi tái nhiễm hoặc tiêm mũi vaccine nhắc lại):</strong>
+                <ul>
+                  <li>Pha tiềm tàng rất ngắn: chỉ $1 - 3\text{ ngày}$ do các tế bào nhớ nhận diện kháng nguyên ngay tức khắc.</li>
+                  <li>Tốc độ sản xuất cực nhanh, hiệu giá kháng thể tăng vọt đạt đỉnh gấp hàng chục đến hàng trăm lần so với đáp ứng tiên phát.</li>
+                  <li>Kháng thể chiếm ưu thế tuyệt đối là <strong>IgG</strong> với ái lực kết hợp kháng nguyên ngày càng cao (Affinity Maturation) và tồn tại bền bỉ trong nhiều tháng đến nhiều năm.</li>
+                  <li><em>Ý nghĩa ứng dụng:</em> Đây là nền tảng sinh học của phác đồ tiêm vaccine nhiều mũi và tiêm mũi tăng cường (booster dose) nhằm duy trì hiệu giá kháng thể bảo vệ cơ thể.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>7. Miễn dịch qua trung gian tế bào (Cell-Mediated Immunity)</h4>
+            <p>Miễn dịch qua trung gian tế bào do các tế bào lympho T đảm nhiệm, có vai trò bảo vệ đặc hiệu chống lại các tác nhân gây bệnh nội bào (virus, vi khuẩn nội bào như <em>Mycobacterium tuberculosis, Listeria, Salmonella</em>, nấm) và tiêu diệt tế bào ung thư.</p>
+            <ul>
+              <li><strong>Tế bào T hỗ trợ ($CD4^+$ T Helper - $T_H$):</strong>
+                <p>Nhận diện peptide kháng nguyên ngoại sinh do APC trình diện trên phân tử MHC lớp II. Sau khi hoạt hóa, tế bào $T_H$ biệt hóa thành các phân nhóm chức năng:</p>
+                <ul>
+                  <li><strong>$T_H1$:</strong> Tiết các cytokine $IFN-\gamma, IL-2, TNF-\alpha$; hoạt hóa đại thực bào tăng cường khả năng tiêu diệt mầm bệnh nội bào; kích thích tế bào $T\ CD8^+$ tăng sinh; chuyển lớp kháng thể sang IgG opsonin hóa.</li>
+                  <li><strong>$T_H2$:</strong> Tiết $IL-4, IL-5, IL-13$; kích thích tế bào lympho B nhân dòng, biệt hóa thành tương bào tiết kháng thể (đặc biệt là chuyển lớp sang $IgE$ và $IgA$); hoạt hóa bạch cầu ưa acid (eosinophil) tiêu diệt ấu trùng giun sán.</li>
+                  <li><strong>$T_H17$:</strong> Tiết $IL-17, IL-22$; thu hút mạnh mẽ bạch cầu trung tính đến mô để chống vi khuẩn và vi nấm ngoại bào; liên quan đến sinh bệnh học các bệnh viêm tự miễn.</li>
+                  <li><strong>$T_{reg}$ (Tế bào T điều hòa - $CD4^+CD25^+FoxP3^+$):</strong> Tiết các cytokine ức chế miễn dịch ($IL-10, TGF-\beta$); kiểm soát và kết thúc đáp ứng miễn dịch khi mầm bệnh đã bị dọn sạch; ngăn chặn phản ứng chống lại tự kháng nguyên, duy trì sự tự dung nạp (peripheral tolerance).</li>
+                </ul>
+              </li>
+              <li><strong>Tế bào T gây độc tế bào ($CD8^+$ CTL - Cytotoxic T Lymphocyte):</strong>
+                <p>Nhận diện peptide kháng nguyên nội sinh do tế bào đích trình diện trên phân tử MHC lớp I (tế bào nhiễm virus, tế bào ung thư). Tiêu diệt tế bào đích qua hai cơ chế chính:</p>
+                <ol>
+                  <li><strong>Phóng hạt tiêu bào (Exocytosis of Cytotoxic Granules):</strong> Giải phóng <strong>Perforin</strong> tạo các lỗ thủng trên màng phospholipid của tế bào đích, tạo điều kiện cho <strong>Granzyme B</strong> (protease) chui vào bào tương, cắt và hoạt hóa chuỗi enzyme Caspase dẫn tới cái chết theo chương trình (Apoptosis) của tế bào đích.</li>
+                  <li><strong>Tương tác Phối tử Fas (FasL - Fas interaction):</strong> Phân tử FasL trên bề mặt tế bào CTL gắn kết với thụ thể tử vong Fas (CD95) trên màng tế bào đích, truyền tín hiệu nội bào hoạt hóa procaspase-8 kích hoạt con đường apoptosis ngoại sinh.</li>
+                </ol>
+              </li>
+            </ul>
+
+            <h4>8. Rối loạn miễn dịch: Quá mẫn, Bệnh tự miễn và Suy giảm miễn dịch</h4>
+            <p><strong>Bốn typ quá mẫn theo phân loại kinh điển Gell & Coombs:</strong></p>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Typ quá mẫn</th>
+                    <th>Cơ chế miễn dịch</th>
+                    <th>Kháng thể / Tế bào trung gian</th>
+                    <th>Thời gian xuất hiện</th>
+                    <th>Bệnh cảnh lâm sàng minh họa</th>
+                    <th>Nguyên tắc xử trí / Thuốc</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Typ I: Quá mẫn tức thì (Dị ứng / Phản vệ)</strong></td>
+                    <td>Dị nguyên kích thích tạo $IgE$; $IgE$ gắn thụ thể $Fc\varepsilon RI$ trên dưỡng bào/basophil. Tái tiếp xúc: dị nguyên kết mạng $IgE$ $\rightarrow$ vỡ hạt giải phóng ồ ạt Histamine, leukotriene, PAF.</td>
+                    <td>Kháng thể <strong>$IgE$</strong>; Dưỡng bào (Mast cell), Basophil</td>
+                    <td>Rất nhanh: <strong>vài phút đến 30 phút</strong> sau tiếp xúc</td>
+                    <td>Viêm mũi dị ứng, mày đay, phù Quinke, hen phế quản phế quản dị ứng, dị ứng thuốc (Penicillin), <strong>sốc phản vệ (Anaphylaxis)</strong> nguy kịch.</td>
+                    <td>Cấp cứu sốc phản vệ: <strong>Adrenaline (Epinephrine) tiêm bắp ngay lập tức</strong>; thuốc kháng histamine $H_1$, Corticosteroid toàn thân, thuốc giãn phế quản $\beta_2$-agonist.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Typ II: Độc tế bào phụ thuộc kháng thể</strong></td>
+                    <td>Kháng thể gắn trực tiếp lên kháng nguyên bề mặt tế bào $\rightarrow$ hoạt hóa bổ thể ly giải tế bào hoặc thúc đẩy hiện tượng ADCC (qua tế bào NK/đại thực bào).</td>
+                    <td>Kháng thể <strong>$IgG$</strong> hoặc <strong>$IgM$</strong>; Bổ thể; Tế bào NK</td>
+                    <td>Vài giờ đến 24 giờ</td>
+                    <td>Tai biến truyền nhầm nhóm máu hệ ABO; bệnh tan máu ở trẻ sơ sinh do bất đồng nhóm máu Rh mẹ - con; thiếu máu tán huyết tự miễn do thuốc (Methyldopa, Cephalosporin).</td>
+                    <td>Ngừng ngay tác nhân; điều trị hỗ trợ, truyền dịch, Corticosteroid, truyền khối hồng cầu rửa phù hợp; dự phòng Anti-D globulin cho mẹ mang Rh(-).</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Typ III: Do phức hợp miễn dịch</strong></td>
+                    <td>Phức hợp Kháng nguyên - Kháng thể hòa tan kích thước trung bình lưu hành trong máu lắng đọng tại màng nội mô mạch máu nhỏ, cầu thận, bao hoạt dịch khớp $\rightarrow$ hoạt hóa bổ thể giải phóng $C3a, C5a$, lôi kéo neutrophil gây viêm hoại tử mô.</td>
+                    <td>Phức hợp <strong>KN - KT ($IgG/IgM$)</strong>; Bổ thể; Neutrophil</td>
+                    <td>Khoảng $4 - 10\text{ ngày}$</td>
+                    <td>Bệnh huyết thanh (Serum sickness); Viêm vi cầu thận cấp hậu nhiễm liên cầu; Viêm khớp dạng thấp; <strong>Lupus ban đỏ hệ thống (SLE)</strong>.</td>
+                    <td>Thuốc chống viêm, Corticosteroid liều cao, thuốc ức chế miễn dịch (Cyclophosphamide, Mycophenolate), lọc huyết tương (plasmapheresis) trong đợt cấp nặng.</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Typ IV: Quá mẫn muộn (Qua trung gian tế bào)</strong></td>
+                    <td>Không liên quan kháng thể; do tế bào $T\ CD4^+$ hoặc $CD8^+$ mẫn cảm trước đó gặp lại kháng nguyên, tiết ra các cytokine kích hoạt và huy động đại thực bào gây viêm mạn và tổn thương tế bào.</td>
+                    <td>Tế bào <strong>$T\ CD4^+$ ($T_H1$)</strong>, <strong>$T\ CD8^+$ CTL</strong>; Đại thực bào</td>
+                    <td>Chậm: <strong>$24 - 72\text{ giờ}$</strong></td>
+                    <td>Phản ứng nội bì tuberculin (test Mantoux kiểm tra phơi nhiễm lao); Viêm da tiếp xúc dị ứng (do niken, mỹ phẩm, sơn, độc cây); Thải ghép cơ quan cấp tính và mạn tính.</td>
+                    <td>Tránh tiếp xúc dị nguyên; Corticosteroid bôi tại chỗ hoặc toàn thân; thuốc ức chế tế bào T (Cyclosporine, Tacrolimus) trong phòng chống thải ghép tạng.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <ul>
+              <li><strong>Bệnh tự miễn (Autoimmune Diseases):</strong>
+                <p>Tình trạng hệ thống miễn dịch bị mất tính dung nạp với chính các thành phần cơ thể (Breakdown of self-tolerance), dẫn đến sinh tự kháng thể (Autoantibody) hoặc tế bào T tự phản ứng tấn công phá hủy mô lành. Nguyên nhân phối hợp giữa yếu tố di truyền (liên quan các alen HLA đặc hiệu như HLA-B27 trong viêm cột sống dính khớp, HLA-DR4 trong viêm khớp dạng thấp), rối loạn chức năng tế bào $T_{reg}$, và yếu tố môi trường (nhiễm trùng kích hoạt hiện tượng "bắt chước phân tử" - <em>Molecular mimicry</em> ví dụ liên cầu khuẩn tan máu nhóm A kích hoạt kháng thể phản ứng chéo với van tim gây thấp tim).</p>
+              </li>
+              <li><strong>Suy giảm miễn dịch (Immunodeficiency):</strong>
+                <ul>
+                  <li><em>Suy giảm miễn dịch tiên phát (Bẩm sinh, di truyền):</em> Do đột biến gen điều khiển quá trình phát triển tế bào lympho; ví dụ bệnh Bruton (không có gamma-globulin máu liên kết NST X), bệnh SCID (suy giảm miễn dịch kết hợp trầm trọng thiếu hụt cả dòng B và T, trẻ dễ tử vong do nhiễm trùng cơ hội nếu không ghép tủy).</li>
+                  <li><em>Suy giảm miễn dịch thứ phát (Mắc phải):</em> Do các yếu tố tác động từ bên ngoài làm tổn hại hệ miễn dịch:
+                    <ul>
+                      <li>Nhiễm virus <strong>HIV</strong>: Virus HIV gắn đặc hiệu vào thụ thể CD4 thông qua glycoprotein $gp120$, xâm nhập và phá hủy có chọn lọc tế bào $T\ CD4^+$. Khi số lượng tế bào $T\ CD4^+ < 200\text{ tế bào/}\mu\text{L}$, người bệnh chuyển sang giai đoạn AIDS với nhiễm trùng cơ hội nặng (lao, nấm candida, viêm phổi do <em>Pneumocystis jirovecii</em>) và u ác tính (Sarcoma Kaposi).</li>
+                      <li>Suy dinh dưỡng nặng (thiếu protein, kẽm, vitamin A); suy thận mạn; bỏng rộng; hóa trị liệu điều trị ung thư; hoặc lạm dụng thuốc Corticosteroid và thuốc ức chế miễn dịch kéo dài.</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>9. Ứng dụng y dược: Vaccine, Huyết thanh và Miễn dịch trị liệu</h4>
+            <ul>
+              <li><strong>Miễn dịch Chủ động vs Miễn dịch Thụ động:</strong>
+                <div class="table-responsive">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Hình thức</th>
+                        <th>Miễn dịch Chủ động (Active Immunity)</th>
+                        <th>Miễn dịch Thụ động (Passive Immunity)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><strong>Bản chất cơ chế</strong></td>
+                        <td>Đưa <strong>Kháng nguyên</strong> vào cơ thể $\rightarrow$ Hệ thống miễn dịch chủ động xử lý và sinh ra kháng thể cùng tế bào lympho nhớ ($B_{mem}, T_{mem}$).</td>
+                        <td>Đưa trực tiếp <strong>Kháng thể có sẵn</strong> từ bên ngoài vào cơ thể để trung hòa mầm bệnh hoặc độc tố ngay lập tức; hệ miễn dịch của cá thể không hoạt động.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Dạng tự nhiên</strong></td>
+                        <td>Mắc bệnh tự nhiên và hồi phục (ví dụ: mắc sởi, thủy đậu xong thường có miễn dịch suốt đời).</td>
+                        <td>Kháng thể $IgG$ từ mẹ qua nhau thai bảo vệ thai nhi; kháng thể $sIgA$ từ sữa mẹ truyền cho con bú.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Dạng nhân tạo (Dược phẩm)</strong></td>
+                        <td><strong>Tiêm chủng Vaccine:</strong>
+                          <ul>
+                            <li><em>Vaccine sống giảm độc lực:</em> Sởi, Quai bị, Rubella (MMR), BCG (lao), Thủy đậu, Bại liệt uống (Sabin) — kích thích miễn dịch mạnh mẽ cả dịch thể lẫn tế bào.</li>
+                            <li><em>Vaccine bất hoạt (chết):</em> Cúm mùa, Bại liệt tiêm (Salk), Dại, Viêm gan A.</li>
+                            <li><em>Vaccine giải độc tố (Toxoid):</em> Uốn ván (Tetanus toxoid), Bạch hầu — tạo kháng thể trung hòa ngoại độc tố.</li>
+                            <li><em>Vaccine tiểu đơn vị / Tái tổ hợp:</em> Viêm gan B (HBsAg), HPV (ung thư cổ tử cung).</li>
+                            <li><em>Vaccine công nghệ mới (mRNA, vector virus):</em> Vaccine Pfizer/Moderna (mRNA mã hóa gai S), AstraZeneca (vector Adenovirus) phòng COVID-19.</li>
+                          </ul>
+                        </td>
+                        <td><strong>Dùng Huyết thanh chứa kháng thể:</strong>
+                          <ul>
+                            <li><em>Huyết thanh kháng độc tố nguồn gốc động vật:</em> Kháng độc tố uốn ván (SAT), kháng độc tố bạch hầu (DAT), huyết thanh kháng nọc rắn.</li>
+                            <li><em>Globulin miễn dịch từ người (Human Immunoglobulin):</em> Kháng dại (SAR / HRIG), kháng viêm gan B (HBIG), IVIG dùng điều trị bệnh Kawasaki hoặc suy giảm miễn dịch.</li>
+                          </ul>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td><strong>Thời gian khởi phát</strong></td>
+                        <td>Chậm: Cần $1 - 3\text{ tuần}$ để hình thành nồng độ kháng thể bảo vệ đầy đủ.</td>
+                        <td><strong>Tức thì:</strong> Có tác dụng bảo vệ và trung hòa độc tố ngay sau khi tiêm.</td>
+                      </tr>
+                      <tr>
+                        <td><strong>Thời gian duy trì</strong></td>
+                        <td><strong>Bền vững, kéo dài:</strong> Nhiều năm đến suốt đời nhờ có tế bào trí nhớ miễn dịch.</td>
+                        <td><strong>Ngắn hạn, tạm thời:</strong> Chỉ tồn tại vài tuần đến vài tháng tương đương đời sống bán hủy của kháng thể ($IgG \approx 3 - 4\text{ tuần}$); không tạo tế bào nhớ.</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </li>
+              <li><strong>Kháng thể đơn dòng (Monoclonal Antibodies - mAbs) trong Dược lâm sàng:</strong>
+                <p>Kháng thể đơn dòng được sản xuất từ một dòng tương bào đơn lẻ (bằng kỹ thuật Hybridoma hoặc tái tổ hợp DNA), có tính đặc hiệu tuyệt đối với một epitope duy nhất. Đang là nhóm sinh phẩm điều trị phát triển mạnh mẽ nhất trong y dược hiện đại:</p>
+                <ul>
+                  <li><em>Quy ước đặt tên đuôi:</em>
+                    <ul>
+                      <li><code>-omab</code>: Nguồn gốc hoàn toàn từ chuột (100% murine, dễ gây phản ứng quá mẫn).</li>
+                      <li><code>-ximab</code>: Kháng thể khảm (Chimeric, $\approx 65\%$ protein người, ví dụ <strong>Rituximab</strong> kháng CD20 trên tế bào B điều trị u lympho không Hodgkin và viêm khớp dạng thấp; <strong>Infliximab</strong> kháng $TNF-\alpha$).</li>
+                      <li><code>-zumab</code>: Kháng thể nhân hóa (Humanized, $> 90\%$ protein người, ví dụ <strong>Trastuzumab</strong> kháng HER-2 trong điều trị ung thư vú di căn).</li>
+                      <li><code>-umab</code>: Kháng thể 100% từ người (Fully human, ví dụ <strong>Adalimumab</strong> kháng $TNF-\alpha$; <strong>Pembrolizumab</strong>, <strong>Nivolumab</strong> ức chế thụ thể điểm kiểm soát miễn dịch PD-1 giải phóng kìm hãm tế bào T trong miễn dịch trị liệu ung thư).</li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+              <li><strong>Thuốc ức chế và điều hòa miễn dịch trong Dược lý học:</strong>
+                <ul>
+                  <li><em>Glucocorticoid (Prednisolone, Methylprednisolone, Dexamethasone):</em> Ức chế yếu tố phiên mã $NF-\kappa B$, làm giảm biểu hiện gen tổng hợp các cytokine tiền viêm ($IL-1, IL-2, IL-6, TNF-\alpha$), ức chế di chuyển của bạch cầu và làm giảm số lượng lymphocyte lưu hành.</li>
+                  <li><em>Thuốc ức chế Calcineurin (Cyclosporine, Tacrolimus):</em> Ức chế phosphataser calcineurin $\rightarrow$ ngăn cản sự chuyển vị của yếu tố sao chép NFAT vào nhân tế bào T $\rightarrow$ phong bế sự tổng hợp $IL-2$, ức chế quá trình hoạt hóa và tăng sinh dòng tế bào lympho T. Là trụ cột sống còn trong phác đồ chống thải ghép tạng (ghép thận, gan, tim).</li>
+                  <li><em>Thuốc chống chuyển hóa (Antimetabolites):</em> <strong>Methotrexate</strong> (ức chế dihydrofolate reductase), <strong>Azathioprine</strong> (tiền chất 6-mercaptopurine ức chế tổng hợp purin), <strong>Mycophenolate mofetil</strong> (ức chế inosine monophosphate dehydrogenase) $\rightarrow$ ức chế chọn lọc sự tăng sinh của dòng tế bào lympho T và B; dùng trong bệnh tự miễn và ghép tạng.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h4>10. So sánh tổng hợp Miễn dịch bẩm sinh và Miễn dịch thích ứng</h4>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Tiêu chí phân biệt</th>
+                    <th>Miễn dịch bẩm sinh (Innate)</th>
+                    <th>Miễn dịch thích ứng (Adaptive)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Thời điểm xuất hiện</strong></td>
+                    <td>Có sẵn ngay từ khi sinh ra</td>
+                    <td>Chỉ hình thành sau khi cơ thể tiếp xúc với kháng nguyên</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thời gian phản ứng</strong></td>
+                    <td>Rất nhanh: <strong>Vài phút đến vài giờ</strong></td>
+                    <td>Chậm: Cần <strong>vài ngày đến vài tuần</strong> để hoạt hóa và tăng sinh</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Tính đặc hiệu</strong></td>
+                    <td>Không đặc hiệu: Nhận diện các mẫu phân tử bảo tồn (PAMPs/DAMPs)</td>
+                    <td><strong>Đặc hiệu tuyệt đối:</strong> Nhận diện chính xác từng epitope kháng nguyên riêng biệt</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Đa dạng thụ thể</strong></td>
+                    <td>Hạn chế: Khoảng $10^2$ loại thụ thể mã hóa sẵn trong bộ gen mầm (như TLRs)</td>
+                    <td>Cực kỳ rộng lớn: $> 10^{11}$ thụ thể khác nhau nhờ quá trình tái tổ hợp gen V(D)J của TCR và BCR</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Trí nhớ miễn dịch (Memory)</strong></td>
+                    <td><strong>Không có</strong> (phản ứng ở các lần tiếp xúc sau diễn ra tương tự lần đầu)</td>
+                    <td><strong>Có trí nhớ miễn dịch:</strong> Lần tiếp xúc sau phản ứng nhanh hơn, mạnh hơn và kéo dài hơn</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thành phần tế bào chính</strong></td>
+                    <td>Neutrophil, Đại thực bào, Tế bào tua DC, Tế bào diệt tự nhiên (NK), Dưỡng bào, Eosinophil, Basophil</td>
+                    <td>Tế bào lympho T ($T\ CD4^+$, $T\ CD8^+$) và Tế bào lympho B (Tương bào tiết kháng thể)</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Thành phần dịch thể chính</strong></td>
+                    <td>Hệ thống Bổ thể, Lysozyme, Interferon ($\alpha, \beta$), Protein pha cấp (CRP)</td>
+                    <td>Các lớp Kháng thể hòa tan ($IgG, IgM, IgA, IgE, IgD$) và các Cytokine đặc hiệu</td>
+                  </tr>
+                  <tr>
+                    <td><strong>Khả năng tự dung nạp</strong></td>
+                    <td>Hoàn hảo: Không nhận diện các phân tử bình thường của tế bào cơ thể</td>
+                    <td>Tốt nhờ chọn lọc tại tuyến ức/tủy xương; nếu thất bại sẽ dẫn tới <strong>bệnh tự miễn</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout">
+              <div class="callout-title">Sơ đồ logic cốt lõi của đáp ứng miễn dịch</div>
+              <p>Mầm bệnh xâm nhập $\rightarrow$ <strong>Hàng rào biểu mô & hóa học</strong> ngăn chặn $\rightarrow$ Nếu vượt qua: <strong>Miễn dịch bẩm sinh</strong> (Đại thực bào + Neutrophil thực bào, Bổ thể kích hoạt, NK tiêu diệt tế bào nhiễm) $\rightarrow$ <strong>Tế bào tua (DC)</strong> bắt giữ kháng nguyên, di chuyển về hạch lympho $\rightarrow$ Trình diện qua <strong>MHC-II</strong> cho $T\ CD4^+$ hoặc <strong>MHC-I</strong> cho $T\ CD8^+$ $\rightarrow$ <strong>Miễn dịch thích ứng</strong> bùng nổ: $T\ CD4^+$ hỗ trợ <strong>Tế bào B</strong> biệt hóa thành <strong>Tương bào</strong> tiết kháng thể đặc hiệu ($IgM \rightarrow IgG, IgA, IgE$) + $T\ CD8^+$ gây độc diệt tế bào đích $\rightarrow$ <strong>Tế bào nhớ</strong> ($B_{mem}, T_{mem}$) lưu giữ trí nhớ miễn dịch bảo vệ cơ thể lâu dài.</p>
+            </div>
+
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Hệ thống miễn dịch là nền tảng phòng vệ sinh học bảo vệ sự sống còn của cơ thể trước vô vàn tác nhân vi sinh vật gây hại trong môi trường sống. Nắm vững đại cương miễn dịch giúp sinh viên y dược:</p>
+            <ul>
+              <li>Hiểu rõ cơ chế bệnh sinh của các bệnh lý nhiễm trùng, dị ứng thuốc, sốc phản vệ, viêm mạn tính và các bệnh lý tự miễn thường gặp trên lâm sàng.</li>
+              <li>Giải thích được cơ sở khoa học của kỹ thuật tiêm chủng phòng bệnh bằng vaccine, chỉ định sử dụng huyết thanh kháng độc tố trong điều trị cấp cứu.</li>
+              <li>Nắm vững cơ chế tác dụng, chỉ định và độc tính của các nhóm thuốc tác động lên hệ miễn dịch trong thực hành Dược lý học (Corticosteroid, thuốc chống thải ghép, thuốc chống dị ứng).</li>
+              <li>Tiếp cận các liệu pháp điều trị sinh học hiện đại tiên tiến bậc nhất hiện nay như kháng thể đơn dòng (mAbs) và các thuốc ức chế điểm kiểm soát miễn dịch trong điều trị ung thư và bệnh tự miễn.</li>
+            </ul>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Đáp ứng tiêm vaccine nhắc lại</div>
+              Trẻ tiêm vaccine uốn ván mũi 1 (lần đầu tiếp xúc kháng nguyên):<br>
+              • Pha tiềm tàng $5 - 10$ ngày; kháng thể đầu tiên là <strong>IgM</strong>, đỉnh thấp, sau đó mới chuyển lớp sang IgG.<br>
+              • Xuất hiện tế bào nhớ $B_{mem}$ và $T_{mem}$.<br>
+              Tiêm mũi 2 sau 4 tuần (tái tiếp xúc):<br>
+              • Pha tiềm tàng chỉ $1 - 3$ ngày; <strong>IgG</strong> tăng nhanh, đỉnh cao gấp hàng chục đến hàng trăm lần, tồn tại lâu hơn.<br>
+              <strong>Kết luận:</strong> đây là cơ sở sinh học của phác đồ tiêm nhiều mũi và tiêm nhắc (booster) để duy trì hiệu giá kháng thể bảo vệ.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Vì sao penicillin gây dị ứng (hapten)</div>
+              Penicillin có khối lượng phân tử $\approx 334$ Da $< 1.000$ Da nên bản thân chỉ là <strong>hapten</strong>: có tính đặc hiệu nhưng không tự kích thích miễn dịch.<br>
+              Trong cơ thể, sản phẩm chuyển hóa của thuốc gắn cộng hóa trị với albumin (protein mang) tạo phức hợp <em>hapten–carrier</em> hoàn chỉnh.<br>
+              Phức hợp này kích thích tế bào B/T mẫn cảm; lần dùng lại, dị nguyên kết nối $IgE$ trên dưỡng bào → phóng hạt histamine.<br>
+              <strong>Biểu hiện:</strong> mày đay, ngứa, co thắt phế quản, tụt huyết áp (sốc phản vệ) — cần xử trí cấp cứu, không tự dùng lại thuốc.
+            </div>
+            <div class="callout"><div class="callout-title">Cách nhớ</div>
+              <strong>5 lớp Ig:</strong> IgG "qua nhau thai — đáp ứng thứ phát"; IgM "đáp ứng sớm — ngũ phân tử"; IgA "niêm mạc — dịch tiết"; IgE "dị ứng — giun sán"; IgD "BCR của tế bào B non".<br>
+              <strong>MHC:</strong> $1 \times 8 = 8$ (MHC-I → CD8); $2 \times 4 = 8$ (MHC-II → CD4).<br>
+              <strong>Kháng nguyên:</strong> protein mạnh nhất; polysaccharide thứ hai; lipid/acid nucleic chỉ sinh miễn dịch khi gắn protein.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 2.12 -->
+        <div class="doc-card" id="doc-myd-12">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-12')">
+            <div class="doc-title-wrap"><span class="doc-num">12</span><span class="doc-title">Nguồn học tập và tài liệu tham khảo</span><span class="doc-tag">Tham khảo</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <p>Các nội dung trên được tổng hợp toàn diện theo đề cương chi tiết chuẩn của môn học Modul Y - Dược cơ sở (bao gồm Sinh lý học, Dược động học đại cương, Sinh lý bệnh & Miễn dịch học cơ sở). Người học có thể tra cứu và đối chiếu thêm với các nguồn giáo trình chuẩn mở quốc tế và tài liệu tham khảo dưới đây:</p>
+            <ul>
+              <li><a href="https://openstax.org/details/books/anatomy-and-physiology-2e" target="_blank" rel="noopener noreferrer">OpenStax, Anatomy and Physiology 2e</a> — máu, điện thế hoạt động, cân bằng dịch và chuyển hóa.</li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK430685/" target="_blank" rel="noopener noreferrer">NCBI Bookshelf, StatPearls</a> — mục lục sinh lý học, bao gồm huyết áp, điện thế hoạt động và dịch cơ thể.</li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK545201/" target="_blank" rel="noopener noreferrer">NCBI Bookshelf, Physiology, Glucose</a> — điều hòa glucose và chuyển hóa.</li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK499994/" target="_blank" rel="noopener noreferrer">NCBI Bookshelf, Anemia</a> — cơ sở đánh giá thiếu máu.</li>
+              <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK279023/" target="_blank" rel="noopener noreferrer">Endotext, Calcium and Phosphate Homeostasis</a> — ví dụ về điều hòa khoáng chất và cân bằng nội môi.</li>
+            </ul>
+            <div class="callout"><div class="callout-title">Ghi chú đối chiếu giáo trình</div>Chuyên đề 11 (Đại cương về miễn dịch) đã được hoàn thiện đầy đủ theo nội dung trọng tâm môn học Modul Y - Dược cơ sở (Sinh lý bệnh - Miễn dịch và Chốt ĐCMD), hỗ trợ việc học tập và tra cứu hiệu quả.</div>
+          </div>
+        </div>
+
+        <!-- DOC 2.14 -->
+        <div class="doc-card" id="doc-myd-14">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-14')">
+            <div class="doc-title-wrap"><span class="doc-num">14</span><span class="doc-title">Chuyên đề 14: Dị ứng và các phản ứng quá mẫn</span><span class="doc-tag">Miễn dịch học</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <h4>1. Khái niệm và phân biệt</h4>
+            <p><strong>Quá mẫn</strong> là đáp ứng miễn dịch gây tổn thương mô hoặc rối loạn chức năng khi đáp ứng quá mức, không phù hợp hoặc nhắm sai đích. <strong>Dị ứng</strong> thường chỉ phản ứng quá mẫn đặc hiệu với dị nguyên từ môi trường, qua cơ chế miễn dịch. Không phải mọi phản ứng bất lợi sau dùng thuốc đều là dị ứng: tác dụng phụ dự đoán được, quá liều và không dung nạp không miễn dịch có cơ chế khác.</p>
+            <p>Phân loại Gell–Coombs chia quá mẫn thành bốn type theo cơ chế chính. Một bệnh có thể phối hợp nhiều cơ chế; thời điểm khởi phát hỗ trợ định hướng nhưng không đủ để tự chẩn đoán.</p>
+            <h4>2. Bốn type quá mẫn</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Type</th><th>Cơ chế chính</th><th>Khởi phát thường gặp</th><th>Ví dụ</th></tr></thead><tbody>
+              <tr><td><strong>I — tức thì</strong></td><td>Dị nguyên tạo đáp ứng Th2; IL-4/IL-13 thúc đẩy chuyển lớp sang IgE. IgE gắn FcεRI trên dưỡng bào/bạch cầu ưa kiềm; tái tiếp xúc gây bắt chéo IgE và phóng hạt histamine, leukotriene, prostaglandin. Pha muộn có thể có eosinophil và viêm.</td><td>Phút đến vài giờ</td><td>Viêm mũi dị ứng, mày đay, hen dị ứng, dị ứng thức ăn; phản vệ toàn thân.</td></tr>
+              <tr><td><strong>II — qua kháng thể</strong></td><td>IgG/IgM nhận diện kháng nguyên trên tế bào hoặc mô; hoạt hóa bổ thể, thực bào, độc tế bào phụ thuộc kháng thể hoặc làm rối loạn thụ thể.</td><td>Giờ đến ngày, tùy bệnh</td><td>Thiếu máu tan máu miễn dịch, giảm tiểu cầu miễn dịch, bệnh Graves (kích thích thụ thể), nhược cơ (chẹn thụ thể).</td></tr>
+              <tr><td><strong>III — phức hợp miễn dịch</strong></td><td>Phức hợp kháng nguyên–kháng thể lưu hành lắng đọng ở mạch/mô, hoạt hóa bổ thể và thu hút bạch cầu gây viêm.</td><td>Giờ đến vài tuần</td><td>Bệnh huyết thanh, phản ứng Arthus, một số biểu hiện lupus và viêm cầu thận do phức hợp miễn dịch.</td></tr>
+              <tr><td><strong>IV — qua tế bào T, muộn</strong></td><td>Tế bào T đã mẫn cảm tiết cytokine gây viêm (IVa/IVb), hoặc CD8⁺ gây độc tế bào (IVc); một số kiểu hình có neutrophil (IVd).</td><td>Thường 24–72 giờ, đôi khi lâu hơn</td><td>Viêm da tiếp xúc, phản ứng tuberculin; một số phản ứng thuốc muộn như DRESS, SJS/TEN.</td></tr>
+            </tbody></table></div>
+            <h4>3. Dị ứng tức thì và phản vệ</h4>
+            <p>Sau lần mẫn cảm, tế bào B tạo IgE đặc hiệu; IgE gắn lên dưỡng bào và bạch cầu ưa kiềm. Khi dị nguyên kết nối các IgE trên bề mặt tế bào, chất trung gian được phóng thích gây ngứa, mày đay, phù mạch, co thắt phế quản, nôn/đau bụng hoặc tụt huyết áp. Lần tiếp xúc đầu có thể không có triệu chứng rõ; phản ứng còn có thể xảy ra qua một số cơ chế không phụ thuộc IgE.</p>
+            <p><strong>Phản vệ</strong> là phản ứng toàn thân khởi phát nhanh, có thể đe dọa tính mạng do ảnh hưởng đường thở, hô hấp hoặc tuần hoàn; không phải lúc nào cũng có biểu hiện da. Khó thở, khò khè, khàn tiếng/phù lưỡi-họng, tụt huyết áp, ngất hoặc triệu chứng nhiều cơ quan sau phơi nhiễm nghi ngờ cần xử trí cấp cứu ngay.</p>
+            <div class="callout"><div class="callout-title">An toàn cấp cứu</div>Nghi phản vệ: gọi cấp cứu và dùng adrenaline (epinephrine) tiêm bắp mặt trước-ngoài đùi theo hướng dẫn cấp cứu hiện hành; không trì hoãn để chờ thuốc kháng histamine hoặc corticosteroid. Người bệnh cần được nhân viên y tế đánh giá, theo dõi và xử trí đường thở/tuần hoàn. Không tự thử lại dị nguyên hoặc thuốc nghi gây phản ứng.</div>
+            <h4>4. Dị ứng thuốc và phản ứng muộn nặng</h4>
+            <p>Thuốc hoặc chất chuyển hóa có thể gắn protein cơ thể thành phức hợp sinh miễn dịch; một số thuốc cũng tương tác trực tiếp với protein miễn dịch. Dị ứng thuốc có thể theo type I–IV, nhưng nhiều tác dụng không mong muốn của thuốc không phải dị ứng. Ghi nhận chính xác tên thuốc, liều, đường dùng, thời điểm, triệu chứng và điều trị đã dùng giúp đánh giá nguy cơ; tránh gán nhãn dị ứng khi chưa đủ căn cứ, đồng thời không tự dùng lại thuốc nghi gây phản ứng nặng.</p>
+            <p>Phát ban kèm phỏng nước, trợt niêm mạc, đau da, phù mặt, sốt hoặc tổn thương gan/thận sau dùng thuốc có thể báo hiệu phản ứng da-niêm mạc hay quá mẫn thuốc nặng (ví dụ SJS/TEN, DRESS). Ngừng tiếp xúc thuốc nghi ngờ và cần đánh giá y tế khẩn; việc ngừng/đổi thuốc kê đơn phải được phối hợp với nhân viên y tế, trừ tình huống cấp cứu cần trợ giúp tức thì.</p>
+            <h4>5. Chẩn đoán, dự phòng và nguyên tắc điều trị</h4>
+            <ul>
+              <li><strong>Bệnh sử:</strong> xác định tác nhân, đường phơi nhiễm, thời gian xuất hiện, diễn biến, cơ quan bị ảnh hưởng, lần tái phơi nhiễm và thuốc dùng đồng thời.</li>
+              <li><strong>Xét nghiệm:</strong> test da hoặc IgE đặc hiệu hỗ trợ đánh giá một số dị ứng tức thì; kết quả dương tính cho thấy mẫn cảm, không tự chứng minh dị ứng có triệu chứng. Test áp da phù hợp một số phản ứng tiếp xúc muộn. Thử thách dị nguyên/thuốc chỉ thực hiện khi có chỉ định và giám sát chuyên môn; không tự thử tại nhà.</li>
+              <li><strong>Kiểm soát:</strong> tránh dị nguyên đã xác định khi khả thi, đọc nhãn và lập kế hoạch ứng phó; lựa chọn điều trị theo cơ quan, mức độ và cơ chế. Thuốc kháng histamine giúp một số triệu chứng nhưng không thay adrenaline trong phản vệ.</li>
+              <li><strong>Giải mẫn cảm:</strong> quy trình chuyên môn tạo dung nạp tạm thời trong một số chỉ định thiết yếu; không xóa dị ứng vĩnh viễn và không tự thực hiện.</li>
+            </ul>
+            <div class="callout"><div class="callout-title">Khung nhớ</div>Type I: IgE, dưỡng bào, nhanh. Type II: IgG/IgM chống tế bào hoặc thụ thể. Type III: phức hợp miễn dịch lắng đọng. Type IV: tế bào T, thường muộn. Phân loại giúp hiểu cơ chế, không thay thế đánh giá ca bệnh.</div>
+            <h4>Ý nghĩa và tác dụng</h4>
+            <p>Phân biệt dị ứng với tác dụng phụ không miễn dịch giúp ghi hồ sơ thuốc chính xác, tránh hạn chế điều trị không cần thiết và phòng tái phơi nhiễm nguy hiểm. Nhận biết phản vệ và phản ứng thuốc muộn nặng giúp chuyển cấp cứu kịp thời; xác định type quá mẫn định hướng xét nghiệm, dự phòng và điều trị phù hợp.</p>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Sốc phản vệ type I sau tiêm penicillin</div>
+              Nữ 25 tuổi tiêm penicillin; <strong>10 phút sau</strong>: ngứa, mày đay toàn thân, khò khè, khó thở, huyết áp $80/50$ mmHg, mạch 130 lần/phút.<br>
+              <strong>Cơ chế:</strong> $IgE$ đặc hiệu gắn dưỡng bào → tái tiếp xúc dị nguyên → bắt chéo $IgE$ → phóng hạt histamine, leukotriene → giãn mạch, tăng tính thấm, co thắt phế quản.<br>
+              <strong>Kết luận:</strong> phản vệ type I, mức độ nặng (có sốc).<br>
+              <strong>Xử trí:</strong> gọi cấp cứu, tiêm bắp <strong>adrenaline</strong> mặt trước–ngoài đùi theo hướng dẫn (người lớn thường $0,5$ mg), đặt bệnh nhân nằm, theo dõi đường thở/tuần hoàn; kháng histamine và corticosteroid chỉ hỗ trợ, không thay adrenaline.
+            </div>
+            <div class="example-box"><div class="example-title">🔎 Ví dụ — Viêm da tiếp xúc type IV</div>
+              Nam 30 tuổi đeo vòng tay kim loại; <strong>48 giờ sau</strong> vùng da tiếp xúc đỏ, ngứa, nổi mụn nước, bờ tổn thương trùng với vị trí tiếp xúc.<br>
+              Khởi phát chậm $24 - 72$ giờ, không có $IgE$, do tế bào $T$ mẫn cảm gặp lại kháng nguyên (niken) và tiết cytokine → huy động đại thực bào.<br>
+              <strong>Kết luận:</strong> quá mẫn type IV; test áp da (patch test) có thể hỗ trợ xác định dị nguyên.<br>
+              <strong>Xử trí:</strong> tránh tiếp xúc, corticosteroid bôi tại chỗ theo chỉ định; không dùng lại dị nguyên nghi ngờ.
+            </div>
+          </div>
+        </div>
+
+        <!-- DOC 2.13 -->
+        <div class="doc-card" id="doc-myd-13">
+          <div class="doc-header" onclick="toggleDoc('doc-myd-13')">
+            <div class="doc-title-wrap"><span class="doc-num">13</span><span class="doc-title">Từ khóa thường gặp trong môn Modul Y - Dược</span><span class="doc-tag">Bảng tra nhanh</span></div>
+            <span class="icon-chevron">▼</span>
+          </div>
+          <div class="doc-body">
+            <p>Bảng giải nghĩa ngắn các thuật ngữ thường gặp trong sinh lý, bệnh học, dược lý và miễn dịch học. Đây là định nghĩa học tập; ý nghĩa cụ thể có thể thay đổi theo ngữ cảnh bài giảng.</p>
+            <h4>1. Sinh lý tế bào và vận chuyển</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Gradient nồng độ</td><td>Chênh lệch nồng độ một chất giữa hai vùng; chất khuếch tán có xu hướng đi từ nơi nồng độ cao tới thấp.</td></tr>
+              <tr><td>Gradient ion</td><td>Chênh lệch nồng độ của một ion giữa hai phía màng tế bào; ion có xu hướng khuếch tán theo gradient nồng độ, đồng thời chịu tác động điện thế màng.</td></tr>
+              <tr><td>Gradient điện hóa</td><td>Tổng hợp ảnh hưởng của chênh lệch nồng độ và điện thế lên sự di chuyển của ion.</td></tr>
+              <tr><td>Khuếch tán đơn giản</td><td>Chất đi xuôi gradient qua lớp lipid hoặc lỗ màng, không cần chất tải và không tiêu thụ ATP trực tiếp.</td></tr>
+              <tr><td>Khuếch tán được hỗ trợ</td><td>Vận chuyển xuôi gradient nhờ kênh hoặc chất tải; có tính chọn lọc, chất tải có thể bão hòa.</td></tr>
+              <tr><td>Thẩm thấu</td><td>Nước di chuyển qua màng bán thấm theo chênh lệch chất tan hữu hiệu.</td></tr>
+              <tr><td>Vận chuyển chủ động</td><td>Đưa chất ngược gradient; dạng sơ cấp dùng ATP trực tiếp, dạng thứ cấp dùng gradient ion đã được tạo trước.</td></tr>
+              <tr><td>Symport / antiport</td><td>Đồng vận chuyển các chất cùng chiều / đối vận chuyển theo hai chiều ngược nhau.</td></tr>
+              <tr><td>Điện thế nghỉ</td><td>Hiệu điện thế hai bên màng tế bào khi không phát điện thế hoạt động.</td></tr>
+              <tr><td>Khử cực / tái cực</td><td>Điện thế màng bớt âm / trở về âm hơn sau khử cực.</td></tr>
+              <tr><td>Thời kỳ trơ</td><td>Khoảng thời gian tế bào không thể hoặc khó phát thêm điện thế hoạt động.</td></tr>
+            </tbody></table></div>
+            <h4>2. Dịch cơ thể, máu và bệnh học</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>ICF / ECF</td><td>Dịch nội bào / dịch ngoại bào; ECF gồm huyết tương và dịch kẽ.</td></tr>
+              <tr><td>Osmolality</td><td>Số osmole chất tan trên mỗi kilogram dung môi; thường biểu thị mOsm/kg.</td></tr>
+              <tr><td>Tonicity</td><td>Tác động của chất tan không dễ qua màng lên thể tích tế bào.</td></tr>
+              <tr><td>ADH / vasopressin</td><td>Hormone tăng tái hấp thu nước ở ống góp thận; ảnh hưởng độ cô đặc nước tiểu và cân bằng nước.</td></tr>
+              <tr><td>RAA / RAAS</td><td>Hệ renin–angiotensin–aldosterone, tham gia điều hòa huyết áp, Na⁺ và thể tích dịch ngoại bào.</td></tr>
+              <tr><td>Phù</td><td>Tăng dịch trong mô kẽ do thay đổi áp lực mao mạch, áp lực keo, tính thấm hoặc dẫn lưu bạch huyết.</td></tr>
+              <tr><td>Hematocrit (Hct)</td><td>Tỷ lệ thể tích hồng cầu so với thể tích máu toàn phần.</td></tr>
+              <tr><td>Hemoglobin (Hb)</td><td>Protein trong hồng cầu gắn và vận chuyển oxy; nồng độ Hb giúp đánh giá thiếu máu cùng dữ kiện khác.</td></tr>
+              <tr><td>MCV</td><td>Thể tích trung bình hồng cầu; hỗ trợ phân loại thiếu máu thành hồng cầu nhỏ, bình thường hoặc to.</td></tr>
+              <tr><td>Hồng cầu lưới</td><td>Hồng cầu non vừa rời tủy; số lượng phản ánh đáp ứng sinh hồng cầu của tủy xương.</td></tr>
+              <tr><td>Hemostasis</td><td>Cầm máu: phối hợp co mạch, tiểu cầu và đông máu để hạn chế mất máu.</td></tr>
+              <tr id="kw-cytokine"><td><a href="#kw-cytokine">Cytokine</a></td><td>Phân tử tín hiệu, thường là protein, giúp điều phối miễn dịch, viêm và tạo máu.</td></tr>
+              <tr id="kw-chemokine"><td><a href="#kw-chemokine">Chemokine</a></td><td>Nhóm cytokine tạo tín hiệu hóa hướng động, hướng dẫn bạch cầu di chuyển tới mô.</td></tr>
+              <tr id="kw-histamine"><td><a href="#kw-histamine">Histamine</a></td><td>Chất trung gian dự trữ chủ yếu trong dưỡng bào; góp phần giãn mạch và tăng tính thấm mạch trong viêm cấp.</td></tr>
+              <tr id="kw-prostaglandin"><td><a href="#kw-prostaglandin">Prostaglandin (PG)</a></td><td>Chất trung gian lipid tạo từ acid arachidonic; tham gia viêm, đau, sốt và nhiều chức năng mô.</td></tr>
+              <tr id="kw-bo-the"><td><a href="#kw-bo-the">Bổ thể</a></td><td>Nhóm protein huyết tương của miễn dịch bẩm sinh; hỗ trợ opsonin hóa, hóa hướng động và ly giải một số vi sinh vật.</td></tr>
+              <tr id="kw-bach-cau"><td><a href="#kw-bach-cau">Bạch cầu</a></td><td>Nhóm tế bào miễn dịch; các loại khác nhau tham gia thực bào, điều hòa miễn dịch và đáp ứng viêm.</td></tr>
+              <tr id="kw-thuc-bao"><td><a href="#kw-thuc-bao">Thực bào</a></td><td>Quá trình tế bào bắt giữ, nuốt và phân giải vi sinh vật hoặc mảnh vụn tế bào.</td></tr>
+              <tr id="kw-hoa-huong-dong"><td><a href="#kw-hoa-huong-dong">Hóa hướng động</a></td><td>Sự di chuyển có định hướng của tế bào theo gradient chất hóa học, như chemokine tại ổ viêm.</td></tr>
+              <tr id="kw-dich-ri-viem"><td><a href="#kw-dich-ri-viem">Dịch rỉ viêm</a></td><td>Dịch giàu protein và thành phần tế bào thoát mạch khi tính thấm vi mạch tăng trong viêm.</td></tr>
+              <tr id="kw-viem-cap"><td><a href="#kw-viem-cap">Viêm cấp</a></td><td>Đáp ứng khởi phát nhanh, thường nổi bật thay đổi mạch máu và huy động bạch cầu trung tính.</td></tr>
+              <tr id="kw-viem-man"><td><a href="#kw-viem-man">Viêm mạn</a></td><td>Đáp ứng kéo dài, thường có thâm nhiễm đại thực bào/lymphocyte, tổn thương mô và sửa chữa đồng thời.</td></tr>
+              <tr id="kw-viem"><td><a href="#kw-viem">Viêm</a></td><td>Đáp ứng mô trước nhiễm trùng hoặc tổn thương; giúp loại bỏ tác nhân và khởi động sửa chữa, nhưng có thể gây tổn thương nếu quá mức hoặc kéo dài.</td></tr>
+              <tr id="kw-sirs"><td><a href="#kw-sirs">SIRS</a></td><td>Hội chứng đáp ứng viêm toàn thân; thuật ngữ mô tả một tập hợp dấu hiệu toàn thân, không đặc hiệu riêng cho nhiễm trùng.</td></tr>
+              <tr id="kw-sepsis"><td><a href="#kw-sepsis">Sepsis (nhiễm khuẩn huyết)</a></td><td>Rối loạn chức năng cơ quan đe dọa tính mạng do đáp ứng mất điều hòa của cơ thể với nhiễm trùng; không đồng nghĩa với SIRS hoặc chỉ cấy máu dương tính.</td></tr>
+              <tr id="kw-viem-u-hat"><td><a href="#kw-viem-u-hat">Viêm u hạt</a></td><td>Kiểu viêm mạn có cụm đại thực bào hoạt hóa, đôi khi kèm tế bào khổng lồ đa nhân.</td></tr>
+              <tr id="kw-qua-man"><td><a href="#kw-qua-man">Quá mẫn</a></td><td>Đáp ứng miễn dịch quá mức hoặc không phù hợp, có thể gây tổn thương mô; dị ứng là một nhóm phản ứng quá mẫn.</td></tr>
+              <tr id="kw-tu-mien"><td><a href="#kw-tu-mien">Tự miễn</a></td><td>Đáp ứng miễn dịch chống lại thành phần của chính cơ thể do mất dung nạp miễn dịch.</td></tr>
+              <tr id="kw-ap-xe"><td><a href="#kw-ap-xe">Áp-xe</a></td><td>Ổ khu trú chứa mủ, thường gồm bạch cầu, mô hoại tử và dịch; cần đánh giá nguyên nhân và xử trí y tế thích hợp.</td></tr>
+              <tr id="kw-crp-esr"><td><a href="#kw-crp-esr">CRP / ESR</a></td><td>Protein C phản ứng / tốc độ lắng hồng cầu; dấu ấn viêm không đặc hiệu, cần diễn giải cùng triệu chứng và dữ kiện khác.</td></tr>
+              <tr><td>Interleukin (IL)</td><td>Nhóm cytokine tham gia truyền tín hiệu giữa tế bào miễn dịch và các mô khác.</td></tr>
+              <tr><td>Prostaglandin (PG)</td><td>Chất trung gian lipid tạo từ acid arachidonic; tham gia viêm, đau, sốt và nhiều chức năng mô.</td></tr>
+              <tr id="kw-pge2"><td><a href="#kw-pge2">PGE₂</a></td><td>Prostaglandin E₂; chất trung gian giúp truyền tín hiệu gây sốt tới vùng dưới đồi và nâng điểm điều nhiệt.</td></tr>
+              <tr id="kw-il1-il6"><td><a href="#kw-il1-il6">IL-1 / IL-6</a></td><td>Interleukin-1 / interleukin-6; cytokine tiền viêm có thể tham gia đáp ứng gây sốt.</td></tr>
+              <tr id="kw-tnf"><td><a href="#kw-tnf">TNF</a></td><td>Yếu tố hoại tử u; cytokine tham gia viêm và đáp ứng miễn dịch, có thể góp phần gây sốt.</td></tr>
+              <tr id="kw-sot"><td><a href="#kw-sot">Sốt</a></td><td>Tăng thân nhiệt có điều hòa do điểm điều nhiệt vùng dưới đồi tăng, thường qua cytokine và prostaglandin E₂.</td></tr>
+              <tr><td>Sốt do virus</td><td>Sốt trong nhiễm virus; triệu chứng và kiểu sốt riêng lẻ không xác định được virus gây bệnh.</td></tr>
+              <tr id="kw-tang-than-nhiet"><td><a href="#kw-tang-than-nhiet">Tăng thân nhiệt</a></td><td>Nhiệt độ cơ thể tăng do sinh nhiệt vượt thải nhiệt, không phải do điểm điều nhiệt vùng dưới đồi tăng như trong sốt.</td></tr>
+              <tr id="kw-diem-dieu-nhiet"><td><a href="#kw-diem-dieu-nhiet">Điểm điều nhiệt</a></td><td>Mức nhiệt độ mục tiêu được vùng dưới đồi điều chỉnh; tăng trong sốt, không tăng trong tăng thân nhiệt.</td></tr>
+              <tr><td>Etiology / pathogenesis</td><td>Bệnh nguyên (nguyên nhân/điều kiện gây bệnh) / bệnh sinh (cơ chế và diễn biến bệnh).</td></tr>
+            </tbody></table></div>
+            <h4>3. Chuyển hóa và dược lý</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr><td>Dị hóa / đồng hóa</td><td>Phân giải chất để thu năng lượng / tổng hợp phân tử và cấu trúc, thường cần năng lượng.</td></tr>
+              <tr><td>ATP</td><td>Phân tử mang năng lượng trực tiếp cho nhiều quá trình tế bào.</td></tr>
+              <tr><td>NADH / FADH₂</td><td>Chất mang electron cung cấp cho chuỗi hô hấp ty thể.</td></tr>
+              <tr><td>Đường phân</td><td>Con đường bào tương phân giải glucose thành pyruvat, thu ròng 2 ATP mỗi glucose.</td></tr>
+              <tr><td>Chu trình acid citric (Krebs)</td><td>Con đường ty thể oxy hóa acetyl-CoA, tạo CO₂ và chất mang electron khử.</td></tr>
+              <tr><td>Phosphoryl hóa oxy hóa</td><td>Tạo ATP nhờ gradient proton qua màng trong ty thể; oxy là chất nhận electron cuối cùng.</td></tr>
+              <tr><td>Lactat</td><td>Sản phẩm chuyển pyruvat giúp tái sinh NAD⁺; tăng lactat có nhiều nguyên nhân, không đồng nghĩa luôn thiếu oxy.</td></tr>
+              <tr><td>Glycogenesis / glycogenolysis</td><td>Tổng hợp glycogen / phân giải glycogen.</td></tr>
+              <tr><td>Gluconeogenesis</td><td>Tân tạo glucose từ tiền chất không phải carbohydrate, chủ yếu ở gan và khi đói kéo dài có thể ở thận.</td></tr>
+              <tr><td>Beta-oxy hóa</td><td>Phân giải acid béo thành acetyl-CoA trong ty thể, đồng thời tạo NADH và FADH₂.</td></tr>
+              <tr><td>ADME</td><td>Hấp thu, phân bố, chuyển hóa và thải trừ thuốc.</td></tr>
+              <tr><td>Sinh khả dụng (F)</td><td>Tỷ lệ liều thuốc vào tuần hoàn chung ở dạng còn hoạt tính.</td></tr>
+              <tr><td>Thể tích phân bố (V<sub>d</sub>)</td><td>Thể tích biểu kiến mô tả mức độ thuốc phân bố khỏi huyết tương vào mô.</td></tr>
+              <tr><td>Độ thanh thải (Cl)</td><td>Thể tích huyết tương được loại thuốc khỏi cơ thể trong một đơn vị thời gian.</td></tr>
+              <tr><td>Thời gian bán thải (t<sub>1/2</sub>)</td><td>Thời gian để nồng độ thuốc trong huyết tương giảm một nửa trong điều kiện xác định.</td></tr>
+            </tbody></table></div>
+            <h4>4. Miễn dịch học và ứng dụng y dược</h4>
+            <div class="table-responsive"><table class="data-table"><thead><tr><th>Từ khóa</th><th>Giải nghĩa ngắn</th></tr></thead><tbody>
+              <tr id="kw-khang-nguyen"><td><a href="#kw-khang-nguyen">Kháng nguyên (Antigen / Ag)</a></td><td>Chất có khả năng kích thích đáp ứng miễn dịch (tính sinh MD) và kết hợp đặc hiệu với kháng thể hoặc thụ thể TCR.</td></tr>
+              <tr id="kw-khang-the"><td><a href="#kw-khang-the">Kháng thể (Antibody / Ab / Ig)</a></td><td>Glycoprotein do tương bào tiết ra, có khả năng liên kết đặc hiệu với kháng nguyên tương ứng; gồm 5 lớp IgG, IgM, IgA, IgE, IgD.</td></tr>
+              <tr id="kw-epitope"><td><a href="#kw-epitope">Epitope</a></td><td>Vị trí quyết định kháng nguyên trên phân tử kháng nguyên được nhận diện bởi kháng thể hoặc thụ thể tế bào T.</td></tr>
+              <tr id="kw-hapten"><td><a href="#kw-hapten">Hapten (Bán kháng nguyên)</a></td><td>Phân tử nhỏ có tính đặc hiệu nhưng không tự sinh miễn dịch trừ khi gắn với phân tử protein mang (carrier).</td></tr>
+              <tr id="kw-mhc-hla"><td><a href="#kw-mhc-hla">MHC / HLA</a></td><td>Phức hợp phù hợp mô chủ yếu; MHC-I trình diện peptide nội sinh cho CD8+, MHC-II trình diện peptide ngoại sinh cho CD4+.</td></tr>
+              <tr id="kw-mien-dich-bam-sinh"><td><a href="#kw-mien-dich-bam-sinh">Miễn dịch bẩm sinh</a></td><td>Hệ thống phòng vệ tự nhiên có sẵn từ khi sinh ra, đáp ứng nhanh tức thì, không đặc hiệu và không có trí nhớ miễn dịch.</td></tr>
+              <tr id="kw-mien-dich-thich-ung"><td><a href="#kw-mien-dich-thich-ung">Miễn dịch thích ứng</a></td><td>Hệ thống phòng vệ thu được sau khi tiếp xúc kháng nguyên, có tính đặc hiệu cao và hình thành trí nhớ miễn dịch lâu dài.</td></tr>
+              <tr id="kw-te-bao-t"><td><a href="#kw-te-bao-t">Tế bào lympho T</a></td><td>Tế bào miễn dịch trưởng thành ở tuyến ức; gồm T hỗ trợ (CD4+) điều phối miễn dịch và T gây độc (CD8+) tiêu diệt tế bào nhiễm/u.</td></tr>
+              <tr id="kw-te-bao-b"><td><a href="#kw-te-bao-b">Tế bào lympho B</a></td><td>Tế bào miễn dịch trưởng thành ở tủy xương; biệt hóa thành tương bào sản xuất kháng thể hòa tan và tế bào B nhớ.</td></tr>
+              <tr id="kw-te-bao-nk"><td><a href="#kw-te-bao-nk">Tế bào NK (Natural Killer)</a></td><td>Tế bào diệt tự nhiên thuộc miễn dịch bẩm sinh; tiêu diệt tế bào nhiễm virus hoặc tế bào u giảm biểu hiện MHC-I.</td></tr>
+              <tr id="kw-te-bao-tua"><td><a href="#kw-te-bao-tua">Tế bào tua (Dendritic Cell / DC)</a></td><td>Tế bào trình diện kháng nguyên (APC) chuyên nghiệp quan trọng nhất, kết nối miễn dịch bẩm sinh và thích ứng.</td></tr>
+              <tr id="kw-vaccine"><td><a href="#kw-vaccine">Vaccine</a></td><td>Chế phẩm sinh học chứa kháng nguyên giảm độc lực, bất hoạt hoặc tái tổ hợp nhằm tạo miễn dịch chủ động nhân tạo.</td></tr>
+              <tr id="kw-khang-the-don-dong"><td><a href="#kw-khang-the-don-dong">Kháng thể đơn dòng (mAb)</a></td><td>Kháng thể tạo từ một dòng tế bào đơn lẻ, có tính đặc hiệu tuyệt đối với một epitope; dùng trong chẩn đoán và điều trị đích.</td></tr>
+              <tr id="kw-soc-phan-ve"><td><a href="#kw-soc-phan-ve">Sốc phản vệ (Anaphylaxis)</a></td><td>Phản ứng quá mẫn type I toàn thân nặng nề, đe dọa tính mạng; xử trí cấp cứu hàng đầu bằng Adrenaline tiêm bắp ngay.</td></tr>
+            </tbody></table></div>
+            <div class="callout"><div class="callout-title">Mẹo học</div>Phân biệt cặp dễ nhầm: osmolality (đo nồng độ tiểu phân) với tonicity (ảnh hưởng thể tích tế bào); bệnh nguyên (nguyên nhân) với bệnh sinh (cơ chế); khuếch tán được hỗ trợ (xuôi gradient) với vận chuyển chủ động (ngược gradient); nồng độ Na⁺ huyết thanh với tổng lượng Na⁺ cơ thể; miễn dịch chủ động (tự sinh KT + nhớ) với miễn dịch thụ động (nhận KT có sẵn, tạm thời, không nhớ).</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // Toggle individual document
+    function toggleDoc(docId) {
+      const card = document.getElementById(docId);
+      if (card) {
+        card.classList.toggle('active');
+      }
+    }
+
+    // Toggle entire subject
+    function toggleSubject(subjectId) {
+      const body = document.getElementById('body-' + subjectId);
+      const icon = document.getElementById('icon-' + subjectId);
+      if (body) {
+        const isCollapsed = body.classList.toggle('collapsed');
+        if (icon) {
+          icon.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    // Toggle all subjects
+    function toggleAllSubjects(expand) {
+      document.querySelectorAll('.subject-body').forEach(body => {
+        if (expand) {
+          body.classList.remove('collapsed');
+        } else {
+          body.classList.add('collapsed');
+        }
+      });
+      document.querySelectorAll('[id^="icon-subject-"]').forEach(icon => {
+        icon.style.transform = expand ? 'rotate(0deg)' : 'rotate(-90deg)';
+      });
+    }
+
+    // Toggle all documents
+    function toggleAllDocs(expand) {
+      document.querySelectorAll('.doc-card').forEach(card => {
+        if (expand) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+    }
+
+    function initKeywordAnchors() {
+      const glossary = document.querySelector('#doc-myd-13 .doc-body');
+      if (!glossary) return;
+      const entries = [...glossary.querySelectorAll('tbody tr')].map(row => {
+        const label = row.cells[0]?.textContent.trim();
+        if (!label) return null;
+        row.id = `kw-${label.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}`;
+        return { label, id: row.id, aliases: [...label.split(/\s*\/\s*/), ...(label.match(/\(([^)]+)\)/g) || []).map(alias => alias.slice(1, -1))] };
+      }).filter(Boolean);
+      const terms = entries.flatMap(entry => entry.aliases.map(alias => ({ ...entry, alias }))).filter(entry => entry.alias.length >= 3);
+      const escapeRegex = value => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      const pattern = new RegExp(`(^|[^\\p{L}\\p{N}])(${terms.map(({alias}) => escapeRegex(alias)).sort((a,b) => b.length-a.length).join('|')})(?=$|[^\\p{L}\\p{N}])`, 'giu');
+      document.querySelectorAll('.doc-card:not(#doc-myd-13) .doc-body').forEach(body => {
+        const walker = document.createTreeWalker(body, NodeFilter.SHOW_TEXT, {
+          acceptNode(node) {
+            return !node.nodeValue.trim() || node.parentElement.closest('a,script,style,.formula-box,.MathJax') ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT;
+          }
+        });
+        const nodes = [];
+        while (walker.nextNode()) nodes.push(walker.currentNode);
+        nodes.forEach(node => {
+          pattern.lastIndex = 0;
+          if (!pattern.test(node.nodeValue)) return;
+          pattern.lastIndex = 0;
+          const fragment = document.createDocumentFragment();
+          let cursor = 0;
+          for (const match of node.nodeValue.matchAll(pattern)) {
+            const start = match.index + match[1].length;
+            fragment.append(node.nodeValue.slice(cursor, start));
+            const label = match[2];
+            const entry = terms.find(item => item.alias.toLocaleLowerCase() === label.toLocaleLowerCase());
+            const isOrdinaryPhrase = entry?.label === 'Phù' && /^\s+hợp\b/i.test(node.nodeValue.slice(start + label.length));
+            if (entry && !isOrdinaryPhrase) {
+              const link = document.createElement('a');
+              link.href = `#${entry.id}`;
+              link.textContent = label;
+              link.title = `Xem định nghĩa: ${entry.label}`;
+              fragment.append(link);
+            } else fragment.append(label);
+            cursor = start + label.length;
+          }
+          fragment.append(node.nodeValue.slice(cursor));
+          node.replaceWith(fragment);
+        });
+      });
+    }
+
+    // Auto-expand on anchor link navigate
+    function handleHashNav() {
+      if (window.location.hash) {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          const docCard = target.classList.contains('doc-card') ? target : target.closest('.doc-card');
+          if (docCard) {
+            docCard.classList.add('active');
+            const parentBody = docCard.closest('.subject-body');
+            if (parentBody) {
+              parentBody.classList.remove('collapsed');
+              const parentCard = docCard.closest('.subject-card');
+              if (parentCard) {
+                const icon = parentCard.querySelector('[id^="icon-subject-"]');
+                if (icon) icon.style.transform = 'rotate(0deg)';
+              }
+            }
+          } else if (target.classList.contains('subject-card')) {
+            const body = target.querySelector('.subject-body');
+            const icon = target.querySelector('[id^="icon-subject-"]');
+            if (body) body.classList.remove('collapsed');
+            if (icon) icon.style.transform = 'rotate(0deg)';
+          }
+          const top = target.getBoundingClientRect().top + window.scrollY - window.innerHeight * 0.4;
+          window.scrollTo({ top, behavior: 'smooth' });
+          if (target.matches('tr[id^="kw-"]')) {
+            target.animate([{ backgroundColor: '#fef08a' }, { backgroundColor: 'transparent' }], { duration: 2500, easing: 'ease-out' });
+          }
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => { initKeywordAnchors(); handleHashNav(); });
+    window.addEventListener('hashchange', handleHashNav);
+  </script>
+  <!-- Book View Interactive Script -->
+  <script src="book-view.js"></script>
+</body>
+</html>

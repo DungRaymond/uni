@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📑 Kho Tài Liệu & Giáo Trình Tham Khảo — Danh Mục Môn Học</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-hover: #0369a1;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      padding: 28px 16px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      width: 80vw;
+      max-width: 80vw;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .container {
+        width: 92vw;
+        max-width: 92vw;
+      }
+    }
+
+    header {
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.98rem;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 28px;
+      padding: 14px 20px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      background: #ffffff;
+      color: var(--text-main);
+      text-decoration: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+      border-color: var(--primary-hover);
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+      color: #fff;
+    }
+
+    .btn-lg {
+      padding: 10px 22px;
+      font-size: 0.96rem;
+    }
+
+    /* Grid layout for subject cards */
+    .subject-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .subject-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+      overflow: hidden;
+      transition: all 0.2s ease;
+    }
+
+    .subject-card:hover {
+      box-shadow: 0 6px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    .subject-header {
+      padding: 16px 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .subject-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.22rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .subject-badge {
+      font-size: 0.78rem;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .subject-body {
+      padding: 22px 24px;
+      border-top: 1px solid var(--border-color);
+      display: block;
+    }
+
+    .subject-body.collapsed {
+      display: none;
+    }
+
+    /* Subject Themes */
+    #subject-ly-duoc {
+      border-color: #bae6fd;
+    }
+    #subject-ly-duoc .subject-header {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    }
+    #subject-ly-duoc .subject-title { color: #0369a1; }
+    #subject-ly-duoc .subject-badge { background: #bae6fd; color: #0369a1; }
+
+    #subject-modul-y-duoc {
+      border-color: #ddd6fe;
+    }
+    #subject-modul-y-duoc .subject-header {
+      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+    }
+    #subject-modul-y-duoc .subject-title { color: #5b21b6; }
+    #subject-modul-y-duoc .subject-badge { background: #ddd6fe; color: #5b21b6; }
+
+    #subject-hoa-vo-co-duoc {
+      border-color: #bbf7d0;
+    }
+    #subject-hoa-vo-co-duoc .subject-header {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    }
+    #subject-hoa-vo-co-duoc .subject-title { color: #15803d; }
+    #subject-hoa-vo-co-duoc .subject-badge { background: #bbf7d0; color: #15803d; }
+
+    .topic-list {
+      list-style: none;
+      margin: 14px 0 20px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .topic-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.94rem;
+      color: #334155;
+      padding: 6px 12px;
+      background: #f8fafc;
+      border-radius: 6px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .topic-item span.num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      background: #0284c7;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 50%;
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .icon-chevron {
+      transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>📑 Kho Tài Liệu & Giáo Trình Tham Khảo</h1>
+      <p>Cổng tra cứu tài liệu học tập — Chọn từng môn học bên dưới để mở giao diện chi tiết chuyên sâu</p>
+    </header>
+
+    <!-- Toolbar controls -->
+    <div class="toolbar">
+      <a href="homeworked.html" class="btn btn-primary">📚 Sang Quản Lý Bài Tập Về Nhà →</a>
+      <span style="border-right: 1px solid var(--border-color); margin: 0 4px;"></span>
+      <button class="btn" onclick="toggleAllSubjects(true)">📂 Mở rộng tất cả môn</button>
+      <button class="btn" onclick="toggleAllSubjects(false)">📁 Thu gọn tất cả môn</button>
+    </div>
+
+    <div class="subject-grid">
+
+      <!-- SUBJECT 1: Lý - Dược -->
+      <div class="subject-card" id="subject-ly-duoc">
+        <div class="subject-header" onclick="toggleSubject('subject-ly-duoc')">
+          <div class="subject-title">
+            <span>🩺 Môn: Lý - Dược (Lý Sinh / Vật Lý Y Dược)</span>
+            <span class="subject-badge">6 Chuyên đề & Giáo trình</span>
+          </div>
+          <span class="icon-chevron" id="icon-subject-ly-duoc">▼</span>
+        </div>
+        <div class="subject-body" id="body-subject-ly-duoc">
+          <p style="color: var(--text-muted); font-size: 0.94rem;">
+            Nội dung bao quát nhiệt động sinh học, động học chất lưu hệ tuần hoàn, điện thế màng tế bào, quang phổ học, siêu âm trong y dược học, điện - từ học ứng dụng và giáo trình đại cương.
+          </p>
+          <ul class="topic-list">
+            <li class="topic-item"><span class="num">1</span> Chuyên đề 1: Nhiệt động học sinh học & Động học chất lưu trong hệ tuần hoàn</li>
+            <li class="topic-item"><span class="num">2</span> Chuyên đề 2: Điện thế sinh học & Tín hiệu điện từ của màng tế bào</li>
+            <li class="topic-item"><span class="num">3</span> Chuyên đề 3: Bức xạ & Quang phổ học ứng dụng trong kiểm nghiệm thuốc</li>
+            <li class="topic-item"><span class="num">4</span> Chương 3: Nhiệt động lực học sinh học (Bioenergetics & Thermodynamics)</li>
+            <li class="topic-item"><span class="num">5</span> Chương 4: Siêu âm trong Y Dược học (Ultrasound in Medicine & Pharmacy)</li>
+            <li class="topic-item"><span class="num">6</span> Chương 5: Điện và Từ trong Y Dược học (Electricity & Magnetism)</li>
+          </ul>
+          <div class="action-row">
+            <a href="ly-duoc.doc.html" class="btn btn-primary btn-lg">📂 Mở Toàn Bộ Tài Liệu Lý - Dược (6 Chuyên đề & Giáo trình) →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBJECT 2: Modul Y - Dược -->
+      <div class="subject-card" id="subject-modul-y-duoc">
+        <div class="subject-header" onclick="toggleSubject('subject-modul-y-duoc')">
+          <div class="subject-title">
+            <span>💊 Môn: Modul Y - Dược (Sinh Lý & Dược Lý Đại Cương)</span>
+            <span class="subject-badge">13 Chuyên đề & Tài liệu</span>
+          </div>
+          <span class="icon-chevron" id="icon-subject-modul-y-duoc">▼</span>
+        </div>
+        <div class="subject-body" id="body-subject-modul-y-duoc">
+          <p style="color: var(--text-muted); font-size: 0.94rem;">
+            Bao quát toàn diện sinh lý tim mạch, dược động học ADME, hô hấp tế bào, huyết học, chuyển hóa, sinh lý màng & điện thế hoạt động, bệnh nguyên - bệnh sinh (viêm, sốt), cân bằng dịch thể, đại cương miễn dịch và bảng thuật ngữ tra cứu.
+          </p>
+          <ul class="topic-list">
+            <li class="topic-item"><span class="num">1</span> Chuyên đề 1: Sinh lý tim mạch & Hệ thống điều hòa huyết áp thể dịch - thần kinh</li>
+            <li class="topic-item"><span class="num">2</span> Chuyên đề 2: Các thông số Dược động học cơ bản (Hệ ADME)</li>
+            <li class="topic-item"><span class="num">3</span> Chuyên đề 3: Chuyển hóa năng lượng và hô hấp tế bào</li>
+            <li class="topic-item"><span class="num">4</span> Chuyên đề 4: Máu, tạo máu và rối loạn huyết học cơ bản</li>
+            <li class="topic-item"><span class="num">5</span> Chuyên đề 5: Chuyển hóa và rối loạn chuyển hóa thường gặp</li>
+            <li class="topic-item"><span class="num">6</span> Chuyên đề 6: Thực hành đo huyết áp và diễn giải kết quả</li>
+            <li class="topic-item"><span class="num">7</span> Chuyên đề 7: Trao đổi chất qua màng tế bào</li>
+            <li class="topic-item"><span class="num">8</span> Chuyên đề 8: Điện thế màng và điện thế hoạt động</li>
+            <li class="topic-item"><span class="num">9</span> Chuyên đề 9: Bệnh nguyên và bệnh sinh (Viêm & Sốt)</li>
+            <li class="topic-item"><span class="num">10</span> Chuyên đề 10: Dịch cơ thể, cân bằng nước và rối loạn thường gặp</li>
+            <li class="topic-item"><span class="num">11</span> Chuyên đề 11: Đại cương về miễn dịch (Hệ thống miễn dịch, cơ chế phòng vệ & ứng dụng y dược)</li>
+            <li class="topic-item"><span class="num">12</span> Tài liệu 12: Nguồn học tập và tài liệu tham khảo</li>
+            <li class="topic-item"><span class="num">13</span> Tra cứu 13: Từ khóa thường gặp trong môn Modul Y - Dược</li>
+          </ul>
+          <div class="action-row">
+            <a href="y-duoc.doc.html" class="btn btn-primary btn-lg" style="background:#6d28d9; border-color:#6d28d9;">📂 Xem Cuộn Chuẩn (Basic View) →</a>
+            <a href="y-duoc.doc.html" onclick="localStorage.setItem('doc_view_mode', 'book')" class="btn btn-lg" style="background:#ffffff; color:#6d28d9; border:2px solid #6d28d9; font-weight:700;">📖 Xem Dạng Sách Lật (Book View) ➔</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUBJECT 3: Hóa Vô cơ - Dược -->
+      <div class="subject-card" id="subject-hoa-vo-co-duoc">
+        <div class="subject-header" onclick="toggleSubject('subject-hoa-vo-co-duoc')">
+          <div class="subject-title">
+            <span>⚗️ Môn: Hóa Vô cơ - Dược (Inorganic & Coordination Chemistry)</span>
+            <span class="subject-badge">8 Chuyên đề</span>
+          </div>
+          <span class="icon-chevron" id="icon-subject-hoa-vo-co-duoc">▼</span>
+        </div>
+        <div class="subject-body" id="body-subject-hoa-vo-co-duoc">
+          <p style="color: var(--text-muted); font-size: 0.94rem;">
+            Hệ thống lý thuyết phối trí, thuyết Lewis, VSEPR, VB, MO, tương tác liên phân tử, phức chất vô cơ dược phẩm, phân loại đồng phân phức chất và nhiệt hóa học - năng lượng phản ứng ứng dụng trong bảo quản thuốc.
+          </p>
+          <ul class="topic-list">
+            <li class="topic-item"><span class="num">1</span> Chuyên đề 1: Đại cương Liên kết Hóa học & Thuyết Lewis - Quy tắc Bát tử</li>
+            <li class="topic-item"><span class="num">2</span> Chuyên đề 2: Thuyết Đẩy Cặp Electron Vỏ Hóa Trị (VSEPR) & Cấu trúc Không gian Phân tử</li>
+            <li class="topic-item"><span class="num">3</span> Chuyên đề 3: Thuyết Liên kết Hóa trị (Valence Bond - VB) & Cơ chế Lai hóa Orbital</li>
+            <li class="topic-item"><span class="num">4</span> Chuyên đề 4: Thuyết Orbital Phân tử (Molecular Orbital - MO) & Phân tích LCAO</li>
+            <li class="topic-item"><span class="num">5</span> Chuyên đề 5: Tương tác Liên phân tử & Liên kết Hydro trong Dược học</li>
+            <li class="topic-item"><span class="num">6</span> Chuyên đề 6: Hóa học Phối trí, Phối tử & Phức chất Vô cơ Dược phẩm</li>
+            <li class="topic-item"><span class="num">7</span> Chuyên đề 7: Đồng phân Phức chất — Phân loại Hệ thống & Ứng dụng Dược học</li>
+            <li class="topic-item"><span class="num">8</span> Chuyên đề 8: Nhiệt hóa học & Năng lượng phản ứng trong Dược học (Thermochemistry)</li>
+          </ul>
+          <div class="action-row">
+            <a href="hoa-duoc.doc.html" class="btn btn-primary btn-lg" style="background:#16a34a; border-color:#16a34a;">📂 Mở Toàn Bộ Tài Liệu Hóa Vô cơ - Dược (8 Chuyên đề) →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function toggleSubject(subjectId) {
+      const body = document.getElementById('body-' + subjectId);
+      const icon = document.getElementById('icon-' + subjectId);
+      if (body) {
+        const isCollapsed = body.classList.toggle('collapsed');
+        if (icon) {
+          icon.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
+        }
+      }
+    }
+
+    function toggleAllSubjects(expand) {
+      document.querySelectorAll('.subject-body').forEach(body => {
+        if (expand) {
+          body.classList.remove('collapsed');
+        } else {
+          body.classList.add('collapsed');
+        }
+      });
+      document.querySelectorAll('[id^="icon-subject-"]').forEach(icon => {
+        icon.style.transform = expand ? 'rotate(0deg)' : 'rotate(-90deg)';
+      });
+    }
+  </script>
+</body>
+</html>
