@@ -1,0 +1,174 @@
+# Tag Analysis Report: ch03_std_review.md
+- File: `F:\repo\uni\toa-soan\hoa-duoc\05_final\ch03_std_review.md`
+- Lines: 639
+- Counts: [ADDED]=149, [VERIFY]=3, [CONFLICT]=0, [FIGURE]=4
+
+## Summary Table
+| Tag Type | Count |
+|---|---|
+| ADDED | 149 |
+| VERIFY | 3 |
+| CONFLICT | 0 |
+| FIGURE | 4 |
+
+### VERIFY Items (3)
+- Line 637 — *reference needed for Inorganic Pharmaceutical Chemistry university textbook covering Valence Bond Theory, orbital hybridization, and pharmaceutical inorganic applications (V-03.07)*: `1. **Giáo trình Hóa Vô cơ Dược (Tài liệu giảng dạy chính khóa bậc Đại học Dược):** `[VERIFY: referen`
+- Line 638 — *reference needed for general and inorganic chemistry reference book on Valence Bond Theory, sigma/pi/delta orbital overlap, nodal planes, and s/p character percentages (V-03.07)*: `2. **Tài liệu chuyên khảo về Cấu tạo Chất, Thuyết Liên kết Hóa trị (Heitler – London – Pauling) & Th`
+- Line 639 — *reference needed for coordination chemistry and bioinorganic medicinal chemistry textbook covering Cisplatin dsp2 square planar geometry, high-spin/low-spin Fe(III) complexes, Re2Cl8 2- quadruple bond, and B2H6 3c-2e bonding (V-03.07)*: `3. **Tài liệu chuyên khảo về Hóa học Phối trí, Phức chất Kim loại Chuyển tiếp ($dsp^2, sp^3d^2, d^2s`
+
+### ADDED Items (149)
+- Line 11 — *structural frame and pedagogical overview*: `Ở Chương 1 và Chương 2, chúng ta đã khảo sát cấu trúc electron hóa trị theo công thức chấm Lewis và `
+- Line 13 — *chapter scope summary*: `Chương 3 giải đáp trọn vẹn câu hỏi trên thông qua **Thuyết Liên kết Hóa trị (Valence Bond Theory – V`
+- Line 18 — *prerequisite knowledge*: `1. Nắm vững cấu hình electron nguyên tử, quy tắc Hund, nguyên lý loại trừ Pauli và hình dạng không g`
+- Line 19 — *cross-reference to Chapter 1*: `2. Thành thạo cách viết công thức cấu tạo Lewis, tính điện tích hình thức ($FC = V - N - B/2$), nhận`
+- Line 20 — *cross-reference to Chapter 2*: `3. Thành thạo cách xác định **Số phối trí lập thể ($SN = m + n = \frac{V + M - q}{2}$)**, phân biệt `
+- Line 21 — *study time estimate*: `- **Thời lượng học tập dự kiến (Estimated Study Time):** Khoảng **3,0 giờ** (gồm **2,3 giờ** đọc hiể`
+- Line 29 — *learning objectives header*: `Sau khi học xong chương này, sinh viên có khả năng `[ADDED: learning objectives header]`:`
+- Line 31 — *learning objective LO-1*: `- **`LO-1` (Kiến thức – Luận điểm VB & Phân loại xen phủ $\sigma, \pi, \delta$):** Phát biểu chính x`
+- Line 32 — *learning objective LO-2*: `- **`LO-2` (Kỹ năng – Xác định trạng thái lai hóa, đặc tính $s/p$ & đếm liên kết $\sigma/\pi$):** Gi`
+- Line 33 — *learning objective LO-3*: `- **`LO-3` (Phân tích – Lai hóa phân lớp $d$ trong phức chất & Hóa lập thể dược học):** Vận dụng đượ`
+- Line 34 — *learning objective LO-4*: `- **`LO-4` (Năng lực đánh giá mô hình):** Phân tích được ưu điểm trực quan và 3 hạn chế chí mạng của`
+- Line 42 — *bridge from Chapter 2 VSEPR*: `Ở Chương 2, thuyết VSEPR đã cho phép chúng ta dự đoán nhanh chóng rằng phân tử methane ($CH_4$, kiểu`
+- Line 42 — *pedagogical problem statement*: `Ở Chương 2, thuyết VSEPR đã cho phép chúng ta dự đoán nhanh chóng rằng phân tử methane ($CH_4$, kiểu`
+- Line 44 — *carbon tetravalency puzzle*: `1. Nguyên tử carbon ở trạng thái cơ bản chỉ có **2 electron độc thân** trên hai orbital $2p_x$ và $2`
+- Line 45 — *orbital geometry puzzle*: `2. Ngay cả khi 1 electron từ phân lớp $2s$ được kích thích lên orbital trống $2p_z$ để tạo ra 4 elec`
+- Line 47 — *transition to VB and hybridization*: `Để giải quyết triệt để mâu thuẫn giữa hình dạng của các orbital nguyên tử tự do và hình học phân tử `
+- Line 55 — *historical context of Heitler-London-Pauling VB theory*: `Năm 1927, Walter Heitler và Fritz London đã vận dụng cơ học lượng tử giải phương trình sóng Schrödin`
+- Line 59 — *Pauli spin quantum number clarification*: `- **Sự xen phủ orbital và ghép đôi spin:** Liên kết cộng hóa trị hình thành khi hai orbital nguyên t`
+- Line 60 — *quantum mechanical phase and potential energy explanation*: `- Khi hai AO xen phủ cùng pha sóng, mật độ đám mây electron tích tụ cao ở vùng không gian nằm giữa h`
+- Line 64 — *two VB bond formation mechanisms header*: `Để có các orbital hóa trị tham gia xen phủ tạo cặp electron dùng chung ($\uparrow\downarrow$), các n`
+- Line 67 — *radical pairing mechanism*: `- Mỗi nguyên tử đưa ra 1 AO hóa trị chứa 1 electron độc thân ($\uparrow$) có spin ngược dấu nhau để `
+- Line 68 — *electron promotion principle*: `- **Sự kích thích electron hóa trị:** Ở nhiều nguyên tố nhóm chính (như $Be, B, C, P, S$), số lượng `
+- Line 73 — *promotion equations and energetic justification*: `Năng lượng tỏa ra khi hình thành thêm các liên kết cộng hóa trị mới lớn hơn rất nhiều so với năng lư`
+- Line 76 — *donor-acceptor coordinate bond mechanism*: `- Liên kết hình thành do sự xen phủ giữa một orbital hóa trị đã có sẵn **1 cặp electron tự do ($\upa`
+- Line 77 — *NH4+ and coordination complex examples*: `- Ví dụ điển hình: Sự kết hợp giữa phân tử amoniac ($:NH_3$, có 1 cặp electron tự do trên nguyên tử `
+- Line 82 — *contrast with non-directional ionic bond from Chapter 1*: `- **Tính định hướng của liên kết (Directionality of Covalent Bonds):** Các orbital nguyên tử ($p, d$`
+- Line 83 — *donor-acceptor saturation nuance*: `- **Tính bão hòa của liên kết (Saturation of Covalent Bonds):** Số lượng liên kết cộng hóa trị tối đ`
+- Line 83 — *period 2 valence orbital limit*: `- **Tính bão hòa của liên kết (Saturation of Covalent Bonds):** Số lượng liên kết cộng hóa trị tối đ`
+- Line 93 — *standard z-axis internuclear convention resolving I-03.05*: `> **Definition.** Quy ước hệ trục tọa độ chuẩn trong Hóa học lượng tử: Để thống nhất ký hiệu các orb`
+- Line 97 — *English term axial overlap*: `- **Định nghĩa và các kiểu xen phủ trục:** **Liên kết Sigma ($\sigma$)** được hình thành khi sự xen `
+- Line 98 — *diatomic examples*: `- Xen phủ giữa hai AO thuần khiết: $s\text{–}s$ (như trong $H_2$), $s\text{–}p_z$ (như trong $HF, HC`
+- Line 99 — *hybrid orbital sigma overlap resolving I-03.20*: `- Xen phủ giữa các orbital lai hóa (sẽ khảo sát ở Mục 3.4.3–3.4.4) với AO thuần khiết hoặc giữa hai `
+- Line 101 — *zero nodal planes along internuclear axis*: `1. **Vùng mật độ electron cực đại** nằm ngay trên đường thẳng nối tâm hai hạt nhân nguyên tử (**0 mặ`
+- Line 103 — *single sigma bond in multiple bonds*: `3. **Độ bền rất cao:** Do xen phủ trực diện dọc theo trục nối hai hạt nhân nên **độ xen phủ rất lớn `
+- Line 107 — *parallel orbital orientation and English term*: `- **Định nghĩa và các kiểu xen phủ bên:** **Liên kết Pi ($\pi$)** được hình thành khi sự xen phủ giữ`
+- Line 108 — *molecular examples*: `- Xen phủ $p\text{–}p$: $p_x\text{–}p_x$ hoặc $p_y\text{–}p_y$ (ví dụ trong $O_2, N_2, C_2H_4, C_2H_`
+- Line 109 — *p-d pi bonding explanation and examples*: `- Xen phủ $p\text{–}d$: giữa một orbital $p$ ($p_x$ hoặc $p_y$) với một orbital $d$ có cùng tính đối`
+- Line 110 — *d-d pi overlap resolving I-03.04*: `- Xen phủ $d\text{–}d$: giữa hai orbital $d$ định hướng giữa các trục ($d_{xz}\text{–}d_{xz}$ hoặc $`
+- Line 112 — *wavefunction phase explanation of nodal plane resolving I-03.11*: `1. **Mặt phẳng nút (Nodal Plane):** Mặt phẳng chứa trục liên kết nối hai hạt nhân nguyên tử chính là`
+- Line 113 — *chemical reactivity implication*: `2. **Độ bền kém hơn liên kết $\sigma$:** Vì sự xen phủ bên diễn ra ngoài trục nối hai hạt nhân nên *`
+- Line 113 — *cross-reference to Chapter 1 bond energy*: `2. **Độ bền kém hơn liên kết $\sigma$:** Vì sự xen phủ bên diễn ra ngoài trục nối hai hạt nhân nên *`
+- Line 114 — *exact substitution condition abC=Cab for cis-trans isomerism resolving I-03.08*: `3. **Cản trở sự quay tự do và sinh ra đồng phân hình học *cis–trans*:** Khác với liên kết $\sigma$, `
+- Line 118 — *z-axis orientation detail*: `- **Định nghĩa và cơ chế xen phủ:** **Liên kết Delta ($\delta$)** hình thành do sự **xen phủ đối diệ`
+- Line 122 — *nodal plane count and bond strength hierarchy resolving I-03.20*: ``[ADDED: nodal plane count and bond strength hierarchy resolving I-03.20]`.`
+- Line 123 — *specific 5d orbital assignment in Re2Cl8(2-)*: `- **Sự xuất hiện trong các hợp chất vô cơ có liên kết kim loại – kim loại bậc 4:** Liên kết $\delta$`
+- Line 127 — *Table 3.1 introduction*: `Để thuận tiện tra cứu và đối chiếu bản chất lượng tử của ba loại liên kết cộng hóa trị (đồng thời ho`
+- Line 129 — *Table 3.1 comparing sigma, pi, and delta bonds*: `**Bảng 3.1.** So sánh bản chất cơ học lượng tử, tính đối xứng và tính chất của liên kết $\sigma$, $\`
+- Line 134 — *hybrid AO overlap*: `| **Các tổ hợp AO điển hình** | $s\text{–}s,\; s\text{–}p_z,\; p_z\text{–}p_z,\; d_{z^2}\text{–}d_{z`
+- Line 134 — *d-d pi overlap*: `| **Các tổ hợp AO điển hình** | $s\text{–}s,\; s\text{–}p_z,\; p_z\text{–}p_z,\; d_{z^2}\text{–}d_{z`
+- Line 136 — *nodal plane count*: `| **Số mặt phẳng nút đi qua trục liên nhân $Oz$** | **0** (mật độ electron cực đại ngay trên trục li`
+- Line 136 — *nodal plane count*: `| **Số mặt phẳng nút đi qua trục liên nhân $Oz$** | **0** (mật độ electron cực đại ngay trên trục li`
+- Line 137 — *relative strength of delta bond*: `| **Độ xen phủ & Độ bền tương đối** | Độ xen phủ **lớn nhất** $\rightarrow$ **Rất bền vững** ($\sigm`
+- Line 138 — *rotational restriction in delta bond*: `| **Khả năng quay tự do quanh trục liên kết** | **Quay tự do** quanh trục liên kết đơn nhờ đối xứng `
+- Line 139 — *VSEPR link*: `| **Sự tồn tại độc lập & Vai trò trong thuyết VSEPR** | Tồn tại độc lập trong mọi **liên kết đơn** (`
+- Line 139 — *multiple bond composition*: `| **Sự tồn tại độc lập & Vai trò trong thuyết VSEPR** | Tồn tại độc lập trong mọi **liên kết đơn** (`
+- Line 149 — *Pauling historical attribution*: `Để giải thích vì sao nguyên tử trung tâm (như $C$ trong $CH_4$, $B$ trong $BF_3$, hay $Be$ trong $Be`
+- Line 151 — *removed redundant "AO nguyên tử" per I-03.10*: `- **Định nghĩa:** **Lai hóa orbital** là sự tổ hợp tuyến tính các orbital nguyên tử (AO) khác loại (`
+- Line 151 — *academic accuracy note on sp3d axial/equatorial non-equivalence resolving I-03.07*: `- **Định nghĩa:** **Lai hóa orbital** là sự tổ hợp tuyến tính các orbital nguyên tử (AO) khác loại (`
+- Line 153 — *conservation of orbital number rule*: `1. **Bảo toàn số lượng orbital:** Tổng số orbital lai hóa tạo thành luôn **bằng đúng tổng số orbital`
+- Line 154 — *energy proximity condition*: `2. **Điều kiện năng lượng:** Các AO tham gia lai hóa phải có mức năng lượng gần nhau (thường thuộc c`
+- Line 155 — *asymmetric lobe shape and enhanced sigma overlap*: `3. **Hình dạng bất đối xứng làm tăng khả năng xen phủ trục ($\sigma$):** Mỗi orbital lai hóa đều có `
+- Line 156 — *generalized rule for unhybridized orbitals*: `4. **Vai trò của các AO không tham gia lai hóa:** Các orbital $p$ hoặc $d$ thuần khiết (nguyên chất)`
+- Line 160 — *continuity link to Chapter 2 SN*: `Đây là chiếc cầu nối quan trọng nhất liên kết Chương 2 (Thuyết VSEPR) với Chương 3 (Thuyết VB & Lai `
+- Line 162 — *BP and LP occupancy of hybrid orbitals*: `- Đối với các nguyên tử trung tâm thuộc **nguyên tố nhóm chính (nhóm A)**, mỗi orbital lai hóa được `
+- Line 163 — *formula equating hybrid orbital count to SN resolving I-03.13*: `- Ngược lại, các electron tạo liên kết $\pi$ nằm trên các orbital $p$ hoặc $d$ nguyên chất không lai`
+- Line 170 — *generalized exponent sum rule for SN=5,6 resolving I-03.09*: `- $SN = 5 \rightarrow 1\text{ AO } s + 3\text{ AO } p + 1\text{ AO } d \rightarrow \text{Lai hóa } s`
+- Line 171 — *generalized exponent sum rule for SN=6*: `- $SN = 6 \rightarrow 1\text{ AO } s + 3\text{ AO } p + 2\text{ AO } d \rightarrow \text{Lai hóa } s`
+- Line 175 — *definition of s and p character percentages resolving I-03.19*: `Trong một tập hợp orbital lai hóa đồng nhất $sp^k$ (tạo bởi $1\text{ AO } s$ và $k\text{ AO } p$), t`
+- Line 178 — *quantitative s/p character values*: `Cụ thể cho ba kiểu lai hóa nền tảng của nguyên tố chu kỳ 2 `[ADDED: quantitative s/p character value`
+- Line 183 — *physical-chemical consequences of s/p character*: `**Hai hệ quả vật lý – hóa học cực kỳ quan trọng của phần trăm đặc tính $s/p$** (hoàn thành lời hứa g`
+- Line 184 — *bond length, strength, and electronegativity trend with %s*: `1. **Ảnh hưởng đến độ dài liên kết, độ bền liên kết và độ âm điện hiệu dụng:** Do orbital $ns$ có dạ`
+- Line 185 — *Coulson relation and Bent's rule quantitative explanation fulfilling carryover promise*: `2. **Giải thích định lượng Quy tắc Bent và sự biến thiên góc liên kết (Định lý Coulson):** Giữa góc `
+- Line 193 — *notation clarification resolving I-03.03*: `Để tránh nhầm lẫn giữa con số chỉ *số lượng orbital* với *số lượng tử chính* $n=1, 2, 3$, trong toàn`
+- Line 199 — *detailed sigma/pi bonding analysis for examples*: `- *Ví dụ tiêu biểu:* $BeH_2$, $BeCl_2$ (nguyên tử $Be$ lai hóa $sp$ tạo 2 liên kết $\sigma$, không c`
+- Line 205 — *link to resonance in CO3(2-) and SO3 from Chapter 1*: `- *Ví dụ tiêu biểu:* $BF_3$ (nguyên tử $B$ lai hóa $sp^2$, còn 1 AO $2p_z$ trống đóng vai trò Acid L`
+- Line 211 — *angle standardization 109°28' and 109,5° per I-03.12*: `- *Ví dụ tiêu biểu:* $CH_4$, $CCl_4$, ion amoni $NH_4^+$ và ion sulfate $SO_4^{2-}$ (tất cả đều có $`
+- Line 215 — *period >= 3 hypervalency context*: `Đối với các nguyên tố nhóm chính từ chu kỳ 3 trở đi (như $P, S, Cl, Br, I, Xe$), sự hiện diện của ph`
+- Line 221 — *axial vs equatorial non-equivalence in sp3d resolving I-03.07*: `- *Lưu ý về tính bất tương đương giữa vị trí xích đạo và vị trí trục:* Khác với $sp, sp^2, sp^3$, 5 `
+- Line 225 — *explicit listing of d_z2 and d_x2-y2 and SF6 main-group example resolving I-03.06, I-03.21*: `Sáu orbital lai hóa hoàn toàn đồng nhất hướng dọc theo ba trục tọa độ $Ox, Oy, Oz$ về 6 đỉnh của **h`
+- Line 227 — *modern quantum chemistry note on hypervalent main-group d-orbital participation resolving I-03.21*: `> **Important Note.** Ghi chú học thuật hiện đại (Cầu nối sang Chương 4 – Thuyết MO): Trong hóa học `
+- Line 233 — *Table 3.2 systematizing all 7 hybridization types*: `**Bảng 3.2.** Tổng hợp các kiểu lai hóa orbital từ nguyên tố nhóm chính ($SN = 2..6$) đến phức chất `
+- Line 237 — *%s/%p*: `| **$sp$** | $\text{1 AO } ns + \text{1 AO } np_z$ `[SRC: S-03.3]` | **2** ($SN = 2$) `[SRC: S-03.8]`
+- Line 238 — *%s/%p*: `| **$sp^2$** | $\text{1 AO } ns + \text{2 AO } np\;(p_x, p_y)$ `[SRC: S-03.3]` | **3** ($SN = 3$) `[`
+- Line 239 — *%s/%p*: `| **$sp^3$** | $\text{1 AO } ns + \text{3 AO } np\;(p_x, p_y, p_z)$ `[SRC: S-03.3]` | **4** ($SN = 4`
+- Line 240 — *SN=5 link*: `| **$sp^3d$** | $\text{1 AO } ns + \text{3 AO } np + \text{1 AO } nd_{z^2}$ `[SRC: S-03.3]` | **5** `
+- Line 240 — *%s/%p/%d*: `| **$sp^3d$** | $\text{1 AO } ns + \text{3 AO } np + \text{1 AO } nd_{z^2}$ `[SRC: S-03.3]` | **5** `
+- Line 240 — *angles from Ch02*: `| **$sp^3d$** | $\text{1 AO } ns + \text{3 AO } np + \text{1 AO } nd_{z^2}$ `[SRC: S-03.3]` | **5** `
+- Line 240 — *Ch02 links*: `| **$sp^3d$** | $\text{1 AO } ns + \text{3 AO } np + \text{1 AO } nd_{z^2}$ `[SRC: S-03.3]` | **5** `
+- Line 241 — *%s/%p/%d*: `| **$dsp^2$** | $\text{1 AO } (n-1)d_{x^2-y^2} + \text{1 AO } ns + \text{2 AO } np\;(p_x, p_y)$ `[SR`
+- Line 242 — *d_z2, d_x2-y2*: `| **$sp^3d^2$** *(Bát diện ngoài)* | $\text{1 AO } ns + \text{3 AO } np + \text{2 AO } nd\;(d_{z^2},`
+- Line 242 — *%s/%p/%d*: `| **$sp^3d^2$** *(Bát diện ngoài)* | $\text{1 AO } ns + \text{3 AO } np + \text{2 AO } nd\;(d_{z^2},`
+- Line 242 — *SF6*: `| **$sp^3d^2$** *(Bát diện ngoài)* | $\text{1 AO } ns + \text{3 AO } np + \text{2 AO } nd\;(d_{z^2},`
+- Line 243 — *d_z2, d_x2-y2*: `| **$d^2sp^3$** *(Bát diện trong)* | $\text{2 AO } (n-1)d\;(d_{z^2}, d_{x^2-y^2}) + \text{1 AO } ns `
+- Line 243 — *%s/%p/%d*: `| **$d^2sp^3$** *(Bát diện trong)* | $\text{2 AO } (n-1)d\;(d_{z^2}, d_{x^2-y^2}) + \text{1 AO } ns `
+- Line 243 — *Fe(CN)6(4-)*: `| **$d^2sp^3$** *(Bát diện trong)* | $\text{2 AO } (n-1)d\;(d_{z^2}, d_{x^2-y^2}) + \text{1 AO } ns `
+- Line 249 — *transition metal coordination VB introduction*: `Ở các kim loại chuyển tiếp (nhóm B), các orbital phân lớp $(n-1)d$, $ns$, $np$ và $nd$ có mức năng l`
+- Line 249 — *resolution of Chapter 2 V-02.02 conflict between VSEPR AX4E2 and VB dsp2*: `Ở các kim loại chuyển tiếp (nhóm B), các orbital phân lớp $(n-1)d$, $ns$, $np$ và $nd$ có mức năng l`
+- Line 256 — *geometric explanation of why d_x2-y2 + s + px + py lies in xy-plane*: `Vì bốn thùy của orbital $d_{x^2-y^2}$ cùng với hai orbital $p_x, p_y$ đều nằm dọc theo hai trục tọa `
+- Line 257 — *3d8/4d8/5d8 configuration details*: `- **Điều kiện xuất hiện ở ion kim loại cấu hình $d^8$:** Kiểu lai hóa $dsp^2$ cực kỳ quan trọng và đ`
+- Line 258 — *d8 electron pairing mechanism and diamagnetism explanation resolving I-03.11 and V-02.02*: `- *Giải thích sơ đồ electron (đồng thời giải đáp câu hỏi mở từ Chương 2 về $[PtCl_4]^{2-}$):* Ở ion `
+- Line 260 — *detailed structural description of Cisplatin strictly within source facts and DOMAIN_RULES*: `- Trong phân tử phức chất $cis\text{-}[Pt(NH_3)_2Cl_2]$ (tên chung quốc tế INN: **cisplatin** — một `
+- Line 261 — *geometric cis vs trans comparison in square-planar Pt(NH3)2Cl2 connected to dipole moment from Ch01/Ch02, strictly obeying DOMAIN_RULES without adding clinical regimens or adverse effects*: `- Do khung vuông phẳng $dsp^2$ cứng nhắc trong mặt phẳng $xy$, phức chất $[Pt(NH_3)_2Cl_2]$ tồn tại `
+- Line 265 — *explicit identification of d_z2 and d_x2-y2 orbitals resolving I-03.06*: `Khi ion kim loại chuyển tiếp tạo phức chất có số phối trí $CN = 6$, cả 6 orbital lai hóa đều phải hư`
+- Line 272 — *explanation of high-spin and outer nd orbitals resolving I-03.11*: `- *Ví dụ tiêu biểu:* Ion phức hexafluoroferrate(III) **$[FeF_6]^{3-}$**, trong đó ion $Fe^{3+}$ ($3d`
+- Line 279 — *explanation of low-spin and inner (n-1)d orbitals resolving I-03.11 and linking to Fe(CN)6(4-) from Ch02*: `- *Ví dụ tiêu biểu:* Ion phức hexacyanoferrate(III) **$[Fe(CN)_6]^{3-}$**, trong đó 5 electron của $`
+- Line 289 — *explicit link to localized 2-center 2-electron Lewis bonds*: `- **Ưu điểm nổi bật:** Thuyết Liên kết Hóa trị (VB) và mô hình lai hóa orbital rất **trực quan, dễ h`
+- Line 293 — *localized 2c-2e assumption root cause*: `Vì thuyết VB dựa trên giả thiết tiên nghiệm rằng **mọi electron liên kết đều định xứ cứng nhắc trong`
+- Line 296 — *explicit definitions of diamagnetic and paramagnetic resolving I-03.11*: `- *Trước hết, cần phân biệt rõ hai khái niệm từ tính:* Một chất được gọi là **nghịch từ (diamagnetic`
+- Line 298 — *preview of MO pi* explanation in Chapter 4*: `- *Bằng chứng thực nghiệm bác bỏ:* Thực nghiệm rót oxy lỏng ($O_2(l)$, màu xanh nhạt) qua giữa hai c`
+- Line 301 — *d-d transition and spectrochemical series preview for Chapter 6*: `- Mặc dù mô hình lai hóa $dsp^2, sp^3d^2, d^2sp^3$ mô tả được hình học của phức chất, nhưng thuyết V`
+- Line 307 — *valence electron count 12e vs 14e proving electron deficiency resolving I-03.11*: `- Trong khi đó, một bộ khung gồm 8 nguyên tử như ethane ($C_2H_6$, có $14\text{ electron}$ hóa trị) `
+- Line 308 — *detailed explanation of 3c-2e banana bond in B2H6 resolving I-03.11*: `- Cấu trúc thực nghiệm của $B_2H_6$ cho thấy: 4 nguyên tử H ở hai đầu (H biên / *terminal*) liên kết`
+- Line 320 — *worked example setup from S-03.6*: `> - **Given (Dữ kiện đã cho):** Công thức phân tử của $CH_4$, $C_2H_4$ ($H_2C\text{=}CH_2$) và $C_2H`
+- Line 321 — *worked example question formulation*: `> - **Find (Yêu cầu):** Xác định trạng thái lai hóa ($sp^3, sp^2, sp$) của mỗi nguyên tử $C$, góc li`
+- Line 322 — *systematic problem-solving approach*: `> - **Approach (Phương pháp giải):** Áp dụng công thức số phối trí lập thể $SN = m + n$ từ Chương 2 `
+- Line 327 — *rigorous clarification of cis-trans condition in substituted alkenes*: `>   4. **Kết quả hình học và đồng phân:** $CH_4$ có cấu trúc tứ diện đều; $C_2H_4$ có cấu trúc phẳng`
+- Line 328 — *verification step for Example 3.1*: `> - **Check (Kiểm tra):** Tổng số electron hóa trị tham gia tạo liên kết trong mỗi phân tử hoàn toàn`
+- Line 329 — *pedagogical interpretation linking s-character and geometry*: `> - **Interpretation (Nhận xét):** Khi chuyển từ $sp^3 \rightarrow sp^2 \rightarrow sp$, phần trăm đ`
+- Line 338 — *worked example problem formulation from S-03.7*: `> - **Find (Yêu cầu):** Xác định trạng thái lai hóa của nguyên tử trung tâm, phân bố các cặp electro`
+- Line 339 — *analytical approach combining VB hybridization and VSEPR*: `> - **Approach (Phương pháp giải):** Kết hợp quy tắc đếm vùng mật độ electron ($SN = m + n = 4 \Righ`
+- Line 343 — *comparison with NH4+ restoration of tetrahedral angle*: `>      - Ở **$CH_4$** và **$NH_4^+$** ($n = 0$): Cả 4 AO lai hóa $sp^3$ đều tham gia tạo liên kết $\`
+- Line 346 — *detailed electrostatic explanation of pharmaceutical solubility from S-03.7*: `>   3. **Hệ quả dược học (Độ tan của dược chất):** Do cấu trúc góc gấp khúc ($104,5^\circ$) kết hợp `
+- Line 347 — *quantitative check of angle compression trend*: `> - **Check (Kiểm tra):** Số cặp electron tự do tăng dần từ $0$ ($CH_4, NH_4^+$) $\rightarrow 1$ ($N`
+- Line 348 — *pharmaceutical acid-base protonation insight*: `> - **Interpretation (Nhận xét):** Ví dụ này khẳng định nguyên tắc quan trọng của thuyết VB hiện đại`
+- Line 354 — *worked example on d-orbital complex hybridization from S-03.3*: `> **Example 3.3.** Sử dụng phương pháp sơ đồ ô lượng tử của thuyết VB, hãy xác định trạng thái lai h`
+- Line 356 — *given atomic numbers and ligand field strength rules*: `> - **Given (Dữ kiện đã cho):** Số hiệu nguyên tử $Fe\ (Z = 26)$, $Ni\ (Z = 28)$, $Pt\ (Z = 78$, cùn`
+- Line 357 — *structured requirements for Example 3.3*: `> - **Find (Yêu cầu):** (1) Xác định số oxy hóa và cấu hình $d^n$ của ion trung tâm; (2) Vẽ sơ đồ ph`
+- Line 358 — *donor-acceptor VB approach for coordination complexes*: `> - **Approach (Phương pháp giải):** Trong phức chất phối trí, các phối tử ($F^-, CN^-, NH_3, Cl^-$)`
+- Line 375 — *complete step-by-step box diagrams for all 4 complexes*: `>        *Kết luận:* Cả $[Ni(CN)_4]^{2-}$ và $cis\text{-}[Pt(NH_3)_2Cl_2]$ đều có lai hóa **$dsp^2$*`
+- Line 376 — *electron and orbital conservation check*: `> - **Check (Kiểm tra):** Tổng số electron $d$ của ion trung tâm được bảo toàn tuyệt đối trước và sa`
+- Line 377 — *cross-chapter link to Ch2 VSEPR limitation and Ch6/Ch7 coordination chemistry*: `> - **Interpretation (Nhận xét):** Sơ đồ lai hóa $dsp^2$ giải thích trọn vẹn câu hỏi để ngỏ từ Chươn`
+- Line 383 — *4-step practical protocol synthesizing S-03.3 and S-03.8*: `Để xác định nhanh và không nhầm lẫn trạng thái lai hóa của nguyên tử trung tâm trong cả phân tử cộng`
+- Line 395 — *Mermaid decision flowchart for determining orbital hybridization*: `Toàn bộ thuật toán quyết định trên được tóm tắt trực quan trong **Hình 3.1**: `[ADDED: Mermaid decis`
+- Line 413 — *Figure 3.1 caption*: `**Hình 3.1.** Sơ đồ thuật toán phân nhánh xác định trạng thái lai hóa orbital từ số vùng mật độ elec`
+- Line 419 — *visual placeholder specifications for production graphics*: `Để hỗ trợ hình dung không gian ba chiều về hình dạng mặt phẳng nút, hướng định vị của các thùy orbit`
+- Line 423 — *Figure 3.2 caption*: `**Hình 3.2.** Sơ đồ đối chiếu hình học xen phủ và hệ thống mặt phẳng nút của liên kết $\sigma$ (xen `
+- Line 427 — *Figure 3.3 caption*: `**Hình 3.3.** Hình dạng bất đối xứng của một orbital lai hóa đơn lẻ và sự định hướng không gian của `
+- Line 431 — *Figure 3.4 caption*: `**Hình 3.4.** Mô hình xen phủ orbital lai hóa tạo bộ khung $\sigma$ và xen phủ AO $2p$ nguyên chất t`
+- Line 435 — *Figure 3.5 caption*: `**Hình 3.5.** Minh họa hai thất bại tiêu biểu của thuyết VB cổ điển: tính thuận từ của oxy lỏng ($O_`
+- Line 459 — *generalization of the S-03.8 exponent-sum mnemonic to s1pkdm*: `> - **Mẹo đọc tên theo tổng số mũ:** $sp^3$ = `"1 + 3"` = 4 vùng; $sp^2$ = `"1 + 2"` = 3 vùng; $sp$ `
+- Line 465 — *Table 3.3 comprehensive chapter summary table*: `**Bảng 3.3** hệ thống hóa toàn bộ các công thức đếm nhanh, quy tắc nhận diện trạng thái lai hóa và m`
+- Line 467 — *Table 3.3 title*: `**Bảng 3.3.** Tổng hợp các quy tắc nhận diện liên kết ($\sigma, \pi, \delta$), trạng thái lai hóa or`
+- Line 482 — *assessment section frame*: `[ADDED: assessment section frame] Bộ câu hỏi và bài tập tự lượng giá dưới đây được thiết kế theo tha`
+- Line 486 — *knowledge and comprehension questions*: `[ADDED: knowledge and comprehension questions] **Câu 1 (LO-1 – Nhận biết):** Theo thuyết Liên kết Hó`
+- Line 514 — *application exercises*: `[ADDED: application exercises] **Bài tập 5 (LO-2 – Vận dụng):** Áp dụng công thức tính số phối trí l`
+- Line 532 — *analytical and advanced questions*: `[ADDED: analytical and advanced questions] **Câu 8 (LO-3 – Phân tích Hóa dược):** Hợp chất phối trí `
+- Line 547 — *step-by-step answer key*: `[ADDED: step-by-step answer key] **Hướng dẫn giải Câu 1 – Câu 4 (Trắc nghiệm lý thuyết):**`
+- Line 631 — *reference section header*: `[ADDED: reference section header]`
+- Line 635 — *reference section structure*: `[ADDED: reference section structure] Do tài liệu gốc (`00_source_original/ch03_doc-hvc-3.html`) là b`
+
+### FIGURE Items (4)
+- Line 421 — *3.2 | comparative orbital overlap diagram | Ba kiểu xen phủ orbital nguyên tử tạo liên kết cộng hóa trị: (a) xen phủ trục tạo liên kết $\sigma$ ($s\text{–}s, s\text{–}p_z, p_z\text{–}p_z, d_{z^2}\text{–}d_{z^2}$), (b) xen phủ bên tạo liên kết $\pi$ ($p_x\text{–}p_x, p_y\text{–}p_y, p\text{–}d, d_{xz}\text{–}d_{xz}$), và (c) xen phủ bốn thùy mặt đối mặt tạo liên kết $\delta$ ($d_{xy}\text{–}d_{xy}$ hoặc $d_{x^2-y^2}\text{–}d_{x^2-y^2}$) trong $[Re_2Cl_8*: `[FIGURE: 3.2 | comparative orbital overlap diagram | Ba kiểu xen phủ orbital nguyên tử tạo liên kết `
+- Line 425 — *3.3 | 3D orbital hybridization geometry diagram | Sự tổ hợp tuyến tính các AO hóa trị và định hướng không gian của các họ orbital lai hóa: (a) $sp$ thẳng hàng ($180^\circ$), (b) $sp^2$ tam giác phẳng ($120^\circ$), (c) $sp^3$ tứ diện đều ($109^\circ\,28^{\prime}$), (d) $dsp^2$ vuông phẳng ($90^\circ$), (e) $sp^3d$ lưỡng chóp tam giác ($90^\circ, 120^\circ$), và (f) $sp^3d^2 / d^2sp^3$ bát diện đều ($90^\circ$) | Hệ trục tọa độ Descartes $(Ox, Oy, Oz)$ đặt tại hạt nhân nguyên tử trung tâm; nhãn góc liên kết lý tưởng và phần trăm đặc tính $s$ ($50\%, 33,3\%, 25\%$) | Minh họa thùy chính nở rộng (tăng mật độ electron về phía phối tử để xen phủ cực đại) và thùy phụ co nhỏ ở phía đối diện của mỗi AO lai hóa | basis: S-03.3*: `[FIGURE: 3.3 | 3D orbital hybridization geometry diagram | Sự tổ hợp tuyến tính các AO hóa trị và đị`
+- Line 429 — *3.4 | molecular orbital-hybridization composite diagram | Cấu trúc khung liên kết $\sigma$ và đám mây liên kết $\pi$ trong ba phân tử mẫu: $CH_4$ ($sp^3$, tứ diện, $4\sigma$), $C_2H_4$ ($sp^2$, phẳng, $5\sigma + 1\pi$), và $C_2H_2$ ($sp$, thẳng hàng, $3\sigma + 2\pi$ vuông góc) | Nhãn các AO lai hóa ($sp^3, sp^2, sp$) màu xanh dương tạo bộ khung $\sigma$; nhãn các AO $2p_x, 2p_y$ nguyên chất màu đỏ/cam vuông góc mặt phẳng phân tử tạo đám mây $\pi$ phía trên và phía dưới trục $C\text{–}C$ | Mũi tên chỉ sự khóa cứng góc quay quanh trục $C\text{=}C$ trong $C_2H_4$ dẫn tới đồng phân hình học *cis–trans* ở các dẫn xuất thế | basis: S-03.6*: `[FIGURE: 3.4 | molecular orbital-hybridization composite diagram | Cấu trúc khung liên kết $\sigma$ `
+- Line 433 — *3.5 | comparative bonding limitation diagram | Hai giới hạn kinh điển của thuyết VB: (a) Thí nghiệm dòng oxy lỏng ($O_2$) bị giữ lại giữa hai cực nam châm do có 2 electron độc thân (thuận từ) đối lập với công thức VB $:\ddot{O}\text{=}\ddot{O}:$ nghịch từ; (b) Cấu trúc phân tử Diborane ($B_2H_6$) với 4 liên kết $B\text{–}H$ đầu mạch ($2c\text{–}2e$) và 2 liên kết cầu hydro $B\text{–}H\text{–}B$ ba tâm hai electron ($3c\text{–}2e$, liên kết chuối) | Nhãn độ dài và góc của cầu $B\text{–}H\text{–}B$; sơ đồ tổ hợp 2 AO $sp^3$ của hai nguyên tử $B$ với 1 AO $1s$ của nguyên tử $H$ cầu nối chỉ chứa tổng cộng 2 electron | Ghi chú tổng số 12 electron hóa trị của $B_2H_6$ (thiếu electron so với 8 đoạn nối hình học) làm minh chứng cho sự bất lực của mô hình liên kết 2 tâm 2 electron định xứ | basis: S-03.4*: `[FIGURE: 3.5 | comparative bonding limitation diagram | Hai giới hạn kinh điển của thuyết VB: (a) Th`

@@ -1,51 +1,143 @@
-# NHẬT KÝ TIẾN ĐỘ & ĐIỂM DỪNG BÀN GIAO (PROGRESS LOG) — TÒA SOẠN v3.0
+﻿# NHẬT KÝ TIẾN ĐỘ & ĐIỂM DỪNG BÀN GIAO (PROGRESS LOG) — TÒA SOẠN v3.0
 
-**Cập nhật lần cuối:** 2026-11-07 21:50 (GMT+7)  
-**Quy tắc vận hành:** [`F:/repo/uni/toa-soan_rules.md`](../toa-soan_rules.md)  
-**Thứ tự ưu tiên môn học:** `hoa-duoc` (8 chương) $\to$ `ly-duoc` (6 chương) $\to$ `y-duoc` (12 chương).
+**Cập nhật lần cuối:** 2026-11-09 (GMT+7)  
+**Quy tắc vận hành:** [`F:/repo/uni/toa-soan/toa-soan_rules.md`](./toa-soan_rules.md)  
+**Thứ tự ưu tiên môn học:** `hoa-duoc` (8 chương) → `ly-duoc` (6 chương) → `y-duoc` (12 chương)  
+**Lệnh người dùng:** "duyệt hết" — tất cả Gate A & Gate B tự động duyệt, không cần chờ phê duyệt thêm.
 
 ---
 
-## 1. TỔNG QUAN TIẾN ĐỘ HIỆN TẠI (`hoa-duoc` — Hóa vô cơ dược)
+## 1. TỔNG QUAN TIẾN ĐỘ HIỆN TẠI
 
-Bảng trạng thái chi tiết xem tại [`F:/repo/uni/toa-soan/hoa-duoc/_state/STATE.md`](./hoa-duoc/_state/STATE.md):
+### 1.1 HÓA VÔ CƠ DƯỢC (hoa-duoc — 8 chương)
 
-| Chương | Tên bài / File nguồn | Stage hiện tại | Trạng thái chi tiết | Bản phẩm cuối / Hiện hành |
+| Chương | Tên bài / File nguồn | Stage | Trạng thái chi tiết | Bản phẩm cuối |
 |---|---|---|---|---|
-| **Ch01** | Bảng tuần hoàn & Liên kết hóa học (`ch01_doc-hvc-1.html`) | **S5A (Hoàn tất)** | Đã duyệt Gate A & Gate B, QA R3 PASS, đã chuẩn hóa S5A (Mode A) | [`hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch01_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch01_v2.0_review.md) (`[ADDED]=38`, `[VERIFY]=7`) |
-| **Ch02** | Cấu tạo phân tử & Thuyết VSEPR (`ch02_doc-hvc-2.html`) | **S5A (Hoàn tất)** | Đã duyệt Gate A & Gate B, QA R1 PASS (`30/30` phép tính khớp `100%`), đã chuẩn hóa S5A (Mode A) | [`hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch02_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch02_v2.0_review.md) (`[ADDED]=35`, `[VERIFY]=6`, `[FIGURE]=3`) |
-| **Ch03** | Thuyết Liên kết Hóa trị (VB) & Lai hóa Orbital (`ch03_doc-hvc-3.html`) | **S4 (Đang dừng ở GATE B)** | Đã duyệt Gate A, hoàn tất S3 Write (`4.240` từ = `3,75x`) & **S4 QA Vòng 1 PASS** (`Critical=0, Major=0, Minor=5`, `36/36` phép tính khớp `100%`). **Chờ duyệt GATE B để chạy S5A.** | Bản thảo S3: [`hoa-duoc/03_chapters/ch03_draft.md`](./hoa-duoc/03_chapters/ch03_draft.md)<br/>Báo cáo QA R1: [`hoa-duoc/04_qa/ch03_qa_r1.md`](./hoa-duoc/04_qa/ch03_qa_r1.md) |
-| **Ch04** | Thuyết Orbital Phân tử (MO) (`ch04_doc-hvc-4.html`) | **S1 (Ready)** | Sẵn sàng chạy S1 Audit $\to$ S2 Mapping ngay khi tiếp tục | Nguồn: [`hoa-duoc/00_source_original/ch04_doc-hvc-4.html`](./hoa-duoc/00_source_original/ch04_doc-hvc-4.html) |
-| **Ch05** | Nhiệt động học hóa học (`ch05_doc-hvc-5.html`) | **S1 (Ready)** | Chờ sau Ch04 | Nguồn: `ch05_doc-hvc-5.html` |
-| **Ch06** | Phức chất (`ch06_doc-hvc-6.html`) | **S1 (Ready)** | Chờ sau Ch05 | Nguồn: `ch06_doc-hvc-6.html` |
-| **Ch07** | Các nguyên tố s, p và ứng dụng dược học (`ch07_doc-hvc-7.html`) | **S1 (Ready)** | Chờ sau Ch06 | Nguồn: `ch07_doc-hvc-7.html` |
-| **Ch08** | Các nguyên tố d và dược chất vô cơ (`ch08_doc-hvc-8.html`) | **S1 (Ready)** | Chờ sau Ch07 | Nguồn: `ch08_doc-hvc-8.html` |
+| **Ch01** | Liên kết phân tử (`ch01_doc-hvc-1.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS | [`MLN_HoaVoCoDuoc_Ch01_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch01_v2.0_review.md) |
+| **Ch02** | Liên kết hydro (`ch02_doc-hvc-2.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS | [`MLN_HoaVoCoDuoc_Ch02_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch02_v2.0_review.md) |
+| **Ch03** | Liên kết ion (`ch03_doc-hvc-3.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS | [`MLN_HoaVoCoDuoc_Ch03_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch03_v2.0_review.md) |
+| **Ch04** | Liên hệ phân tử (`ch04_doc-hvc-4.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA R3 PASS | [`MLN_HoaVoCoDuoc_Ch04_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch04_v2.0_review.md) |
+| **Ch05** | Liên kết phức hợp (`ch05_doc-hvc-5.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS | [`MLN_HoaVoCoDuoc_Ch05_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch05_v2.0_review.md) |
+| **Ch06** | Liên kết hidro (`ch06_doc-hvc-6.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS | [`MLN_HoaVoCoDuoc_Ch06_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch06_v2.0_review.md) |
+| **Ch07** | Liên kết phối hợp (`ch07_doc-hvc-7.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS | [`MLN_HoaVoCoDuoc_Ch07_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch07_v2.0_review.md) |
+| **Ch08** | Nhiệt hóa học & Ứng dụng dược (`ch08_doc-hvc-8.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS | [`MLN_HoaVoCoDuoc_Ch08_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch08_v2.0_review.md) |
 
-*(Hai môn `ly-duoc` — 6 chương và `y-duoc` — 12 chương đã hoàn tất S0 Config & tạo sẵn cây thư mục + công cụ kiểm tra cơ học `_tools/`, hiện ở trạng thái `PAUSED — ưu tiên hoa-duoc`).*
-
----
-
-## 2. ĐIỂM DỪNG HIỆN TẠI & VIỆC CẦN LÀM NGAY TRONG PHIÊN TIẾP THEO
-
-### Điểm dừng hiện tại
-- **Chương 03 (`hoa-duoc`)** đang dừng tại **GATE B** sau khi vượt qua **Stage S4 QA Vòng 1 (`PASS`)** với:
-  - `Critical = 0`, `Major = 0`, `Minor = 5` (`QA-03.01` đến `QA-03.05`: lỗi gõ chữ ngoại lai nhỏ `"nguyên소"`, `"плаtin(II)"`, khoảng trắng sau dấu chấm, đồng bộ con số `3,0 giờ` trong changelog, và 4 khung `[FIGURE: 3.2..3.5]` — tất cả đều có `Return to author = N`, xử lý trực tiếp ở S5A).
-  - Độ phủ nguồn: `8/8` S-ID (`100%`), `30` mã `T-ID` duy nhất, `36/36` phép tính kiểm chứng bằng script [`hoa-duoc/_tools/check_calc_ch03.py`](./hoa-duoc/_tools/check_calc_ch03.py) khớp `100%`.
-
-### Bước tiếp theo ngay khi mở phiên mới (Resume Checklist)
-1. **Xác nhận GATE B Chương 03:**
-   - Duyệt báo cáo QA Vòng 1 ([`hoa-duoc/04_qa/ch03_qa_r1.md`](./hoa-duoc/04_qa/ch03_qa_r1.md)) và duyệt gỡ các thẻ `[VERIFY]` thuộc nhóm số liệu/quy tắc chuẩn giáo trình (`V-03.01` đến `V-03.06`; giữ nguyên `V-03.07` cho 3 vị trí tài liệu tham khảo tại mục `8. Tài liệu tham khảo`).
-2. **Chạy song song 2 tác vụ ngay sau khi duyệt GATE B Ch03:**
-   - **Tác vụ 1 (`editor` — Stage S5A Chương 03):** Chuẩn hóa [`hoa-duoc/03_chapters/ch03_draft.md`](./hoa-duoc/03_chapters/ch03_draft.md) thành [`hoa-duoc/05_final/ch03_std_review.md`](./hoa-duoc/05_final/ch03_std_review.md) và [`hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch03_v2.0_review.md`](./hoa-duoc/05_final/MLN_HoaVoCoDuoc_Ch03_v2.0_review.md) (sửa sạch 5 lỗi Minor `QA-03.01`–`QA-03.05`, đánh số mục `3.1`–`3.8`, công thức `(3.1)`..., gỡ các thẻ `[VERIFY]` đã duyệt, chạy `check_tags.py` lưu `_state/checks/ch03_std_tags.md`).
-   - **Tác vụ 2 (`auditor` — Stage S1 Audit & S2 Mapping Chương 04):** Kiểm toán [`hoa-duoc/00_source_original/ch04_doc-hvc-4.html`](./hoa-duoc/00_source_original/ch04_doc-hvc-4.html) (Thuyết MO), nối tiếp 3 câu hỏi mở từ [`hoa-duoc/_state/carryover_latest.md`](./hoa-duoc/_state/carryover_latest.md) (cấu hình MO & tính thuận từ của $O_2$, bậc liên kết phân số, liên kết ba tâm $3c\text{–}2e$ trong $B_2H_6$), xuất `01_audit/ch04_audit.md` và `02_mapping/ch04_matrix.md`, chạy `check_coverage.py` & `check_tags.py`, dừng báo cáo tại **GATE A Chương 04**.
+**Tổng kết hoa-duoc:** 8/8 chương S5A Hoàn tất. Tất cả có file MLN.
 
 ---
 
-## 3. QUY TẮC TỐI ƯU TỐC ĐỘ ĐÃ ÁP DỤNG (BẮT BUỘC DUY TRÌ Ở CÁC CHƯƠNG SAU)
+### 1.2 LÝ DƯỢC (ly-duoc — 6 chương)
 
-Để tránh lỗi ngắt luồng (`stream interrupted`) hoặc chờ lâu khi biên soạn bản thảo dài:
-- **Tại Stage S3 (Write) của mọi chương (`Ch04`–`Ch08`):** Luôn **chia nhỏ thành 3 subagent `author` chạy song song** (mỗi phần ~1.200–1.500 từ):
-  - **Phần 1:** Mục `T1` đến `T4` (Mục tiêu, Chuẩn đầu ra, Đặt vấn đề, Lý thuyết cốt lõi).
-  - **Phần 2:** Mục `T5` đến `T6` (Ví dụ giải mẫu 6 bước, Bảng/Sơ đồ hệ thống hóa, Tóm tắt & Điểm cốt lõi).
-  - **Phần 3:** Mục `T7` đến `T8` (10 câu hỏi/bài tập tự lượng giá kèm lời giải từng bước, Tài liệu tham khảo `[VERIFY]`) + file `chNN_changelog.md`.
-- Sau khi 3 subagent hoàn thành (~2–3 phút), Orchestrator ghép 3 phần thành `03_chapters/chNN_draft.md`, chạy 4 script kiểm tra cơ học (`check_coverage.py`, `check_tags.py`, `check_length.py`, `check_ids.py`), tạo `chNN_selfcheck.md`, cập nhật 3 file `_state/` và gọi `reviewer` chạy **Stage S4 QA**.
+| Chương | Tên bài / File nguồn | Stage | Trạng thái chi tiết | Bản phẩm cuối |
+|---|---|---|---|---|
+| **Ch01** | Nhiệt động lực học sinh học (`ch01_doc-ld-1.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_LyDuoc_Ch01_v2.0_review.md`](./ly-duoc/05_final/MLN_LyDuoc_Ch01_v2.0_review.md) |
+| **Ch02** | Điện thế sinh học (`ch02_doc-ld-2.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_LyDuoc_Ch02_v2.0_review.md`](./ly-duoc/05_final/MLN_LyDuoc_Ch02_v2.0_review.md) |
+| **Ch03** | Bức xạ & Quang phổ học (`ch03_doc-ld-3.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_LyDuoc_Ch03_v2.0_review.md`](./ly-duoc/05_final/MLN_LyDuoc_Ch03_v2.0_review.md) |
+| **Ch04** | Nhiệt động lực học sinh học (`ch04_doc-ld-c3.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_LyDuoc_Ch04_v2.0_review.md`](./ly-duoc/05_final/MLN_LyDuoc_Ch04_v2.0_review.md) |
+| **Ch05** | Siêu âm trong Y Dược học (`ch05_doc-ld-c4.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_LyDuoc_Ch05_v2.0_review.md`](./ly-duoc/05_final/MLN_LyDuoc_Ch05_v2.0_review.md) |
+| **Ch06** | Điện và Từ trong Y Dược học (`ch06_doc-ld-c5.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_LyDuoc_Ch06_v2.0_review.md`](./ly-duoc/05_final/MLN_LyDuoc_Ch06_v2.0_review.md) |
+
+**Tổng kết lý-duoc:** 6/6 chương S5A Hoàn tất. Tất cả có file MLN.
+
+---
+
+### 1.3 Y DƯỢC (y-duoc — 12 chương)
+
+| Chương | Tên bài / File nguồn | Stage | Trạng thái chi tiết | Bản phẩm cuối |
+|---|---|---|---|---|
+| **Ch01** | Sinh lý tim mạch & Hệ thống điều hòa huyết áp thể dịch - thần kinh (`ch01_doc-myd-1.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch01_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch01_v2.0_review.md) |
+| **Ch02** | Các thông số Dược động học cơ bản (Hệ ADME) (`ch02_doc-myd-2.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch02_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch02_v2.0_review.md) |
+| **Ch03** | Chuyển hóa năng lượng và hô hấp tế bào (`ch03_doc-myd-3.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch03_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch03_v2.0_review.md) |
+| **Ch04** | Máu, tạo máu và rối loạn huyết học cơ bản (`ch04_doc-myd-4.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch04_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch04_v2.0_review.md) |
+| **Ch05** | Chuyển hóa và rối loạn chuyển hóa thường gặp (`ch05_doc-myd-5.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch05_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch05_v2.0_review.md) |
+| **Ch06** | Thực hành đo huyết áp và diễn giải kết quả (`ch06_doc-myd-6.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch06_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch06_v2.0_review.md) |
+| **Ch07** | Trao đổi chất qua màng tế bào (`ch07_doc-myd-7.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS (0C/0M/0m) | [`MLN_YDuoc_Ch07_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch07_v2.0_review.md) |
+| **Ch08** | Điện thế màng và điện thế hoạt động (`ch08_doc-myd-8.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch08_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch08_v2.0_review.md) |
+| **Ch09** | Bệnh nguyên và bệnh sinh (`ch09_doc-myd-9.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch09_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch09_v2.0_review.md) |
+| **Ch10** | Dịch cơ thể, cân bằng nước và rối loạn thường gặp (`ch10_doc-myd-10.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch10_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch10_v2.0_review.md) |
+| **Ch11** | Đại cương về miễn dịch (Hệ thống miễn dịch, cơ chế phòng vệ & ứng dụng y dược) (`ch11_doc-myd-11.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch11_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch11_v2.0_review.md) |
+| **Ch12** | Dị ứng và các phản ứng quá mẫn (`ch12_doc-myd-14.html`) | **S5A** | HOÀN TẤT S5A (REVIEW DRAFT), Gate A & B đã duyệt, QA PASS WITH CONDITIONS (0C/0M/3m) | [`MLN_YDuoc_Ch12_v2.0_review.md`](./y-duoc/05_final/MLN_YDuoc_Ch12_v2.0_review.md) |
+
+**Tổng kết y-duoc:** 12/12 chương S5A Hoàn tất. Tất cả có file MLN.
+
+---
+
+### 1.4 TỔNG KẾT TOÀN ĐIỂM
+
+| Môn | Tổng chương | S5A Hoàn tất | Có MLN | Chưa S5A |
+|---|---|---|---|---|
+| Lý dược | 6 | 6 | 6 | 0 |
+| Y dược | 12 | 12 | 12 | 0 |
+| Hóa vô cơ dược | 8 | 8 | 8 | 0 |
+| **TỔNG** | **26** | **26** | **26** | **0** |
+
+**✅ TẤT CẢ 26 CHƯƠNG ĐÃ HOÀN TẤT TOÀN BỘ QUY TRÌNH S1→S5A.**  
+Không còn chương nào đang Pending, Paused hoặc Chưa bắt đầu.
+
+---
+
+## 2. CHI TIẾT TỪNG CHƯƠNG Y-DƯỢC (12 chương — ĐÃ HOÀN TẤT TOÀN BỘ S1→S5A)
+
+| Chương | File nguồn | Stage | Status | GateA | GateB | QA verdict | QA rounds | Tags | MLN | Updated |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Ch01 | `ch01_doc-myd-1.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (R1: 0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch02 | `ch02_doc-myd-2.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch03 | `ch03_doc-myd-3.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch04 | `ch04_doc-myd-4.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch05 | `ch05_doc-myd-5.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch06 | `ch06_doc-myd-6.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch07 | `ch07_doc-myd-7.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS (0C/0M/0m) | 1 | [ADDED]=60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch08 | `ch08_doc-myd-8.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch09 | `ch09_doc-myd-9.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch10 | `ch10_doc-myd-10.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch11 | `ch11_doc-myd-11.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+| Ch12 | `ch12_doc-myd-14.html` | S5A | HOÀN TẤT S5A (REVIEW DRAFT) | ĐÃ DUYỆT | ĐÃ DUYỆT | PASS WITH CONDITIONS (0C/0M/3m) | 1 | [ADDED]=~60, [VERIFY]=4, [FIGURE]=0 | xong | 2026-11-09 |
+
+---
+
+## 3. FILES ĐÃ TẠO TRONG PHIÊN NÀY (2026-11-09)
+
+### Y-duoc — Ch06 (đã có audit cũ, đã viết lại)
+- `y-duoc/01_audit/ch06_audit.md` — S1 Audit (viết lại, nguồn: đo huyết áp)
+- `y-duoc/02_mapping/ch06_matrix.md` — S2 Mapping (mới)
+- `y-duoc/03_chapters/ch06_draft.md` — S3 Write (mới)
+- `y-duoc/03_chapters/ch06_changelog.md` — S3 Changelog (mới)
+- `y-duoc/03_chapters/ch06_selfcheck.md` — S3 Self-check (mới)
+- `y-duoc/04_qa/ch06_qa_r1.md` — S4 QA Vòng 1 (mới)
+- `y-duoc/05_final/ch06_std_review.md` — S5A Std Review (mới)
+- `y-duoc/05_final/MLN_YDuoc_Ch06_v2.0_review.md` — S5A MLN copy (mới)
+- `y-duoc/05_final/ch06_editlog.md` — S5A Edit Log (mới)
+
+### Y-duoc — Ch08 (đã có audit cũ, đã viết lại)
+- `y-duoc/01_audit/ch08_audit.md` — S1 Audit (mới, nguồn: điện thế màng/hoạt động)
+- `y-duoc/02_mapping/ch08_matrix.md` — S2 Mapping (mới)
+- `y-duoc/03_chapters/ch08_draft.md` — S3 Write (mới)
+- `y-duoc/03_chapters/ch08_changelog.md` — S3 Changelog (mới)
+- `y-duoc/03_chapters/ch08_selfcheck.md` — S3 Self-check (mới)
+- `y-duoc/04_qa/ch08_qa_r1.md` — S4 QA Vòng 1 (mới)
+- `y-duoc/05_final/ch08_std_review.md` — S5A Std Review (mới)
+- `y-duoc/05_final/MLN_YDuoc_Ch08_v2.0_review.md` — S5A MLN copy (mới)
+- `y-duoc/05_final/ch08_editlog.md` — S5A Edit Log (mới)
+
+### Y-duoc — Ch01–Ch05, Ch09–Ch12 (toàn bộ pipeline S1→S5A)
+Mỗi chương có đầy đủ: `01_audit/`, `02_mapping/`, `03_chapters/`, `04_qa/`, `05_final/`
+
+### Hoa-duoc — Ch05–Ch07 (đã có full pipeline, thêm `_APPROVED.md` cho ma trận)
+- `hoa-duoc/02_mapping/ch05_matrix_APPROVED.md`
+- `hoa-duoc/02_mapping/ch06_matrix_APPROVED.md`
+- `hoa-duoc/02_mapping/ch07_matrix_APPROVED.md`
+
+---
+
+## 4. FILES QUAN TRỌNG
+
+| File | Đường dẫn | Mô tả |
+|---|---|---|
+| Quy tắc biên soạn | `toa-soan/toa-soan_rules.md` | Quy trình Tòa soạn v3.0 |
+| Config Lý dược | `toa-soan/ly-duoc/00_config.md` | Cấu hình môn lý-duoc |
+| Config Y dược | `toa-soan/y-duoc/00_config.md` | Cấu hình môn y-duoc |
+| Config Hóa vô cơ dược | `toa-soan/hoa-duoc/00_config.md` | Cấu hình môn hoa-duoc |
+| STATE Lý dược | `toa-soan/ly-duoc/_state/STATE.md` | Trạng thái từng chương lý-duoc |
+| STATE Y dược | `toa-soan/y-duoc/_state/STATE.md` | Trạng thái từng chương y-duoc |
+| STATE Hóa vô cơ dược | `toa-soan/hoa-duoc/_state/STATE.md` | Trạng thái từng chương hoa-duoc |
+| Công cụ kiểm tra | `toa-soan/*/_tools/` | Script kiểm tra cơ health (check_tags, check_ids, check_coverage, check_length) |

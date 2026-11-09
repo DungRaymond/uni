@@ -1,6 +1,6 @@
 # GLOSSARY RUNNING — Hóa vô cơ dược – Master Lecture Notes
 
-*Cập nhật: 2026-11-07 sau khi hoàn thành Stage S3 của Chương 02*
+*Cập nhật: 2026-11-07 sau khi hoàn thành Stage S3 của Chương 04*
 
 | Thuật ngữ (Tiếng Việt) | Thuật ngữ gốc (English / INN) | Định nghĩa tóm tắt | Xuất hiện đầu tiên tại | Trạng thái xung đột |
 |---|---|---|---|---|
@@ -41,3 +41,16 @@
 | Phức bát diện ngoài | Outer-orbital Complex ($sp^3d^2$) | Phức chất bát diện sử dụng 2 orbital $nd$ lớp ngoài ($nd_{z^2}, nd_{x^2-y^2}$), thường gặp với phối tử trường yếu tạo trạng thái spin cao (như $[FeF_6]^{3-}$). | `T-03.4.5` | Chuẩn |
 | Phức bát diện trong | Inner-orbital Complex ($d^2sp^3$) | Phức chất bát diện sử dụng 2 orbital $(n-1)d$ lớp sát ngoài ($(n-1)d_{z^2}, (n-1)d_{x^2-y^2}$), thường gặp với phối tử trường mạnh tạo trạng thái spin thấp (như $[Fe(CN)_6]^{3-}$). | `T-03.4.5` | Chuẩn |
 | Liên kết ba tâm hai electron | Three-center Two-electron Bond ($3c\text{–}2e$) | Liên kết đa tâm thiếu electron trong đó 3 nguyên tử dùng chung 1 cặp electron (ví dụ cầu $\text{B–H–B}$ trong $B_2H_6$). | `T-03.4.6` | Chuẩn |
+| Thuyết orbital phân tử | Molecular Orbital Theory (MO) | Mô hình lượng tử xem phân tử là một tập hợp hạt nhân và electron thống nhất; electron chiếm các MO trải trên toàn phân tử (quan điểm đa tâm), thay vì cặp electron định xứ của VB. | `T-04.4.1` | Chuẩn |
+| Tổ hợp tuyến tính các AO | Linear Combination of Atomic Orbitals (LCAO) | Tổ hợp $\Psi = c_A\varphi_A + c_B\varphi_B$; đồng pha tạo MO liên kết, nghịch pha tạo MO phản liên kết. | `T-04.4.1.2` | Chuẩn |
+| MO liên kết / phản liên kết | Bonding / Antibonding MO | MO liên kết ($\Psi$) có năng lượng thấp hơn AO gốc và tăng mật độ electron liên nhân; MO phản liên kết ($\Psi^*$) cao hơn và có mặt phẳng nút giữa hai hạt nhân. | `T-04.4.1.2` | Chuẩn |
+| Điều kiện chuẩn hóa | Normalization condition | $c_A^2 + c_B^2 = 1$ (bỏ qua xen phủ); đồng hạch $c_A = \pm c_B = 1/\sqrt{2}$; dị hạch $c_A \neq c_B$. | `T-04.4.1.3` | Chuẩn |
+| Tích phân xen phủ | Overlap Integral ($S_{AB}$) | $S_{AB} = \int \varphi_A\varphi_B\,d\tau$, không thứ nguyên, $0 \le S_{AB} \le 1$; càng lớn thì tương tác càng mạnh. | `T-04.4.2.2` | Chuẩn |
+| MO không liên kết | Non-bonding MO ($n$) | MO có năng lượng xấp xỉ AO gốc, không làm bền cũng không phá bền liên kết; thường là orbital $n$ (cặp electron tự do). | `T-04.4.3.1` | Chuẩn |
+| Bậc liên kết theo MO | MO Bond Order ($BO$) | $BO = (N_b - N_a)/2$; bậc bán nguyên khi electron độc thân chỉ chiếm một trong hai MO suy biến; không áp dụng cho liên kết đa tâm $3c\text{–}2e$. | `T-04.4.3.2` | Chuẩn |
+| Thuận từ | Paramagnetic | Tính chất của tiểu phân có ít nhất một electron độc thân, bị hút nhẹ vào từ trường ngoài. Tiêu chí là electron độc thân, không phải bậc liên kết lẻ. | `T-04.4.3.3` | Chuẩn |
+| Nghịch từ | Diamagnetic | Tính chất của tiểu phân có toàn bộ electron ghép đôi, bị đẩy nhẹ khỏi từ trường ngoài. | `T-04.4.3.3` | Chuẩn |
+| Trộn cấu hình s–p | s–p Mixing | Tương tác cấu hình giữa $\sigma_{2s}/\sigma^*_{2s}$ và $\sigma_{2p_z}$ khi $\Delta E(2p-2s)$ nhỏ ($Z \le 7$), làm $\sigma_{2p_z}$ bị đẩy lên trên $\pi_{2p}$. | `T-04.4.4.2` | Chuẩn |
+| Orbital biên | Frontier Orbital (HOMO/LUMO) | HOMO là MO bị chiếm có năng lượng cao nhất; LUMO là MO trống có năng lượng thấp nhất; tương tác HOMO–LUMO điều khiển phản ứng và liên kết phối trí. | `T-04.4.5.2` | Chuẩn |
+| Cho sigma / phản hồi pi | σ-donor / π-backbonding | CO cho cặp electron ở HOMO ($\sigma$ trên $C$) vào $d$ trống của kim loại và nhận mật độ electron phản hồi vào LUMO $\pi^*$. | `T-04.4.5.2` | Chuẩn |
+| Liên kết ba tâm – hai electron (MO) | Three-center Two-electron Bond ($3c\text{–}2e$) | Hai AO $sp^3$ của B và một AO $1s$ của H cầu tổ hợp thành 3 MO; 2 electron chiếm MO liên kết trải trên ba tâm, mô tả cầu $\text{B–H–B}$ trong $B_2H_6$. | `T-04.4.6` | Chuẩn |

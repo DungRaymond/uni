@@ -11,6 +11,10 @@ import argparse
 from pathlib import Path
 
 def strip_markup(text):
+    # Remove math display and inline FIRST: math contains < and > comparison
+    # signs that would otherwise be mistaken for HTML tags and swallow prose.
+    text = re.sub(r"\$\$.*?\$\$", " ", text, flags=re.DOTALL)
+    text = re.sub(r"\$[^$]+\$", " ", text)
     # Remove HTML tags
     text = re.sub(r"<[^>]+>", " ", text)
     # Remove markdown links [text](url) -> text
@@ -18,9 +22,6 @@ def strip_markup(text):
     # Remove code blocks
     text = re.sub(r"```.*?```", " ", text, flags=re.DOTALL)
     text = re.sub(r"`[^`]+`", " ", text)
-    # Remove math display and inline
-    text = re.sub(r"\$\$.*?\$\$", " ", text, flags=re.DOTALL)
-    text = re.sub(r"\$[^$]+\$", " ", text)
     # Normalize whitespace
     return text
 

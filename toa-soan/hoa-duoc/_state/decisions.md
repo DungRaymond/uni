@@ -61,3 +61,56 @@
   - **Q4 (Bảng tổng hợp, sơ đồ Mermaid & Placeholder `[FIGURE]`):** Đồng ý bổ sung `Bảng 3.1`, `Bảng 3.2`, 1 lưu đồ Mermaid (`T-03.5.4`) và 4 placeholder `[FIGURE 3.k | ...]` (`T-03.5.5`).
   - **Q5 (Đánh giá `T7`):** Đồng ý xây dựng bộ 10 câu hỏi/bài tập tự lượng giá kèm lời giải chi tiết phủ kín `LO-1` đến `LO-4`.
 - Chuyển sang Stage: **S3 Write → S4 QA** cho Chương 3.
+
+## 2026-11-07 — Phê duyệt GATE B: Chương 3
+- Lệnh người dùng (nguyên văn): "Duyệt Gate B Ch03"
+- Trạng thái: **Phê duyệt chính thức GATE B** cho Chương 3 (`03_chapters/ch03_draft.md`, QA Verdict: `PASS`, `Critical = 0`, `Major = 0`, `Minor = 5` theo `04_qa/ch03_qa_r1.md`).
+- Quyết định về thẻ `[VERIFY]`:
+  - Người dùng duyệt gỡ **6 nhóm** `V-03.01` đến `V-03.06` (tương ứng `25` thẻ `[VERIFY]` trong bản thảo) trong bản chuẩn hóa S5A, ghi rõ vào `05_final/ch03_editlog.md`.
+  - Giữ nguyên `V-03.07a`, `V-03.07b`, `V-03.07c` tại mục `T-03.8.1` (3 vị trí tài liệu tham khảo; `APPROVED_REFERENCE_LIST: none`, tuân thủ R4).
+- Xử lý 5 góp ý Minor `QA-03.01`–`QA-03.05` trực tiếp ở S5A (`Return to author = N`).
+- Chuyển sang Stage: **S5A Standardize Chapter 03**.
+
+## 2026-11-07 — Phê duyệt GATE A: Chương 4
+- Lệnh người dùng (nguyên văn): "Duyệt Gate A, đồng ý Q1–Q5" (chọn phương án khuyến nghị).
+- Trạng thái: **Phê duyệt chính thức GATE A** cho Ma trận ánh xạ Chương 4 (`02_mapping/ch04_matrix_APPROVED.md`, `REMOVE = 0`, `Unmapped S-IDs = 0`, coverage `9/9`).
+- Quyết định cho 5 câu hỏi mở (`Q1`–`Q5`) — **đồng ý toàn bộ**:
+  - **Q1:** Bổ sung `[ADDED]` tiểu mục lý thuyết `T-04.4.6` và ví dụ `T-04.5.4` về liên kết $3c\text{–}2e$ trong $B_2H_6$ (kiến thức giáo trình chuẩn, không thêm dữ liệu nghiên cứu mới).
+  - **Q2:** Bổ sung điều kiện chuẩn hóa $c_A^2+c_B^2=1$, ghi chú $c_A \neq c_B$ cho dị hạch và biểu thức năng lượng MO dạng $\alpha,\beta,S$ ở mức giới thiệu (`[ADDED: standard LCAO background]`).
+  - **Q3:** Giữ tiêu chí "còn electron độc thân → thuận từ", bỏ vế sai "BO lẻ → thuận từ"; ghi thay đổi vào changelog (R6) và gắn `[VERIFY]`.
+  - **Q4:** Bổ sung nguyên tắc chung của giản đồ MO dị hạch; điền cấu hình/$BO$/từ tính chuẩn của $B_2, C_2, F_2$ vào `Bảng 4.2` (gắn `[ADDED]` + `[VERIFY]`).
+  - **Q5:** Nâng chương lên khoảng `4.000–4.500` từ với bộ `10` câu hỏi/bài tập có đáp án chi tiết tại `T7`, phủ `LO-1`..`LO-4`.
+- Chuyển sang Stage: **S3 Write → S4 QA** cho Chương 4.
+
+## 2026-11-08 — Phê duyệt GATE B: Chương 4
+- Lệnh người dùng (nguyên văn): "duyệt" (trả lời trực tiếp báo cáo GATE B Chương 04).
+- Trạng thái: **Phê duyệt chính thức GATE B** cho Chương 4 (`03_chapters/ch04_draft.md`; QA Verdict `PASS` theo `04_qa/ch04_qa_r3.md`: `Critical = 0`, `Major = 0`, `Minor = 1`).
+- Xử lý `QA3-04.01` (Minor, `Return to author = N`) ngay trong S5A: giới hạn phát biểu "dãy oxygen có $BO$ bán nguyên" thành **chỉ $O_2^+$ (2,5) và $O_2^-$ (1,5)**; nêu rõ $O_2$ ($BO = 2$) và $O_2^{2-}$ ($BO = 1$) là số nguyên; áp dụng nhất quán ở 3 vị trí (dòng 123, 217, 340 của bản nháp). **Không thay đổi bất kỳ giá trị số nào.**
+- Quyết định về thẻ `[VERIFY]` (tổng 44 thẻ → giữ 5 thẻ):
+  - **Duyệt GỠ 10 nhóm** `V-04.01`, `V-04.02`, `V-04.03`, `V-04.05`, `V-04.06`, `V-04.07`, `V-04.09`, `V-04.10`, `V-04.11`, `V-04.12` = **39 thẻ**, gồm dữ kiện chuẩn của giáo trình và dữ kiện lấy trực tiếp từ nguồn `S-04.1`–`S-04.6`. Ghi từng thẻ vào `05_final/ch04_editlog.md` mục C.
+  - **GIỮ** `V-04.04` — ngưỡng $\Delta E$ còn hai giá trị chưa chốt ($10$–$14$ eV theo `S-04.2` và $\le 12$ eV cho $2p$–$2s$ theo `S-04.4`); cần chuyên gia quyết. **2 thẻ** (dòng 85, 452).
+  - **GIỮ** `V-04.08` — tài liệu tham khảo gốc (`APPROVED_REFERENCE_LIST: none`, Rule R4, không được bịa nguồn). **3 thẻ** (dòng 548–550).
+  - Bản chuẩn hóa vì vậy là **REVIEW DRAFT** (còn 5 thẻ), không phải CLEAN RELEASE.
+- Các điểm "chuyển chuyên gia" (mục H của QA R3) **không sửa** trong S5A vì thuộc nội dung: cụm "quang phổ phức chất" (dòng 9), câu tuyệt đối hóa ở Bảng 4.4, ngưỡng $\Delta E$, dữ kiện ngoài nguồn, tài liệu tham khảo, sản xuất 5 hình, `LO-3`, chính sách `[ADDED]`. Ghi vào mục E ("Recommended content changes") của edit log.
+- Chuyển sang Stage: **S5A Standardize Chapter 04** (subagent `editor`, Mode A).
+
+## 2026-11-09 — Phê duyệt GATE A (sau S1 Audit): Chương 5
+- Lệnh người dùng (nguyên văn): "duyệt" (trả lời trực tiếp báo cáo S1 Audit Chương 05).
+- Trạng thái: **Phê duyệt chính thức S1 Audit / GATE A (sau audit)** cho Chương 5 (`01_audit/ch05_audit.md`).
+- Nguồn D-05: 58 dòng, 1.129 từ, 3 h4, 2 formula-box, 2 example-box, 1 callout, 0 bảng/hình/trích dẫn. 6 S-ID (S-05.1–S-05.6).
+- Chuyển sang Stage: **S2 Mapping** (xây dựng `02_mapping/ch05_matrix.md`) → rồi trình duyệt GATE A ma trận → S3 Write.
+
+## 2026-11-09 — S2 Mapping hoàn tất: Chương 5
+- Tạo `02_mapping/ch05_matrix.md`: 15 dòng ma trận, độ phủ 6/6 S-ID (100%), REMOVE = 0.
+- Hành động: 9 ADD / 2 KEEP / 4 MERGE.
+- Đang dừng tại GATE A Chương 05 (ma trận + 5 câu hỏi mở Q1–Q5), chờ người dùng duyệt trước khi chạy S3 Write.
+
+## 2026-11-09 — Phê duyệt GATE A (ma trận): Chương 5
+- Lệnh người dùng (nguyên văn): "duyệt hết" → chấp nhận toàn bộ ma trận `02_mapping/ch05_matrix.md` và 5 câu hỏi mở Q1–Q5 theo phương án khuyến nghị.
+- Quyết định Q1–Q5:
+  - Q1 (Tên chương): Dùng tên tạm **"Lực liên phân tử & Liên kết hydro"** (chưa có trong file HTML, chỉ tại MANIFEST); ghi `V-05.01` Open để chốt tên sau.
+  - Q2 (Phạm vi nhiệt động học): Giữ phạm vi lực liên phân tử & liên kết hydro theo nguồn D-05; không bổ sung enthalpy/entropy/Gibbs (không có trong nguồn, không bịa).
+  - Q3 (Bổ sung công thức & bài tập): Đồng ý S3 bổ sung công thức định lượng (London, năng lượng liên kết hydro), ví dụ tính toán và bộ 10 câu hỏi/bài tập, gắn `[ADDED]`.
+  - Q4 (Hình & bảng): Đồng ý S3 đặt placeholder `[FIGURE]` và bảng tổng hợp mới, gắn `[ADDED]`.
+  - Q5 (Tài liệu tham khảo): Đồng ý S3 để `[VERIFY: reference needed …]`, `APPROVED_REFERENCE_LIST: none`, không bịa nguồn.
+- Trạng thái: **GATE A Chương 05 ĐÃ DUYỆT** ma trận. Chuyển sang **S3 Write** (`03_chapters/ch05_draft.md`).
