@@ -386,13 +386,13 @@ flowchart TD
 [ADDED: figure placeholders for 3D molecular geometries and bond-angle distortions]
 Theo quy chuẩn trình bày hình học lập thể (`FIGURE_POLICY`), các cấu trúc không gian 3 chiều (biểu diễn bằng quy ước nét liền trong mặt phẳng giấy, nét đậm hình nêm hướng về phía người quan sát và nét đứt hướng ra xa người quan sát) được định nghĩa tại các khung giữ chỗ đồ họa (**Hình 2.2**, **Hình 2.3** và **Hình 2.4**) dưới đây để phục vụ chế bản giáo trình:
 
-[FIGURE: 2.2 | 3D molecular geometry chart | Bảng trực quan hóa 5 khung hình học cặp electron cơ bản (SN = 2 đến SN = 6) và toàn bộ 13 dạng hình học phân tử dẫn xuất AX_mE_n trong không gian 3 chiều (quy ước nét liền - nét đậm wedge - nét đứt dash) | Trục dọc: Số phối trí lập thể SN = 2, 3, 4, 5, 6; Trục ngang: Số cặp electron tự do n = 0, 1, 2, 3 | Hiển thị rõ các thùy đám mây cặp electron tự do (LP) và ghi chú góc liên kết lý thuyết/thực tế cho từng kiểu từ AX2 đến AX4E2 | basis: S-02.3, ADDED]
+<img src="/images/fig_ch02_2.2_molecular_geometry.svg" alt="2.2 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 **Hình 2.2.** Hệ thống mô hình không gian 3 chiều của 13 kiểu hình học phân tử VSEPR từ $SN = 2$ đến $SN = 6$.
 
-[FIGURE: 2.3 | 3D stereochemical diagram | Sơ đồ đối chiếu vị trí trục (axial, góc 90°) và vị trí mặt phẳng xích đạo (equatorial, góc 120°) trong khung lưỡng chóp tam giác (SN = 5), kèm minh họa sự thay thế tuần tự các vị trí xích đạo bởi cặp LP trong dãy PCl5 (AX5, lưỡng chóp tam giác) -> SF4 (AX4E, cái bập bênh, góc ≈87° và ≈102°) -> ClF3 (AX3E2, dạng chữ T, góc ≈87,5°) -> XeF2 (AX2E3, thẳng hàng 180°) | Trục thẳng đứng (ax) và mặt phẳng ngang tam giác (eq) | Biểu diễn mũi tên tương tác đẩy góc 90° (2 tương tác khi LP ở xích đạo so với 3 tương tác khi LP ở trục) | basis: S-02.4, S-02.7, ADDED]
+<img src="/images/fig_ch02_2.3_3d_stereochemical.svg" alt="2.3 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 **Hình 2.3.** Bất đối xứng vị trí trục – xích đạo và sự hình thành các dạng hình học dẫn xuất trong khung $SN = 5$.
 
-[FIGURE: 2.4 | comparative bond-angle diagram | Sơ đồ so sánh sự thu hẹp góc liên kết thực nghiệm theo hai cơ chế: (a) Tăng số cặp electron tự do trên khung SN = 4: CH4 (109,5°) > NH3 (107,3°) > H2O (104,5°); và (b) Tăng độ âm điện của phối tử theo Quy tắc Bent: H2O (104,5°) > OF2 (103,1°) và NH3 (107,3°) > NF3 (102,5°) | Các cặp mô hình phân tử 3D đặt song song kèm cung đo góc liên kết \theta | Minh họa sự phình to của đám mây LP gần tâm hạt nhân A và sự dịch chuyển mật độ đám mây BP về phía nguyên tử F có độ âm điện lớn | basis: S-02.1, S-02.4, S-02.6, ADDED]
+<img src="/images/fig_ch02_2.4_comparative_bond_angle.svg" alt="2.4 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 **Hình 2.4.** Minh họa trực quan sự biến dạng góc liên kết do lực đẩy cặp electron tự do ($\text{LP}$) và do hiệu ứng độ âm điện theo Quy tắc Bent.
 
 ---

@@ -265,15 +265,15 @@ flowchart TD
 
 Các khung dưới đây chỉ là giữ chỗ, **chưa được vẽ** `[ADDED: figure placeholder specifications]`.
 
-[FIGURE: 7.1 | coordination isomer diagram | cơ cấu cisplatin (cis) và transplatin (trans) | Hai phân tử $[Pt(NH_3)_2Cl_2]$ vuông phẳng bên nhau; đường nét nối từ $Cl$ đến base Guanine trên DNA chỉ trong dạng cis | Nhãn $Cl$, $NH_3$, $Pt$, Guanine, liên kết chéo DNA | basis: S-07.6]
+<img src="/images/fig_ch07_7.1_coordination_isomer.svg" alt="7.1 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 7.1.** Cơ cấu cisplatin (cis) và transplatin (khung giữ chỗ). `[ADDED: Figure 7.1 caption]`
 
-[FIGURE: 7.2 | optical isomer diagram | đối quang Δ và Λ của $[Co(en)_3]^{3+}$ | Hai phân tử $[Co(en)_3]^{3+}$ là ảnh gương qua gương; 3 vòng chelat en xoắn tạo hình xoắn kép | Nhãn Δ (xoắn phải), Λ (xoắn trái), en | basis: S-07.7]
+<img src="/images/fig_ch07_7.2_optical_isomer.svg" alt="7.2 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 7.2.** Đối quang Δ/Λ của $[Co(en)_3]^{3+}$ (khung giữ chỗ). `[ADDED: Figure 7.2 caption]` `[VERIFY: optical isomerism (V-07.02)]`
 
-[FIGURE: 7.3 | classification flowchart | sơ đồ phân loại tổng thể đồng phân phức chất | Hai nhánh lớn (Cấu trúc & Lập thể) với 6 loại đồng phân; tiêu chí phân biệt cho mỗi loại | Nhãn Ion hóa, Solvat, Liên kết, Phối trí, Hình học, Quang học | basis: S-07.1]
+<img src="/images/fig_ch07_7.3_classification_flowchart.svg" alt="7.3 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 7.3.** Sơ đồ phân loại tổng thể đồng phân phức chất (khung giữ chỗ). `[ADDED: Figure 7.3 caption]`
 

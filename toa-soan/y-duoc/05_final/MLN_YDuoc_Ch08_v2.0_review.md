@@ -121,9 +121,9 @@ flowchart LR
 
 ### 5.4 Minh Họa Trực quan (Placeholders) 5.4 Minh Họa Trực quan (Placeholders)
 
-- `[FIGURE: Điện thế màng và phân bố ion Na⁺/K⁺ hai bên màng tế bào]`
-- `[FIGURE: Sóng điện thế hoạt động (khử cực / tái cực / quá phân cực / thời kỳ trớ)]`
-- `[FIGURE: Điện thế hoạt động cơ tim với pha bình nguyên và dòng Ca²⁺]`
+- `<img src="/images/fig_y08_8.1_membrane_potential.svg" alt="Điện thế màng và phân bố ion Na⁺/K⁺ hai bên màng tế bào" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />`
+- `<img src="/images/fig_y08_8.2_action_potential.svg" alt="Sóng điện thế hoạt động (khử cực / tái cực / quá phân cực / thời kỳ trớ)" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />`
+- `<img src="/images/fig_y08_8.3_cardiac_action_potential.svg" alt="Điện thế hoạt động cơ tim với pha bình nguyên và dòng Ca²⁺" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />`
 
 ---
 

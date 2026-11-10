@@ -490,7 +490,8 @@ a:hover {
   border-radius: 0 8px 8px 0;
   margin: 16px 0;
   font-size: 1.02rem;
-  overflow-x: auto;
+  overflow: visible;
+  max-width: 100%;
 }
 
 /* ------------------------------- Example box ------------------------------ */

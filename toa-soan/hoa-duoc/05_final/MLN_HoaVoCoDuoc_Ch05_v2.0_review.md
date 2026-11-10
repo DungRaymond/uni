@@ -179,15 +179,15 @@ flowchart TD
 
 Các khung dưới đây chỉ là giữ chỗ, **chưa được vẽ** `[ADDED: figure placeholder specifications]`.
 
-[FIGURE: 5.1 | interaction diagram | ba thành phần lực Van der Waals: Keesom, Debye, London | Trục ngang là loại lực; trục đứng là độ mạnh tương đối; nhãn Keesom (phụ thuộc T), Debye (không phụ thuộc T), London (tất cả phân tử) | Ghi chú $E \propto 1/r^6$ cho cả ba | basis: S-05.1]
+<img src="/images/fig_ch05_5.1_interaction_diagram.svg" alt="5.1 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 5.1.** Ba thành phần lực Van der Waals (khung giữ chỗ). `[ADDED: Figure 5.1 caption]`
 
-[FIGURE: 5.2 | hydrogen bond network | mạng lưới liên kết hydro 3 chiều của nước | Hình vẽ ba phân tử $H_2O$ tạo liên kết hydro lẫn nhau, mỗi O có 2 H và 2 cặp e tự do | Nhãn H$\cdots$O, góc liên kết khoảng $104,5^\circ$ | basis: S-05.2]
+<img src="/images/fig_ch05_5.2_hydrogen_bond_network.svg" alt="5.2 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 5.2.** Mạng lưới liên kết hydro 3 chiều của nước (khung giữ chỗ). `[ADDED: Figure 5.2 caption]`
 
-[FIGURE: 5.3 | molecular structure | acid salicylic (nội phân tử) vs acid 4-hydroxybenzoic (ngoại phân tử) | Hai cấu trúc bên nhau; đường nét đứt vẽ liên kết hydro nội phân tử trong acid salicylic | Nhãn nhóm $-OH$, nhóm $C=O$, vị trí $ortho$/$para$ | basis: S-05.5]
+<img src="/images/fig_ch05_5.3_molecular_structure.svg" alt="5.3 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 5.3.** Liên kết hydro nội phân tử acid salicylic vs liên phân tử acid para (khung giữ chỗ). `[ADDED: Figure 5.3 caption]` `[VERIFY: molecular structure (V-05.03)]`.
 

@@ -131,9 +131,9 @@ flowchart TD
 
 ### 5.4 Minh Họa Trực quan (Placeholders) {T-06.5.4}
 
-- `[FIGURE: Thiết bị đo huyết áp (apdate/apdate điện tử) và cách đeo băng quấn đúng cỡ]`
-- `[FIGURE: Tư thế ngồi đúng (tay ngang mức tim, chân phẳng, không bắt chéo chân)]`
-- `[FIGURE: So sánh sai số do băng quấn nhỏ vs đúng cỡ]`
+- `<img src="/images/fig_y06_6.1_blood_pressure_device.svg" alt="Thiết bị đo huyết áp (apdate/apdate điện tử) và cách đeo băng quấn đúng cỡ" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />`
+- `<img src="/images/fig_y06_6.2_proper_posture.svg" alt="Tư thế ngồi đúng (tay ngang mức tim, chân phẳng, không bắt chéo chân)" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />`
+- `<img src="/images/fig_y06_6.3_cuff_size_comparison.svg" alt="So sánh sai số do băng quấn nhỏ vs đúng cỡ" style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />`
 
 ---
 

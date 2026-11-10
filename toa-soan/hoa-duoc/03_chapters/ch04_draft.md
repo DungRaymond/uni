@@ -307,23 +307,23 @@ flowchart TD
 
 Năm hình dưới đây chỉ là khung giữ chỗ, **chưa được vẽ**; mỗi khung nêu nội dung, trục/nhãn và căn cứ. Hình 4.2–4.3 đối chiếu hai trật tự mức; 4.4 cho CO; 4.5 xen phủ; 4.6 cầu $3c$–$2e$. `[ADDED: figure placeholder specifications]`
 
-[FIGURE: 4.2 | MO energy diagram | giản đồ MO của $O_2$ và $F_2$ (không trộn $2s$–$2p$) | Trục tung là năng lượng $E$ tăng lên trên; hai cột AO $2s$, $2p$ hai bên và cột MO ở giữa; nhãn $\sigma_{2s}$, $\sigma^*_{2s}$, $\sigma_{2p_z}$, $\pi_{2p_x}=\pi_{2p_y}$, $\pi^*_{2p_x}=\pi^*_{2p_y}$, $\sigma^*_{2p_z}$; mũi tên spin $\uparrow\downarrow$; ghi 12 electron cho $O_2$, 14 electron cho $F_2$ | Đánh dấu $\sigma_{2p_z}$ nằm dưới $\pi_{2p}$; khoanh 2 electron độc thân trên $\pi^*$ của $O_2$ | basis: S-04.4]
+<img src="/images/fig_ch04_4.2_mo_energy_o2_f2.svg" alt="4.2 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 4.2.** Giản đồ MO của $O_2$ và $F_2$ (khung giữ chỗ). `[ADDED: Figure 4.2 caption]`
 
-[FIGURE: 4.3 | MO energy diagram | giản đồ MO của $B_2$, $C_2$, $N_2$ (có trộn $2s$–$2p$) | Cùng hệ trục như Hình 4.2; nhãn $\sigma_{2s}$, $\sigma^*_{2s}$, $\pi_{2p}$, $\sigma_{2p_z}$, $\pi^*_{2p}$, $\sigma^*_{2p_z}$; ghi 6, 8 và 10 electron hóa trị | Đánh dấu $\pi_{2p}$ nằm dưới $\sigma_{2p_z}$ do trộn $s$–$p$; khoanh 2 electron độc thân trên $\pi_{2p}$ của $B_2$ | basis: S-04.4]
+<img src="/images/fig_ch04_4.3_mo_energy_b2_c2_n2.svg" alt="4.3 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 4.3.** Giản đồ MO của $B_2$, $C_2$, $N_2$ (khung giữ chỗ). `[ADDED: Figure 4.3 caption]`
 
-[FIGURE: 4.4 | heteronuclear MO diagram | giản đồ MO dị hạch của $CO$, HOMO trên $C$, LUMO $\pi^*$ | Hai cột AO không đối xứng: cột $O$ thấp hơn cột $C$; cột MO nghiêng về $O$ ở các mức liên kết; nhãn $5\sigma$ (HOMO), $\pi_{2p}$, $\pi^*$ (LUMO), $6\sigma^*$; ký hiệu $c_C\neq c_O$ | Tô đậm thùy HOMO hướng về $C$; mũi tên $\sigma$-donor từ $C$ sang $Fe^{2+}$ và $\pi$-backbonding từ $Fe^{2+}$ vào $\pi^*$ | basis: S-04.5]
+<img src="/images/fig_ch04_4.4_heteronuclear_mo_co.svg" alt="4.4 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 4.4.** Giản đồ MO dị hạch của $CO$, HOMO trên $C$, LUMO $\pi^*$ (khung giữ chỗ). `[ADDED: Figure 4.4 caption]` `[VERIFY: CO MO diagram and HOMO on C (V-04.06)]`
 
-[FIGURE: 4.5 | orbital overlap diagram | xen phủ tạo MO liên kết/phản liên kết $\sigma$, $\pi$ | Trục liên nhân $Oz$; dấu pha $(+)$, $(-)$ trên từng thùy AO; mặt phẳng nút vẽ nét đứt | Bốn ô đối chiếu: $s$–$s$ → $\sigma/\sigma^*$; $p_z$–$p_z$ → $\sigma/\sigma^*$; $p_x$–$p_x$ → $\pi/\pi^*$; ghi chú $S_{AB}>0$ khi xen phủ hiệu quả và $S_{AB}=0$ cho $s$–$p_x$ | basis: S-04.1, S-04.2]
+<img src="/images/fig_ch04_4.5_orbital_overlap.svg" alt="4.5 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 4.5.** Xen phủ orbital tạo MO liên kết và phản liên kết $\sigma$, $\pi$ (khung giữ chỗ). `[ADDED: Figure 4.5 caption]`
 
-[FIGURE: 4.6 | 3c–2e bonding diagram | hai cầu $B$–$H$–$B$ trong $B_2H_6$ | Nhãn ba tâm $B$–$H$–$B$ của mỗi cầu; hai AO lai hóa $sp^3$ (mỗi $B$ một AO) và một AO $1s$ của $H$ cầu; ký hiệu 2 electron mỗi cầu | Đánh dấu 4 liên kết $B$–$H$ biên ($2c$–$2e$) và 2 liên kết cầu ($3c$–$2e$); ghi tổng 12 electron hóa trị | basis: ADDED]
+<img src="/images/fig_ch04_4.6_3c2e_bonding_b2h6.svg" alt="4.6 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 4.6.** Hai cầu $B$–$H$–$B$ kiểu $3c$–$2e$ trong $B_2H_6$ (khung giữ chỗ). `[ADDED: Figure 4.6 caption]` `[VERIFY: B2H6 3c–2e bonding (V-04.09)]`
 

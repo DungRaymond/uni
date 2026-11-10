@@ -318,15 +318,15 @@ flowchart TD
 
 Các khung dưới đây chỉ là giữ chỗ, **chưa được vẽ** `[ADDED: figure placeholder specifications]`.
 
-[FIGURE: 6.1 | coordination sphere diagram | cấu trúc cầu nội và cầu ngoại của phức chất | Hình vẽ ion kim loại trung tâm ở giữa, các phối tử liên kết trực tiếp (cầu nội) và ion đối phân ly ở bên ngoài (cầu ngoại) | Nhãn dấu ngoặc vuông [...], ion đối, liên kết phối chí | basis: S-06.1]
+<img src="/images/fig_ch06_6.1_coordination_sphere.svg" alt="6.1 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 6.1.** Cấu trúc cầu nội & cầu ngoại (khung giữ chỗ). `[ADDED: Figure 6.1 caption]`
 
-[FIGURE: 6.2 | d-orbital splitting diagram | tách mức orbital $d$ trong trường bát diện ($O_h$) | Hai mức $t_{2g}$ (thấp) và $e_g$ (cao), khoảng cách $\Delta_o = 10Dq$; mũi tên spin cao vs spin thấp | Nhãn $d_{xy}, d_{yz}, d_{xz}, d_{x^2-y^2}, d_{z^2}$, $\Delta_o$, $P$ | basis: S-06.7]
+<img src="/images/fig_ch06_6.2_d_orbital_splitting.svg" alt="6.2 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 6.2.** Tách mức orbital $d$ trường bát diện (khung giữ chỗ). `[ADDED: Figure 6.2 caption]` `[VERIFY: d-orbital splitting (V-06.02)]`
 
-[FIGURE: 6.3 | spectrochemical series | dãy phổ hóa học của phối tử | Đường thẳng từ trái (trường yếu) đến phải (trường mạnh); nhãn toàn bộ dãy phổ $I^-$ đến $CO$ | Đánh dấu phân cách $H_2O$ (trường yếu) và $NH_3$ (trường mạnh) | basis: S-06.7]
+<img src="/images/fig_ch06_6.3_spectrochemical_series.svg" alt="6.3 " style="max-width:100%;height:auto;display:block;margin:10px auto;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.1);" />
 
 **Hình 6.3.** Dãy phổ hóa học của phối tử (khung giữ chỗ). `[ADDED: Figure 6.3 caption]`
 
