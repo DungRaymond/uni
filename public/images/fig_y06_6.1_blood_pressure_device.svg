@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .title { font-family: Arial, sans-serif; font-size: 18px; font-weight: bold; fill: #333; }
+      .subtitle { font-family: Arial, sans-serif; font-size: 14px; fill: #555; }
+      .label { font-family: Arial, sans-serif; font-size: 12px; fill: #333; }
+      .axis { stroke: #333; stroke-width: 1; }
+      .line { stroke: #007acc; stroke-width: 2; fill: none; }
+      .point { fill: #007acc; }
+      .box { fill: #e6f3ff; stroke: #007acc; stroke-width: 2; }
+      .arrow { stroke: #333; stroke-width: 2; marker-end: url(#arrowhead); }
+      .marker { fill: #ff6b35; }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 9 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" text-anchor="middle" class="title">Blood pressure measurement device</text>
+  <text x="400" y="65" text-anchor="middle" class="subtitle">Thiết bị đo huyết áp và cách đeo băng quấn đúng cỡ</text>
+  
+  <!-- Placeholder content - Simple diagram representation -->
+  <g transform="translate(400, 320)">
+    <!-- Main diagram element -->
+    <rect x="-150" y="-100" width="300" height="200" class="box"/>
+    
+    <!-- Center point -->
+    <circle cx="0" cy="0" r="8" class="marker"/>
+    
+    <!-- Labels -->
+    <text x="0" y="-115" text-anchor="middle" class="label">Blood pressure measurement device</text>
+    <text x="0" y="120" text-anchor="middle" class="label">Thiết bị đo huyết áp và cách đeo băng quấn đúng cỡ</text>
+    
+    <!-- Axes -->
+    <line x1="-150" y1="0" x2="150" y2="0" class="axis"/>
+    <line x1="0" y1="-100" x2="0" y2="100" class="axis"/>
+    
+    <!-- Axis labels -->
+    <text x="155" y="5" text-anchor="middle" class="label" font-size="10">X</text>
+    <text x="-5" y="-110" text-anchor="middle" class="label" font-size="10">Y</text>
+    
+    <!-- Sample data points -->
+    <circle cx="-60" cy="20" r="5" class="point"/>
+    <circle cx="0" cy="-40" r="5" class="point"/>
+    <circle cx="60" cy="30" r="5" class="point"/>
+    <circle cx="-30" cy="60" r="5" class="point"/>
+    <circle cx="40" cy="-20" r="5" class="point"/>
+  </g>
+  
+  <!-- Footer -->
+  <text x="400" y="580" text-anchor="middle" class="subtitle" font-size="10">[FIGURE: 6.1] - Placeholder image</text>
+  <text x="400" y="595" text-anchor="middle" class="subtitle" font-size="10">Nguồn: Y dược – Master Lecture Notes</text>
+</svg>
